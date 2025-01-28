@@ -1,10 +1,9 @@
 ---
 name: Feature Template
 about: 기능 구현 이슈 템플릿
-title: "[Feature]"
-labels: "✨ Feature"
+title: '[Feature]'
+labels: '✨ Feature'
 assignees: ''
-
 ---
 
 ## 📌 설명

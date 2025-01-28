@@ -1,10 +1,9 @@
 ---
 name: Refactor Template
 about: 리팩토링 관련
-title: "[Refactor]"
+title: '[Refactor]'
 labels: "\U0001F528 Refactor"
 assignees: ''
-
 ---
 
 ## 📌 설명
