@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --write .",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "prepare": "husky"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.64.2",
@@ -17,14 +21,33 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.4",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
     "@eslint/eslintrc": "^3",
+    "@storybook/addon-essentials": "^8.5.2",
+    "@storybook/addon-interactions": "^8.5.2",
+    "@storybook/blocks": "^8.5.2",
+    "@storybook/nextjs": "^8.5.2",
+    "@storybook/react": "^8.5.2",
+    "@storybook/test": "^8.5.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chromatic": "^11.25.1",
     "eslint": "^9",
     "eslint-config-next": "15.1.5",
+    "eslint-plugin-storybook": "^0.11.2",
+    "husky": "^9.1.7",
     "postcss": "^8",
+    "prettier": "^3.4.2",
+    "storybook": "^8.5.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }
