@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prettier": "prettier --write .",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.64.2",
@@ -35,6 +36,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.5",
     "eslint-plugin-storybook": "^0.11.2",
+    "husky": "^9.1.7",
     "postcss": "^8",
     "prettier": "^3.4.2",
     "storybook": "^8.5.2",
