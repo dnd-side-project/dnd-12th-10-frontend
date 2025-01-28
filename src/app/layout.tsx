@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import './globals.css'
+import '@/styles/globals.css'
 import TanStackProvider from '@/app/providers'
 import localFont from 'next/font/local'
 

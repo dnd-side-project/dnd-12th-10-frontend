@@ -8,6 +8,9 @@ const config: StorybookConfig = {
     '@chromatic-com/storybook',
     '@storybook/addon-interactions',
   ],
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
   framework: {
     name: '@storybook/nextjs',
     options: {},
