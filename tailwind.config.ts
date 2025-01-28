@@ -78,6 +78,12 @@ export default {
           900: '#002E1F',
         },
       },
+      borderRadius: {
+        sm: '8px',
+        md: '16px',
+        lg: '24px',
+        xl: '40px',
+      },
     },
   },
   plugins: [],
