@@ -3,7 +3,10 @@ name: 'Deploy Chromatic'
 
 # Event for the workflow
 on:
-  push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
     branches:
       - feat/**
     paths:
