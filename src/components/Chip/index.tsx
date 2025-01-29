@@ -21,7 +21,6 @@ const Chip = ({ size, color, label }: Props) => {
         'flex',
         'items-center',
         'justify-center',
-        'text-gray-800',
         'text-body03',
         'rounded-sm',
         'px-3',
