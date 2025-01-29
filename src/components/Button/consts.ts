@@ -42,8 +42,8 @@ export const BUTTON_STYLE: {
     filled: [
       'bg-[#FF530A]',
       'text-white',
-      'hover:bg-[#FF530A]',
-      'disabled:bg-[#FF530A] disabled:text-[#FF530A]', // TODO: 확인 필요
+      'hover:bg-[#D93A00]',
+      'disabled:bg-[#DCDCDC] disabled:text-[#9B9B9B]',
     ].join(' '),
     outlined: '', // secondary 색상은 현재 해당 variant 존재하지 않음
     subtle: '',
