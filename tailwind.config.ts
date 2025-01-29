@@ -16,6 +16,71 @@ export default {
         xl: '20px',
         '2xl': '24px',
         '3xl': '40px',
+
+        display01: [
+          '40px',
+          {
+            fontWeight: '700',
+            lineHeight: '140%',
+            letterSpacing: '-0.01em',
+          },
+        ],
+        title01: [
+          '24px',
+          {
+            fontWeight: '700',
+            lineHeight: '140%',
+            letterSpacing: '-0.01em',
+          },
+        ],
+        title02: [
+          '20px',
+          {
+            fontWeight: '600',
+            lineHeight: '140%',
+            letterSpacing: '-0.01em',
+          },
+        ],
+        title03: [
+          '16px',
+          {
+            fontWeight: '600',
+            lineHeight: '140%',
+            letterSpacing: '-0.01em',
+          },
+        ],
+        body01: [
+          '18px',
+          {
+            fontWeight: '500',
+            lineHeight: '150%',
+            letterSpacing: '-0.01em',
+          },
+        ],
+        body02: [
+          '16px',
+          {
+            fontWeight: '500',
+            lineHeight: '150%',
+            letterSpacing: '-0.01em',
+          },
+        ],
+        body03: [
+          '14px',
+          {
+            fontWeight: '500',
+            lineHeight: '150%',
+            letterSpacing: '-0.01em',
+          },
+        ],
+        caption01: [
+          '12px',
+          {
+            fontWeight: '500',
+            lineHeight: '150%',
+            letterSpacing: '-0.01em',
+          },
+        ],
       },
       fontWeight: {
         thin: '100',
