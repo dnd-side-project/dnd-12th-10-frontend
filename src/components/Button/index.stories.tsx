@@ -12,10 +12,12 @@ const meta = {
   argTypes: {
     variant: { control: 'radio' },
     size: { control: 'radio' },
+    disabled: { control: 'boolean' },
   },
   args: {
     onClick: fn(),
     children: 'Button',
+    disabled: false,
   },
 } satisfies Meta<typeof Button>
 
@@ -26,5 +28,6 @@ export const BasicButton: Story = {
   args: {
     variant: 'filled',
     size: 'medium',
+    color: 'primary',
   },
 }
