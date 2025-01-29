@@ -1,33 +1,34 @@
+import { cn } from '@/utils/cn'
 import React, { PropsWithChildren } from 'react'
+import { BUTTON_SIZE, BUTTON_STYLE } from './consts'
 
-interface Props extends React.ComponentPropsWithoutRef<'button'> {
+export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
+  color: 'primary' | 'secondary'
   variant: 'filled' | 'outlined' | 'subtle' | 'text'
   size: 'small' | 'medium' | 'large'
 }
 
-const SIZE: { [k in Props['size']]: string } = {
-  small: 'py-[5px]',
-  medium: 'py-[13px]',
-  large: 'py-[21px]',
-}
-
-const VARIANT: { [k in Props['variant']]: string } = {
-  filled: 'bg-[#3881F1] text-white', // TODO: 컬러시스템 적용
-  outlined: 'bg-white border border-[#3881F1] text-[#3881F1] ',
-  subtle: 'bg-[#F0F8FF] text-[#3881F1]',
-  text: 'bg-white text-[#3881F1]',
-}
-
 const Button = ({
+  color,
   variant,
   size,
   children,
   ...props
-}: PropsWithChildren<Props>) => {
+}: PropsWithChildren<ButtonProps>) => {
   return (
     <button
       type='button'
-      className={`rounded-3xl px-3 flex items-center ${SIZE[size]} ${VARIANT[variant]}`}
+      className={cn(
+        'px-3',
+        'flex',
+        'items-center',
+        'justify-center',
+        'rounded-[999px]',
+        'min-w-[140px]',
+        'text-title03',
+        BUTTON_SIZE[size],
+        BUTTON_STYLE[color][variant],
+      )}
       {...props}
     >
       {children}
