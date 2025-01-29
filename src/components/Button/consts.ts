@@ -3,9 +3,9 @@ import { ButtonProps } from '.'
 type ButtonVariantStyle = Record<ButtonProps['variant'], string>
 
 export const BUTTON_SIZE: { [k in ButtonProps['size']]: string } = {
-  small: 'py-[5px] h-8',
-  medium: 'py-[13px] h-12',
-  large: 'py-[21px] h-16',
+  small: 'h-8',
+  medium: 'h-12',
+  large: 'h-16',
 }
 
 export const BUTTON_STYLE: {
