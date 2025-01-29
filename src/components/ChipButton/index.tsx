@@ -14,22 +14,20 @@ const ChipButton = ({ label, ...restProps }: Props) => {
       <input type='checkbox' className='hidden peer' {...restProps} />
       <span
         className={cn(
-          'text-[#474747]',
-          'text-sm',
-          'font-medium',
+          'text-gray-800',
+          'text-body03',
           'flex',
           'items-center',
           'justify-center',
-          'rounded-lg',
           'px-3',
           'cursor-pointer',
-          'rounded-lg',
+          'rounded-sm',
           'h-10',
           'px-4',
           'select-none',
-          'border border-[#303030]',
+          'border border-gray-900',
           'shadow-[0px_2px_0px_0px_#000000]',
-          'peer-checked:bg-[#04C770]',
+          'peer-checked:bg-green-500',
           'peer-checked:text-white',
         )}
       >

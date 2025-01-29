@@ -21,6 +21,6 @@ export const BasicChip: Story = {
   args: {
     color: 'gray',
     size: 'medium',
-    label: 'label',
+    label: '레이블',
   },
 }

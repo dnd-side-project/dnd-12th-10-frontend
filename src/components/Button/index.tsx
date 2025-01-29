@@ -25,6 +25,7 @@ const Button = ({
         'justify-center',
         'rounded-[999px]',
         'min-w-[140px]',
+        'text-title03',
         BUTTON_SIZE[size],
         BUTTON_STYLE[color][variant],
       )}
