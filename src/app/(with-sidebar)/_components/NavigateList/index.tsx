@@ -17,27 +17,27 @@ const NavigateList = () => {
   return (
     <nav>
       <SidebarItem
-        path={'/'}
-        contentName={'홈'}
+        path='/'
+        contentName='홈'
         activeIcon={<ActiveHomeIcon />}
         nonActiveIcon={<HomeIcon />}
       />
       <SidebarItem
-        path={'/'}
-        contentName={'회고 스페이스'}
+        path='/'
+        contentName='회고 스페이스'
         activeIcon={<ActiveEditIcon />}
         nonActiveIcon={<EditIcon />}
       />
       <SidebarItem
-        path={'/'}
-        contentName={'모임'}
+        path='/'
+        contentName='모임'
         activeIcon={<ActiveProfileUserIcon />}
         nonActiveIcon={<ProfileUserIcon />}
       />
       <NotificationLink />
       <SidebarItem
-        path={'/'}
-        contentName={'내 정보'}
+        path='/'
+        contentName='내 정보'
         activeIcon={<ActiveProfileIcon />}
         nonActiveIcon={<ProfileIcon />}
       />
