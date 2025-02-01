@@ -18,7 +18,6 @@ const SidebarItem = ({
   nonActiveIcon,
   contentName,
   path,
-  ...props
 }: PropsWithChildren<SidebarItemProps>) => {
   const pathname = usePathname()
   const isActive = path === pathname
@@ -32,7 +31,6 @@ const SidebarItem = ({
         'text-title03',
         isActive && '[&>svg]:fill-blue-400 ',
       )}
-      {...props}
     >
       {isActive ? activeIcon : nonActiveIcon}
       <span className={isActive ? 'text-blue-400' : 'text-white'}>
