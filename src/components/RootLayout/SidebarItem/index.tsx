@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import { usePathname } from 'next/navigation'
 
-export interface SidebarItemProps extends React.ComponentPropsWithoutRef<'a'> {
+export interface SidebarItemProps {
   activeIcon: ReactNode
   nonActiveIcon: ReactNode
   contentName: string
