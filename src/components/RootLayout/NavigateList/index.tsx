@@ -1,6 +1,6 @@
 import React from 'react'
 import SidebarItem from '../SidebarItem'
-import NotificationLink from '../SidebarItem/NotificationLink'
+import NotificationLink from '@/components/RootLayout/SidebarItem/NotificationLink'
 
 import HomeIcon from '@/assets/icons/sidebar/non-active/home.svg'
 import EditIcon from '@/assets/icons/sidebar/non-active/edit.svg'
