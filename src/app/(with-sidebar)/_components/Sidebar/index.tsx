@@ -1,7 +1,6 @@
 import { cn } from '@/utils/cn'
 import LogoIcon from '@/assets/icons/logo.svg'
 import LogoutButton from '@/app/(with-sidebar)/_components/SidebarItem/LogoutButton'
-import SearchButton from '@/app/(with-sidebar)/_components/SidebarItem/SearchButton'
 import NavigateList from '@/app/(with-sidebar)/_components/NavigateList'
 const Sidebar = () => {
   return (
@@ -13,8 +12,7 @@ const Sidebar = () => {
         'bg-gray-900',
       )}
     >
-      <LogoIcon />
-      <SearchButton />
+      <LogoIcon className='mb-[40px]' />
       <NavigateList />
       <LogoutButton />
     </aside>
