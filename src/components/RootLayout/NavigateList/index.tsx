@@ -23,20 +23,20 @@ const NavigateList = () => {
         nonActiveIcon={<HomeIcon />}
       />
       <SidebarItem
-        path='/'
+        path='/1'
         contentName='회고 스페이스'
         activeIcon={<ActiveEditIcon />}
         nonActiveIcon={<EditIcon />}
       />
       <SidebarItem
-        path='/'
+        path='/2'
         contentName='모임'
         activeIcon={<ActiveProfileUserIcon />}
         nonActiveIcon={<ProfileUserIcon />}
       />
       <NotificationLink />
       <SidebarItem
-        path='/'
+        path='/4'
         contentName='내 정보'
         activeIcon={<ActiveProfileIcon />}
         nonActiveIcon={<ProfileIcon />}

@@ -8,7 +8,7 @@ import ActiveNotification from '@/assets/icons/sidebar/active/notification-fille
 const NotificationLink = () => {
   return (
     <SidebarItem
-      path='/'
+      path='/3'
       contentName='알림'
       activeIcon={<ActiveNotification />}
       nonActiveIcon={<Notification />}
