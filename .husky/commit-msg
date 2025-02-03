@@ -1,1 +1,20 @@
 npx --no -- commitlint --edit $1
+
+# 현재 브랜치 이름 가져오기
+branch_name=$(git symbolic-ref --short HEAD)
+
+# 브랜치명에서 이슈 번호 추출 (예: feat/#3 -> 3)
+if [[ $branch_name =~ \#([0-9]+)$ ]]; then
+  issue_number=${BASH_REMATCH[1]}
+
+  # 커밋 메시지 파일 경로
+  commit_file=$1
+
+  # 현재 커밋 메시지 읽기
+  commit_message=$(cat "$commit_file")
+
+  # 커밋 메시지에 이슈 번호 추가 (이미 있으면 추가하지 않음)
+  if [[ ! $commit_message =~ \(\#$issue_number\) ]]; then
+    echo "$commit_message (#$issue_number)" > "$commit_file"
+  fi
+fi
