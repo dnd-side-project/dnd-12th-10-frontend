@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
+import { Toaster } from 'react-hot-toast'
 import TanStackProvider from '@/app/providers'
 import localFont from 'next/font/local'
 import Sidebar from '../components/RootLayout/Sidebar'
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={`${pretendard.className} antialiased`}>
         <TanStackProvider>
           <div className='flex h-screen'>
+            <Toaster position='top-center' />
             <Sidebar />
             <div className='grow'>{children}</div>
           </div>
