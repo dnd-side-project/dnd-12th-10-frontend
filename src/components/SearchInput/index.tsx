@@ -56,17 +56,15 @@ const SearchInput = ({
       </div>
 
       {showSearchButton && (
-        <div className='w-12'>
-          <Button
-            type='button'
-            color='primary'
-            size='medium'
-            variant='filled'
-            onClick={onSearch}
-          >
-            검색하기
-          </Button>
-        </div>
+        <Button
+          type='button'
+          color='primary'
+          size='medium'
+          variant='filled'
+          onClick={onSearch}
+        >
+          검색하기
+        </Button>
       )}
     </div>
   )
