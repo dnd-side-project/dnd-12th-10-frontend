@@ -67,7 +67,7 @@ const LimitedInput = ({
           'gap-x-2',
           'hover:bg-[#0000000D]',
           { 'h-14': !multiline },
-          { 'items-end': multiline },
+          { 'items-end flex-col': multiline },
         )}
       >
         {multiline ? (
@@ -78,9 +78,10 @@ const LimitedInput = ({
               'text-body02',
               'placeholder-gray-700',
               'resize-none',
-              'overflow-y-hidden',
+              'overflow-y-auto',
               'h-[118px]',
               'bg-[transparent]',
+              'w-full',
             )}
             {...restProps}
             onChange={handleChange}
