@@ -166,7 +166,7 @@ export default {
       },
     },
     boxShadow: {
-      black: '0px 2px 0px 0px #000000',
+      card: '0px 4px 0px 0px #000000',
     },
   },
   plugins: [],

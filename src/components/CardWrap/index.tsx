@@ -20,9 +20,12 @@ const CardWrap = ({
         'flex',
         'border',
         'border-gray-900',
-        'shadow-black',
+        'shadow-card',
         'p-6',
         'rounded-[24px]',
+        {
+          'hover:bg-[#0000000D]': size === 'medium',
+        },
         CARD_WRAP_SIZE[size],
       )}
     >
