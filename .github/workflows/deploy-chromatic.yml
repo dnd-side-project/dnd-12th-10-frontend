@@ -8,6 +8,8 @@ on:
       - opened
       - synchronize
     branches:
+      - main
+      - develop
       - feat/**
     paths:
       - .storybook/**

@@ -14,5 +14,19 @@ module.exports = {
         'chore', // 그 외 자잘한 작업
       ],
     ],
+    'subject-case': [
+      2,
+      'always',
+      [
+        'lower-case',
+        'upper-case',
+        'camel-case',
+        'kebab-case',
+        'pascal-case',
+        'sentence-case',
+        'snake-case',
+        'start-case',
+      ],
+    ],
   },
 }
