@@ -5,8 +5,10 @@ import Chip from '@/components/Chip'
 import ProfileIcon from '@/assets/icons/filled/profile-filled.svg'
 import ClipBoardIcon from '@/assets/icons/filled/clipboard-text-filled.svg'
 import { useState } from 'react'
+import Link from 'next/link'
 
 interface MyGatheringListItemProps {
+  id: string
   title: string
   description: string
   tagList: string[]
@@ -15,6 +17,7 @@ interface MyGatheringListItemProps {
 }
 
 const MyGatheringListItem = ({
+  id,
   title,
   description,
   tagList,
@@ -24,7 +27,8 @@ const MyGatheringListItem = ({
   const [isHover, setIsHover] = useState(false)
 
   return (
-    <div
+    <Link
+      href={`/${id}`}
       className={cn(
         'flex',
         'gap-20',
@@ -60,7 +64,7 @@ const MyGatheringListItem = ({
         ·
         <Info SvgIcon={ClipBoardIcon} text={`${clipCount}개`} />
       </div>
-    </div>
+    </Link>
   )
 }
 

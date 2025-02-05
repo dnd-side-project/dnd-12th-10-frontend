@@ -45,5 +45,6 @@ export const BasicMyGatheringListItem: Story = {
     peopleCount: 1,
     clipCount: 1,
     tagList: ['tag1', 'tag2'],
+    id: '1',
   },
 }
