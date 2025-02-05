@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import MyGatheringListItem from '.'
+import MyGroupListItem from '.'
 
 const meta = {
-  title: 'components/MyGatheringListItem',
-  component: MyGatheringListItem,
+  title: 'components/MyGroupListItem',
+  component: MyGroupListItem,
   parameters: {
     layout: 'centered',
   },
@@ -33,7 +33,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof MyGatheringListItem>
+} satisfies Meta<typeof MyGroupListItem>
 
 export default meta
 type Story = StoryObj<typeof meta>

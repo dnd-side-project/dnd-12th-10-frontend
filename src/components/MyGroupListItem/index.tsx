@@ -1,13 +1,13 @@
 'use client'
 
+import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import Chip from '@/components/Chip'
 import ProfileIcon from '@/assets/icons/filled/profile-filled.svg'
 import ClipBoardIcon from '@/assets/icons/filled/clipboard-text-filled.svg'
 import { useState } from 'react'
-import Link from 'next/link'
 
-interface MyGatheringListItemProps {
+interface MyGroupListItemProps {
   id: string
   title: string
   description: string
@@ -16,14 +16,14 @@ interface MyGatheringListItemProps {
   clipCount: number
 }
 
-const MyGatheringListItem = ({
+const MyGroupListItem = ({
   id,
   title,
   description,
   tagList,
   peopleCount,
   clipCount,
-}: MyGatheringListItemProps) => {
+}: MyGroupListItemProps) => {
   const [isHover, setIsHover] = useState(false)
 
   return (
@@ -68,7 +68,7 @@ const MyGatheringListItem = ({
   )
 }
 
-export default MyGatheringListItem
+export default MyGroupListItem
 
 const Info = ({
   SvgIcon,
