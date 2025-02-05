@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
-import TanStackProvider from '@/app/providers'
+import Providers from '@/app/providers'
 import localFont from 'next/font/local'
 import Sidebar from '../components/RootLayout/Sidebar'
 
@@ -22,13 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${pretendard.className} antialiased`}>
-        <TanStackProvider>
+      <body className={`${pretendard.className} antialiased h-14`}>
+        <Providers>
           <div className='flex h-screen'>
             <Sidebar />
             <div className='grow'>{children}</div>
           </div>
-        </TanStackProvider>
+        </Providers>
       </body>
     </html>
   )
