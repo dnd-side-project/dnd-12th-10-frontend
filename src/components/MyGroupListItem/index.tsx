@@ -13,7 +13,7 @@ interface MyGroupListItemProps {
   description: string
   tagList: string[]
   peopleCount: number
-  clipCount: number
+  memoCount: number
 }
 
 const MyGroupListItem = ({
@@ -22,12 +22,13 @@ const MyGroupListItem = ({
   description,
   tagList,
   peopleCount,
-  clipCount,
+  memoCount,
 }: MyGroupListItemProps) => {
   const [isHover, setIsHover] = useState(false)
 
   return (
     <Link
+      // Todo: path 변경 필요
       href={`/${id}`}
       className={cn(
         'flex',
@@ -62,7 +63,7 @@ const MyGroupListItem = ({
       <div className='flex items-center text-gray-400 gap-2'>
         <Info SvgIcon={ProfileIcon} text={`${peopleCount}명`} />
         ·
-        <Info SvgIcon={ClipBoardIcon} text={`${clipCount}개`} />
+        <Info SvgIcon={ClipBoardIcon} text={`${memoCount}개`} />
       </div>
     </Link>
   )
