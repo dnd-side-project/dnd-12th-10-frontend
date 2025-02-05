@@ -24,12 +24,18 @@ const Dropdown = ({ options }: Props) => {
   )
 
   return (
-    <DropdownHero className='[&_*]:text-body02 [&_*]:font-normal [&_*]:text-gray-700'>
+    <DropdownHero
+      className={cn(
+        '[&_*]:text-body02',
+        '[&_*]:font-normal',
+        '[&_*]:text-gray-700',
+        'data-[slot=content]:min-w-0',
+      )}
+    >
       <DropdownTrigger
         className={cn(
           'rounded-lg',
           'border-gray-700 border',
-          'text-body02 text-gray-700',
           'h-[38px] px-[18px]',
           'bg-white',
         )}
