@@ -163,6 +163,9 @@ export default {
         xl: '40px',
       },
     },
+    boxShadow: {
+      black: '0px 2px 0px 0px #000000',
+    },
   },
   plugins: [],
 } satisfies Config
