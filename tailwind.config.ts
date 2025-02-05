@@ -167,7 +167,7 @@ export default {
     },
     boxShadow: {
       card: '0px 4px 0px 0px #000000',
-      'my-gathering': '0px 2px 8px 0px #00000014',
+      'my-group-list-item': '0px 2px 8px 0px #00000014',
     },
   },
   plugins: [],
