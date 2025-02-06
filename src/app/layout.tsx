@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
 import { Toaster } from 'react-hot-toast'
-import TanStackProvider from '@/app/providers'
 import localFont from 'next/font/local'
 import Sidebar from '../components/RootLayout/Sidebar'
+import Providers from './providers'
 
 const pretendard = localFont({
   src: '../assets/fonts/PretendardVariable.woff2',
@@ -24,13 +24,13 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${pretendard.className} antialiased`}>
-        <TanStackProvider>
+        <Providers>
           <div className='flex h-screen'>
             <Toaster position='top-center' />
             <Sidebar />
             <div className='grow'>{children}</div>
           </div>
-        </TanStackProvider>
+        </Providers>
       </body>
     </html>
   )
