@@ -61,9 +61,9 @@ const MyGroupListItem = ({
         </p>
       </div>
       <div className='flex items-center text-gray-400 gap-2'>
-        <Info SvgIcon={ProfileIcon} text={`${peopleCount}명`} />
+        <Info svgIcon={ProfileIcon} text={`${peopleCount}명`} />
         ·
-        <Info SvgIcon={ClipBoardIcon} text={`${memoCount}개`} />
+        <Info svgIcon={ClipBoardIcon} text={`${memoCount}개`} />
       </div>
     </Link>
   )
@@ -72,15 +72,16 @@ const MyGroupListItem = ({
 export default MyGroupListItem
 
 const Info = ({
-  SvgIcon,
+  svgIcon,
   text,
 }: {
-  SvgIcon: React.ElementType
+  svgIcon: React.ElementType
   text: string
 }) => {
+  const SvgIconComponent = svgIcon
   return (
     <div className='flex gap-1 items-center'>
-      <SvgIcon width='16' height='16' className='fill-gray-400' />
+      <SvgIconComponent width='16' height='16' className='fill-gray-400' />
       <span className='text-nowrap'>{text}</span>
     </div>
   )
