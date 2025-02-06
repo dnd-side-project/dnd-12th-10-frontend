@@ -3,7 +3,7 @@ import { cn } from '@/utils/cn'
 import { PropsWithChildren } from 'react'
 import { CARD_WRAP_SIZE } from '@/components/CardWrap/consts'
 
-export interface CardWrapProps extends React.ComponentPropsWithoutRef<'a'> {
+export interface CardWrapProps {
   path: string
   size: 'medium' | 'large'
 }
