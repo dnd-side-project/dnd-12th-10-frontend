@@ -2,17 +2,17 @@ import { cn } from '@/utils/cn'
 import { toast } from 'react-hot-toast'
 import CloseIcon from '@/assets/icons/close-circle.svg'
 
-interface ToastContentProps {
+interface CustomToastProps {
   message: string
   isShowCloseButton: boolean
   toastId: string
 }
 
-export const ToastContent = ({
+export const CustomToast = ({
   message,
   isShowCloseButton,
   toastId,
-}: ToastContentProps) => {
+}: CustomToastProps) => {
   return (
     <div
       className={cn('w-[240px]', 'flex', 'items-center', {
@@ -29,4 +29,4 @@ export const ToastContent = ({
     </div>
   )
 }
-export default ToastContent
+export default CustomToast

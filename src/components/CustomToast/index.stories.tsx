@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ToastContent from './ToastContent'
+import CustomToast from './'
 
 const meta = {
-  title: 'components/ToastContent',
-  component: ToastContent,
+  title: 'components/CustomToast',
+  component: CustomToast,
   parameters: {
     layout: 'centered',
   },
@@ -30,7 +30,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof ToastContent>
+} satisfies Meta<typeof CustomToast>
 
 export default meta
 type Story = StoryObj<typeof meta>

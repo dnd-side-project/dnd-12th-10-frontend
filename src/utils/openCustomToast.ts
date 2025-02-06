@@ -1,15 +1,9 @@
 import { Toast, toast } from 'react-hot-toast'
-import ToastContent from './ToastContent'
+import CustomToast from '@/components/CustomToast'
 
-const Index = (message: string, isShowCloseButton: boolean) => {
+const openCustomToast = (message: string, isShowCloseButton: boolean) => {
   toast(
-    (t: Toast) => (
-      <ToastContent
-        message={message}
-        isShowCloseButton={isShowCloseButton}
-        toastId={t.id}
-      />
-    ),
+    (t: Toast) => CustomToast({ message, isShowCloseButton, toastId: t.id }),
     {
       style: {
         borderRadius: '4px',
@@ -21,7 +15,7 @@ const Index = (message: string, isShowCloseButton: boolean) => {
   )
 }
 
-export default Index
+export default openCustomToast
 
 // 사용법 예시
 // onClick={() => {
