@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${pretendard.className} antialiased h-14`}>
+      <body className={`${pretendard.className} antialiased`}>
         <Providers>
           <div className='flex h-screen'>
             <Sidebar />
