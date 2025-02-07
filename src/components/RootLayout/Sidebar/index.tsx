@@ -6,7 +6,7 @@ import LogoutButton from '@/components/RootLayout/SidebarItem/LogoutButton'
 import NavigateList from '../NavigateList'
 import { usePathname } from 'next/navigation'
 
-const HIDE_SIDEBAR_PAGE_LIST = ['/login', '/login/onboarding']
+const HIDE_SIDEBAR_PAGE_LIST = ['/login', '/login/signup']
 
 const Sidebar = () => {
   const pathname = usePathname()
