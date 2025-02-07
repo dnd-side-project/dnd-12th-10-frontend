@@ -95,6 +95,7 @@ const LimitedInput = ({
               'text-body02',
               'placeholder-gray-700',
               'bg-[transparent]',
+              'w-full',
             )}
             {...restProps}
             onChange={handleChange}
