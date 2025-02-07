@@ -37,10 +37,12 @@ const LonginLayout = ({
           'flex flex-col items-center justify-center',
           'py-[48px] px-[72px]',
           'bg-white',
+          'text-gray-900',
           'rounded-lg',
         )}
       >
-        <LogoIcon fill='black' width='160' />
+        {/*#303030 = gray-900*/}
+        <LogoIcon fill='#303030' width='160' />
         {children}
       </div>
     </div>
