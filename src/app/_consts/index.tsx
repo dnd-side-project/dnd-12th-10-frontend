@@ -30,7 +30,7 @@ export type RecommendedGroup = {
   numOfMembers: number
 }
 
-export const MY_GROUPS: MyGroup[] = [
+export const MY_GROUP_LIST: MyGroup[] = [
   {
     id: 1,
     groupName: '모임명',

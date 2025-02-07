@@ -4,31 +4,46 @@ import { URL_PATH } from '@/consts/urls'
 import ProfileFilledIcon from '@/assets/icons/filled/profile-filled.svg'
 import ClipboardFilledIcon from '@/assets/icons/filled/clipboard-text-filled.svg'
 import StarFilledIcon from '@/assets/icons/filled/star-fill.svg'
-import { MY_GROUPS, MyGroup } from '../_consts'
+import { MY_GROUP_LIST, MyGroup } from '../_consts'
 import GroupCreateCard from './GroupCreateCard'
 import SectionHeader from './SectionHeader'
 
 /** 내 모임 영역 */
 const MyGroupList = () => {
+  const isMyGroupListEmpty = MY_GROUP_LIST.length === 0
+
   return (
     <section className='py-16'>
       <div className='flex justify-between items-start'>
         <SectionHeader
           title='🏡 내 모임'
-          description='내가 함께 기록하고 성장하는 모임이에요!'
+          description={
+            isMyGroupListEmpty
+              ? '아직 가입한 모임이 없어요'
+              : '내가 함께 기록하고 성장하는 모임이에요!'
+          }
         />
-        <Link href={URL_PATH.GroupList} className='text-title03 text-gray-800'>
-          더보기
-        </Link>
+        {!isMyGroupListEmpty && (
+          <Link
+            href={URL_PATH.GroupList}
+            className='text-title03 text-gray-800'
+          >
+            더보기
+          </Link>
+        )}
       </div>
 
-      <div className='flex gap-x-4'>
-        {MY_GROUPS.map((props) => (
-          <MyGroupCard key={`my-group-${props.id}`} {...props} />
-        ))}
-
+      {isMyGroupListEmpty ? (
         <GroupCreateCard />
-      </div>
+      ) : (
+        <div className='flex gap-x-4'>
+          {MY_GROUP_LIST.map((props) => (
+            <MyGroupCard key={`my-group-${props.id}`} {...props} />
+          ))}
+
+          <GroupCreateCard />
+        </div>
+      )}
     </section>
   )
 }
