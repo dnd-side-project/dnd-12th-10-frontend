@@ -19,7 +19,6 @@ const SelectBox = ({ options, placeholder }: Props) => {
           'rounded-[10px]',
           'bg-white',
           'border border-gray-900',
-          'border-b-0',
           'shadow-black',
           'hover-[#0000000D]',
           'text-gray-700;',
