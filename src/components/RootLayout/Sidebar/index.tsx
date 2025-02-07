@@ -20,6 +20,7 @@ const Sidebar = () => {
         'w-[248px]',
         'px-[24px] py-[40px]',
         'bg-gray-900',
+        'shrink-0',
       )}
     >
       <LogoIcon className='mb-[40px]' />
