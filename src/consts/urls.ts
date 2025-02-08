@@ -9,4 +9,5 @@ export const URL_PATH = {
 
 export const API_PATH = {
   Login: '/api/v1/auth/oauth2/kakao',
+  ReissueToken: '/api/v1/auth/reissue',
 }
