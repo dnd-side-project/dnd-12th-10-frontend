@@ -6,10 +6,10 @@ import Button from '@/components/Button'
 import SelectBox from '@/components/SelectBox'
 import ChipButton from '@/components/ChipButton'
 import LimitedInput from '@/components/LimitedInput'
+import { KEYWORD_LIST } from '@/consts/keywordList'
 import FormField from './_components/FormField'
 
 import { JOB_LIST } from './_consts/jobList'
-import { Keyword_List } from './_consts/keywordList'
 import { ALERT_MESSAGE } from './_consts/inputAlertMessage'
 
 type AlertMessageKey = keyof typeof ALERT_MESSAGE
@@ -74,7 +74,7 @@ const OnboardingPage = () => {
           required={false}
         >
           <div className='flex flex-wrap gap-2 pb-[2px]'>
-            {Keyword_List.map((keyword) => (
+            {KEYWORD_LIST.map((keyword) => (
               <ChipButton label={keyword} key={keyword} />
             ))}
           </div>
