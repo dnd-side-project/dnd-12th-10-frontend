@@ -3,7 +3,7 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios'
-import { reissueToken } from '@/app/_lib/auth'
+import { reissueToken } from './auth'
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || ''
 
 export const { getAccessToken, setAccessToken } = (() => {
