@@ -1,7 +1,7 @@
-import KakaoLogoIcon from '@/assets/icons/kakao-logo.svg'
 import Link from 'next/link'
 import { API_PATH } from '@/consts/urls'
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || ''
+import { BASE_URL } from '@/lib/axios'
+import KakaoLogoIcon from '@/assets/icons/kakao-logo.svg'
 
 const LoginPage = () => {
   return (

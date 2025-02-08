@@ -23,8 +23,6 @@ export const axiosInstance = axios.create({
   },
 })
 
-// Todo: instance.interceptors.response 로직 작성 예정
-
 // 요청 인터셉터: 토큰이 있다면 헤더에 추가
 axiosInstance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
@@ -39,6 +37,7 @@ axiosInstance.interceptors.request.use(
   },
 )
 
+// 응답 인터셉터
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse): AxiosResponse => {
     return response
