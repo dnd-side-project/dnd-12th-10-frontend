@@ -6,7 +6,7 @@ import LogoutButton from '@/components/RootLayout/SidebarItem/LogoutButton'
 import NavigateList from '../NavigateList'
 import { usePathname } from 'next/navigation'
 
-const HIDE_SIDEBAR_PAGE_LIST = ['/login']
+const HIDE_SIDEBAR_PAGE_LIST = ['/login', '/login/signup']
 
 const Sidebar = () => {
   const pathname = usePathname()
@@ -23,7 +23,7 @@ const Sidebar = () => {
         'shrink-0',
       )}
     >
-      <LogoIcon className='mb-[40px]' />
+      <LogoIcon fill='white' width='100' className='mb-[40px]' />
       <NavigateList />
       <LogoutButton />
     </aside>
