@@ -6,12 +6,14 @@ import { CARD_WRAP_SIZE } from '@/components/CardWrap/consts'
 export interface CardWrapProps {
   path: string
   size: 'medium' | 'large'
+  height?: number
 }
 
 const CardWrap = ({
-  children,
   size,
+  height = 156,
   path,
+  children,
 }: PropsWithChildren<CardWrapProps>) => {
   return (
     <Link
@@ -28,6 +30,7 @@ const CardWrap = ({
         },
         CARD_WRAP_SIZE[size],
       )}
+      style={{ height }}
     >
       {children}
     </Link>

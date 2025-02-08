@@ -26,6 +26,7 @@ const Button = ({
         'rounded-[999px]',
         'min-w-[140px]',
         'text-title03',
+        'font-semibold',
         BUTTON_SIZE[size],
         BUTTON_STYLE[color][variant],
       )}

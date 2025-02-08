@@ -28,7 +28,7 @@ export default function RootLayout({
           <div className='flex h-screen'>
             <Toaster position='top-center' />
             <Sidebar />
-            <div className='grow'>{children}</div>
+            <div className='grow overflow-auto'>{children}</div>
           </div>
         </Providers>
       </body>
