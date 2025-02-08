@@ -6,11 +6,11 @@ import Button from '@/components/Button'
 import SelectBox from '@/components/SelectBox'
 import ChipButton from '@/components/ChipButton'
 import LimitedInput from '@/components/LimitedInput'
-import FiledWrap from './components/FiledWrap'
+import FiledWrap from './_components/FiledWrap'
 
-import { JOB_LIST } from './consts/jobList'
-import { Keyword_List } from './consts/keywordList'
-import { ALERT_MESSAGE } from './consts/inputAlertMessage'
+import { JOB_LIST } from './_consts/jobList'
+import { Keyword_List } from './_consts/keywordList'
+import { ALERT_MESSAGE } from './_consts/inputAlertMessage'
 
 type AlertMessageKey = keyof typeof ALERT_MESSAGE
 const MAX_LENGTH = 10
