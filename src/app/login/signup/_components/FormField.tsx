@@ -2,12 +2,12 @@ import { PropsWithChildren } from 'react'
 
 interface FormFieldProps {
   fieldTitle: string
-  required: boolean
+  required?: boolean
 }
 
 const FormField = ({
   fieldTitle,
-  required,
+  required = false,
   children,
 }: PropsWithChildren<FormFieldProps>) => {
   return (
