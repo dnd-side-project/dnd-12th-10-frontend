@@ -6,7 +6,7 @@ import Button from '@/components/Button'
 import SelectBox from '@/components/SelectBox'
 import ChipButton from '@/components/ChipButton'
 import LimitedInput from '@/components/LimitedInput'
-import FiledWrap from './_components/FiledWrap'
+import FormField from './_components/FormField'
 
 import { JOB_LIST } from './_consts/jobList'
 import { Keyword_List } from './_consts/keywordList'
@@ -48,8 +48,8 @@ const OnboardingPage = () => {
           'pr-3',
         )}
       >
-        <FiledWrap
-          filedTitle='리브에서 사용하실 닉네임을 입력해주세요.'
+        <FormField
+          fieldTitle='리브에서 사용하실 닉네임을 입력해주세요.'
           required={true}
         >
           <LimitedInput
@@ -60,12 +60,12 @@ const OnboardingPage = () => {
             onMaxLength={() => {}}
             alertMessage={ALERT_MESSAGE[alertMessage]}
           />
-        </FiledWrap>
-        <FiledWrap filedTitle='현재 어떤 직무이신가요?' required={true}>
+        </FormField>
+        <FormField fieldTitle='현재 어떤 직무이신가요?' required={true}>
           <SelectBox options={JOB_LIST} placeholder='직무를 선택해주세요.' />
-        </FiledWrap>
-        <FiledWrap
-          filedTitle='관심있는 키워드를 선택해주세요.'
+        </FormField>
+        <FormField
+          fieldTitle='관심있는 키워드를 선택해주세요.'
           required={false}
         >
           <div className='flex flex-wrap gap-2 pb-[2px]'>
@@ -73,7 +73,7 @@ const OnboardingPage = () => {
               <ChipButton label={keyword} key={keyword} />
             ))}
           </div>
-        </FiledWrap>
+        </FormField>
       </div>
       <Button
         color='primary'
