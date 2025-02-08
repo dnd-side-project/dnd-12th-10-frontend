@@ -12,11 +12,11 @@ import { JOB_LIST } from './consts/jobList'
 import { Keyword_List } from './consts/keywordList'
 import { ALERT_MESSAGE } from './consts/inputAlertMessage'
 
-type alertMessageKey = 'NONE' | 'DUPLICATE_NICKNAME' | 'EXCEEDS_MAX_LENGTH'
+type AlertMessageKey = keyof typeof ALERT_MESSAGE
 const MAX_LENGTH = 10
 
 const OnboardingPage = () => {
-  const [alertMessage, setAlertMessage] = useState<alertMessageKey>('NONE')
+  const [alertMessage, setAlertMessage] = useState<AlertMessageKey>('NONE')
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.slice(0, MAX_LENGTH)
