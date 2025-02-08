@@ -19,9 +19,14 @@ const OnboardingPage = () => {
   const [alertMessage, setAlertMessage] = useState<AlertMessageKey>('NONE')
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.slice(0, MAX_LENGTH)
-    e.target.value = value
-    setAlertMessage(value.length === MAX_LENGTH ? 'EXCEEDS_MAX_LENGTH' : 'NONE')
+    const { value } = e.target
+
+    if (value.length > MAX_LENGTH) {
+      e.target.value = value.slice(0, MAX_LENGTH)
+      setAlertMessage('EXCEEDS_MAX_LENGTH')
+    } else {
+      setAlertMessage('NONE')
+    }
   }
 
   return (
