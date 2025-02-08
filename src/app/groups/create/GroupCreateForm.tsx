@@ -1,6 +1,8 @@
 'use client'
 
 import { Controller, useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { URL_PATH } from '@/consts/urls'
 import FormField from '@/app/login/signup/_components/FormField'
 import { cn } from '@/utils/cn'
 import Button from '@/components/Button'
@@ -17,6 +19,8 @@ const MAX_INTRO_LENGTH = 70
 const MAX_DESCRIPTION_LENGTH = 100
 
 const GroupCreateForm = () => {
+  const { push } = useRouter()
+
   const {
     register,
     handleSubmit,
@@ -37,6 +41,7 @@ const GroupCreateForm = () => {
   const onSubmit = (data: GroupCreateFormType) => {
     // TODO: 추후 api 연결
     console.log('data', data)
+    push(`${URL_PATH.GroupList}/1`)
   }
 
   return (
