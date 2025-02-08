@@ -1,4 +1,4 @@
-export const KeywordList = [
+export const Keyword_List = [
   '개발',
   '기획',
   '프론트엔드',

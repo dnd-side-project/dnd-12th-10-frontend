@@ -9,7 +9,7 @@ import LimitedInput from '@/components/LimitedInput'
 import FiledWrap from './components/FiledWrap'
 
 import { JOB_LIST } from './consts/jobList'
-import { KeywordList } from './consts/keywordList'
+import { Keyword_List } from './consts/keywordList'
 import { ALERT_MESSAGE } from './consts/inputAlertMessage'
 
 type alertMessageKey = 'NONE' | 'DUPLICATE_NICKNAME' | 'EXCEEDS_MAX_LENGTH'
@@ -69,7 +69,7 @@ const OnboardingPage = () => {
           required={false}
         >
           <div className='flex flex-wrap gap-2 pb-[2px]'>
-            {KeywordList.map((keyword) => (
+            {Keyword_List.map((keyword) => (
               <ChipButton label={keyword} key={keyword} />
             ))}
           </div>
