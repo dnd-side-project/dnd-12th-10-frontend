@@ -1,4 +1,5 @@
 import React from 'react'
+import { URL_PATH } from '@/consts/urls'
 import SidebarItem from '../SidebarItem'
 import NotificationLink from '@/components/RootLayout/SidebarItem/NotificationLink'
 
@@ -17,7 +18,7 @@ const NavigateList = () => {
   return (
     <nav>
       <SidebarItem
-        path='/'
+        path={URL_PATH.Home}
         contentName='홈'
         activeIcon={<ActiveHomeIcon />}
         nonActiveIcon={<HomeIcon />}
@@ -29,7 +30,7 @@ const NavigateList = () => {
         nonActiveIcon={<EditIcon />}
       />
       <SidebarItem
-        path='/2'
+        path={URL_PATH.GroupList}
         contentName='모임'
         activeIcon={<ActiveProfileUserIcon />}
         nonActiveIcon={<ProfileUserIcon />}
