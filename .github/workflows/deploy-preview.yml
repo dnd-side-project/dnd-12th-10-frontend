@@ -34,26 +34,8 @@ jobs:
           git remote add forked https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/yoonncho/dnd-12th-10-frontend.git
           git push forked HEAD:${{ github.head_ref }} --force
 
-      - name: Install Vercel CLI
-        run: npm install -g vercel
-
-      - name: Deploy to Vercel Preview
-        id: vercel_preview
-        run: |
-          DEPLOY_URL=$(vercel --token=${{ secrets.VERCEL_TOKEN }} --project-id=${{ secrets.VERCEL_PROJECT_ID }} --env preview --yes)
-          echo "Vercel Deploy URL: $DEPLOY_URL"
-          echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
-
-      - name: Find Pull Request
-        id: find_pr
-        uses: jwalton/gh-find-current-pr@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Comment Preview URL on PR
-        if: steps.find_pr.outputs.pr_number != ''
         uses: thollander/actions-comment-pull-request@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          pr-number: ${{ steps.find_pr.outputs.pr_number }}
           message: '🚀 Preview deployed: [${{ env.DEPLOY_URL }}](${{ env.DEPLOY_URL }})'
