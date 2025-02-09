@@ -8,7 +8,7 @@ import {
   SharedSelection,
 } from '@heroui/react'
 import { useMemo, useState } from 'react'
-import ArrowDownIcon from '@/assets/icons/arrow/arrow-down.svg'
+import { Icon } from '../Icon'
 
 interface Props {
   options: string[]
@@ -42,12 +42,7 @@ const Dropdown = ({ options }: Props) => {
       >
         <Button className='flex items-center gap-x-2.5'>
           {selectedValue}
-          <ArrowDownIcon
-            className='stroke-gray-700'
-            width={16}
-            height={16}
-            viewBox='0 0 24 24' // TODO: 제거가능할지 확인
-          />
+          <Icon name='arrow-down' className='stroke-gray-700' size={16} />
         </Button>
       </DropdownTrigger>
       <DropdownMenu
