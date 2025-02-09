@@ -85,7 +85,10 @@ const GroupCreateForm = () => {
             maxLength: MAX_INTRO_LENGTH,
             onChange: (e) => {
               if (e.target.value.length > MAX_INTRO_LENGTH)
-                setValue('groupName', e.target.value.slice(0, MAX_INTRO_LENGTH))
+                setValue(
+                  'introduction',
+                  e.target.value.slice(0, MAX_INTRO_LENGTH),
+                )
             },
           })}
         />
@@ -102,7 +105,7 @@ const GroupCreateForm = () => {
             onChange: (e) => {
               if (e.target.value.length > MAX_DESCRIPTION_LENGTH)
                 setValue(
-                  'groupName',
+                  'description',
                   e.target.value.slice(0, MAX_DESCRIPTION_LENGTH),
                 )
             },
