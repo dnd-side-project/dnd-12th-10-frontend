@@ -1,0 +1,59 @@
+# Workflow name
+name: 'Deploy Preview'
+
+# Event for the workflow
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    branches:
+      - develop
+
+# List of jobs
+jobs:
+  sync:
+    name: Sync forked repo
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Configure Git
+        run: |
+          git config user.email "nicealice99@gmail.com"
+          git config user.name "yoonncho"
+
+      - name: Push Changes to Forked Repo
+        run: |
+          git remote add forked https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/YOUR_GITHUB_USERNAME/YOUR_FORKED_REPO.git
+          git push forked HEAD:${GITHUB_REF#refs/heads/} --force
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel Preview
+        id: vercel_preview
+        run: |
+          DEPLOY_URL=$(vercel --token=${{ secrets.VERCEL_TOKEN }} --project-id=${{ secrets.VERCEL_PROJECT_ID }} --env preview --yes)
+          echo "Vercel Deploy URL: $DEPLOY_URL"
+          echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
+
+      - name: Find Pull Request
+        id: find_pr
+        uses: jwalton/gh-find-current-pr@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment Preview URL on PR
+        if: steps.find_pr.outputs.pr_number != ''
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-number: ${{ steps.find_pr.outputs.pr_number }}
+          message: '🚀 Preview deployed: [${{ env.DEPLOY_URL }}](${{ env.DEPLOY_URL }})'
