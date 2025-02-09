@@ -2,6 +2,11 @@ import Link from 'next/link'
 import { API_PATH } from '@/consts/urls'
 import { BASE_URL } from '@/lib/axios'
 import KakaoLogoIcon from '@/assets/icons/kakao-logo.svg'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Leev | 로그인',
+}
 
 const LoginPage = () => {
   return (

@@ -31,7 +31,7 @@ const SuccessPage = () => {
     }
   }, [searchParams, setAccessToken])
 
-  return <div>Success</div>
+  return null
 }
 
 export default SuccessPage
