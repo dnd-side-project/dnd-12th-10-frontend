@@ -32,7 +32,7 @@ jobs:
       - name: Push Changes to Forked Repo
         run: |
           git remote add forked https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/yoonncho/dnd-12th-10-frontend.git
-          git push forked HEAD:${GITHUB_REF#refs/heads/} --force
+          git push forked HEAD:${{ github.head_ref }} --force
 
       - name: Install Vercel CLI
         run: npm install -g vercel
