@@ -22,12 +22,12 @@ const SuccessPage = () => {
         router.replace(isRegistered ? URL_PATH.Home : URL_PATH.Signup)
       } else {
         toast.error('로그인에 실패했습니다')
-        router.replace(URL_PATH.Home)
+        router.replace(URL_PATH.Login)
       }
     } catch (err) {
       console.error(err)
       toast.error('로그인에 실패했습니다')
-      router.replace(URL_PATH.Home)
+      router.replace(URL_PATH.Login)
     }
   }, [searchParams, setAccessToken])
 
