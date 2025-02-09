@@ -1,5 +1,3 @@
-'use client'
-
 import Banner from './_components/Banner'
 import MyGroupList from './_components/MyGroupList'
 import PopularGroupList from './_components/PopularGroupList'
