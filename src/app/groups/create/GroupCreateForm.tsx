@@ -38,6 +38,27 @@ const GroupCreateForm = () => {
     },
   })
 
+  // 제한된 입력을 받는 register 반환
+  const limitedRegister = (
+    name: Extract<
+      keyof GroupCreateFormType,
+      'groupName' | 'introduction' | 'description'
+    >,
+    maxLength: number,
+    required: boolean,
+  ) => {
+    return {
+      ...register(name, {
+        required,
+        maxLength,
+        onChange: (e) => {
+          if (e.target.value.length > maxLength)
+            setValue(name, e.target.value.slice(0, maxLength))
+        },
+      }),
+    }
+  }
+
   const onSubmit = (data: GroupCreateFormType) => {
     // TODO: 추후 api 연결
     console.log('data', data)
@@ -61,17 +82,7 @@ const GroupCreateForm = () => {
           maxLength={MAX_GROUP_NAME_LENGTH}
           multiline={false}
           placeholder='모임 이름을 입력해주세요.'
-          {...register('groupName', {
-            required: true,
-            maxLength: MAX_GROUP_NAME_LENGTH,
-            onChange: (e) => {
-              if (e.target.value.length > MAX_GROUP_NAME_LENGTH)
-                setValue(
-                  'groupName',
-                  e.target.value.slice(0, MAX_GROUP_NAME_LENGTH),
-                )
-            },
-          })}
+          {...limitedRegister('groupName', MAX_GROUP_NAME_LENGTH, true)}
         />
       </FormField>
 
@@ -80,17 +91,7 @@ const GroupCreateForm = () => {
           maxLength={MAX_INTRO_LENGTH}
           multiline={false}
           placeholder='이 모임을 한 줄로 간단히 소개해주세요!'
-          {...register('introduction', {
-            required: true,
-            maxLength: MAX_INTRO_LENGTH,
-            onChange: (e) => {
-              if (e.target.value.length > MAX_INTRO_LENGTH)
-                setValue(
-                  'introduction',
-                  e.target.value.slice(0, MAX_INTRO_LENGTH),
-                )
-            },
-          })}
+          {...limitedRegister('introduction', MAX_INTRO_LENGTH, true)}
         />
       </FormField>
 
@@ -100,16 +101,7 @@ const GroupCreateForm = () => {
           maxLength={MAX_DESCRIPTION_LENGTH}
           multiline
           placeholder='모임 소개글을 작성해주세요! 이 모임의 주제, 활동 내용, 그리고 기대하는 참여자에 대해 소개해 보세요. 이미지와 함께 소개하면 더 좋은 인상을 줄 수 있어요!'
-          {...register('description', {
-            maxLength: MAX_DESCRIPTION_LENGTH,
-            onChange: (e) => {
-              if (e.target.value.length > MAX_DESCRIPTION_LENGTH)
-                setValue(
-                  'description',
-                  e.target.value.slice(0, MAX_DESCRIPTION_LENGTH),
-                )
-            },
-          })}
+          {...limitedRegister('description', MAX_DESCRIPTION_LENGTH, false)}
         />
       </FormField>
 
