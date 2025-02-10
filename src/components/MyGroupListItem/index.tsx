@@ -3,9 +3,8 @@
 import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import Chip from '@/components/Chip'
-import ProfileIcon from '@/assets/icons/filled/profile-filled.svg'
-import ClipBoardIcon from '@/assets/icons/filled/clipboard-text-filled.svg'
 import { useState } from 'react'
+import { Icon, IconName } from '../Icon'
 
 interface MyGroupListItemProps {
   id: string
@@ -61,9 +60,9 @@ const MyGroupListItem = ({
         </p>
       </div>
       <div className='flex items-center text-gray-400 gap-2'>
-        <Info svgIcon={ProfileIcon} text={`${peopleCount}명`} />
+        <Info iconName='profile-filled' text={`${peopleCount}명`} />
         ·
-        <Info svgIcon={ClipBoardIcon} text={`${memoCount}개`} />
+        <Info iconName='clipboard-text-filled' text={`${memoCount}개`} />
       </div>
     </Link>
   )
@@ -71,17 +70,10 @@ const MyGroupListItem = ({
 
 export default MyGroupListItem
 
-const Info = ({
-  svgIcon,
-  text,
-}: {
-  svgIcon: React.ElementType
-  text: string
-}) => {
-  const SvgIconComponent = svgIcon
+const Info = ({ iconName, text }: { iconName: IconName; text: string }) => {
   return (
     <div className='flex gap-1 items-center'>
-      <SvgIconComponent width='16' height='16' className='fill-gray-400' />
+      <Icon name={iconName} size={16} className='fill-gray-400' />
       <span className='text-nowrap'>{text}</span>
     </div>
   )

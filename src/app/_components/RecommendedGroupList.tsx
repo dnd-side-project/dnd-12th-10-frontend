@@ -1,6 +1,6 @@
 import CardWrap from '@/components/CardWrap'
 import Chip from '@/components/Chip'
-import ProfileFilledIcon from '@/assets/icons/filled/profile-filled.svg'
+import { Icon } from '@/components/Icon'
 import SectionHeader from './SectionHeader'
 import { RECOMMENDED_GROUP_LIST, RecommendedGroup } from '../_consts'
 
@@ -48,7 +48,7 @@ const RecommendedGroupCard = ({
         <h4 className='text-title01 mb-2'>{title}</h4>
         <p className='text-body03 font-normal text-gray-600'>{description}</p>
         <div className='mt-4 flex items-center gap-x-1 text-gray-400 text-body02 font-normal'>
-          <ProfileFilledIcon width={18} height={18} className='fill-gray-400' />
+          <Icon name='profile-filled' size={18} className='fill-gray-400' />
           멤버 {numOfMembers}명
         </div>
       </div>

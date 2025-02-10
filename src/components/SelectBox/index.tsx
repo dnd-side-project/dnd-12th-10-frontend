@@ -2,7 +2,7 @@
 
 import { cn } from '@/utils/cn'
 import { Select, SelectItem } from '@heroui/react'
-import ArrowDownIcon from '@/assets/icons/arrow/arrow-down.svg'
+import { Icon } from '../Icon'
 
 interface Props {
   options: { key: string; label: string }[]
@@ -42,7 +42,7 @@ const SelectBox = ({ options, placeholder }: Props) => {
       }}
       items={options}
       placeholder={placeholder}
-      selectorIcon={<ArrowDownIcon className='stroke-gray-700' />}
+      selectorIcon={<Icon name='arrow-down' className='stroke-gray-700' />}
     >
       {({ label }) => <SelectItem>{label}</SelectItem>}
     </Select>

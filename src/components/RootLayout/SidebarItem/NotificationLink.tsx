@@ -2,17 +2,10 @@
 
 import { cn } from '@/utils/cn'
 import SidebarItem from './index'
-import NotificationIcon from '@/assets/icons/sidebar/non-active/notification.svg'
-import ActiveNotificationIcon from '@/assets/icons/sidebar/active/notification-filled.svg'
 
 const NotificationLink = () => {
   return (
-    <SidebarItem
-      path='/3'
-      contentName='알림'
-      activeIcon={<ActiveNotificationIcon />}
-      nonActiveIcon={<NotificationIcon />}
-    >
+    <SidebarItem path='/3' contentName='알림' iconName='notification'>
       {/*Todo:알림 갯수 api 연결*/}
       <span
         className={cn(

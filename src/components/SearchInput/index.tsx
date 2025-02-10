@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn'
 import Button from '../Button'
-import SearchIcon from '@/assets/icons/search.svg'
+import { Icon } from '../Icon'
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   /** 검색하기 버튼 노출 여부 */
@@ -38,8 +38,7 @@ const SearchInput = ({
           'hover:bg-[#0000000D]',
         )}
       >
-        <SearchIcon className='stroke-gray-500 shrink-0' />
-
+        <Icon name='search' className='stroke-gray-500 shrink-0' />
         <input
           type='text'
           className={cn(
