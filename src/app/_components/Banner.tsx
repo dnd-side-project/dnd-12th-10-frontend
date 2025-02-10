@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Button from '@/components/Button'
-import EditIcon from '@/assets/icons/edit.svg'
+import { Icon } from '@/components/Icon'
 import MainImage from '@/assets/images/main-image.png'
 import { URL_PATH } from '@/consts/urls'
 
@@ -27,7 +27,7 @@ const Banner = () => {
           variant='filled'
           onClick={() => push(URL_PATH.GroupCreate)}
         >
-          <EditIcon className='stroke-white mr-2.5' width={20} height={20} />
+          <Icon name='edit' className='stroke-white mr-2.5' size={20} />
           회고록 쓰기
         </Button>
       </div>

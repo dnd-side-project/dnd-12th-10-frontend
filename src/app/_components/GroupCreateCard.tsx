@@ -1,7 +1,7 @@
 import CardWrap from '@/components/CardWrap'
+import { Icon } from '@/components/Icon'
 import { URL_PATH } from '@/consts/urls'
 import { cn } from '@/utils/cn'
-import AddIcon from '@/assets/icons/add.svg'
 
 /** 모임 생성 페이지로 이동하는 카드 컴포넌트 */
 const GroupCreateCard = () => {
@@ -27,7 +27,7 @@ const GroupCreateCard = () => {
             'w-[25px] h-[25px]',
           )}
         >
-          <AddIcon className='stroke-white' />
+          <Icon name='add' className='stroke-white' size={12} />
         </div>
         <span className='text-title02'>모임 만들기</span>
       </div>

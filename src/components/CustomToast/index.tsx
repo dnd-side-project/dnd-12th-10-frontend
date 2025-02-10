@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn'
 import { toast } from 'react-hot-toast'
-import CloseIcon from '@/assets/icons/close-circle.svg'
+import { Icon } from '../Icon'
 
 interface CustomToastProps {
   message: string
@@ -23,7 +23,7 @@ export const CustomToast = ({
       {message}
       {isShowCloseButton && (
         <button onClick={() => toast.dismiss(toastId)}>
-          <CloseIcon stroke='white' />
+          <Icon name='close-circle' className='stroke-white' />
         </button>
       )}
     </div>
