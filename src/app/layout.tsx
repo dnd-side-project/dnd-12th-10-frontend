@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${pretendard.className} antialiased`}>
         <Providers>
-          <div className='flex h-screen'>
+          <div className='flex h-screen bg-[#FEFCF9]'>
             <Toaster position='top-center' />
             <Sidebar />
             <div className='grow overflow-auto'>{children}</div>

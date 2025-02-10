@@ -18,8 +18,9 @@ const SidebarItem = ({
   contentName,
   path,
 }: PropsWithChildren<SidebarItemProps>) => {
-  const pathname = usePathname()
-  const isActive = path === pathname
+  const pathname = usePathname().split('/')[1]
+  const splitPath = path.split('/')[1]
+  const isActive = pathname === splitPath
 
   return (
     <Link href={path} className={cn('flex gap-2', 'py-4', 'text-title03')}>
