@@ -44,12 +44,7 @@ const MemoList = ({ memoList }: { memoList: MemoListItemProps[] }) => {
             이제 당신의 이야기를 들려주세요. ✍️
           </p>
           <Button color='primary' variant='subtle' size='medium'>
-            <Icon
-              name='edit'
-              className='stroke-blue-500 mr-2'
-              width={20}
-              height={20}
-            />
+            <Icon name='edit' className='stroke-blue-500 mr-2' size={20} />
             글쓰기
           </Button>
         </li>
@@ -108,22 +103,12 @@ const MemoListItem = ({
         >
           <div className='flex gap-1.5'>
             <button>
-              <Icon
-                className='stroke-gray-400'
-                name='like'
-                width={22}
-                height={22}
-              />
+              <Icon className='stroke-gray-400' name='like' size={22} />
             </button>
             <span>{numOfLikes}</span>
           </div>
           <div className='flex gap-1.5'>
-            <Icon
-              name='message'
-              className='stroke-gray-400'
-              width={22}
-              height={22}
-            />
+            <Icon name='message' className='stroke-gray-400' size={22} />
             {/*Todo: 회고록 상세페이지로 href 변경 필요*/}
             <Link href='/'>
               댓글 <span className='text-blue-400'>{numOfComments}</span>
