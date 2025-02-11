@@ -27,7 +27,7 @@ const SearchInput = ({
     <div className='flex gap-x-4 w-full'>
       <div
         className={cn(
-          'bg-blue-50',
+          'bg-gray-50',
           'rounded-xl',
           'h-12',
           'flex',
