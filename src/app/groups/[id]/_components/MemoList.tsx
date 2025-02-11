@@ -75,7 +75,7 @@ const MemoListItem = ({
         <Link href='/' className='block mb-2'>
           <h3 className='text-title01'>{title}</h3>
         </Link>
-        <AuthorInfo nickname={nickname} latestUpdateTime={latestUpdateTime} />
+        <AuthorInfo author={nickname} latestUpdateTime={latestUpdateTime} />
         <div className='mt-10 text-body02 text-gray-700 whitespace-pre-wrap'>
           {content}
         </div>
