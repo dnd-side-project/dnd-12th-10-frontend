@@ -23,7 +23,9 @@ const GroupList = () => {
     <>
       <ul className='mt-6 flex flex-col gap-4'>
         {MY_GROUP_LIST.map((group) => (
-          <MyGroupListItem key={group.id} {...group} />
+          <li key={group.id}>
+            <MyGroupListItem {...group} />
+          </li>
         ))}
       </ul>
       <button className='block mt-6 mx-auto text-title03 text-blue-500'>
