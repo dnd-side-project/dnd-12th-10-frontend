@@ -36,6 +36,7 @@ const MyGroupListItem = ({
         'p-6',
         'shadow-my-group-list-item',
         'rounded-md',
+        'bg-white',
         'hover:bg-gray-50',
       )}
       onMouseEnter={() => setIsHover(true)}
@@ -44,7 +45,7 @@ const MyGroupListItem = ({
       <div className='flex flex-col gap-2 overflow-hidden'>
         <div className='flex gap-3'>
           <h3 className='text-title02'>{title}</h3>
-          <div className='flex gap-1'>
+          <div className='flex gap-1 text-body03'>
             {tagList.map((tag) => (
               <Chip
                 key={tag}
