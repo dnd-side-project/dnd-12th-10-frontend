@@ -23,7 +23,7 @@ const NoMemoList = ({
     : isPublic
       ? '모임에 가입해 회고록을 써보세요!'
       : '모임에 가입해보세요!'
-  const ButtonText = roll ? '첫회고록 쓰기' : '모임 가입하기'
+  const buttonText = roll ? '첫 회고록 쓰기' : '모임 가입하기'
 
   return (
     <div
@@ -52,7 +52,7 @@ const NoMemoList = ({
         <p className='text-title01 my-2'>{mainText}</p>
         <p className='text-title03 text-gray-500 mb-6'>{subText}</p>
         <Button color={'primary'} variant={'filled'} size={'medium'}>
-          {ButtonText}
+          {buttonText}
         </Button>
       </div>
     </div>

@@ -63,7 +63,8 @@ export default GroupHeading
 const WriteButton = () => (
   <Link href=''>
     <Button color='primary' variant='filled' size='medium'>
-      <EditIcon className='stroke-white mr-2' width={20} height={20} />글 쓰기
+      <EditIcon className='stroke-white mr-2' width={20} height={20} />
+      글쓰기
     </Button>
   </Link>
 )

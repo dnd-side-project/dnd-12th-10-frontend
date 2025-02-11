@@ -51,7 +51,7 @@ const MemoList = ({ memoList }: { memoList: MemoListItemProps[] }) => {
           </p>
           <Button color='primary' variant='subtle' size='medium'>
             <EditIcon className='stroke-blue-500 mr-2' width={20} height={20} />
-            글 쓰기
+            글쓰기
           </Button>{' '}
         </li>
       </ul>
