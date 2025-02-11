@@ -35,6 +35,9 @@ import MessageFilled from '@/assets/icons/filled/message-filled.svg'
 import ProfileAddFilled from '@/assets/icons/filled/profile-add-filled.svg'
 import StarFilled from '@/assets/icons/filled/star-fill.svg'
 import UnlockFilled from '@/assets/icons/filled/unlock-filled.svg'
+import AddSquareFilled from '@/assets/icons/filled/add-square-filled.svg'
+import BasicBlueCharacter from '@/assets/icons/character/basic-blue.svg'
+import Logo from '@/assets/icons/logo.svg'
 
 export const icons = {
   calendar: Calendar,
@@ -54,6 +57,7 @@ export const icons = {
   trash: Trash,
   unlock: Unlock,
   add: Add,
+  logo: Logo,
   'document-text': DocumentText,
   'profile-add': ProfileAdd,
   'profile-user': ProfileUser,
@@ -74,6 +78,8 @@ export const icons = {
   'profile-add-filled': ProfileAddFilled,
   'star-filled': StarFilled,
   'unlock-filled': UnlockFilled,
+  'add-square-filled': AddSquareFilled,
+  'basic-blue-character': BasicBlueCharacter,
 } as const
 
 export type IconName = keyof typeof icons

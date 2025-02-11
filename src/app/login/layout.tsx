@@ -1,6 +1,5 @@
 import { cn } from '@/utils/cn'
-import LogoIcon from '@/assets/icons/logo.svg'
-import BasicBlueCharacterIcon from '@/assets/icons/character/basic-blue.svg'
+import { Icon } from '@/components/Icon'
 
 const LonginLayout = ({
   children,
@@ -14,7 +13,7 @@ const LonginLayout = ({
           'text-gray-50',
         )}
       >
-        <BasicBlueCharacterIcon />
+        <Icon name='basic-blue-character' width={160} height={108} />
         <div
           className={cn(
             'flex flex-col items-center',
@@ -41,8 +40,12 @@ const LonginLayout = ({
           'rounded-lg',
         )}
       >
-        {/*#303030 = gray-900*/}
-        <LogoIcon fill='#303030' width='160' />
+        <Icon
+          name='logo'
+          width={160}
+          height={48}
+          className='mb-[40px] fill-gray-900'
+        />
         {children}
       </div>
     </div>

@@ -19,7 +19,7 @@ const GroupInfoList = ({
       <VerticalLine />
       <InfoItem title='개설일' content={createdAtGroup} />
       <VerticalLine />
-      <InfoItem title='마지막 회고록' content={latestUpdateTime} />
+      <InfoItem title='마지막 회고' content={latestUpdateTime} />
     </div>
   )
 }
