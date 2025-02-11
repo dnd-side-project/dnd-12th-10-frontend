@@ -6,7 +6,7 @@ import Chip from '@/components/Chip'
 import { useState } from 'react'
 import { Icon, IconName } from '../Icon'
 
-interface MyGroupListItemProps {
+export interface MyGroupListItemProps {
   id: string
   title: string
   description: string
