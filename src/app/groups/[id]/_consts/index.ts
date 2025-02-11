@@ -15,7 +15,7 @@ interface Group {
 interface MemoItem {
   title: string
   nickname: string
-  createdAt: string
+  latestUpdateTime: string
   content: string
   tags: string[]
   numOfLikes: number
@@ -25,7 +25,7 @@ const MEMO_LIST: MemoItem[] = [
   {
     title: '하이루',
     nickname: '이준석석',
-    createdAt: '1시간 전',
+    latestUpdateTime: '1시간 전',
     content:
       '✔ Keep 회사 직원용 메신저를 혼자 개발하면서 사용자 피드백을 적극 반영해 UI 개선 작업을 성공적으로 진행했고, Flutter, Node.js, MongoDB 같은 기술들을 활용하며 많은 성장을 이뤘습니다. 특히 팀원들과 협업이 잘 이루어져 프로젝트 진행이 순조로웠던 점도 큰 성과로 느껴졌습니다.\n' +
       '\n' +
@@ -37,7 +37,7 @@ const MEMO_LIST: MemoItem[] = [
   {
     title: '하이루',
     nickname: '이준석석',
-    createdAt: '1시간 전',
+    latestUpdateTime: '1시간 전',
     content: 'asdasdasdas',
     tags: ['태그1', '태그2'],
     numOfLikes: 6,

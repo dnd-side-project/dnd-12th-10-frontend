@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { cn } from '@/utils/cn'
 import Chip from '@/components/Chip'
 import Dropdown from '@/components/Dropdown'
@@ -9,14 +8,14 @@ import Dropdown from '@/components/Dropdown'
 // import MoreIcon from '@/assets/icons/more.svg'
 import LikeIcon from '@/assets/icons/like.svg'
 import MessageIcon from '@/assets/icons/message.svg'
-import UserThumb from '@/assets/images/user-thumb.png'
 import Button from '@/components/Button'
 import EditIcon from '@/assets/icons/edit.svg'
+import AuthorInfo from '@/components/AuthorInfo'
 
 interface MemoListItemProps {
   title: string
   nickname: string
-  createdAt: string
+  latestUpdateTime: string
   content: string
   tags: string[]
   numOfLikes: number
@@ -63,7 +62,7 @@ export default MemoList
 const MemoListItem = ({
   title,
   nickname,
-  createdAt,
+  latestUpdateTime,
   content,
   tags,
   numOfLikes,
@@ -73,21 +72,10 @@ const MemoListItem = ({
     <li className='border-b-1 border-gray-100 pb-[64px]'>
       <article>
         {/*Todo: 회고록 상세페이지로 href 변경 필요*/}
-        <Link href='/'>
+        <Link href='/' className='block mb-2'>
           <h3 className='text-title01'>{title}</h3>
         </Link>
-        <div className='flex mt-2 text-body02'>
-          <Image
-            src={UserThumb}
-            alt=''
-            width={22}
-            height={22}
-            className='w-[22px] h-[22px]'
-          />
-          <span className='text-gray-700  ml-1.5'>{nickname}</span>
-          <span className='mx-2 text-gray-400'>·</span>
-          <span className='text-gray-400'>{createdAt}</span>
-        </div>
+        <AuthorInfo nickname={nickname} latestUpdateTime={latestUpdateTime} />
         <div className='mt-10 text-body02 text-gray-700 whitespace-pre-wrap'>
           {content}
         </div>
