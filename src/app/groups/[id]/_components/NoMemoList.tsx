@@ -1,10 +1,8 @@
-import { cn } from '@/utils/cn'
 import Image from 'next/image'
+import { cn } from '@/utils/cn'
 import Button from '@/components/Button'
-//Todo: Icon컴포넌트로 변경
+import { Icon } from '@/components/Icon'
 import SubImage from '@/assets/images/sub-image.png'
-import ClipBoard from '@/assets/icons/clipboard-export.svg'
-import DocumentText from '@/assets/icons/document-text.svg'
 
 const NoMemoList = ({
   isPublic,
@@ -45,9 +43,19 @@ const NoMemoList = ({
       />
       <div className='flex flex-col justify-center items-center my-[120px] mx-auto'>
         {isPublic ? (
-          <DocumentText className='stroke-gray-500' width={68} height={68} />
+          <Icon
+            name='document-text'
+            className='stroke-gray-500'
+            width={68}
+            height={68}
+          />
         ) : (
-          <ClipBoard className='stroke-gray-500' width={68} height={68} />
+          <Icon
+            name='clipboard'
+            className='stroke-gray-500'
+            width={68}
+            height={68}
+          />
         )}
         <p className='text-title01 my-2'>{mainText}</p>
         <p className='text-title03 text-gray-500 mb-6'>{subText}</p>

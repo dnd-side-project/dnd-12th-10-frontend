@@ -1,10 +1,10 @@
+import { Metadata } from 'next'
 import { cn } from '@/utils/cn'
 import { GROUP_DETAIL } from './_consts'
 import GroupHeading from './_components/GroupHeading'
 import GroupDescription from './_components/GroupDescription'
-import GroupInfoList from '@/app/groups/[id]/_components/GroupInfoList'
-import NoMemoList from '@/app/groups/[id]/_components/NoMemoList'
-import { Metadata } from 'next'
+import GroupInfoList from './_components/GroupInfoList'
+import NoMemoList from './_components/NoMemoList'
 import MemoList from './_components/MemoList'
 /**
  * 모임 상세 페이지
