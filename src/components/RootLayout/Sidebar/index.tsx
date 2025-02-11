@@ -1,10 +1,10 @@
 'use client'
 
 import { cn } from '@/utils/cn'
-import LogoIcon from '@/assets/icons/logo.svg'
-import LogoutButton from '@/components/RootLayout/SidebarItem/LogoutButton'
-import NavigateList from '../NavigateList'
 import { usePathname } from 'next/navigation'
+import { Icon } from '@/components/Icon'
+import NavigateList from '../NavigateList'
+import LogoutButton from '../SidebarItem/LogoutButton'
 
 const HIDE_SIDEBAR_PAGE_LIST = ['/login', '/login/signup', '/login/success']
 
@@ -23,7 +23,12 @@ const Sidebar = () => {
         'shrink-0',
       )}
     >
-      <LogoIcon fill='white' width='100' className='mb-[40px]' />
+      <Icon
+        name='logo'
+        width={100}
+        height={30}
+        className='mb-[40px] fill-white'
+      />
       <NavigateList />
       <LogoutButton />
     </aside>
