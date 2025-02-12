@@ -6,11 +6,10 @@ import Dropdown from '@/components/Dropdown'
 //Todo: Icon컴포넌트로 변경
 
 // import MoreIcon from '@/assets/icons/more.svg'
-import LikeIcon from '@/assets/icons/like.svg'
-import MessageIcon from '@/assets/icons/message.svg'
 import Button from '@/components/Button'
 import EditIcon from '@/assets/icons/edit.svg'
 import AuthorInfo from '@/components/AuthorInfo'
+import IconWithButton from '@/app/memos/[id]/components/IconWithButton'
 
 interface MemoListItemProps {
   title: string
@@ -96,23 +95,16 @@ const MemoListItem = ({
           className={cn(
             'mt-8',
             'flex gap-6',
-            ' text-title03 text-gray-400 font-semibold',
-            ' stroke-gray-400',
+            'text-title03 text-gray-400 font-semibold',
           )}
         >
-          <div className='flex gap-1.5'>
-            <button>
-              <LikeIcon width={22} height={22} />
-            </button>
-            <span>{numOfLikes}</span>
-          </div>
-          <div className='flex gap-1.5'>
-            <MessageIcon className='mr-1.5' width={22} height={22} />
-            {/*Todo: 회고록 상세페이지로 href 변경 필요*/}
-            <Link href='/'>
-              댓글 <span className='text-blue-400'>{numOfComments}</span>
-            </Link>
-          </div>
+          <IconWithButton iconName='like' count={numOfLikes} />
+          <IconWithButton
+            iconName='message'
+            text='댓글'
+            count={numOfComments}
+            countColor='blue'
+          />
           {/*Todo:공유하기 기능은 후 순위로 판단해 주석 처리*/}
           {/*<button className='ml-auto'>*/}
           {/*  <MoreIcon width={22} height={22} className='fill-gray-400' />*/}
