@@ -67,7 +67,11 @@ const SignupContainer = () => {
           />
         </FormField>
         <FormField fieldTitle='현재 어떤 직무이신가요?' required={true}>
-          <SelectBox options={JOB_LIST} placeholder='직무를 선택해주세요.' />
+          <SelectBox
+            options={JOB_LIST}
+            placeholder='직무를 선택해주세요.'
+            onChange={() => {}}
+          />
         </FormField>
         <FormField
           fieldTitle='관심있는 키워드를 선택해주세요.'
