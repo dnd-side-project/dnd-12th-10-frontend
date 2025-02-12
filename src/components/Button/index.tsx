@@ -29,6 +29,7 @@ const Button = ({
         'font-semibold',
         BUTTON_SIZE[size],
         BUTTON_STYLE[color][variant],
+        'group',
       )}
       {...props}
     >
