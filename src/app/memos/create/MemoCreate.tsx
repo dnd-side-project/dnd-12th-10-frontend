@@ -40,7 +40,7 @@ const MemoCreate = () => {
       <div
         className={cn(
           'bg-[#FEFCF9]',
-          'shadow-my-group-list-item',
+          'shadow-gray',
           'h-20',
           'px-[88px]',
           'flex',
