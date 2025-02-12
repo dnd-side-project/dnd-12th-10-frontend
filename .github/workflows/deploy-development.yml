@@ -1,0 +1,49 @@
+# Workflow name
+name: 'Deploy Development'
+
+# Event for the workflow
+on:
+  push:
+    branches:
+      - develop
+
+# List of jobs
+jobs:
+  vercel-preview:
+    # Operating System
+    runs-on: ubuntu-latest
+    env:
+      WORKDIR: .
+    # Job steps
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Pull Vercel env
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build project for Vercel
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy to Vercel
+        id: deploy
+        run: |
+          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > vercel-output.txt
+          echo "preview_url=$(cat vercel-output.txt)" >> $GITHUB_OUTPUT
+
+      - name: Assign Custom Domain
+        run: |
+          vercel alias set ${{ env.preview_url }} leev-dev.vercel.app --token=${{ secrets.VERCEL_TOKEN }}

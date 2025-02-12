@@ -1,11 +1,9 @@
 import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import Chip from '@/components/Chip'
+import Button from '@/components/Button'
 import Dropdown from '@/components/Dropdown'
 
-//Todo: Icon컴포넌트로 변경
-
-// import MoreIcon from '@/assets/icons/more.svg'
 import Button from '@/components/Button'
 import EditIcon from '@/assets/icons/edit.svg'
 import AuthorInfo from '@/components/AuthorInfo'
@@ -48,9 +46,9 @@ const MemoList = ({ memoList }: { memoList: MemoListItemProps[] }) => {
             이제 당신의 이야기를 들려주세요. ✍️
           </p>
           <Button color='primary' variant='subtle' size='medium'>
-            <EditIcon className='stroke-blue-500 mr-2' width={20} height={20} />
-            글 쓰기
-          </Button>{' '}
+            <Icon name='edit' className='stroke-blue-500 mr-2' size={20} />
+            글쓰기
+          </Button>
         </li>
       </ul>
     </>

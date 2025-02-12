@@ -26,7 +26,7 @@ const RecommendedGroupList = () => {
 
 export default RecommendedGroupList
 
-const RecommendedGroupCard = ({
+export const RecommendedGroupCard = ({
   title,
   tags,
   description,
@@ -35,7 +35,7 @@ const RecommendedGroupCard = ({
   return (
     <CardWrap path='/' size='large' height={229}>
       <div>
-        <div className='flex gap-x-1 mb-2'>
+        <div className='flex gap-x-1 mb-2 text-body03'>
           {tags.map((tag, index) => (
             <Chip
               key={`group-tag-${index}`}
