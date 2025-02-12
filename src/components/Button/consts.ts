@@ -49,4 +49,10 @@ export const BUTTON_STYLE: {
     subtle: '',
     text: '',
   },
+  mono: {
+    subtle: ['bg-gray-100', 'text-white', 'hover:bg-gray-900'].join(' '),
+    filled: '',
+    outlined: '', // mono 색상은 현재 해당 variant 존재하지 않음
+    text: '',
+  },
 }
