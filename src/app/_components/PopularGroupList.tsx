@@ -62,6 +62,7 @@ const MemoCard = () => {
     <div className='bg-white rounded-md p-6 relative w-full'>
       <h4 className='text-title01 mb-2'>{POPULAR_MEMO.title}</h4>
       <AuthorInfo
+        size='medium'
         author={POPULAR_MEMO.nickname}
         latestUpdateTime={POPULAR_MEMO.latestUpdateTime}
       />
