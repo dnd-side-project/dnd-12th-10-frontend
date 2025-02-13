@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn'
 import GroupInfo from './_components/GroupInfo'
 import CommentList from './_components/CommentList'
 import MemoHeading from './_components/MemoHeading'
-import CommentInput from './_components/CommentInputWrap'
+import CommentInput from './_components/CommentInput'
 
 import { COMMENT_LIST, MEMO_DETAIL } from './_consts'
 

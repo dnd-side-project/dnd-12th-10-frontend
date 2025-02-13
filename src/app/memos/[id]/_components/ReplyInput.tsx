@@ -3,10 +3,10 @@
 import { cn } from '@/utils/cn'
 import Button from '@/components/Button'
 import { useState } from 'react'
-import CommentInput from './CommentInput'
+import Textarea from './Textarea'
 
 /** 답글 인풋창과 버튼을 감싸는 컴포넌트 */
-const AnswerInputWrap = ({
+const ReplyInput = ({
   closeCommentAnswer,
 }: {
   closeCommentAnswer: () => void
@@ -15,7 +15,7 @@ const AnswerInputWrap = ({
 
   return (
     <>
-      <CommentInput
+      <Textarea
         value={commentValue}
         setValue={setCommentValue}
         nickname='개발의 신'
@@ -53,4 +53,4 @@ const AnswerInputWrap = ({
   )
 }
 
-export default AnswerInputWrap
+export default ReplyInput

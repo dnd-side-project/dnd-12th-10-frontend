@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import IconWithButton from './IconWithButton'
-import AnswerInputWrap from './AnswerInputWrap'
+import ReplyInput from './ReplyInput'
 import AuthorInfo from '@/components/AuthorInfo'
 import { COMMENT_LIST } from '../_consts'
 
@@ -53,7 +53,7 @@ const CommentItem = ({
         </div>
         {/*답글 인풋창*/}
         {isShowAnswerInput && (
-          <AnswerInputWrap closeCommentAnswer={closeCommentAnswer} />
+          <ReplyInput closeCommentAnswer={closeCommentAnswer} />
         )}
         {/*답글 리스트*/}
         {/*Todo: 답글 유무에 따라 조건부 렌더링*/}

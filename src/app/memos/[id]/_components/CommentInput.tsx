@@ -1,35 +1,55 @@
-import { cn } from '@/utils/cn'
-import type { SetStateAction } from 'react'
+'use client'
+import { useState } from 'react'
+import IconWithButton from './IconWithButton'
+import Textarea from './Textarea'
+import Button from '@/components/Button'
 
-interface CommentInputProps {
-  value: string
-  setValue: (value: SetStateAction<string>) => void
-  nickname: string
+interface CommentInputWrapProps {
+  nickName: string
+  numOfLikes: number
+  numOfComments: number
 }
 
-/** 댓글, 답글 인풋창 컴포넌트 */
-const CommentInput = ({ value, setValue, nickname }: CommentInputProps) => {
+/** 댓글 인풋창과 버튼을 감싸는 컴포넌트 */
+const CommentInput = ({
+  nickName,
+  numOfLikes,
+  numOfComments,
+}: CommentInputWrapProps) => {
+  const [commentValue, setCommentValue] = useState('')
   return (
-    <textarea
-      value={value}
-      onChange={(event) => {
-        setValue(event.target.value)
-      }}
-      className={cn(
-        'w-full max-h-[200px]',
-        'mt-6 py-4 px-6 ',
-        'bg-gray-50',
-        'rounded-md',
-        'text-body01 ',
-        'outline-none',
-      )}
-      style={{
-        // 86px 기본 높이를 위해 62를 더해줌
-        // 24는 text height
-        height: `${value.split('\n').length * 24 + 62}px`,
-      }}
-      placeholder={`${nickname}님의 생각을 자유롭게 나눠보세요`}
-    />
+    <>
+      <div className='mt-[72px] flex gap-6'>
+        <IconWithButton iconName='like' count={numOfLikes} />
+        <IconWithButton
+          iconName='message'
+          text='댓글'
+          count={numOfComments}
+          countColor='blue'
+        />
+      </div>
+      <Textarea
+        value={commentValue}
+        setValue={setCommentValue}
+        nickname={nickName}
+      />
+      <div className='mt-3 flex justify-end'>
+        <Button
+          color='primary'
+          variant='filled'
+          size='medium'
+          disabled={commentValue.length === 0}
+          style={{
+            ...(commentValue.length === 0 && {
+              color: 'white',
+              backgroundColor: '#8CC2FF',
+            }),
+          }}
+        >
+          댓글 남기기
+        </Button>
+      </div>
+    </>
   )
 }
 export default CommentInput
