@@ -1,11 +1,10 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import Chip from '@/components/Chip'
-import UserThumb from '@/assets/images/user-thumb.png'
 import { Icon } from '@/components/Icon'
 import { POPULAR_GROUP_LIST, POPULAR_MEMO, PopularGroup } from '../_consts'
 import SectionHeader from './SectionHeader'
+import AuthorInfo from '@/components/AuthorInfo'
 
 /** 인기 모임 영역 */
 const PopularGroupList = () => {
@@ -61,19 +60,13 @@ const PopularGroupCard = ({ tags, title, numOfMembers }: PopularGroup) => {
 const MemoCard = () => {
   return (
     <div className='bg-white rounded-md p-6 relative w-full'>
-      <h4 className='text-title01'>{POPULAR_MEMO.title}</h4>
-      <div className='flex items-center mt-2 mb-6'>
-        <Image src={UserThumb} alt='' width={22} height={22} />
-        <span className='text-gray-700 text-body02 ml-1.5'>
-          {POPULAR_MEMO.nickname}
-        </span>
-        <span className='mx-2'>·</span>
-        <span className='text-gray-400 text-body02 font-normal'>
-          {POPULAR_MEMO.latestUpdateTime}
-        </span>
-      </div>
-
-      <div className='text-gray-700 text-body02 font-normal'>
+      <h4 className='text-title01 mb-2'>{POPULAR_MEMO.title}</h4>
+      <AuthorInfo
+        size='medium'
+        author={POPULAR_MEMO.nickname}
+        latestUpdateTime={POPULAR_MEMO.latestUpdateTime}
+      />
+      <div className='text-gray-700 text-body02 font-normal mt-6'>
         {POPULAR_MEMO.content}
       </div>
 

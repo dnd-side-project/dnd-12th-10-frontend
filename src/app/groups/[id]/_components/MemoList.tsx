@@ -1,16 +1,16 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { cn } from '@/utils/cn'
 import Chip from '@/components/Chip'
 import Button from '@/components/Button'
-import Dropdown from '@/components/Dropdown'
 import { Icon } from '@/components/Icon'
-import UserThumb from '@/assets/images/user-thumb.png'
+import Dropdown from '@/components/Dropdown'
+import AuthorInfo from '@/components/AuthorInfo'
+import IconWithButton from '@/app/memos/[id]/_components/IconWithButton'
 
 interface MemoListItemProps {
   title: string
   nickname: string
-  createdAt: string
+  latestUpdateTime: string
   content: string
   tags: string[]
   numOfLikes: number
@@ -57,7 +57,7 @@ export default MemoList
 const MemoListItem = ({
   title,
   nickname,
-  createdAt,
+  latestUpdateTime,
   content,
   tags,
   numOfLikes,
@@ -67,21 +67,14 @@ const MemoListItem = ({
     <li className='border-b-1 border-gray-100 pb-[64px]'>
       <article>
         {/*Todo: 회고록 상세페이지로 href 변경 필요*/}
-        <Link href='/'>
+        <Link href='/' className='block mb-2'>
           <h3 className='text-title01'>{title}</h3>
         </Link>
-        <div className='flex mt-2 text-body02'>
-          <Image
-            src={UserThumb}
-            alt=''
-            width={22}
-            height={22}
-            className='w-[22px] h-[22px]'
-          />
-          <span className='text-gray-700  ml-1.5'>{nickname}</span>
-          <span className='mx-2 text-gray-400'>·</span>
-          <span className='text-gray-400'>{createdAt}</span>
-        </div>
+        <AuthorInfo
+          size='medium'
+          author={nickname}
+          latestUpdateTime={latestUpdateTime}
+        />
         <div className='mt-10 text-body02 text-gray-700 whitespace-pre-wrap'>
           {content}
         </div>
@@ -91,7 +84,7 @@ const MemoListItem = ({
         </Link>
         <div className='flex gap-2.5 mt-8 text-body03'>
           {tags.map((tag) => (
-            <Chip key={tag} label={tag} color={'gray'} size={'small'} />
+            <Chip key={tag} label={tag} color='gray' size='small' />
           ))}
         </div>
         <div
@@ -101,19 +94,13 @@ const MemoListItem = ({
             'text-title03 text-gray-400 font-semibold',
           )}
         >
-          <div className='flex gap-1.5'>
-            <button>
-              <Icon className='stroke-gray-400' name='like' size={22} />
-            </button>
-            <span>{numOfLikes}</span>
-          </div>
-          <div className='flex gap-1.5'>
-            <Icon name='message' className='stroke-gray-400' size={22} />
-            {/*Todo: 회고록 상세페이지로 href 변경 필요*/}
-            <Link href='/'>
-              댓글 <span className='text-blue-400'>{numOfComments}</span>
-            </Link>
-          </div>
+          <IconWithButton iconName='like' count={numOfLikes} />
+          <IconWithButton
+            iconName='message'
+            text='댓글'
+            count={numOfComments}
+            countColor='blue'
+          />
           {/*Todo:공유하기 기능은 후 순위로 판단해 주석 처리*/}
           {/*<button className='ml-auto'>*/}
           {/*  <MoreIcon width={22} height={22} className='fill-gray-400' />*/}
