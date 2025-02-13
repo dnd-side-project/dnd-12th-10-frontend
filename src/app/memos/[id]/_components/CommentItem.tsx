@@ -57,20 +57,24 @@ const CommentItem = ({
         )}
         {/*답글 리스트*/}
         {/*Todo: 답글 유무에 따라 조건부 렌더링*/}
-        {COMMENT_LIST.map((comment) => (
-          <li key={comment.id} className='mt-8'>
-            <div className={'flex items-center gap-3'}>
-              <AuthorInfo
-                size='large'
-                author={author}
-                latestUpdateTime={latestUpdateTime}
-              />
-              {/*Todo: 작성자 구분에 따른 조건부렌더링 로직 추가 필요*/}
-              <span className='text-blue-500 text-body01'>작성자</span>
-            </div>
-            <p className='mt-4 ml-[42px] text-body01 font-normal'>{content}</p>
-          </li>
-        ))}
+        <ul>
+          {COMMENT_LIST.map((comment) => (
+            <li key={comment.id} className='mt-8'>
+              <div className={'flex items-center gap-3'}>
+                <AuthorInfo
+                  size='large'
+                  author={author}
+                  latestUpdateTime={latestUpdateTime}
+                />
+                {/*Todo: 작성자 구분에 따른 조건부렌더링 로직 추가 필요*/}
+                <span className='text-blue-500 text-body01'>작성자</span>
+              </div>
+              <p className='mt-4 ml-[42px] text-body01 font-normal'>
+                {content}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
     </li>
   )
