@@ -18,6 +18,7 @@ const MemoCreate = () => {
     control,
     watch,
     handleSubmit,
+    setValue,
     formState: { isValid },
   } = useForm<MemoTypeSelectForm>({
     defaultValues: {
@@ -87,7 +88,12 @@ const MemoCreate = () => {
                   image={image}
                   {...field}
                   value={value}
-                  onChange={() => field.onChange(value)}
+                  onChange={() => {
+                    // '개인' 모임 시에는 선택했던 group을 초기화
+                    // TODO: enum 사용
+                    if (value === 'PERSONAL') setValue('group', '')
+                    field.onChange(value)
+                  }}
                 />
               )}
             />
