@@ -1,9 +1,9 @@
+import React from 'react'
 import { cn } from '@/utils/cn'
-import type { SetStateAction } from 'react'
 
 interface CommentInputProps {
   value: string
-  setValue: (value: SetStateAction<string>) => void
+  setValue: (value: React.SetStateAction<string>) => void
   nickname: string
 }
 
