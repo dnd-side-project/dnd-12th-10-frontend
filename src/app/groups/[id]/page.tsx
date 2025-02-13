@@ -42,7 +42,7 @@ const GroupDetailPage = () => {
         className={cn(
           'flex flex-col gap-8',
           'mt-12 p-6',
-          ' bg-gray-50 ',
+          'bg-gray-50 ',
           'rounded-lg',
         )}
       >
