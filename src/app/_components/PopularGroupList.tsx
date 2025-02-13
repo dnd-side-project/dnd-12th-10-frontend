@@ -35,7 +35,7 @@ const PopularGroupCard = ({ tags, title, numOfMembers }: PopularGroup) => {
         'bg-white',
         'rounded-md',
         'w-[328px]',
-        'shadow-my-group-list-item',
+        'shadow-gray',
         'hover:bg-[#FEFCF9]',
       )}
     >

@@ -34,7 +34,7 @@ const MyGroupListItem = ({
         'gap-20',
         'justify-between',
         'p-6',
-        'shadow-my-group-list-item',
+        'shadow-gray',
         'rounded-md',
         'bg-white',
         'hover:bg-gray-50',

@@ -6,8 +6,8 @@ import Button from '@/components/Button'
 import SelectBox from '@/components/SelectBox'
 import ChipButton from '@/components/ChipButton'
 import LimitedInput from '@/components/LimitedInput'
+import FormField from '@/components/FormField'
 import { KEYWORD_LIST } from '@/consts/keywordList'
-import FormField from './_components/FormField'
 
 import { JOB_LIST } from './_consts/jobList'
 import { ALERT_MESSAGE } from './_consts/inputAlertMessage'
@@ -67,7 +67,11 @@ const SignupContainer = () => {
           />
         </FormField>
         <FormField fieldTitle='현재 어떤 직무이신가요?' required={true}>
-          <SelectBox options={JOB_LIST} placeholder='직무를 선택해주세요.' />
+          <SelectBox
+            options={JOB_LIST}
+            placeholder='직무를 선택해주세요.'
+            onChange={() => {}}
+          />
         </FormField>
         <FormField
           fieldTitle='관심있는 키워드를 선택해주세요.'
