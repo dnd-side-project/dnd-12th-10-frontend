@@ -21,10 +21,10 @@ const CommentItem = ({
   latestUpdateTime,
   content,
 }: CommentItemProps) => {
-  const [isShowAnswerInput, setIsShowAnswerInput] = useState(false)
+  const [showReplyInput, setShowReplyInput] = useState(false)
 
-  const closeCommentAnswer = () => {
-    setIsShowAnswerInput(false)
+  const closeReplyInput = () => {
+    setShowReplyInput(false)
   }
 
   return (
@@ -45,16 +45,14 @@ const CommentItem = ({
           <button
             className='text-title03 text-gray-500 ml-6 hover:text-blue-400'
             onClick={() => {
-              setIsShowAnswerInput((prevState) => !prevState)
+              setShowReplyInput((prevState) => !prevState)
             }}
           >
             답글
           </button>
         </div>
         {/*답글 인풋창*/}
-        {isShowAnswerInput && (
-          <ReplyInput closeCommentAnswer={closeCommentAnswer} />
-        )}
+        {showReplyInput && <ReplyInput closeReplyInput={closeReplyInput} />}
         {/*답글 리스트*/}
         {/*Todo: 답글 유무에 따라 조건부 렌더링*/}
         <ul>

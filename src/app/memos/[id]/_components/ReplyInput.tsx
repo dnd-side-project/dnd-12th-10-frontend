@@ -6,11 +6,7 @@ import { useState } from 'react'
 import Textarea from './Textarea'
 
 /** 답글 인풋창과 버튼을 감싸는 컴포넌트 */
-const ReplyInput = ({
-  closeCommentAnswer,
-}: {
-  closeCommentAnswer: () => void
-}) => {
+const ReplyInput = ({ closeReplyInput }: { closeReplyInput: () => void }) => {
   const [commentValue, setCommentValue] = useState('')
 
   return (
@@ -30,7 +26,7 @@ const ReplyInput = ({
             'font-semibold',
             'bg-gray-100',
           )}
-          onClick={closeCommentAnswer}
+          onClick={closeReplyInput}
         >
           취소
         </button>
