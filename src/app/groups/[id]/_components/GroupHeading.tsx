@@ -30,7 +30,7 @@ const GroupHeading = ({
       </div>
       <div className='flex gap-2 text-body03 text-gray-800 mb-2'>
         {tags.map((tag) => (
-          <Chip key={tag} label={tag} color={'gray'} size={'small'} />
+          <Chip key={tag} label={tag} color='gray' size='small' />
         ))}
       </div>
       <p className='text-body03 text-gray-700 mb-6'>{introduction}</p>

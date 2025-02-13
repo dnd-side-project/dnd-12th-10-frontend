@@ -29,7 +29,7 @@ const CommentItem = ({
 
   return (
     <li key={id} className='pb-10 border-b-1 border-gray-100'>
-      <div className={'flex items-center gap-3'}>
+      <div className='flex items-center gap-3'>
         <AuthorInfo
           size='large'
           author={author}
@@ -41,7 +41,7 @@ const CommentItem = ({
       <div className='ml-[42px]'>
         <p className='mt-4 text-body01 font-normal'>{content}</p>
         <div className='mt-4 flex'>
-          <IconWithButton iconName={'like'} count={19} />
+          <IconWithButton iconName='like' count={19} />
           <button
             className='text-title03 text-gray-500 ml-6 hover:text-blue-400'
             onClick={() => {
@@ -60,7 +60,7 @@ const CommentItem = ({
         <ul>
           {COMMENT_LIST.map((comment) => (
             <li key={comment.id} className='mt-8'>
-              <div className={'flex items-center gap-3'}>
+              <div className='flex items-center gap-3'>
                 <AuthorInfo
                   size='large'
                   author={author}

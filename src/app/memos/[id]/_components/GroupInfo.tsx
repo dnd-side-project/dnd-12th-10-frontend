@@ -21,7 +21,7 @@ export default GroupInfo
 const WriteButton = () => (
   <Link href=''>
     <Button color='primary' variant='subtle' size='medium'>
-      <Icon name={'edit'} size={20} className='stroke-blue-500 mr-2' />
+      <Icon name='edit' size={20} className='stroke-blue-500 mr-2' />
       글쓰기
     </Button>
   </Link>

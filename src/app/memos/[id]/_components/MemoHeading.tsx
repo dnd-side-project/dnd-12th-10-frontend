@@ -20,7 +20,7 @@ const MemoHeading = ({
       <h1 className='text-display01'>{title}</h1>
       <div className='mt-2 mb-10 flex gap-2.5 text-body03'>
         {tags.map((tag) => (
-          <Chip key={`tag-${tag}`} label={tag} color={'gray'} size={'small'} />
+          <Chip key={`tag-${tag}`} label={tag} color='gray' size='small' />
         ))}
       </div>
       <AuthorInfo

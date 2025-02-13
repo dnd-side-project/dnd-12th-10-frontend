@@ -49,8 +49,8 @@ const NoMemoList = ({
         )}
         <p className='text-title01 my-2'>{mainText}</p>
         <p className='text-title03 text-gray-500 mb-6'>{subText}</p>
-        <Button color={'primary'} variant={'filled'} size={'medium'}>
-          {buttonText}
+        <Button color='primary' variant='filled' size='medium'>
+          s{buttonText}
         </Button>
       </div>
     </div>

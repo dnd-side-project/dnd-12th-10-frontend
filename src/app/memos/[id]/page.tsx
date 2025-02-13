@@ -44,7 +44,7 @@ const MemoPage = () => {
           author={author}
           latestUpdateTime={latestUpdateTime}
         />
-        <main className={'mt-16 whitespace-pre-wrap'}>{description}</main>
+        <main className='mt-16 whitespace-pre-wrap'>{description}</main>
         <CommentInput
           numOfComments={numOfComments}
           numOfLikes={numOfLikes}

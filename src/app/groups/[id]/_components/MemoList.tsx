@@ -84,7 +84,7 @@ const MemoListItem = ({
         </Link>
         <div className='flex gap-2.5 mt-8 text-body03'>
           {tags.map((tag) => (
-            <Chip key={tag} label={tag} color={'gray'} size={'small'} />
+            <Chip key={tag} label={tag} color='gray' size='small' />
           ))}
         </div>
         <div

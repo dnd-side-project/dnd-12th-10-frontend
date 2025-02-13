@@ -18,7 +18,7 @@ const AnswerInputWrap = ({
       <CommentInput
         value={commentValue}
         setValue={setCommentValue}
-        nickname={'개발의 신'}
+        nickname='개발의 신'
       />
       <div className='mt-3 flex justify-end gap-4'>
         <button
