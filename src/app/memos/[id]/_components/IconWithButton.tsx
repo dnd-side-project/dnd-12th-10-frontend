@@ -22,15 +22,13 @@ export const IconWithButton = ({
   ...props
 }: IconWithButtonProps) => {
   return (
-    <div className='flex gap-1.5 text-title03 font-semibold'>
-      <button {...props}>
-        <Icon name={iconName} size={22} className='stroke-gray-400' />
-      </button>
+    <button className='flex gap-1.5 text-title03 font-semibold' {...props}>
+      <Icon name={iconName} size={22} className='stroke-gray-400' />
       {text && <span className={`text-gray-400 leading-[22px]`}>{text}</span>}
       <span className={`${COUNT_COLOR[countColor]} leading-[22px]`}>
         {count}
       </span>
-    </div>
+    </button>
   )
 }
 
