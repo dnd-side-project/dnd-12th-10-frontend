@@ -42,13 +42,22 @@ const GroupDetailPage = () => {
         leaderName={leaderName}
         roll={roll}
       />
-      {!roll && <GroupDescription description={description} />}
-      <GroupInfoList
-        numOfMembers={numOfMembers}
-        numOfMemos={numOfMemos}
-        createdAtGroup={createdAtGroup}
-        latestUpdateTime={latestUpdateTime}
-      />
+      <div
+        className={cn(
+          'flex flex-col gap-8',
+          'mt-12 p-6',
+          ' bg-gray-50 ',
+          'rounded-lg',
+        )}
+      >
+        <GroupInfoList
+          numOfMembers={numOfMembers}
+          numOfMemos={numOfMemos}
+          createdAtGroup={createdAtGroup}
+          latestUpdateTime={latestUpdateTime}
+        />
+        {description && <GroupDescription description={description} />}
+      </div>
 
       {memoList.length > 0 && (isPublic || roll) ? (
         <MemoList memoList={memoList} />
