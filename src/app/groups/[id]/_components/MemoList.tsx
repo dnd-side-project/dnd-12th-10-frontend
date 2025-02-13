@@ -2,10 +2,8 @@ import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import Chip from '@/components/Chip'
 import Button from '@/components/Button'
+import { Icon } from '@/components/Icon'
 import Dropdown from '@/components/Dropdown'
-
-import Button from '@/components/Button'
-import EditIcon from '@/assets/icons/edit.svg'
 import AuthorInfo from '@/components/AuthorInfo'
 import IconWithButton from '@/app/memos/[id]/components/IconWithButton'
 
