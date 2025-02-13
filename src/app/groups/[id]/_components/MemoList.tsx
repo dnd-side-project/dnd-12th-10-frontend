@@ -5,7 +5,7 @@ import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
 import Dropdown from '@/components/Dropdown'
 import AuthorInfo from '@/components/AuthorInfo'
-import IconWithButton from '@/app/memos/[id]/components/IconWithButton'
+import IconWithButton from '@/app/memos/[id]/_components/IconWithButton'
 
 interface MemoListItemProps {
   title: string
