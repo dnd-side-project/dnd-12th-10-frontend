@@ -22,7 +22,6 @@ const GroupDetailPage = () => {
     introduction,
     tags,
     isPublic,
-    leaderName,
     description,
     numOfMemos,
     createdAtGroup,
@@ -35,11 +34,8 @@ const GroupDetailPage = () => {
     <div className={cn('px-[88px] py-[72px]')}>
       <GroupHeading
         groupName={groupName}
-        numOfMembers={numOfMembers}
         introduction={introduction}
         tags={tags}
-        isPublic={isPublic}
-        leaderName={leaderName}
         roll={roll}
       />
       <div
