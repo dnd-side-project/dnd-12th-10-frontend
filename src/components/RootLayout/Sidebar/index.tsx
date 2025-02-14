@@ -5,8 +5,14 @@ import { usePathname } from 'next/navigation'
 import { Icon } from '@/components/Icon'
 import NavigateList from '../NavigateList'
 import LogoutButton from '../SidebarItem/LogoutButton'
+import { URL_PATH } from '@/consts/urls'
 
-const HIDE_SIDEBAR_PAGE_LIST = ['/login', '/login/signup', '/login/success']
+const HIDE_SIDEBAR_PAGE_LIST = [
+  URL_PATH.Login,
+  URL_PATH.Signup,
+  URL_PATH.LoginSuccess,
+  URL_PATH.MemosCreate,
+]
 
 const Sidebar = () => {
   const pathname = usePathname()

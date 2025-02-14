@@ -4,7 +4,9 @@ export const URL_PATH = {
   GroupList: '/groups',
   GroupCreate: '/groups/create',
   Login: '/login',
-  Signup: 'login/signup',
+  LoginSuccess: '/login/success',
+  Signup: '/login/signup',
+  MemosCreate: '/memos/create',
 }
 
 export const API_PATH = {

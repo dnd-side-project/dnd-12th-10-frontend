@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from 'react'
 import { BUTTON_SIZE, BUTTON_STYLE } from './consts'
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  color: 'primary' | 'secondary'
+  color: 'primary' | 'secondary' | 'mono'
   variant: 'filled' | 'outlined' | 'subtle' | 'text'
   size: 'small' | 'medium' | 'large'
 }
@@ -29,6 +29,7 @@ const Button = ({
         'font-semibold',
         BUTTON_SIZE[size],
         BUTTON_STYLE[color][variant],
+        'group',
       )}
       {...props}
     >

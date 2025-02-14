@@ -25,7 +25,7 @@ const Banner = () => {
           color='primary'
           size='medium'
           variant='filled'
-          onClick={() => push(URL_PATH.GroupCreate)}
+          onClick={() => push(URL_PATH.MemosCreate)}
         >
           <Icon name='edit' className='stroke-white mr-2.5' size={20} />
           회고록 쓰기

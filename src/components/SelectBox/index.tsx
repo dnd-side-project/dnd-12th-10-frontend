@@ -3,15 +3,18 @@
 import { cn } from '@/utils/cn'
 import { Select, SelectItem } from '@heroui/react'
 import { Icon } from '../Icon'
+import React from 'react'
 
 interface Props {
   options: { key: string; label: string }[]
   placeholder: string
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
-const SelectBox = ({ options, placeholder }: Props) => {
+const SelectBox = ({ options, placeholder, onChange }: Props) => {
   return (
     <Select
+      aria-label='옵션을 선택하세요'
       classNames={{
         base: 'w-full [&_*]:text-body02',
         trigger: cn(
@@ -43,6 +46,7 @@ const SelectBox = ({ options, placeholder }: Props) => {
       items={options}
       placeholder={placeholder}
       selectorIcon={<Icon name='arrow-down' className='stroke-gray-700' />}
+      onChange={onChange}
     >
       {({ label }) => <SelectItem>{label}</SelectItem>}
     </Select>

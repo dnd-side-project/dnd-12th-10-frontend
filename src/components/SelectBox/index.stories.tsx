@@ -23,5 +23,6 @@ export const Basic: Story = {
   args: {
     options: OPTIONS,
     placeholder: '직무를 선택해주세요.',
+    onChange: () => {},
   },
 }
