@@ -12,7 +12,7 @@ const GroupInfoList = ({
   latestUpdateTime,
 }: GroupInfoListProps) => {
   return (
-    <div className='flex p-6 bg-gray-50 rounded-lg mt-8'>
+    <div className='flex'>
       <InfoItem title='멤버' content={`${numOfMembers}명`} />
       <VerticalLine />
       <InfoItem title='총 게시글 수' content={`${numOfMemos}개`} />

@@ -4,7 +4,6 @@ interface Group {
   tags: string[]
   isPublic: boolean
   numOfMembers: number
-  leaderName: string
   description: string
   numOfMemos: number
   createdAtGroup: string
@@ -51,7 +50,6 @@ export const GROUP_DETAIL: Group = {
     '개발자들의 인사이트와 경험을 나누는 공간! 함께 회고하며 성장하고, 더 나은 코드를 만들어가요. 💡',
   tags: ['개발', '프론트엔드', '백엔드'],
   numOfMembers: 1,
-  leaderName: '이준석',
   description:
     '안녕하세요! 개발자 회고 모임에 오신 걸 환영합니다! 😊\n' +
     '여기는 개발자들이 서로의 경험을 나누고, 배운 점을 공유하며 함께 성장하는 공간이에요.\n' +

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { PropsWithChildren } from 'react'
 import Chip from '@/components/Chip'
 import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
@@ -8,18 +7,12 @@ export interface GroupHeadingProps {
   groupName: string
   introduction: string
   tags: string[]
-  isPublic: boolean
-  numOfMembers: number
-  leaderName: string
   roll: 'LEADER' | 'MEMBER' | null
 }
 const GroupHeading = ({
   groupName,
   introduction,
   tags,
-  numOfMembers,
-  isPublic,
-  leaderName,
   roll,
 }: GroupHeadingProps) => {
   return (
@@ -32,22 +25,9 @@ const GroupHeading = ({
         {tags.map((tag) => (
           <Chip key={tag} label={tag} color='gray' size='small' />
         ))}
-      </div>
-      <p className='text-body03 text-gray-700 mb-6'>{introduction}</p>
-      <div className='flex gap-2 text-gray-300'>
-        <InfoWrap text={`멤버 ${numOfMembers}명`}>
-          <Icon name='profile-filled' className='fill-gray-700' size={18} />
-        </InfoWrap>
-        <InfoWrap text={`${!isPublic ? '비공개 모임' : '공개 모임'}`}>
-          {isPublic ? (
-            <Icon name='unlock-filled' className='fill-gray-700' size={18} />
-          ) : (
-            <Icon name='lock-filled' className='fill-gray-700' size={18} />
-          )}
-        </InfoWrap>
-        <InfoWrap text={`리더 ${leaderName}`} />
         {roll === 'LEADER' && <InviteButton />}
       </div>
+      <p className='text-body03 text-gray-700 mb-6'>{introduction}</p>
     </>
   )
 }
@@ -69,33 +49,11 @@ const JoinButton = () => (
   </Button>
 )
 
-const InfoWrap = ({
-  text,
-  children,
-}: PropsWithChildren<{
-  text: string
-}>) => {
-  return (
-    <>
-      <div className='flex items-center'>
-        {children}
-        <span className={`text-body02 text-gray-700 ${children && 'ml-1'}`}>
-          {text}
-        </span>
-      </div>
-      {children && '·'}
-    </>
-  )
-}
-
 const InviteButton = () => {
   return (
-    <>
-      ·
-      <div className='flex items-center'>
-        <Icon name='add-square-filled' className='fill-orange-500' size={20} />
-        <span className='text-body02 text-orange-500 ml-1'>초대하기</span>
-      </div>
-    </>
+    <div className='flex gap-1 items-center'>
+      <Icon name='add-square-filled' className='fill-orange-500' size={20} />
+      <span className='text-title03 text-orange-500'>초대하기</span>
+    </div>
   )
 }
