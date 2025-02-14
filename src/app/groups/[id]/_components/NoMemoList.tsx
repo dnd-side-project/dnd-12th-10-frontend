@@ -39,7 +39,7 @@ const NoMemoList = ({
           {mainText}
         </p>
         <p className='text-title03 text-gray-500 mb-6'>{subText}</p>
-        <Button color={'primary'} variant={'subtle'} size={'medium'}>
+        <Button color='primary' variant='subtle' size='medium'>
           <div className='flex px-2.5'>
             <Icon
               name='profile-add'
