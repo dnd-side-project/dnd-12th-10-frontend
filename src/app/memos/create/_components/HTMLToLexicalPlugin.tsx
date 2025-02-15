@@ -18,7 +18,6 @@ const HTMLToLexicalPlugin = () => {
       const dom = parser.parseFromString(INITIAL_HTML, 'text/html')
 
       const nodes = $generateNodesFromDOM(editor, dom)
-      console.log('nodes', nodes)
 
       $getRoot().select()
       $insertNodes(nodes)
