@@ -66,7 +66,7 @@ const LexicalEditor = () => {
         <ToolbarPlugin />
         <RichTextPlugin
           contentEditable={
-            <ContentEditable className='border border-gray-100 border-t-0 outline-none h-[591px] bg-white p-6' />
+            <ContentEditable className='border border-gray-100 border-t-0 outline-none min-h-[591px] bg-white p-6' />
           }
           ErrorBoundary={LexicalErrorBoundary}
         />
