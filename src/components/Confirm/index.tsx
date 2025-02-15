@@ -6,16 +6,16 @@ interface ConfirmProps {
   isOpen: boolean
   title: string
   message: string
-  returnTrue: VoidFunction
-  returnFalse: VoidFunction
+  onConfirm: VoidFunction
+  onCancel: VoidFunction
 }
 
 const Confirm = ({
   isOpen,
   title,
   message,
-  returnTrue,
-  returnFalse,
+  onConfirm,
+  onCancel,
 }: ConfirmProps) => {
   return (
     <Portal isOpen={isOpen}>
@@ -39,7 +39,7 @@ const Confirm = ({
               color='primary'
               variant='subtle'
               size='small'
-              onClick={returnFalse}
+              onClick={onCancel}
             >
               취소
             </Button>
@@ -50,7 +50,7 @@ const Confirm = ({
               color='primary'
               variant='filled'
               size='small'
-              onClick={returnTrue}
+              onClick={onConfirm}
             >
               확인
             </Button>

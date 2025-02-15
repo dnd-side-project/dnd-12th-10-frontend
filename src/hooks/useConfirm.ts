@@ -7,12 +7,12 @@ const useConfirm = () => {
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
 
-  const returnTrue = () => {
+  const onConfirm = () => {
     setResponse(true)
     handleClose()
   }
 
-  const returnFalse = () => {
+  const onCancel = () => {
     setResponse(false)
     handleClose()
   }
@@ -21,8 +21,8 @@ const useConfirm = () => {
     isOpen,
     openConfirm: handleOpen,
     ConfirmResponse: response,
-    returnTrue,
-    returnFalse,
+    onConfirm,
+    onCancel,
   }
 }
 
