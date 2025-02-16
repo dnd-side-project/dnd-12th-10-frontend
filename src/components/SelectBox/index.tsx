@@ -48,7 +48,7 @@ const SelectBox = ({ options, placeholder, onChange }: Props) => {
       selectorIcon={<Icon name='arrow-down' className='stroke-gray-700' />}
       onChange={onChange}
     >
-      {({ label }) => <SelectItem>{label}</SelectItem>}
+      {({ key, label }) => <SelectItem key={key + label}>{label}</SelectItem>}
     </Select>
   )
 }
