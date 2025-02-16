@@ -171,6 +171,7 @@ export default {
       card: '0px 4px 0px 0px #000000',
       gray: '0px 2px 8px 0px #00000014',
       black: '0px 2px 0px 0px #000000',
+      modal: '0px 0px 10px 0px #0000001A',
     },
   },
   darkMode: 'class',
