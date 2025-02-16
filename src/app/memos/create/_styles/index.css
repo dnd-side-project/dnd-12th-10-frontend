@@ -84,10 +84,10 @@ pre::-webkit-scrollbar-thumb {
   @apply text-title01;
 }
 .editor-heading-h2 {
-  @apply text-title02;
+  @apply text-title01;
 }
 .editor-heading-h3 {
-  @apply text-title03;
+  @apply text-title02;
 }
 .editor-paragraph {
   @apply text-body02;

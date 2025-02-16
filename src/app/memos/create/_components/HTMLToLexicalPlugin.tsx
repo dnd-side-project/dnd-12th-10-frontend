@@ -3,7 +3,7 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import { $getRoot, $insertNodes } from 'lexical'
 import { $generateNodesFromDOM } from '@lexical/html'
 
-const INITIAL_HTML = `<h1>Keep</h1><p><br/></p><h1>Problem</h1><p></p><h1>Try</h1>`
+const INITIAL_HTML = `<h2>Keep</h2><p><br/></p><h2>Problem</h2><p></p><h2>Try</h2>`
 
 /** HTML을 lexical 에디터에 적용하는 플러그인 */
 const HTMLToLexicalPlugin = () => {

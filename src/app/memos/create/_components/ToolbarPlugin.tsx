@@ -90,9 +90,9 @@ const ToolbarPlugin = () => {
       const selection = $getSelection()
       if ($isRangeSelection(selection)) {
         switch (value) {
-          case 'h1':
           case 'h2':
           case 'h3':
+          case 'h4':
             $setBlocksType(selection, () => $createHeadingNode(value))
             break
           case 'p':

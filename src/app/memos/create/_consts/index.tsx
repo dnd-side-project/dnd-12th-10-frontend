@@ -40,15 +40,15 @@ export const MEMO_TYPE_OPTIONS = [
 
 export const EDITOR_TEXT_TYPES = [
   {
-    value: 'h1',
+    value: 'h2',
     label: 'Heading 1',
   },
   {
-    value: 'h2',
+    value: 'h3',
     label: 'Heading 2',
   },
   {
-    value: 'h3',
+    value: 'h4',
     label: 'Heading 3',
   },
   {
