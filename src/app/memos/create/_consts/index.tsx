@@ -37,3 +37,22 @@ export const MEMO_TYPE_OPTIONS = [
     image: <Image src={BlueCharacterImage} alt='' width={100} height={77} />,
   },
 ]
+
+export const EDITOR_TEXT_TYPES = [
+  {
+    value: 'h2',
+    label: 'Heading 1',
+  },
+  {
+    value: 'h3',
+    label: 'Heading 2',
+  },
+  {
+    value: 'h4',
+    label: 'Heading 3',
+  },
+  {
+    value: 'p',
+    label: 'Normal',
+  },
+]

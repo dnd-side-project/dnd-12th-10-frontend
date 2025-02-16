@@ -1,0 +1,103 @@
+.ltr {
+  text-align: left;
+}
+
+.rtl {
+  text-align: right;
+}
+
+.editor-inner {
+  background: #fff;
+  position: relative;
+}
+
+.editor-text-bold {
+  font-weight: 700;
+}
+
+.editor-text-italic {
+  font-style: italic;
+}
+
+.editor-text-underline {
+  text-decoration: underline;
+}
+
+.editor-text-strikethrough {
+  text-decoration: line-through;
+}
+
+.editor-text-underlineStrikethrough {
+  text-decoration: underline line-through;
+}
+
+.editor-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.editor-listitem {
+  margin: 8px 32px 8px 32px;
+}
+
+.editor-nested-listitem {
+  list-style-type: none;
+}
+
+pre::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: #999;
+}
+
+.toolbar button.toolbar-item {
+  border: 0;
+  display: flex;
+  background: none;
+  border-radius: 10px;
+  padding: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolbar button.toolbar-item:disabled {
+  cursor: not-allowed;
+}
+
+.toolbar button.toolbar-item.active {
+  background-color: rgba(200, 200, 200, 0.5); /* RGB를 중립적인 회색으로 */
+}
+
+.toolbar button.toolbar-item.active svg {
+  opacity: 1;
+}
+
+.toolbar .toolbar-item:hover:not([disabled]) {
+  background-color: #eee;
+}
+
+.editor-heading-h1 {
+  @apply text-title01;
+}
+.editor-heading-h2 {
+  @apply text-title01;
+}
+.editor-heading-h3 {
+  @apply text-title02;
+}
+.editor-paragraph {
+  @apply text-body02;
+  font-weight: 400;
+}
+
+.editor-list-ul {
+  list-style: disc;
+}
+
+.editor-list-ol {
+  list-style: decimal;
+}

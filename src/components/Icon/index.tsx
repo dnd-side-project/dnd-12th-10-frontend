@@ -40,6 +40,18 @@ import BasicBlueCharacter from '@/assets/icons/character/basic-blue.svg'
 import Logo from '@/assets/icons/logo.svg'
 import LineArrowLeft from '@/assets/icons/line-arrow-left.svg'
 import Check from '@/assets/icons/check.svg'
+import AlignEnd from '@/assets/icons/editor/align-end.svg'
+import AlignMiddle from '@/assets/icons/editor/align-middle.svg'
+import AlignStart from '@/assets/icons/editor/align-start.svg'
+import Bold from '@/assets/icons/editor/bold.svg'
+import Italic from '@/assets/icons/editor/italic.svg'
+import Underline from '@/assets/icons/editor/underline.svg'
+import LineThrough from '@/assets/icons/editor/line-through.svg'
+import LinkInsert from '@/assets/icons/editor/link-insert.svg'
+import ArrowClockwise from '@/assets/icons/editor/arrow-clockwise.svg'
+import ArrowCounterClockwise from '@/assets/icons/editor/arrow-counterclockwise.svg'
+import OrderedList from '@/assets/icons/editor/ordered-list.svg'
+import UnorderedList from '@/assets/icons/editor/unordered-list.svg'
 
 export const icons = {
   calendar: Calendar,
@@ -84,6 +96,18 @@ export const icons = {
   'add-square-filled': AddSquareFilled,
   'basic-blue-character': BasicBlueCharacter,
   'line-arrow-left': LineArrowLeft,
+  'align-end': AlignEnd,
+  'align-middle': AlignMiddle,
+  'align-start': AlignStart,
+  'line-through': LineThrough,
+  'link-insert': LinkInsert,
+  'arrow-clockwise': ArrowClockwise,
+  'arrow-counter-clockwise': ArrowCounterClockwise,
+  'ordered-list': OrderedList,
+  'unordered-list': UnorderedList,
+  italic: Italic,
+  bold: Bold,
+  underline: Underline,
 } as const
 
 export type IconName = keyof typeof icons
