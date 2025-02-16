@@ -81,30 +81,29 @@ const ToolbarPlugin = () => {
     )
   }, [editor, updateToolbar])
 
-  const handleTextTypeChange = useCallback(
-    (event: React.ChangeEvent<HTMLSelectElement>) => {
-      const value = event.target.value
+  const handleTextTypeChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    const value = event.target.value
 
-      editor.update(() => {
-        const selection = $getSelection()
-        if ($isRangeSelection(selection)) {
-          switch (value) {
-            case 'h1':
-            case 'h2':
-            case 'h3':
-              $setBlocksType(selection, () => $createHeadingNode(value))
-              break
-            case 'p':
-              $setBlocksType(selection, () => $createParagraphNode())
-              break
-            default:
-              break
-          }
+    editor.update(() => {
+      const selection = $getSelection()
+      if ($isRangeSelection(selection)) {
+        switch (value) {
+          case 'h1':
+          case 'h2':
+          case 'h3':
+            $setBlocksType(selection, () => $createHeadingNode(value))
+            break
+          case 'p':
+            $setBlocksType(selection, () => $createParagraphNode())
+            break
+          default:
+            break
         }
-      })
-    },
-    [editor],
-  )
+      }
+    })
+  }
 
   return (
     <div
