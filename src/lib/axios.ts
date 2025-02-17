@@ -21,6 +21,7 @@ export const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 })
 
 // 요청 인터셉터: 토큰이 있다면 헤더에 추가
