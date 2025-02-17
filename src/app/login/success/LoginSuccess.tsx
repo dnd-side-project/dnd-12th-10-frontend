@@ -15,12 +15,12 @@ const SuccessPage = () => {
   useEffect(() => {
     try {
       const accessToken = searchParams.get('access_token')
-      const isRegistered = searchParams.get('isRegistered')
+      const isRegistered = searchParams.get('isRegistered') !== 'false'
 
-      if (accessToken && isRegistered) {
+      if (accessToken) {
         setAccessToken(accessToken)
         setIsLogin(true)
-        router.replace(isRegistered ? URL_PATH.Home : URL_PATH.Signup)
+        router.replace(isRegistered ? URL_PATH.Signup : URL_PATH.Home)
       } else {
         toast.error('로그인에 실패했습니다')
         router.replace(URL_PATH.Login)
