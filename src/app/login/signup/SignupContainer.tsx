@@ -2,18 +2,21 @@
 import React from 'react'
 import { cn } from '@/utils/cn'
 import { Controller, useForm } from 'react-hook-form'
+import useSignupMutation from './_querys/useSignupMutation'
+import { UserCreateForm as UserCreateFormType } from './_types'
+
 import Button from '@/components/Button'
+import FormField from '@/components/FormField'
 import SelectBox from '@/components/SelectBox'
 import ChipButton from '@/components/ChipButton'
 import LimitedInput from '@/components/LimitedInput'
-import FormField from '@/components/FormField'
-import { KEYWORD_LIST } from '@/consts/keywordList'
 import { JOB_LIST } from './_consts/jobList'
-import { UserCreateForm as UserCreateFormType } from './_types'
+import { KEYWORD_LIST } from '@/consts/keywordList'
 
 const MAX_LENGTH = 10
 
 const SignupContainer = () => {
+  const { signupMutation, isPending } = useSignupMutation()
   const {
     control,
     register,
@@ -36,8 +39,7 @@ const SignupContainer = () => {
   }
 
   const onSubmit = async (data: UserCreateFormType) => {
-    // TODO: 추후 api 연결
-    console.log(data)
+    signupMutation(data)
   }
 
   return (
@@ -108,10 +110,10 @@ const SignupContainer = () => {
           color='primary'
           variant='filled'
           size='large'
-          disabled={!isValid}
+          disabled={!isValid || isPending}
           style={{ marginTop: 'auto' }}
         >
-          가입 완료
+          {isPending ? '요청 중..' : ' 가입 완료'}
         </Button>
       </form>
     </div>
