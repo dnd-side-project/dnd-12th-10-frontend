@@ -1,11 +1,11 @@
 'use client'
 
 import { useEffect } from 'react'
-import { toast } from 'react-hot-toast'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { URL_PATH } from '@/consts/urls'
 import { useAuthStore } from '@/store/auth'
 import { setAccessToken } from '@/lib/axios'
+import OpenCustomToast from '@/utils/openCustomToast'
 
 const SuccessPage = () => {
   const { setIsLogin } = useAuthStore()
@@ -22,17 +22,17 @@ const SuccessPage = () => {
         setIsLogin(true)
         router.replace(isRegistered ? URL_PATH.Signup : URL_PATH.Home)
       } else {
-        toast.error('로그인에 실패했습니다')
+        OpenCustomToast('로그인에 실패했습니다', true, '❌')
         router.replace(URL_PATH.Login)
       }
     } catch (err) {
       console.error(err)
-      toast.error('로그인에 실패했습니다')
+      OpenCustomToast('로그인에 실패했습니다', true, '❌')
       router.replace(URL_PATH.Login)
     }
   }, [searchParams, setAccessToken])
 
-  return <div>Success</div>
+  return null
 }
 
 export default SuccessPage
