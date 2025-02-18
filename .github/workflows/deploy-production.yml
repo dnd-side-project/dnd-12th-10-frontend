@@ -1,0 +1,44 @@
+# Workflow name
+name: 'Deploy Production'
+
+# Event for the workflow
+on:
+  push:
+    branches:
+      - main
+
+# List of jobs
+jobs:
+  vercel-preview:
+    # Operating System
+    runs-on: ubuntu-latest
+    env:
+      WORKDIR: .
+    # Job steps
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Pull Vercel env
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build project for Vercel
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy to Vercel (Production)
+        id: deploy
+        run: |
+          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
