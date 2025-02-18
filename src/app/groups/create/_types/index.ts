@@ -1,13 +1,17 @@
 import { z } from 'zod'
 
-// TODO: 나중에 서버 api 스키마에 맞게 변경 필요
 export const groupCreateSchema = z.object({
   groupName: z.string(),
-  introduction: z.string(),
+  introduce: z.string(),
   description: z.string(),
   isPublic: z.boolean(),
-  numOfMembers: z.number(),
-  tags: z.array(z.string()),
+  maxNum: z.number(),
+  categoryNames: z.array(z.string()),
+})
+
+export const groupCreateResponseSchema = z.object({
+  groupId: z.number(),
 })
 
 export type GroupCreateForm = z.infer<typeof groupCreateSchema>
+export type GroupCreateResponse = z.infer<typeof groupCreateResponseSchema>
