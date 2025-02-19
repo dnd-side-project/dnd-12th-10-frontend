@@ -27,6 +27,10 @@ body {
     sans-serif;
 
   @apply text-gray-900;
+
+  .slick-track {
+    margin-left: 0;
+  }
 }
 
 /* 스크롤바 넓이, 높이 지정 */
