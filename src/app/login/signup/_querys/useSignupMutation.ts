@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation'
 import { useMutation } from '@tanstack/react-query'
 import { URL_PATH } from '@/consts/urls'
-import OpenCustomToast from '@/utils/openCustomToast'
+import openCustomToast from '@/utils/openCustomToast'
 import { signup } from '../_lib'
 
 const useSignupMutation = () => {
@@ -10,10 +10,10 @@ const useSignupMutation = () => {
   const { mutate: signupMutation, isPending } = useMutation({
     mutationFn: signup,
     onSuccess: () => {
-      OpenCustomToast('회원가입 성공', true, '✅')
+      openCustomToast('회원가입 성공', true, '✅')
       replace(URL_PATH.Home)
     },
-    onError: () => OpenCustomToast('회원가입 실패', true, '❌'),
+    onError: () => openCustomToast('회원가입 실패', true, '❌'),
   })
 
   return { signupMutation, isPending }
