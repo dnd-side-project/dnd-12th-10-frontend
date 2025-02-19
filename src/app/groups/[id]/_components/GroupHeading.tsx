@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Chip from '@/components/Chip'
 import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
+import { URL_PATH } from '@/consts/urls'
 
 export interface GroupHeadingProps {
   groupName: string
@@ -34,7 +35,7 @@ const GroupHeading = ({
 export default GroupHeading
 
 const WriteButton = () => (
-  <Link href=''>
+  <Link href={URL_PATH.MemosCreate}>
     <Button color='primary' variant='filled' size='medium'>
       <Icon name='edit' className='stroke-white mr-2' size={20} />
       글쓰기
