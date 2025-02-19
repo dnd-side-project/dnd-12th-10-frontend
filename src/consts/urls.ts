@@ -14,4 +14,8 @@ export const API_PATH = {
   ReissueToken: '/auth/reissue',
   Signup: '/user/after-login',
   GroupCreate: '/group',
+  Template: '/template',
+  TemplateList: '/template/public',
+  // TODO: memo와 retrospect 통일 필요
+  RetrospectCreate: '/retrospect/add',
 }
