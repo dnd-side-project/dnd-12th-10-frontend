@@ -24,6 +24,7 @@ const Chip = ({ size, color, label }: Props) => {
         'text-body03',
         'rounded-sm',
         'px-3',
+        'text-nowrap',
         {
           'h-7': size === 'small',
         },
