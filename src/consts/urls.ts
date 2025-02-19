@@ -10,7 +10,7 @@ export const URL_PATH = {
 }
 
 export const API_PATH = {
-  Login: '/api/v1/auth/oauth2/kakao',
-  ReissueToken: '/api/v1/auth/reissue',
-  Signup: '/api/v1/user/after-login',
+  Login: '/auth/oauth2/kakao',
+  ReissueToken: '/auth/reissue',
+  Signup: '/user/after-login',
 }
