@@ -13,12 +13,14 @@ import { GroupCreateForm as GroupCreateFormType } from './_types'
 import { PUBLIC_CHECKBOX_OPTIONS } from './_consts'
 import Checkbox from './_components/Checkbox'
 import NumberInput from './_components/NumberInput'
+import useGroupCreateMutation from './_queries/useGroupCreateMutation'
 
 const MAX_GROUP_NAME_LENGTH = 10
 const MAX_INTRO_LENGTH = 70
 const MAX_DESCRIPTION_LENGTH = 100
 
 const GroupCreateForm = () => {
+  const { mutate } = useGroupCreateMutation()
   const { push } = useRouter()
 
   const {
@@ -30,11 +32,11 @@ const GroupCreateForm = () => {
   } = useForm<GroupCreateFormType>({
     defaultValues: {
       groupName: '',
-      introduction: '',
+      introduce: '',
       description: '',
       isPublic: true,
-      numOfMembers: 10,
-      tags: [],
+      maxNum: 10,
+      categoryNames: [],
     },
   })
 
@@ -42,7 +44,7 @@ const GroupCreateForm = () => {
   const limitedRegister = (
     name: Extract<
       keyof GroupCreateFormType,
-      'groupName' | 'introduction' | 'description'
+      'groupName' | 'introduce' | 'description'
     >,
     maxLength: number,
     required: boolean,
@@ -60,9 +62,9 @@ const GroupCreateForm = () => {
   }
 
   const onSubmit = (data: GroupCreateFormType) => {
-    // TODO: 추후 api 연결
-    console.log('data', data)
-    push(`${URL_PATH.GroupList}/1`)
+    mutate(data, {
+      onSuccess: ({ groupId }) => push(`${URL_PATH.GroupList}/${groupId}`),
+    })
   }
 
   return (
@@ -91,7 +93,7 @@ const GroupCreateForm = () => {
           maxLength={MAX_INTRO_LENGTH}
           multiline={false}
           placeholder='이 모임을 한 줄로 간단히 소개해주세요!'
-          {...limitedRegister('introduction', MAX_INTRO_LENGTH, true)}
+          {...limitedRegister('introduce', MAX_INTRO_LENGTH, true)}
         />
       </FormField>
 
@@ -141,7 +143,7 @@ const GroupCreateForm = () => {
       <FormField fieldTitle='참여 인원 제한'>
         <Controller
           control={control}
-          name='numOfMembers'
+          name='maxNum'
           render={({ field: { value, onChange } }) => (
             <NumberInput value={value} onChange={onChange} />
           )}
@@ -154,7 +156,7 @@ const GroupCreateForm = () => {
             <ChipButton
               key={`tag-${index}`}
               label={keyword}
-              {...register('tags')}
+              {...register('categoryNames')}
               value={keyword}
             />
           ))}

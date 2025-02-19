@@ -9,6 +9,9 @@ on:
       - synchronize
     branches:
       - develop
+    paths:
+      - public/**
+      - src/**
 
 # List of jobs
 jobs:

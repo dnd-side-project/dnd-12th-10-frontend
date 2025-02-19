@@ -13,4 +13,5 @@ export const API_PATH = {
   Login: '/auth/oauth2/kakao',
   ReissueToken: '/auth/reissue',
   Signup: '/user/after-login',
+  GroupCreate: '/group',
 }
