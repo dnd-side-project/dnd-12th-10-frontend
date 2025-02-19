@@ -3,9 +3,7 @@ import { API_PATH } from '@/consts/urls'
 
 export const reissueToken = async () => {
   try {
-    const response = await axiosInstance.get(API_PATH.ReissueToken, {
-      withCredentials: true,
-    })
+    const response = await axiosInstance.get(API_PATH.ReissueToken)
 
     if (response.status === 200) {
       let newAccessToken = response.headers['authorization']
