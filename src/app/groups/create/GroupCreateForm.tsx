@@ -32,7 +32,7 @@ const GroupCreateForm = () => {
   } = useForm<GroupCreateFormType>({
     defaultValues: {
       groupName: '',
-      introduce: '',
+      introduction: '',
       description: '',
       isPublic: true,
       maxNum: 10,
@@ -44,7 +44,7 @@ const GroupCreateForm = () => {
   const limitedRegister = (
     name: Extract<
       keyof GroupCreateFormType,
-      'groupName' | 'introduce' | 'description'
+      'groupName' | 'introduction' | 'description'
     >,
     maxLength: number,
     required: boolean,
@@ -93,7 +93,7 @@ const GroupCreateForm = () => {
           maxLength={MAX_INTRO_LENGTH}
           multiline={false}
           placeholder='이 모임을 한 줄로 간단히 소개해주세요!'
-          {...limitedRegister('introduce', MAX_INTRO_LENGTH, true)}
+          {...limitedRegister('introduction', MAX_INTRO_LENGTH, true)}
         />
       </FormField>
 
