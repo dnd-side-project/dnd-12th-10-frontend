@@ -29,9 +29,10 @@ body {
   @apply text-gray-900;
 }
 
-/* 스크롤바 넓이 지정 */
+/* 스크롤바 넓이, 높이 지정 */
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 
 /* 스크롤바 트랙 꾸미기 */
