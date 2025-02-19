@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import CharactersImage from '@/assets/images/characters.png'
 import BlueCharacterImage from '@/assets/images/character-blue.png'
+import { MemoInfoForm } from '../_types/memo'
 
 export const MY_GROUPS = [
   { key: 'group-1', label: '성장하는 디자이너' },
@@ -39,7 +40,13 @@ export const EDITOR_TEXT_TYPES = [
   },
 ]
 
-export const EDITOR_THEME = {
+export const INITIAL_MEMO_INFO: MemoInfoForm = {
+  memoType: null,
+  templateId: null,
+  group: '',
+}
+
+export const editorTheme = {
   code: 'editor-code',
   heading: {
     h1: 'editor-heading-h1',
