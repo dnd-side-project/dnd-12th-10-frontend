@@ -10,7 +10,8 @@ export const URL_PATH = {
 }
 
 export const API_PATH = {
-  Login: '/api/v1/auth/oauth2/kakao',
-  ReissueToken: '/api/v1/auth/reissue',
-  GroupCreate: '/api/v1/group',
+  Login: '/auth/oauth2/kakao',
+  ReissueToken: '/auth/reissue',
+  Signup: '/user/after-login',
+  GroupCreate: '/group',
 }
