@@ -1,5 +1,6 @@
 export const URL_PATH = {
   Home: '/',
+  Memos: '/memos',
   Group: '/group',
   GroupList: '/groups',
   GroupCreate: '/groups/create',

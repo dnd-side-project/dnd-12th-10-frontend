@@ -8,8 +8,16 @@ const NavigateList = () => {
   return (
     <nav>
       <SidebarItem path={URL_PATH.Home} contentName='홈' iconName='home' />
-      <SidebarItem path='/1' contentName='회고 스페이스' iconName='edit' />
-      <SidebarItem path={URL_PATH.GroupList} contentName='모임' iconName='profile-user' />
+      <SidebarItem
+        path={URL_PATH.Memos}
+        contentName='회고 스페이스'
+        iconName='edit'
+      />
+      <SidebarItem
+        path={URL_PATH.GroupList}
+        contentName='모임'
+        iconName='profile-user'
+      />
       <NotificationLink />
       <SidebarItem path='/4' contentName='내 정보' iconName='profile' />
     </nav>
