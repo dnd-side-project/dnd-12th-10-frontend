@@ -23,7 +23,7 @@ const PopularGroupList = () => {
           {popularGroupList.slice(0, 3).map((props, index) => (
             <PopularGroupCard
               isActive={currentActiveMemo === index}
-              onClick={() => {
+              onMouseEnter={() => {
                 setCurrentActiveMemo(index)
               }}
               key={`popular-group-${props.groupResponseDto.groupId}`}
@@ -46,11 +46,11 @@ const PopularGroupCard = ({
   groupName,
   userCount,
   categoryNames,
-  onClick,
-}: Group & { isActive: boolean; onClick: () => void }) => {
+  onMouseEnter,
+}: Group & { isActive: boolean; onMouseEnter: () => void }) => {
   return (
-    <button
-      onClick={onClick}
+    <div
+      onMouseEnter={onMouseEnter}
       className={cn(
         'px-6 py-[18px]',
         'bg-white',
@@ -77,7 +77,7 @@ const PopularGroupCard = ({
           멤버 {userCount}명
         </div>
       )}
-    </button>
+    </div>
   )
 }
 
