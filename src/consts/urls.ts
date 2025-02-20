@@ -17,4 +17,5 @@ export const API_PATH = {
   GetPopularGroupList: '/group/popular',
   GetRecommendGroupList: '/group/recommend',
   GetPublicTemplate: '/template/public',
+  GroupCreate: '/group',
 }
