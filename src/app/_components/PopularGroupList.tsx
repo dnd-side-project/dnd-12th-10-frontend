@@ -1,23 +1,40 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import Chip from '@/components/Chip'
 import { Icon } from '@/components/Icon'
-import { POPULAR_GROUP_LIST, POPULAR_MEMO, PopularGroup } from '../_consts'
+import { Group, Retrospect } from '../_types'
 import SectionHeader from './SectionHeader'
 import AuthorInfo from '@/components/AuthorInfo'
+import usePopularGroupListQuery from '../_querys/usePopularGroupListQuery'
+import { URL_PATH } from '@/consts/urls'
 
 /** 인기 모임 영역 */
 const PopularGroupList = () => {
+  const [currentActiveMemo, setCurrentActiveMemo] = useState(0)
+  const { popularGroupList = [] } = usePopularGroupListQuery()
+
   return (
     <section className='py-6 bg-[#FAF8F5] -mx-[88px] px-[88px]'>
       <SectionHeader title='🔥 다양한 인사이트가 오가는 인기 모임' />
       <div className='flex gap-x-4'>
         <div className='flex flex-col gap-y-2'>
-          {POPULAR_GROUP_LIST.map((props) => (
-            <PopularGroupCard key={`popular-group-${props.id}`} {...props} />
+          {popularGroupList.slice(0, 3).map((props, index) => (
+            <PopularGroupCard
+              isActive={currentActiveMemo === index}
+              onMouseEnter={() => {
+                setCurrentActiveMemo(index)
+              }}
+              key={`popular-group-${props.groupResponseDto.groupId}`}
+              {...props.groupResponseDto}
+            />
           ))}
         </div>
-        <MemoCard />
+        <MemoCard
+          {...popularGroupList[currentActiveMemo]?.retrospectResponseDto}
+        />
       </div>
     </section>
   )
@@ -25,10 +42,18 @@ const PopularGroupList = () => {
 
 export default PopularGroupList
 
-const PopularGroupCard = ({ tags, title, numOfMembers }: PopularGroup) => {
+const PopularGroupCard = ({
+  isActive,
+  onMouseEnter,
+  groupId,
+  groupName,
+  userCount,
+  categoryNames,
+}: Group & { isActive: boolean; onMouseEnter: () => void }) => {
   return (
     <Link
-      href='/'
+      href={`${URL_PATH.GroupList}/${groupId}`}
+      onMouseEnter={onMouseEnter}
       className={cn(
         'px-6 py-[18px]',
         'bg-white',
@@ -39,7 +64,7 @@ const PopularGroupCard = ({ tags, title, numOfMembers }: PopularGroup) => {
       )}
     >
       <div className='flex gap-x-1 mb-1'>
-        {tags.map((tag, index) => (
+        {categoryNames.map((tag, index) => (
           <Chip
             key={`group-tag-${index}`}
             label={tag}
@@ -48,30 +73,38 @@ const PopularGroupCard = ({ tags, title, numOfMembers }: PopularGroup) => {
           />
         ))}
       </div>
-      <p className='text-title02 font-semibold'>{title}</p>
-      <div className='text-gray-400 text-body02 mt-2 flex items-center gap-x-1'>
-        <Icon name='profile-filled' className='fill-gray-400' size={18} />
-        멤버 {numOfMembers}명
-      </div>
+      <p className='text-title02 font-semibold'>{groupName}</p>
+      {isActive && (
+        <div className='text-gray-400 text-body02 mt-2 flex items-center gap-x-1'>
+          <Icon name='profile-filled' className='fill-gray-400' size={18} />
+          멤버 {userCount}명
+        </div>
+      )}
     </Link>
   )
 }
 
-const MemoCard = () => {
+const MemoCard = ({
+  retrospectId,
+  title,
+  content,
+  userName,
+  timeString,
+}: Retrospect) => {
   return (
     <div className='bg-white rounded-md p-6 relative w-full'>
-      <h4 className='text-title01 mb-2'>{POPULAR_MEMO.title}</h4>
+      <h4 className='text-title01 mb-2'>{title}</h4>
       <AuthorInfo
         size='medium'
-        author={POPULAR_MEMO.nickname}
-        latestUpdateTime={POPULAR_MEMO.latestUpdateTime}
+        author={userName}
+        latestUpdateTime={timeString}
       />
       <div className='text-gray-700 text-body02 font-normal mt-6'>
-        {POPULAR_MEMO.content}
+        {content}
       </div>
 
       <Link
-        href='/'
+        href={`${URL_PATH.Memos}/${retrospectId}`}
         className='absolute bottom-6 text-blue-500 text-body02 mt-4 block'
       >
         더보기
