@@ -13,4 +13,8 @@ export const API_PATH = {
   Login: '/auth/oauth2/kakao',
   ReissueToken: '/auth/reissue',
   Signup: '/user/after-login',
+  GetMyGroupList: '/user/group/list',
+  GetPopularGroupList: '/group/popular',
+  GetRecommendGroupList: '/group/recommend',
+  GetPublicTemplate: '/template/public',
 }
