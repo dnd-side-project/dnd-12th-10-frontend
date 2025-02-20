@@ -25,6 +25,7 @@ const CardWrap = ({
         'shadow-card',
         'p-6',
         'rounded-[24px]',
+        'bg-white',
         {
           'hover:bg-[#0000000D]': size === 'medium',
         },
