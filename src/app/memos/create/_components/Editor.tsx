@@ -47,7 +47,7 @@ const Editor = ({ memoInfo }: { memoInfo: MemoInfoForm }) => {
   return (
     <>
       <LexicalComposer initialConfig={initialConfig}>
-        <SubmitHeader title={title} />
+        <SubmitHeader title={title} groupId={Number(memoInfo.groupId)} />
         <div className='max-w-[1016px] mx-auto mt-[50px] mb-28'>
           <input
             type='text'

@@ -97,7 +97,7 @@ const TemplateSelect = ({
                   onChange={() => {
                     // '개인' 모임 시에는 선택했던 group을 초기화
                     // TODO: enum 사용
-                    if (value === 'PERSONAL') setValue('group', '')
+                    if (value === 'PERSONAL') setValue('groupId', null)
                     field.onChange(value)
                   }}
                 />
@@ -115,7 +115,7 @@ const TemplateSelect = ({
             <div className='w-[392px]'>
               <Controller
                 control={control}
-                name='group'
+                name='groupId'
                 rules={{ required: memoType === 'GROUP' }}
                 render={({ field: { onChange } }) => (
                   <SelectBox

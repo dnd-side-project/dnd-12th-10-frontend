@@ -7,7 +7,13 @@ import { useRouter } from 'next/navigation'
 import useMemoCreateMutation from '../_queries/useMemoCreateMutation'
 import { MemoCreateForm } from '../_types/memo'
 
-const SubmitHeader = ({ title }: { title: MemoCreateForm['title'] }) => {
+const SubmitHeader = ({
+  title,
+  groupId,
+}: {
+  title: MemoCreateForm['title']
+  groupId: MemoCreateForm['groupId']
+}) => {
   const { back } = useRouter()
   const { mutate } = useMemoCreateMutation()
   const [editor] = useLexicalComposerContext()
@@ -18,8 +24,8 @@ const SubmitHeader = ({ title }: { title: MemoCreateForm['title'] }) => {
       .getEditorState()
       .read(() => $generateHtmlFromNodes(editor, null))
 
-    // TODO: 모임 회고도 구현 필요 (groupId 전달)
-    mutate({ title, content: htmlResult })
+    // 모임 id가 존재하는 경우에만 groupId 전달
+    mutate({ title, content: htmlResult, ...(groupId ? { groupId } : {}) })
   }
 
   return (

@@ -38,7 +38,7 @@ export const EDITOR_TEXT_TYPES = [
 export const INITIAL_MEMO_INFO: MemoInfoForm = {
   memoType: null,
   templateId: null,
-  group: '',
+  groupId: '',
 }
 
 export const editorTheme = {

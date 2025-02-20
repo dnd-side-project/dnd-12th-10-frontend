@@ -3,7 +3,7 @@ import { z } from 'zod'
 export const memoInfoForm = z.object({
   memoType: z.enum(['GROUP', 'PERSONAL']).nullable(),
   templateId: z.number().nullable(),
-  group: z.string().optional(),
+  groupId: z.string().nullish(),
 })
 
 export const memoCreateForm = z.object({
