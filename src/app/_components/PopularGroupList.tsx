@@ -9,6 +9,7 @@ import { Group, Retrospect } from '../_types'
 import SectionHeader from './SectionHeader'
 import AuthorInfo from '@/components/AuthorInfo'
 import usePopularGroupListQuery from '../_querys/usePopularGroupListQuery'
+import { URL_PATH } from '@/consts/urls'
 
 /** 인기 모임 영역 */
 const PopularGroupList = () => {
@@ -43,13 +44,15 @@ export default PopularGroupList
 
 const PopularGroupCard = ({
   isActive,
+  onMouseEnter,
+  groupId,
   groupName,
   userCount,
   categoryNames,
-  onMouseEnter,
 }: Group & { isActive: boolean; onMouseEnter: () => void }) => {
   return (
-    <div
+    <Link
+      href={`${URL_PATH.GroupList}/${groupId}`}
       onMouseEnter={onMouseEnter}
       className={cn(
         'px-6 py-[18px]',
@@ -77,7 +80,7 @@ const PopularGroupCard = ({
           멤버 {userCount}명
         </div>
       )}
-    </div>
+    </Link>
   )
 }
 
