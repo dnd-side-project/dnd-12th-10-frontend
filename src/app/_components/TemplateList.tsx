@@ -6,7 +6,7 @@ import SectionHeader from './SectionHeader'
 import { Template } from '../_types'
 import DOMPurify from 'dompurify'
 
-import { usePublicTemplateListQuery } from '@/app/_querys'
+import { usePublicTemplateListQuery } from '@/app/_querys/usePublicTemplateListQuery'
 import SliderContainer from '@/app/_components/SliderContainer'
 import { URL_PATH } from '@/consts/urls'
 

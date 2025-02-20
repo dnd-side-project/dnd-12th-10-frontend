@@ -8,7 +8,7 @@ import { Icon } from '@/components/Icon'
 import { Group, Retrospect } from '../_types'
 import SectionHeader from './SectionHeader'
 import AuthorInfo from '@/components/AuthorInfo'
-import { usePopularGroupListQuery } from '../_querys'
+import usePopularGroupListQuery from '../_querys/usePopularGroupListQuery'
 
 /** 인기 모임 영역 */
 const PopularGroupList = () => {

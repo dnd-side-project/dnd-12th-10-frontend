@@ -6,7 +6,7 @@ import { URL_PATH } from '@/consts/urls'
 import { Icon } from '@/components/Icon'
 import GroupCreateCard from './GroupCreateCard'
 import SectionHeader from './SectionHeader'
-import { useMyGroupListQuery } from '@/app/_querys'
+import useMyGroupListQuery from '../_querys/useMyGroupListQuery'
 import { Group } from '@/app/_types'
 
 /** 내 모임 영역 */

@@ -1,7 +1,7 @@
 'use client'
 import { URL_PATH } from '@/consts/urls'
 import { Group } from '@/app/_types'
-import { useRecommendGroupListQuery } from '../_querys'
+import useRecommendGroupListQuery from '../_querys/useRecommendGroupList'
 
 import CardWrap from '@/components/CardWrap'
 import Chip from '@/components/Chip'
