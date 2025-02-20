@@ -19,7 +19,7 @@ const RecommendedGroupList = () => {
         title='⭐ 이런 회고 모임은 어때요'
         description='관심사가 비슷한 멤버들과 함께 회고를 시작해보세요'
       />
-      <SliderContainer MediumDeviceSlidesToShow={3} LargeDeviceSlidesToShow={4}>
+      <SliderContainer mediumDeviceSlidesToShow={3} largeDeviceSlidesToShow={4}>
         {recommendGroupList.map((props) => (
           <RecommendedGroupCard
             key={`recommended-group-${props.groupId}`}

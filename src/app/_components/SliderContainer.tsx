@@ -5,14 +5,14 @@ import { PropsWithChildren, useRef } from 'react'
 import { Icon } from '@/components/Icon'
 
 interface SliderContainerProps {
-  MediumDeviceSlidesToShow: number
-  LargeDeviceSlidesToShow: number
+  mediumDeviceSlidesToShow: number
+  largeDeviceSlidesToShow: number
 }
 
 const SliderContainer = ({
   children,
-  MediumDeviceSlidesToShow,
-  LargeDeviceSlidesToShow,
+  mediumDeviceSlidesToShow,
+  largeDeviceSlidesToShow,
 }: PropsWithChildren<SliderContainerProps>) => {
   const sliderRef = useRef<Slider | null>(null)
 
@@ -33,14 +33,14 @@ const SliderContainer = ({
     arrows: false,
     infinite: false,
     speed: 500,
-    slidesToShow: LargeDeviceSlidesToShow,
-    slidesToScroll: LargeDeviceSlidesToShow,
+    slidesToShow: largeDeviceSlidesToShow,
+    slidesToScroll: largeDeviceSlidesToShow,
     responsive: [
       {
-        breakpoint: 1500,
+        breakpoint: 1700,
         settings: {
-          slidesToShow: MediumDeviceSlidesToShow,
-          slidesToScroll: MediumDeviceSlidesToShow,
+          slidesToShow: mediumDeviceSlidesToShow,
+          slidesToScroll: mediumDeviceSlidesToShow,
         },
       },
     ],
