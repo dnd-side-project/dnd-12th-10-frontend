@@ -8,11 +8,12 @@ import { cn } from '@/utils/cn'
 import SelectBox from '@/components/SelectBox'
 import FormField from '@/components/FormField'
 import { MemoInfoForm } from '../_types/memo'
-import { INITIAL_MEMO_INFO, MEMO_TYPE_OPTIONS, MY_GROUPS } from '../_consts'
+import { INITIAL_MEMO_INFO, MEMO_TYPE_OPTIONS } from '../_consts'
 import MemoTypeRadioButton from './MemoTypeRadioButton'
 import TemplateRadioButton from './TemplateRadioButton'
 import React, { SetStateAction } from 'react'
 import useGetTemplateList from '../_queries/useGetTemplateList'
+import useGetMyGroupList from '../_queries/useGetMyGroupList'
 
 /** 회고 유형 선택하는 화면 */
 const TemplateSelect = ({
@@ -22,6 +23,7 @@ const TemplateSelect = ({
 }) => {
   const { back } = useRouter()
   const { data: templateList } = useGetTemplateList()
+  const { data: myGroupList } = useGetMyGroupList()
 
   const {
     control,
@@ -117,7 +119,7 @@ const TemplateSelect = ({
                 rules={{ required: memoType === 'GROUP' }}
                 render={({ field: { onChange } }) => (
                   <SelectBox
-                    options={MY_GROUPS}
+                    options={myGroupList ?? []}
                     placeholder='모임을 선택해주세요.'
                     onChange={onChange}
                   />

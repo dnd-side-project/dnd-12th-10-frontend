@@ -4,9 +4,10 @@ import { cn } from '@/utils/cn'
 import { Select, SelectItem } from '@heroui/react'
 import { Icon } from '../Icon'
 import React from 'react'
+import { MyGroupList } from '@/app/memos/create/_types/group'
 
 interface Props {
-  options: { key: string; label: string }[]
+  options: MyGroupList
   placeholder: string
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
 }
@@ -48,7 +49,9 @@ const SelectBox = ({ options, placeholder, onChange }: Props) => {
       selectorIcon={<Icon name='arrow-down' className='stroke-gray-700' />}
       onChange={onChange}
     >
-      {({ key, label }) => <SelectItem key={key}>{label}</SelectItem>}
+      {({ groupId, groupName }) => (
+        <SelectItem key={groupId}>{groupName}</SelectItem>
+      )}
     </Select>
   )
 }

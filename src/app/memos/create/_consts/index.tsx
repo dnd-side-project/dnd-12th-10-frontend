@@ -3,11 +3,6 @@ import CharactersImage from '@/assets/images/characters.png'
 import BlueCharacterImage from '@/assets/images/character-blue.png'
 import { MemoInfoForm } from '../_types/memo'
 
-export const MY_GROUPS = [
-  { key: 'group-1', label: '성장하는 디자이너' },
-  { key: 'group-2', label: '성장하는 개발자' },
-]
-
 export const MEMO_TYPE_OPTIONS = [
   {
     value: 'GROUP',
