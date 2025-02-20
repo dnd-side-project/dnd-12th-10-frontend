@@ -9,6 +9,9 @@ export const metadata: Metadata = {
 }
 
 const LoginPage = () => {
+  const loginQueryString =
+    process.env.NEXT_PUBLIC_ENV === 'localhost' ? '?redirect=localhost' : ''
+
   return (
     <>
       <div className='text-display01 mt-8'>
@@ -16,7 +19,7 @@ const LoginPage = () => {
         <div>함께 성장하는 회고 서비스</div>
       </div>
       <Link
-        href={`${BASE_URL}${API_PATH.Login}`}
+        href={`${BASE_URL}${API_PATH.Login}${loginQueryString}`}
         className='w-full max-w-[480px] flex items-center bg-[#FEE500] px-[28px] py-[22px] my-[52px] rounded-[12px]'
       >
         <KakaoLogoIcon />
