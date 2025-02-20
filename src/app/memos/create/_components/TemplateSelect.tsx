@@ -119,7 +119,12 @@ const TemplateSelect = ({
                 rules={{ required: memoType === 'GROUP' }}
                 render={({ field: { onChange } }) => (
                   <SelectBox
-                    options={myGroupList ?? []}
+                    options={
+                      myGroupList?.map(({ groupId, groupName }) => ({
+                        key: String(groupId),
+                        label: groupName,
+                      })) ?? []
+                    }
                     placeholder='모임을 선택해주세요.'
                     onChange={onChange}
                   />
