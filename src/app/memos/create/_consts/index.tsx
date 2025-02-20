@@ -1,29 +1,7 @@
 import Image from 'next/image'
 import CharactersImage from '@/assets/images/characters.png'
 import BlueCharacterImage from '@/assets/images/character-blue.png'
-
-export const TEMPLATE_OPTIONS = [
-  {
-    key: 'template-1',
-    templateName: '자유 구성',
-    templateDetail: '자유구성입니다~~',
-  },
-  {
-    key: 'template-2',
-    templateName: 'KPT 템플릿',
-    templateDetail: 'KPT 템플릿입니다~~',
-  },
-  {
-    key: 'template-3',
-    templateName: '4L 템플릿',
-    templateDetail: '4L 템플릿',
-  },
-]
-
-export const MY_GROUPS = [
-  { key: 'group-1', label: '성장하는 디자이너' },
-  { key: 'group-2', label: '성장하는 개발자' },
-]
+import { MemoInfoForm } from '../_types/memo'
 
 export const MEMO_TYPE_OPTIONS = [
   {
@@ -56,3 +34,41 @@ export const EDITOR_TEXT_TYPES = [
     label: 'Normal',
   },
 ]
+
+export const INITIAL_MEMO_INFO: MemoInfoForm = {
+  memoType: null,
+  templateId: null,
+  groupId: '',
+}
+
+export const editorTheme = {
+  code: 'editor-code',
+  heading: {
+    h1: 'editor-heading-h1',
+    h2: 'editor-heading-h2',
+    h3: 'editor-heading-h3',
+    h4: 'editor-heading-h4',
+    p: 'editor-paragraph',
+  },
+  image: 'editor-image',
+  link: 'editor-link',
+  list: {
+    listitem: 'editor-listitem',
+    nested: {
+      listitem: 'editor-nested-listitem',
+    },
+    ol: 'editor-list-ol',
+    ul: 'editor-list-ul',
+  },
+  ltr: 'ltr',
+  paragraph: 'editor-paragraph',
+  quote: 'editor-quote',
+  rtl: 'rtl',
+  text: {
+    bold: 'editor-text-bold',
+    code: 'editor-text-code',
+    italic: 'editor-text-italic',
+    strikethrough: 'editor-text-strikethrough',
+    underline: 'editor-text-underline',
+  },
+}

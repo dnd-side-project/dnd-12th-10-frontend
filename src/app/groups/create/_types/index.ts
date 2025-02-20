@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 export const groupCreateSchema = z.object({
   groupName: z.string(),
-  introduce: z.string(),
+  introduction: z.string(),
   description: z.string(),
   isPublic: z.boolean(),
   maxNum: z.number(),

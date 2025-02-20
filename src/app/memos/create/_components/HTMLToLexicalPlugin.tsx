@@ -3,10 +3,8 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import { $getRoot, $insertNodes } from 'lexical'
 import { $generateNodesFromDOM } from '@lexical/html'
 
-const INITIAL_HTML = `<h2>Keep</h2><p><br/></p><h2>Problem</h2><p></p><h2>Try</h2>`
-
 /** HTML을 lexical 에디터에 적용하는 플러그인 */
-const HTMLToLexicalPlugin = () => {
+const HTMLToLexicalPlugin = ({ preset }: { preset: string }) => {
   const [editor] = useLexicalComposerContext()
   const isMounted = useRef(false)
 
@@ -15,7 +13,7 @@ const HTMLToLexicalPlugin = () => {
 
     editor.update(() => {
       const parser = new DOMParser()
-      const dom = parser.parseFromString(INITIAL_HTML, 'text/html')
+      const dom = parser.parseFromString(preset, 'text/html')
 
       const nodes = $generateNodesFromDOM(editor, dom)
 
@@ -24,7 +22,7 @@ const HTMLToLexicalPlugin = () => {
     })
 
     isMounted.current = true
-  }, [editor])
+  }, [editor, preset])
 
   return null
 }
