@@ -3,17 +3,13 @@ import { axiosInstance } from '@/lib/axios'
 import { Group, PopularGroup, Template } from '@/app/_types'
 
 export const getMyGroupList = async (): Promise<Group[]> => {
-  try {
-    const response = await axiosInstance.get<Group[]>(API_PATH.GetMyGroupList)
+  const response = await axiosInstance.get<Group[]>(API_PATH.GetMyGroupList)
 
-    if (response.status === 200) {
-      return response.data
-    }
-    return []
-  } catch (error) {
-    console.error('Error during token reissue:', error)
-    throw error
+  if (response.status === 200) {
+    return response.data
   }
+
+  return []
 }
 
 export const getPopularGroupList = async (): Promise<PopularGroup[]> => {
