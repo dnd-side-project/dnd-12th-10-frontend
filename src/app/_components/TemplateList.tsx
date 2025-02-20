@@ -2,6 +2,7 @@ import CardWrap from '@/components/CardWrap'
 import Chip from '@/components/Chip'
 import SectionHeader from './SectionHeader'
 import { Template, TEMPLATE_LIST } from '../_consts'
+import { URL_PATH } from '@/consts/urls'
 
 /** 템플릿 영역 */
 const TemplateList = () => {
@@ -22,9 +23,13 @@ const TemplateList = () => {
 
 export default TemplateList
 
-const TemplateCard = ({ title, description, tags }: Template) => {
+const TemplateCard = ({ id, title, description, tags }: Template) => {
   return (
-    <CardWrap path='/' height={182} size='medium'>
+    <CardWrap
+      path={`${URL_PATH.TemplateDetail}/${id}`}
+      height={182}
+      size='medium'
+    >
       <div className='flex flex-col justify-between'>
         <div>
           <h4 className='text-body01 font-semibold mb-2'>{title}</h4>

@@ -8,6 +8,7 @@ export const URL_PATH = {
   LoginSuccess: '/login/success',
   Signup: '/login/signup',
   MemosCreate: '/memos/create',
+  TemplateDetail: '/memos/template',
 }
 
 export const API_PATH = {
