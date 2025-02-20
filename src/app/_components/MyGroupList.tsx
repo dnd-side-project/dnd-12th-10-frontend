@@ -54,13 +54,18 @@ const MyGroupList = () => {
 export default MyGroupList
 
 const MyGroupCard = ({
+  groupId,
   groupName,
   userCount,
   retrospectCount,
   recentActString,
 }: Group) => {
   return (
-    <CardWrap path='/' height={156} size='medium'>
+    <CardWrap
+      path={`${URL_PATH.GroupList}/${groupId}`}
+      height={156}
+      size='medium'
+    >
       <div className='flex flex-col w-full'>
         <div className='flex w-full justify-between items-center'>
           <h4 className='text-title01 text-gray-900 line-clamp-1'>
