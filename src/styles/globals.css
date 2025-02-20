@@ -31,6 +31,10 @@ body {
   .slick-track {
     margin-left: 0;
   }
+
+  .slick-slide {
+    padding-bottom: 4px;
+  }
 }
 
 /* 스크롤바 넓이, 높이 지정 */
