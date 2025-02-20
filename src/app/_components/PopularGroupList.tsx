@@ -104,8 +104,7 @@ const MemoCard = ({
       </div>
 
       <Link
-        // Todo: 상세페이지 url 따로 변수 만들지 상의 필요 : memos/:id
-        href={`/memos/${retrospectId}`}
+        href={`${URL_PATH.Memos}/${retrospectId}`}
         className='absolute bottom-6 text-blue-500 text-body02 mt-4 block'
       >
         더보기
