@@ -30,7 +30,7 @@ const SliderContainer = ({
 
   const settings = {
     dots: false,
-    arrows: true,
+    arrows: false,
     infinite: false,
     speed: 500,
     slidesToShow: LargeDeviceSlidesToShow,
@@ -56,6 +56,7 @@ const SliderContainer = ({
         </button>
       </div>
       <Slider
+        key={Array.isArray(children) ? children.length : 1}
         className='flex gap-x-4 flex-wrap'
         ref={(slider) => {
           sliderRef.current = slider
