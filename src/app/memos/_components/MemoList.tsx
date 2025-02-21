@@ -1,11 +1,20 @@
-import { RECOMMENDED_GROUP_LIST } from '@/app/_consts'
-import MemoCard from '@/app/memos/_components/MemoCard'
+import { Retrospect } from '@/app/_types'
+import MemoCard from './MemoCard'
 
-const MemoList = () => {
+interface MemoListProps {
+  myMemoList: Retrospect[]
+}
+
+const MemoList = ({ myMemoList }: MemoListProps) => {
   return (
-    <div className='flex gap-x-4 flex-wrap'>
-      {RECOMMENDED_GROUP_LIST.map((props) => (
-        <MemoCard key={`recommended-group-${props.id}`} {...props} />
+    <div className='flex gap-4 flex-wrap h-[186px] overflow-hidden'>
+      {myMemoList.map((props) => (
+        <MemoCard
+          key={`memos-${props.retrospectId}`}
+          retrospectId={props.retrospectId}
+          title={props.title}
+          content={props.content}
+        />
       ))}
     </div>
   )
