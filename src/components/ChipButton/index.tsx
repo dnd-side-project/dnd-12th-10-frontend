@@ -19,6 +19,7 @@ const ChipButton = ({ label, ...restProps }: Props) => {
           'justify-center',
           'text-gray-800',
           'text-body03',
+          'text-nowrap',
           'px-3',
           'cursor-pointer',
           'rounded-sm',
@@ -27,6 +28,7 @@ const ChipButton = ({ label, ...restProps }: Props) => {
           'select-none',
           'border border-gray-900',
           'shadow-[0px_2px_0px_0px_#000000]',
+          'bg-white',
           'peer-checked:bg-green-500',
           'peer-checked:text-white',
         )}
