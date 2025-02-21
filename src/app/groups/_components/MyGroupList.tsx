@@ -1,16 +1,24 @@
 import MyGroupListItem from '@/components/MyGroupListItem'
 import Button from '@/components/Button'
-import { MY_GROUP_LIST } from '../_consts'
+import useMyGroupListQuery from '@/app/_querys/useMyGroupListQuery'
+import { Group } from '@/app/_types'
+import { useState } from 'react'
 
 const MyGroupList = () => {
+  const { myGroupList = [] } = useMyGroupListQuery()
+
   return (
     <div>
       <h3 className='text-title01 text-gray-800'>내 모임</h3>
       <div className='mt-6 bg-[#FAF8F5] p-6 rounded-lg'>
         <div className='text-body02'>
-          전체모임 <span className='text-blue-500'>10</span>
+          전체모임 <span className='text-blue-500'>{myGroupList.length}</span>
         </div>
-        {MY_GROUP_LIST.length > 0 ? <GroupList /> : <NoGroupList />}
+        {myGroupList.length > 0 ? (
+          <GroupList myGroupList={myGroupList} />
+        ) : (
+          <NoGroupList />
+        )}
       </div>
     </div>
   )
@@ -18,19 +26,35 @@ const MyGroupList = () => {
 
 export default MyGroupList
 
-const GroupList = () => {
+const GroupList = ({ myGroupList }: { myGroupList: Group[] }) => {
+  const [showListLength, setShowListLength] = useState(3)
+
   return (
     <>
       <ul className='mt-6 flex flex-col gap-4'>
-        {MY_GROUP_LIST.map((group) => (
-          <li key={group.id}>
-            <MyGroupListItem {...group} />
+        {myGroupList.slice(0, showListLength).map((group) => (
+          <li key={group.groupId}>
+            <MyGroupListItem
+              groupId={group.groupId}
+              groupName={group.groupName}
+              description={group.description}
+              categoryNames={group.categoryNames}
+              userCount={group.userCount}
+              retrospectCount={group.retrospectCount}
+            />
           </li>
         ))}
       </ul>
-      <button className='block mt-6 mx-auto text-title03 text-blue-500'>
-        더보기
-      </button>
+      {showListLength < myGroupList.length && (
+        <button
+          className='block mt-6 mx-auto text-title03 text-blue-500'
+          onClick={() => {
+            setShowListLength((prevState) => prevState + 3)
+          }}
+        >
+          더보기
+        </button>
+      )}
     </>
   )
 }
