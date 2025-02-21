@@ -3,7 +3,7 @@ import { useState } from 'react'
 import IconWithButton from './IconWithButton'
 import ReplyInput from './ReplyInput'
 import AuthorInfo from '@/components/AuthorInfo'
-import { CommentList } from '@/app/groups/[id]/_types'
+import { Comment } from '@/app/groups/[id]/_types'
 import { useParams } from 'next/navigation'
 import useGetReplyList from '@/app/groups/[id]/_queries/useGetReplyList'
 
@@ -14,7 +14,7 @@ const CommentItem = ({
   timeMessage,
   content,
   isAuthor,
-}: CommentList[0]) => {
+}: Comment) => {
   const retrospectId = useParams<{ id: string }>()?.id
   const { data: replyList } = useGetReplyList(retrospectId, String(commentId))
   const [showReplyInput, setShowReplyInput] = useState(false)
@@ -46,8 +46,7 @@ const CommentItem = ({
             답글
           </button>
         </div>
-        {/*답글 인풋창*/}
-        {showReplyInput && <ReplyInput closeReplyInput={closeReplyInput} />}
+
         {/*답글 리스트*/}
         {replyList && replyList.length > 0 && (
           <ul>
@@ -68,6 +67,15 @@ const CommentItem = ({
               </li>
             ))}
           </ul>
+        )}
+
+        {/*답글 인풋창*/}
+        {showReplyInput && (
+          <ReplyInput
+            retrospectId={Number(retrospectId)}
+            commentId={commentId}
+            closeReplyInput={closeReplyInput}
+          />
         )}
       </div>
     </li>

@@ -1,7 +1,7 @@
 import { axiosInstance } from '@/lib/axios'
 import { API_PATH } from '@/consts/urls'
 import { Retrospect } from '@/app/_types'
-import { CommentCreateForm } from '../_types'
+import { CommentCreateForm, CommentCreateResponse } from '../_types'
 
 export const getMyMemoList = async (): Promise<Retrospect[]> => {
   const response = await axiosInstance.get(API_PATH.GetRetrospects)
@@ -9,6 +9,17 @@ export const getMyMemoList = async (): Promise<Retrospect[]> => {
 }
 
 export const postComment = async (data: CommentCreateForm) => {
-  const reponse = await axiosInstance.post(API_PATH.Comment, data)
+  const reponse = await axiosInstance.post<CommentCreateResponse>(
+    API_PATH.Comment,
+    data,
+  )
+  return reponse.data
+}
+
+export const postReply = async (data: CommentCreateForm, commentId: number) => {
+  const reponse = await axiosInstance.post<CommentCreateResponse>(
+    `${API_PATH.Comment}/${commentId}`,
+    data,
+  )
   return reponse.data
 }
