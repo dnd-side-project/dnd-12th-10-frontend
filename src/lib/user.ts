@@ -5,6 +5,7 @@ export interface getUserDataResponse {
   userId: string
   nickname: string
   profileUrl: string
+  featureKeywordList: string[]
 }
 
 export const getUserData = async (): Promise<getUserDataResponse> => {
