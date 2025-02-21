@@ -12,10 +12,13 @@ import ChipButton from '@/components/ChipButton'
 import LimitedInput from '@/components/LimitedInput'
 import { JOB_LIST } from './_consts/jobList'
 import { KEYWORD_LIST } from '@/consts/keywordList'
+import useUserDataQuery from '@/querys/useUserDataQuery'
 
 const MAX_LENGTH = 10
 
 const SignupContainer = () => {
+  const { userData } = useUserDataQuery()
+
   const { signupMutation, isPending } = useSignupMutation()
   const {
     control,
@@ -45,7 +48,7 @@ const SignupContainer = () => {
   return (
     <div className={cn('flex', 'flex-col', 'w-full h-full', 'overflow-auto')}>
       <div className='text-title01 mb-10'>
-        <div>name님! 안녕하세요.</div>
+        <div>{userData?.nickname}님! 안녕하세요.</div>
         <div>마지막으로 추가 정보 입력을 부탁드려요!</div>
       </div>
       <form
