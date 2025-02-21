@@ -9,17 +9,17 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    title: { control: 'text' },
+    groupName: { control: 'text' },
     description: { control: 'text' },
-    peopleCount: { control: 'number' },
-    memoCount: { control: 'number' },
+    userCount: { control: 'number' },
+    retrospectCount: { control: 'number' },
   },
   args: {
-    title: 'Card Wrap',
+    groupName: 'Card Wrap',
     description: 'Card Wrap',
-    peopleCount: 1,
-    memoCount: 1,
-    tagList: ['tag1', 'tag2'],
+    userCount: 1,
+    retrospectCount: 1,
+    categoryNames: ['tag1', 'tag2'],
   },
   decorators: [
     (Story) => (
@@ -40,11 +40,11 @@ type Story = StoryObj<typeof meta>
 
 export const BasicMyGatheringListItem: Story = {
   args: {
-    title: 'Card Wrap',
+    groupName: 'Card Wrap',
     description: 'Card Wrap',
-    peopleCount: 1,
-    memoCount: 1,
-    tagList: ['tag1', 'tag2'],
-    id: '1',
+    userCount: 1,
+    retrospectCount: 1,
+    categoryNames: ['tag1', 'tag2'],
+    groupId: 1,
   },
 }
