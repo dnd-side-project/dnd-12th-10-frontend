@@ -4,13 +4,19 @@ import Button from '@/components/Button'
 import Link from 'next/link'
 import { Icon } from '@/components/Icon'
 import { URL_PATH } from '@/consts/urls'
-import { TEMPLATE_LIST } from '@/app/_consts'
 import { useRouter } from 'next/navigation'
+import useGetTemplate from '@/app/memos/create/_queries/useGetTemplate'
+import { usePathname } from 'next/navigation'
+import DOMPurify from 'dompurify'
 
 const TemplatePage = () => {
-  // Todo: api 연결 필요
-  const template = TEMPLATE_LIST[0]
   const { back } = useRouter()
+  const pathname = usePathname().split('/')
+  const templateId = pathname[pathname.length - 1]
+  const { data } = useGetTemplate(Number(templateId))
+
+  if (!data) return null
+
   return (
     <>
       <button
@@ -25,11 +31,11 @@ const TemplatePage = () => {
           size={20}
         />
         {/*Todo: 이후, 홈에서 입장 시 회고스페이스가 아닌 홈으로 보이는지 확인 필요*/}
-        회고스페이스 / {template.title}
+        회고스페이스 / {data.templateName}
       </button>
       <div className='flex flex-col gap-6 py-[70px] px-[88px]'>
         <div className='flex justify-between'>
-          <h1 className='text-display01'>{template.title}</h1>
+          <h1 className='text-display01'>{data.templateName}</h1>
           <Link href={URL_PATH.MemosCreate}>
             <Button color='primary' variant='filled' size='medium'>
               <Icon name='edit' size={20} className='stroke-white mr-2' />
@@ -37,7 +43,12 @@ const TemplatePage = () => {
             </Button>
           </Link>
         </div>
-        <div className='bg-gray-50 rounded-sm p-10'>{template.description}</div>
+        <div
+          className='bg-gray-50 rounded-sm p-10 whitespace-pre-wrap'
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(data.content),
+          }}
+        />
       </div>
     </>
   )
