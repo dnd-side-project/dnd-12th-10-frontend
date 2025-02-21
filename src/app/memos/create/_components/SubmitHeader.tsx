@@ -6,6 +6,7 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import { useRouter } from 'next/navigation'
 import useMemoCreateMutation from '../_queries/useMemoCreateMutation'
 import { MemoCreateForm } from '../_types/memo'
+import { URL_PATH } from '@/consts/urls'
 
 const SubmitHeader = ({
   title,
@@ -14,8 +15,8 @@ const SubmitHeader = ({
   title: MemoCreateForm['title']
   groupId: MemoCreateForm['groupId']
 }) => {
-  const { back } = useRouter()
-  const { mutate } = useMemoCreateMutation()
+  const { back, replace } = useRouter()
+  const { mutate, isPending } = useMemoCreateMutation()
   const [editor] = useLexicalComposerContext()
 
   const handleSubmit = () => {
@@ -26,7 +27,14 @@ const SubmitHeader = ({
 
     // 모임 id가 존재하는 경우에만 groupId 전달
     if (title.trim()) {
-      mutate({ title, content: htmlResult, ...(groupId ? { groupId } : {}) })
+      mutate(
+        { title, content: htmlResult, ...(groupId ? { groupId } : {}) },
+        {
+          onSuccess: (data) => {
+            replace(`${URL_PATH.Memos}/${data.retrospectId}`)
+          },
+        },
+      )
     }
   }
 
@@ -55,6 +63,7 @@ const SubmitHeader = ({
         color='primary'
         variant='filled'
         size='medium'
+        disabled={isPending}
         onClick={handleSubmit}
       >
         발행하기
