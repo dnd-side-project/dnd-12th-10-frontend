@@ -1,6 +1,7 @@
 import SectionHeader from '@/app/_components/SectionHeader'
 import Link from 'next/link'
 import NoMemoList from './NoMemoList'
+import { URL_PATH } from '@/consts/urls'
 // import MemoList from './MemoList'
 
 const MyMemoStatus = () => {
@@ -11,7 +12,7 @@ const MyMemoStatus = () => {
           title='{name}님의 회고 현황'
           description='총 0개의 회고를 작성했습니다!'
         />
-        <Link href='/' className='mt-6 h-fit'>
+        <Link href={URL_PATH.MyMemos} className='mt-6 h-fit'>
           더보기
         </Link>
       </div>
