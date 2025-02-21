@@ -34,7 +34,8 @@ export const commentSchema = z.object({
   content: z.string(),
   nickName: z.string(),
   timeMessage: z.string(),
-  commentCount: z.number(),
+  likeCount: z.number(),
+  isAuthor: z.boolean(),
 })
 export const commentListSchema = z.array(commentSchema)
 
