@@ -25,5 +25,7 @@ export const API_PATH = {
   TemplateList: '/template/public',
   // TODO: memo와 retrospect 통일 필요
   RetrospectCreate: '/retrospect/add',
+  GetRetrospects: '/retrospect/all',
   GroupList: '/group/list',
+  User: '/user',
 }
