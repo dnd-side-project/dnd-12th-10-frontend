@@ -25,7 +25,9 @@ const SubmitHeader = ({
       .read(() => $generateHtmlFromNodes(editor, null))
 
     // 모임 id가 존재하는 경우에만 groupId 전달
-    mutate({ title, content: htmlResult, ...(groupId ? { groupId } : {}) })
+    if (title.trim()) {
+      mutate({ title, content: htmlResult, ...(groupId ? { groupId } : {}) })
+    }
   }
 
   return (
