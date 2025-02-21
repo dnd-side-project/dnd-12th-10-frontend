@@ -30,7 +30,7 @@ const SignupContainer = () => {
     defaultValues: {
       nickname: '',
       job: '',
-      featureKeyword: [],
+      featureKeywordList: [],
     },
   })
 
@@ -101,7 +101,7 @@ const SignupContainer = () => {
                 <ChipButton
                   key={`tag-${index}`}
                   label={keyword}
-                  {...register('featureKeyword')}
+                  {...register('featureKeywordList')}
                   value={keyword}
                 />
               ))}
