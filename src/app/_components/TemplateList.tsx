@@ -32,10 +32,14 @@ const TemplateList = () => {
 
 export default TemplateList
 
-
-const TemplateCard = ({ templateId, templateName, content, categories }: Template) => {
+const TemplateCard = ({
+  templateId,
+  templateName,
+  content,
+  categories,
+}: Template) => {
   return (
-     <CardWrap
+    <CardWrap
       path={`${URL_PATH.TemplateDetail}/${templateId}`}
       height={182}
       size='medium'
@@ -43,8 +47,8 @@ const TemplateCard = ({ templateId, templateName, content, categories }: Templat
       <div className='flex flex-col justify-between overflow-hidden'>
         <div>
           <h4 className='text-body01 font-semibold mb-2'>{templateName}</h4>
-          <p
-            className='text-gray-700 text-body03 font-normal line-clamp-3'
+          <div
+            className='text-gray-700 text-body03 font-normal line-clamp-3 whitespace-pre-wrap'
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(content),
             }}
