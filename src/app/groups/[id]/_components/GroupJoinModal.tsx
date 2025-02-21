@@ -3,6 +3,7 @@ import { Icon } from '@/components/Icon'
 import Modal from '@/components/Modal'
 import { Group } from '../_types'
 import useJoinGroupMutation from '../_queries/useJoinGroupMutation'
+import openCustomToast from '@/utils/openCustomToast'
 
 const GroupJoinModal = ({
   isOpen,
@@ -19,7 +20,15 @@ const GroupJoinModal = ({
 }) => {
   const { mutate } = useJoinGroupMutation()
   const handleJoin = () => {
-    mutate({ groupId: String(groupId) }, { onSuccess: () => closeModal() })
+    mutate(
+      { groupId: String(groupId) },
+      {
+        onSuccess: () => {
+          closeModal()
+          openCustomToast('모임에 가입되었습니다.', false)
+        },
+      },
+    )
   }
   return (
     <Modal isOpen={isOpen} onClose={closeModal} left={248}>

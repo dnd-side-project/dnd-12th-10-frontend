@@ -4,7 +4,7 @@ import { getRetrospect } from '../_lib'
 /** 개별 회고 조회 */
 const useGetRetrospect = (retrospectId: string) => {
   return useQuery({
-    queryKey: ['getRetrospect'],
+    queryKey: ['getRetrospect', { retrospectId }],
     queryFn: async () => await getRetrospect(retrospectId),
   })
 }
