@@ -19,7 +19,11 @@ const NavigateList = () => {
         iconName='profile-user'
       />
       {/*<NotificationLink />*/}
-      <SidebarItem path='/4' contentName='내 정보' iconName='profile' />
+      <SidebarItem
+        path={URL_PATH.Profile}
+        contentName='내 정보'
+        iconName='profile'
+      />
     </nav>
   )
 }

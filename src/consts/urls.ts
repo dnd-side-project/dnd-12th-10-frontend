@@ -3,6 +3,7 @@ export const URL_PATH = {
   Memos: '/memos',
   Group: '/group',
   GroupList: '/groups',
+  Profile: '/profile',
   GroupCreate: '/groups/create',
   Login: '/login',
   LoginSuccess: '/login/success',
