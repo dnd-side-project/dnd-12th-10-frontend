@@ -1,13 +1,15 @@
 export const URL_PATH = {
   Home: '/',
+  Memos: '/memos',
   Group: '/group',
   GroupList: '/groups',
   GroupCreate: '/groups/create',
   Login: '/login',
   LoginSuccess: '/login/success',
   Signup: '/login/signup',
-  Memos: '/memos',
   MemosCreate: '/memos/create',
+  MyMemos: '/memos/my',
+  TemplateDetail: '/memos/template',
 }
 
 export const API_PATH = {
@@ -23,5 +25,7 @@ export const API_PATH = {
   TemplateList: '/template/public',
   // TODO: memo와 retrospect 통일 필요
   RetrospectCreate: '/retrospect/add',
+  GetRetrospects: '/retrospect/all',
   GroupList: '/group/list',
+  User: '/user',
 }

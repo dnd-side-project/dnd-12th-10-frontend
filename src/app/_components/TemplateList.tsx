@@ -3,6 +3,7 @@
 import CardWrap from '@/components/CardWrap'
 import Chip from '@/components/Chip'
 import SectionHeader from './SectionHeader'
+
 import { Template } from '../_types'
 import DOMPurify from 'dompurify'
 
@@ -31,9 +32,14 @@ const TemplateList = () => {
 
 export default TemplateList
 
-const TemplateCard = ({ templateName, content, categories }: Template) => {
+
+const TemplateCard = ({ templateId, templateName, content, categories }: Template) => {
   return (
-    <CardWrap path={URL_PATH.MemosCreate} height={182} size='medium'>
+     <CardWrap
+      path={`${URL_PATH.TemplateDetail}/${templateId}`}
+      height={182}
+      size='medium'
+    >
       <div className='flex flex-col justify-between overflow-hidden'>
         <div>
           <h4 className='text-body01 font-semibold mb-2'>{templateName}</h4>
