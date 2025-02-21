@@ -21,11 +21,15 @@ export const API_PATH = {
   GetRecommendGroupList: '/group/recommend',
   GetPublicTemplate: '/template/public',
   GroupCreate: '/group',
+  Group: '/group',
   Template: '/template',
   TemplateList: '/template/public',
   // TODO: memo와 retrospect 통일 필요
+  Retrospect: '/retrospect',
   RetrospectCreate: '/retrospect/add',
   GetRetrospects: '/retrospect/all',
   GroupList: '/group/list',
   User: '/user',
+  RetrospectList: '/retrospect/all',
+  Comment: '/comment',
 }

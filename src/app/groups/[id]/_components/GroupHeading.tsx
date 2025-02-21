@@ -3,30 +3,33 @@ import Chip from '@/components/Chip'
 import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
 import { URL_PATH } from '@/consts/urls'
+import { Group } from '../_types'
 
-export interface GroupHeadingProps {
-  groupName: string
-  introduction: string
-  tags: string[]
-  roll: 'LEADER' | 'MEMBER' | null
+interface Props {
+  groupName: Group['groupName']
+  introduction: Group['introduction']
+  categoryNames: Group['categoryNames']
+  role: Group['role']
 }
+
 const GroupHeading = ({
   groupName,
   introduction,
-  tags,
-  roll,
-}: GroupHeadingProps) => {
+  categoryNames,
+  role,
+}: Props) => {
   return (
     <>
       <div className='flex justify-between mb-6'>
         <h2 className='text-display01'>{groupName}</h2>
-        {roll ? <WriteButton /> : <JoinButton />}
+        {role ? <WriteButton /> : <JoinButton />}
       </div>
       <div className='flex gap-2 text-body03 text-gray-800 mb-2'>
-        {tags.map((tag) => (
+        {categoryNames?.map((tag) => (
           <Chip key={tag} label={tag} color='gray' size='small' />
         ))}
-        {roll === 'LEADER' && <InviteButton />}
+        {/* TODO: 초대하기는 후순위 */}
+        {/* {role === 'LEADER' && <InviteButton />} */}
       </div>
       <p className='text-body03 text-gray-700 mb-6'>{introduction}</p>
     </>
@@ -50,11 +53,11 @@ const JoinButton = () => (
   </Button>
 )
 
-const InviteButton = () => {
-  return (
-    <div className='flex gap-1 items-center'>
-      <Icon name='add-square-filled' className='fill-orange-500' size={20} />
-      <span className='text-title03 text-orange-500'>초대하기</span>
-    </div>
-  )
-}
+// const InviteButton = () => {
+//   return (
+//     <div className='flex gap-1 items-center'>
+//       <Icon name='add-square-filled' className='fill-orange-500' size={20} />
+//       <span className='text-title03 text-orange-500'>초대하기</span>
+//     </div>
+//   )
+// }

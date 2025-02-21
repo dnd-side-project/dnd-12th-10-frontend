@@ -4,10 +4,33 @@ import { cn } from '@/utils/cn'
 import Button from '@/components/Button'
 import { useState } from 'react'
 import Textarea from './Textarea'
+import useReplyMutation from '../../_querys/useReplyMutation'
+import { Comment } from '@/app/groups/[id]/_types'
+import openCustomToast from '@/utils/openCustomToast'
+
+interface Props {
+  retrospectId: number
+  commentId: Comment['commentId']
+  closeReplyInput: () => void
+}
 
 /** 답글 인풋창과 버튼을 감싸는 컴포넌트 */
-const ReplyInput = ({ closeReplyInput }: { closeReplyInput: () => void }) => {
+const ReplyInput = ({ retrospectId, commentId, closeReplyInput }: Props) => {
+  const { mutate } = useReplyMutation()
   const [commentValue, setCommentValue] = useState('')
+
+  const handleSubmit = () => {
+    const data = {
+      retrospectId,
+      content: commentValue,
+    }
+    mutate({
+      data,
+      commentId,
+    })
+    openCustomToast('댓글이 작성되었습니다.', false)
+    setCommentValue('')
+  }
 
   return (
     <>
@@ -41,6 +64,7 @@ const ReplyInput = ({ closeReplyInput }: { closeReplyInput: () => void }) => {
               backgroundColor: '#8CC2FF',
             }),
           }}
+          onClick={handleSubmit}
         >
           답글 남기기
         </Button>

@@ -8,7 +8,7 @@ const useGroupCreateMutation = () => {
   return useMutation({
     mutationFn: async (data: GroupCreateForm) => {
       const response = await axiosInstance.post<GroupCreateResponse>(
-        API_PATH.GroupCreate,
+        API_PATH.Group,
         data,
       )
       return response.data
