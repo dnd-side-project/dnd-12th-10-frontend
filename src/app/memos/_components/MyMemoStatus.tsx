@@ -5,7 +5,7 @@ import NoMemoList from './NoMemoList'
 import { URL_PATH } from '@/consts/urls'
 import MemoList from './MemoList'
 import useUserDataQuery from '@/querys/useUserDataQuery'
-import useMyMemoListQuery from '@/app/memos/_querys/useMyMemoListQuery'
+import useMyMemoListQuery from '../_querys/useMyMemoListQuery'
 
 const MyMemoStatus = () => {
   const { userData } = useUserDataQuery()

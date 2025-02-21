@@ -4,7 +4,7 @@ import { Icon } from '@/components/Icon'
 import { useRouter } from 'next/navigation'
 import MemoCard from '../_components/MemoCard'
 import useUserDataQuery from '@/querys/useUserDataQuery'
-import useMyMemoListQuery from '@/app/memos/_querys/useMyMemoListQuery'
+import useMyMemoListQuery from '../_querys/useMyMemoListQuery'
 
 const MyMemosPage = () => {
   const { back } = useRouter()
