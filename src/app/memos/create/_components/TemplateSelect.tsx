@@ -7,34 +7,38 @@ import { Icon } from '@/components/Icon'
 import { cn } from '@/utils/cn'
 import SelectBox from '@/components/SelectBox'
 import FormField from '@/components/FormField'
-import { MemoTypeSelectForm } from '../_types'
-import { MEMO_TYPE_OPTIONS, MY_GROUPS, TEMPLATE_OPTIONS } from '../_consts'
+import { MemoInfoForm } from '../_types/memo'
+import { INITIAL_MEMO_INFO, MEMO_TYPE_OPTIONS } from '../_consts'
 import MemoTypeRadioButton from './MemoTypeRadioButton'
 import TemplateRadioButton from './TemplateRadioButton'
+import React, { SetStateAction } from 'react'
+import useGetTemplateList from '../_queries/useGetTemplateList'
+import useGetMyGroupList from '../_queries/useGetMyGroupList'
 
 /** 회고 유형 선택하는 화면 */
-const TemplateSelect = ({ setNextStep }: { setNextStep: () => void }) => {
+const TemplateSelect = ({
+  setMemoInfo,
+}: {
+  setMemoInfo: React.Dispatch<SetStateAction<MemoInfoForm>>
+}) => {
   const { back } = useRouter()
+  const { data: templateList } = useGetTemplateList()
+  const { data: myGroupList } = useGetMyGroupList()
+
   const {
     control,
     watch,
     handleSubmit,
     setValue,
     formState: { isValid },
-  } = useForm<MemoTypeSelectForm>({
-    defaultValues: {
-      memoType: null,
-      template: '',
-      group: '',
-    },
+  } = useForm<MemoInfoForm>({
+    defaultValues: INITIAL_MEMO_INFO,
   })
 
   const { memoType } = watch()
 
-  const onSubmit = (data: MemoTypeSelectForm) => {
-    // TODO: 글쓰기 화면으로 연결
-    console.log(data)
-    setNextStep()
+  const onSubmit = (data: MemoInfoForm) => {
+    setMemoInfo(data)
   }
 
   return (
@@ -93,7 +97,7 @@ const TemplateSelect = ({ setNextStep }: { setNextStep: () => void }) => {
                   onChange={() => {
                     // '개인' 모임 시에는 선택했던 group을 초기화
                     // TODO: enum 사용
-                    if (value === 'PERSONAL') setValue('group', '')
+                    if (value === 'PERSONAL') setValue('groupId', null)
                     field.onChange(value)
                   }}
                 />
@@ -111,11 +115,16 @@ const TemplateSelect = ({ setNextStep }: { setNextStep: () => void }) => {
             <div className='w-[392px]'>
               <Controller
                 control={control}
-                name='group'
+                name='groupId'
                 rules={{ required: memoType === 'GROUP' }}
                 render={({ field: { onChange } }) => (
                   <SelectBox
-                    options={MY_GROUPS}
+                    options={
+                      myGroupList?.map(({ groupId, groupName }) => ({
+                        key: String(groupId),
+                        label: groupName,
+                      })) ?? []
+                    }
                     placeholder='모임을 선택해주세요.'
                     onChange={onChange}
                   />
@@ -134,18 +143,18 @@ const TemplateSelect = ({ setNextStep }: { setNextStep: () => void }) => {
         </p>
 
         <div className='grid grid-cols-3 gap-4'>
-          {TEMPLATE_OPTIONS.map(({ key, templateName, templateDetail }) => (
+          {templateList?.map(({ templateId, templateName, content }) => (
             <Controller
-              key={`template-${key}`}
+              key={`template-${templateId}`}
               control={control}
-              name='template'
+              name='templateId'
               rules={{ required: true }}
               render={({ field }) => (
                 <TemplateRadioButton
                   templateName={templateName}
-                  templateDetail={templateDetail}
+                  templateContent={content}
                   {...field}
-                  value={key}
+                  value={templateId}
                 />
               )}
             />

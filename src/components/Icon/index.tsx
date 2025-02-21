@@ -52,6 +52,8 @@ import ArrowClockwise from '@/assets/icons/editor/arrow-clockwise.svg'
 import ArrowCounterClockwise from '@/assets/icons/editor/arrow-counterclockwise.svg'
 import OrderedList from '@/assets/icons/editor/ordered-list.svg'
 import UnorderedList from '@/assets/icons/editor/unordered-list.svg'
+import ArrowLeft from '@/assets/icons/arrow-left.svg'
+import ArrowRight from '@/assets/icons/arrow-right.svg'
 
 export const icons = {
   calendar: Calendar,
@@ -105,6 +107,8 @@ export const icons = {
   'arrow-counter-clockwise': ArrowCounterClockwise,
   'ordered-list': OrderedList,
   'unordered-list': UnorderedList,
+  'arrow-left': ArrowLeft,
+  'arrow-right': ArrowRight,
   italic: Italic,
   bold: Bold,
   underline: Underline,

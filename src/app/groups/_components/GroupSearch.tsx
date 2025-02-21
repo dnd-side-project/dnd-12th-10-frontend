@@ -1,8 +1,6 @@
 'use client'
 
 import SearchInput from '@/components/SearchInput'
-import { RECOMMENDED_GROUP_LIST } from '@/app/_consts'
-import { RecommendedGroupCard } from '@/app/_components/RecommendedGroupList'
 
 const GroupSearch = () => {
   return (
@@ -13,24 +11,12 @@ const GroupSearch = () => {
         placeholder='어떤 모임을 찾고 계신가요?'
       />
       <div className='mx-auto mt-6 flex gap-4 flex-wrap'>
-        {RECOMMENDED_GROUP_LIST.map((props) => (
-          <RecommendedGroupCard
-            key={`recommended-group-${props.id}`}
-            {...props}
-          />
-        ))}
-        {RECOMMENDED_GROUP_LIST.map((props) => (
-          <RecommendedGroupCard
-            key={`recommended-group-${props.id}`}
-            {...props}
-          />
-        ))}
-        {RECOMMENDED_GROUP_LIST.map((props) => (
-          <RecommendedGroupCard
-            key={`recommended-group-${props.id}`}
-            {...props}
-          />
-        ))}
+        {/*{.map((props) => (*/}
+        {/*  <RecommendedGroupCard*/}
+        {/*    key={`recommended-group-${props.id}`}*/}
+        {/*    {...props}*/}
+        {/*  />*/}
+        {/*))}*/}
       </div>
     </div>
   )

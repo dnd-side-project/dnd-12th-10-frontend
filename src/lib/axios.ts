@@ -7,11 +7,25 @@ import { reissueToken } from './auth'
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || ''
 
 export const { getAccessToken, setAccessToken } = (() => {
-  let accessToken: string | null = null
-  const getAccessToken = () => accessToken
-  const setAccessToken = (token: string | null) => {
-    accessToken = token
+  const accessTokenKey = 'access_token'
+
+  const getAccessToken = () => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem(accessTokenKey) || null
+    }
+    return null
   }
+
+  const setAccessToken = (token: string | null) => {
+    if (typeof window !== 'undefined') {
+      if (token) {
+        localStorage.setItem(accessTokenKey, token)
+      } else {
+        localStorage.removeItem(accessTokenKey)
+      }
+    }
+  }
+
   return { getAccessToken, setAccessToken }
 })()
 
