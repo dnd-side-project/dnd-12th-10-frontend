@@ -1,16 +1,12 @@
+import { CommentList as CommentListType } from '@/app/groups/[id]/_types'
 import CommentItem from './CommentItem'
-import type { CommentItemProps } from './CommentItem'
-
-interface CommentListProps {
-  commentList: CommentItemProps[]
-}
 
 /** 댓글 리스트 컴포넌트 */
-const CommentList = ({ commentList }: CommentListProps) => {
+const CommentList = ({ commentList }: { commentList: CommentListType }) => {
   return (
     <ul className='mt-4 flex flex-col gap-10'>
       {commentList.map((comment) => (
-        <CommentItem key={comment.id} {...comment} />
+        <CommentItem key={comment.commentId} {...comment} />
       ))}
     </ul>
   )
