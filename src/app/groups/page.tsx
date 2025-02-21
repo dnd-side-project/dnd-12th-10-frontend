@@ -1,3 +1,5 @@
+'use client'
+
 import MyGroupList from './_components/MyGroupList'
 import GroupSearch from '@/app/groups/_components/GroupSearch'
 

@@ -5,30 +5,23 @@ import { cn } from '@/utils/cn'
 import Chip from '@/components/Chip'
 import { useState } from 'react'
 import { Icon, IconName } from '../Icon'
-
-export interface MyGroupListItemProps {
-  id: string
-  title: string
-  description: string
-  tagList: string[]
-  peopleCount: number
-  memoCount: number
-}
+import { Group } from '@/app/_types'
+import { URL_PATH } from '@/consts/urls'
 
 const MyGroupListItem = ({
-  id,
-  title,
+  groupId,
+  groupName,
   description,
-  tagList,
-  peopleCount,
-  memoCount,
-}: MyGroupListItemProps) => {
+  categoryNames,
+  userCount,
+  retrospectCount,
+}: Omit<Group, 'recentActString' | 'introduction'>) => {
   const [isHover, setIsHover] = useState(false)
 
   return (
     <Link
       // Todo: path 변경 필요
-      href={`/${id}`}
+      href={`${URL_PATH.GroupList}/${groupId}`}
       className={cn(
         'flex',
         'gap-20',
@@ -44,9 +37,9 @@ const MyGroupListItem = ({
     >
       <div className='flex flex-col gap-2 overflow-hidden'>
         <div className='flex gap-3'>
-          <h3 className='text-title02'>{title}</h3>
+          <h3 className='text-title02'>{groupName}</h3>
           <div className='flex gap-1 text-body03'>
-            {tagList.map((tag) => (
+            {categoryNames.map((tag) => (
               <Chip
                 key={tag}
                 size='small'
@@ -61,9 +54,9 @@ const MyGroupListItem = ({
         </p>
       </div>
       <div className='flex items-center text-gray-400 gap-2'>
-        <Info iconName='profile-filled' text={`${peopleCount}명`} />
+        <Info iconName='profile-filled' text={`${userCount}명`} />
         ·
-        <Info iconName='clipboard-text-filled' text={`${memoCount}개`} />
+        <Info iconName='clipboard-text-filled' text={`${retrospectCount}개`} />
       </div>
     </Link>
   )

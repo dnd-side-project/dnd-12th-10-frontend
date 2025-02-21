@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { getMyMemoList } from '@/app/memos/_lib'
 
-const useMyGroupListQuery = () => {
+const useMyMemoListQuery = () => {
   const { data, isFetching } = useQuery({
     queryKey: ['MyMemo'],
     queryFn: getMyMemoList,
@@ -10,4 +10,4 @@ const useMyGroupListQuery = () => {
   return { myMemoList: data, isMyMemoListFetching: isFetching }
 }
 
-export default useMyGroupListQuery
+export default useMyMemoListQuery
