@@ -3,6 +3,8 @@ import { axiosInstance } from '@/lib/axios'
 import {
   CommentList,
   Group,
+  GroupJoin,
+  GroupJoinResponse,
   ReplyList,
   Retrospect,
   RetrospectList,
@@ -40,6 +42,14 @@ export const getRetrospect = async (retrospectId: string) => {
 export const getReplyList = async (retrospectId: string, commentId: string) => {
   const response = await axiosInstance.get<ReplyList>(
     `${API_PATH.Comment}/${retrospectId}/${commentId}`,
+  )
+  return response.data
+}
+
+export const postGroupJoin = async (data: GroupJoin) => {
+  const response = await axiosInstance.post<GroupJoinResponse>(
+    `${API_PATH.GroupJoin}`,
+    data,
   )
   return response.data
 }

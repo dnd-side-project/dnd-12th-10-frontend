@@ -24,6 +24,7 @@ export const retrospectSchema = z.object({
   likeCount: z.number(),
   commentCount: z.number(),
   groupName: z.string(),
+  groupId: z.number(),
 })
 export const retrospectListSchema = z.array(retrospectSchema)
 
@@ -50,9 +51,20 @@ export const replyListSchema = z.array(
   }),
 )
 
+export const groupJoinSchema = z.object({
+  groupId: z.string(),
+})
+
+export const gropJoinReponseSchema = z.object({
+  userId: z.string(),
+  groupId: z.number(),
+})
+
 export type Group = z.infer<typeof groupSchema>
 export type RetrospectList = z.infer<typeof retrospectListSchema>
 export type Retrospect = z.infer<typeof retrospectSchema>
 export type Comment = z.infer<typeof commentSchema>
 export type CommentList = z.infer<typeof commentListSchema>
 export type ReplyList = z.infer<typeof replyListSchema>
+export type GroupJoin = z.infer<typeof groupJoinSchema>
+export type GroupJoinResponse = z.infer<typeof gropJoinReponseSchema>

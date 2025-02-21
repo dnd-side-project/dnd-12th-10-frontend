@@ -25,13 +25,15 @@ const Memo = () => {
     commentCount,
     groupName,
     retrospectId,
+    groupId,
   } = memo
 
   console.log(memo)
 
+  // TODO: 수정
   return (
     <div className='py-[72px] px-[88px]'>
-      <GroupInfo groupName={groupName} role={'LEADER'} />
+      <GroupInfo groupName={groupName} groupId={groupId} />
       <article
         className={cn(
           'mt-6',

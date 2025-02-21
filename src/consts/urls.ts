@@ -33,4 +33,5 @@ export const API_PATH = {
   User: '/user',
   RetrospectList: '/retrospect/all',
   Comment: '/comment',
+  GroupJoin: '/group/join',
 }

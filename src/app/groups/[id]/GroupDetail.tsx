@@ -38,7 +38,9 @@ const GroupDetail = () => {
         groupName={groupName}
         introduction={introduction}
         categoryNames={categoryNames}
+        userCount={userCount}
         role={role}
+        groupId={Number(groupId)}
       />
       <div
         className={cn(
@@ -62,7 +64,13 @@ const GroupDetail = () => {
       (isPublic || role !== ROLE.NON_MEMBER) ? (
         <MemoList memoList={memoList} />
       ) : (
-        <NoMemoList isPublic={isPublic} role={role} />
+        <NoMemoList
+          isPublic={isPublic}
+          role={role}
+          groupName={groupName}
+          userCount={userCount}
+          groupId={Number(groupId)}
+        />
       )}
     </div>
   )

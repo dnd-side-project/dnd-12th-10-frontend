@@ -4,12 +4,17 @@ import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
 import { URL_PATH } from '@/consts/urls'
 import { Group } from '../_types'
+import { ROLE } from '../_consts'
+import GroupJoinModal from './GroupJoinModal'
+import useModal from '@/hooks/useModal'
 
 interface Props {
   groupName: Group['groupName']
   introduction: Group['introduction']
   categoryNames: Group['categoryNames']
   role: Group['role']
+  userCount: Group['userCount']
+  groupId: Group['groupId']
 }
 
 const GroupHeading = ({
@@ -17,12 +22,20 @@ const GroupHeading = ({
   introduction,
   categoryNames,
   role,
+  userCount,
+  groupId,
 }: Props) => {
+  const { isOpen, openModal, closeModal } = useModal()
+
   return (
     <>
       <div className='flex justify-between mb-6'>
         <h2 className='text-display01'>{groupName}</h2>
-        {role ? <WriteButton /> : <JoinButton />}
+        {role === ROLE.NON_MEMBER ? (
+          <JoinButton openModal={openModal} />
+        ) : (
+          <WriteButton />
+        )}
       </div>
       <div className='flex gap-2 text-body03 text-gray-800 mb-2'>
         {categoryNames?.map((tag) => (
@@ -32,6 +45,13 @@ const GroupHeading = ({
         {/* {role === 'LEADER' && <InviteButton />} */}
       </div>
       <p className='text-body03 text-gray-700 mb-6'>{introduction}</p>
+      <GroupJoinModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        groupName={groupName}
+        userCount={userCount}
+        groupId={groupId}
+      />
     </>
   )
 }
@@ -46,8 +66,14 @@ const WriteButton = () => (
   </Link>
 )
 
-const JoinButton = () => (
-  <Button color='primary' variant='filled' size='medium'>
+const JoinButton = ({ openModal }: { openModal: () => void }) => (
+  <Button
+    color='primary'
+    variant='filled'
+    size='medium'
+    type='button'
+    onClick={openModal}
+  >
     <Icon name='profile-add' className='stroke-white mr-2' size={20} />
     모임 가입하기
   </Button>
