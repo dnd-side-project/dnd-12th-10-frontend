@@ -63,7 +63,7 @@ const SubmitHeader = ({
         color='primary'
         variant='filled'
         size='medium'
-        disabled={isPending}
+        disabled={!title || isPending}
         onClick={handleSubmit}
       >
         발행하기

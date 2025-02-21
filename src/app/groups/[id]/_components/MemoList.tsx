@@ -63,6 +63,8 @@ const MemoListItem = ({
   likeCount,
   commentCount,
 }: RetrospectList[0]) => {
+  const { push } = useRouter()
+
   return (
     <li className='border-b-1 border-gray-100 pb-[64px]'>
       <article>
@@ -103,6 +105,7 @@ const MemoListItem = ({
             text='댓글'
             count={commentCount}
             countColor='blue'
+            onClick={() => push(`${URL_PATH.Memos}/${retrospectId}`)}
           />
           {/*Todo:공유하기 기능은 후 순위로 판단해 주석 처리*/}
           {/*<button className='ml-auto'>*/}

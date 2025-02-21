@@ -56,7 +56,10 @@ const MyGroupListItem = ({
       <div className='flex items-center text-gray-400 gap-2'>
         <Info iconName='profile-filled' text={`${userCount}명`} />
         ·
-        <Info iconName='clipboard-text-filled' text={`${retrospectCount}개`} />
+        <Info
+          iconName='clipboard-text-filled'
+          text={`${retrospectCount ?? 0}개`}
+        />
       </div>
     </Link>
   )

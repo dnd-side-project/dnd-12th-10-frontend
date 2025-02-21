@@ -84,7 +84,7 @@ const MyGroupCard = ({
             size={16}
           />
           <span className='text-body03 text-gray-400 ml-1'>
-            {retrospectCount}개
+            {retrospectCount ?? 0}개
           </span>
         </div>
 
