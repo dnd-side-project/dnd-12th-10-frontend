@@ -1,6 +1,5 @@
 import { Retrospect } from '@/app/_types'
 import AuthorInfo from '@/components/AuthorInfo'
-import DOMPurify from 'dompurify'
 import Link from 'next/link'
 import { URL_PATH } from '@/consts/urls'
 
@@ -22,7 +21,7 @@ const PopularMemoCard = ({
       <div
         className='text-gray-700 text-body02 font-normal mt-6 whitespace-pre-wrap line-clamp-5'
         dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(content),
+          __html: content,
         }}
       />
       <Link
