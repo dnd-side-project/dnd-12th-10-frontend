@@ -10,6 +10,7 @@ import SectionHeader from './SectionHeader'
 import AuthorInfo from '@/components/AuthorInfo'
 import usePopularGroupListQuery from '../_querys/usePopularGroupListQuery'
 import { URL_PATH } from '@/consts/urls'
+import DOMPurify from 'dompurify'
 
 /** 인기 모임 영역 */
 const PopularGroupList = () => {
@@ -99,13 +100,15 @@ const MemoCard = ({
         author={userName}
         latestUpdateTime={timeString}
       />
-      <div className='text-gray-700 text-body02 font-normal mt-6'>
-        {content}
-      </div>
-
+      <div
+        className='text-gray-700 text-body02 font-normal mt-6 whitespace-pre-wrap line-clamp-5'
+        dangerouslySetInnerHTML={{
+          __html: DOMPurify.sanitize(content),
+        }}
+      />
       <Link
         href={`${URL_PATH.Memos}/${retrospectId}`}
-        className='absolute bottom-6 text-blue-500 text-body02 mt-4 block'
+        className=' bottom-6 text-blue-500 text-body02 mt-4 block'
       >
         더보기
       </Link>
