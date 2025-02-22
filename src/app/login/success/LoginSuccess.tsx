@@ -30,7 +30,7 @@ const SuccessPage = () => {
       OpenCustomToast('로그인에 실패했습니다', true, '❌')
       router.replace(URL_PATH.Login)
     }
-  }, [searchParams, setAccessToken])
+  }, [router, searchParams, setIsLogin])
 
   return null
 }

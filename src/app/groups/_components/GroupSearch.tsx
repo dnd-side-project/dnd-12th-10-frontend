@@ -15,7 +15,7 @@ const GroupSearch = () => {
     if (!isAllGroupListFetching) {
       setFilterData(allGroupList.reverse())
     }
-  }, [isAllGroupListFetching])
+  }, [allGroupList, isAllGroupListFetching])
 
   const handleSearch = (value: string) => {
     if (!value.trim()) {
