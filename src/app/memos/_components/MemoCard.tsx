@@ -2,6 +2,7 @@ import CardWrap from '@/components/CardWrap'
 import { URL_PATH } from '@/consts/urls'
 // import Chip from '@/components/Chip'
 import { Retrospect } from '@/app/_types'
+import DOMPurify from 'dompurify'
 
 const MemoCard = ({
   retrospectId,
@@ -27,9 +28,12 @@ const MemoCard = ({
         {/*  ))}*/}
         {/*</div>*/}
         <h4 className='text-body01 font-semibold mb-2'>{title}</h4>
-        <p className='text-body03 font-normal text-gray-600 line-clamp-3'>
-          {content}
-        </p>
+        <div
+          className='text-body03 font-normal text-gray-600 line-clamp-3'
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(content),
+          }}
+        />
       </div>
     </CardWrap>
   )
