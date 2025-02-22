@@ -13,7 +13,7 @@ const GroupSearch = () => {
 
   useEffect(() => {
     if (!isAllGroupListFetching) {
-      setFilterData(allGroupList)
+      setFilterData(allGroupList.reverse())
     }
   }, [isAllGroupListFetching])
 
