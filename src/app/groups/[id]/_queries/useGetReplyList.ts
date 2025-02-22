@@ -4,7 +4,7 @@ import { getReplyList } from '../_lib'
 /** 댓글에 해당하는 답글 목록 조회 */
 const useGetReplyList = (retrospectId: string, commentId: string) => {
   return useQuery({
-    queryKey: ['getReplyList'],
+    queryKey: ['getReplyList', { commentId }],
     queryFn: async () => await getReplyList(retrospectId, commentId),
   })
 }
