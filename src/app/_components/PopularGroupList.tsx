@@ -5,12 +5,11 @@ import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import Chip from '@/components/Chip'
 import { Icon } from '@/components/Icon'
-import { Group, Retrospect } from '../_types'
+import { Group } from '../_types'
 import SectionHeader from './SectionHeader'
-import AuthorInfo from '@/components/AuthorInfo'
 import usePopularGroupListQuery from '../_querys/usePopularGroupListQuery'
 import { URL_PATH } from '@/consts/urls'
-import DOMPurify from 'dompurify'
+import PopularMemoCard from '@/app/_components/PopularGroupCard'
 
 /** 인기 모임 영역 */
 const PopularGroupList = () => {
@@ -33,7 +32,7 @@ const PopularGroupList = () => {
             />
           ))}
         </div>
-        <MemoCard
+        <PopularMemoCard
           {...popularGroupList[currentActiveMemo]?.retrospectResponseDto}
         />
       </div>
@@ -82,36 +81,5 @@ const PopularGroupCard = ({
         </div>
       )}
     </Link>
-  )
-}
-
-const MemoCard = ({
-  retrospectId,
-  title,
-  content,
-  userName,
-  timeString,
-}: Retrospect) => {
-  return (
-    <div className='bg-white rounded-md p-6 relative w-full'>
-      <h4 className='text-title01 mb-2'>{title}</h4>
-      <AuthorInfo
-        size='medium'
-        author={userName}
-        latestUpdateTime={timeString}
-      />
-      <div
-        className='text-gray-700 text-body02 font-normal mt-6 whitespace-pre-wrap line-clamp-5'
-        dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(content),
-        }}
-      />
-      <Link
-        href={`${URL_PATH.Memos}/${retrospectId}`}
-        className=' bottom-6 text-blue-500 text-body02 mt-4 block'
-      >
-        더보기
-      </Link>
-    </div>
   )
 }
