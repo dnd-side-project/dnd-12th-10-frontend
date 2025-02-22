@@ -18,7 +18,7 @@ interface Props {
 const CommentInput = ({
   commentCount,
   retrospectId,
-  likeCount,
+  // likeCount,
   userName,
 }: Props) => {
   const { mutate } = useCommentMutation()
@@ -36,7 +36,7 @@ const CommentInput = ({
   return (
     <>
       <div className='mt-[72px] flex gap-6'>
-        <IconWithButton iconName='like' count={likeCount} />
+        {/*<IconWithButton iconName='like' count={likeCount} />*/}
         <IconWithButton
           iconName='message'
           text='댓글'

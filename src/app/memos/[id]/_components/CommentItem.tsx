@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import IconWithButton from './IconWithButton'
+// import IconWithButton from './IconWithButton'
 import ReplyInput from './ReplyInput'
 import AuthorInfo from '@/components/AuthorInfo'
 import { Comment } from '@/app/groups/[id]/_types'
@@ -36,7 +36,7 @@ const CommentItem = ({
       <div className='ml-[42px]'>
         <p className='mt-4 text-body01 font-normal'>{content}</p>
         <div className='mt-4 flex'>
-          <IconWithButton iconName='like' count={19} />
+          {/*<IconWithButton iconName='like' count={19} />*/}
           <button
             className='text-title03 text-gray-500 ml-6 hover:text-blue-400'
             onClick={() => {

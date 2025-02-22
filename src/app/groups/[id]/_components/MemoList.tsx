@@ -60,7 +60,7 @@ const MemoListItem = ({
   userName,
   timeString,
   content,
-  likeCount,
+  // likeCount,
   commentCount,
 }: RetrospectList[0]) => {
   const { push } = useRouter()
@@ -99,7 +99,7 @@ const MemoListItem = ({
             'text-title03 text-gray-400 font-semibold',
           )}
         >
-          <IconWithButton iconName='like' count={likeCount} />
+          {/*<IconWithButton iconName='like' count={likeCount} />*/}
           <IconWithButton
             iconName='message'
             text='댓글'
