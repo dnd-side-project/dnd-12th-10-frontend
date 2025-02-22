@@ -55,7 +55,7 @@ const CommentItem = ({
                 <div className='flex items-center gap-3'>
                   <AuthorInfo
                     size='large'
-                    author={reply.userId}
+                    author={reply.nickName}
                     latestUpdateTime={reply.timeMessage}
                   />
                   {/*Todo: 작성자 구분에 따른 조건부렌더링 로직 추가 필요*/}
