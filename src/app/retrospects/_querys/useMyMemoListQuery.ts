@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getMyMemoList } from '@/app/memos/_lib'
+import { getMyMemoList } from '@/app/retrospects/_lib'
 
 const useMyMemoListQuery = () => {
   const { data, isFetching } = useQuery({

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Icon } from '@/components/Icon'
 import { URL_PATH } from '@/consts/urls'
 import { useRouter } from 'next/navigation'
-import useGetTemplate from '@/app/memos/create/_queries/useGetTemplate'
+import useGetTemplate from '@/app/retrospects/create/_queries/useGetTemplate'
 import { usePathname } from 'next/navigation'
 import DOMPurify from 'dompurify'
 
