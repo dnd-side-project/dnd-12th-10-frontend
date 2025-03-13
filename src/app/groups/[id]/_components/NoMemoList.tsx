@@ -66,7 +66,7 @@ const NoMemoList = ({
             size='medium'
             onClick={() => {
               if (role === ROLE.NON_MEMBER) openModal()
-              else push(URL_PATH.MemosCreate)
+              else push(URL_PATH.RetrospectsCreate)
             }}
           >
             <div className='flex px-2.5'>

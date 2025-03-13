@@ -43,7 +43,7 @@ const GroupInfo = ({ groupName, groupId }: GroupInfoProps) => {
 export default GroupInfo
 
 const WriteButton = () => (
-  <Link href={URL_PATH.MemosCreate}>
+  <Link href={URL_PATH.RetrospectsCreate}>
     <Button color='primary' variant='subtle' size='medium'>
       <Icon name='edit' size={20} className='stroke-blue-500 mr-2' />
       글쓰기

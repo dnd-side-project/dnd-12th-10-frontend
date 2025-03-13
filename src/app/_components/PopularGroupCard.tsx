@@ -25,7 +25,7 @@ const PopularMemoCard = ({
         }}
       />
       <Link
-        href={`${URL_PATH.Memos}/${retrospectId}`}
+        href={`${URL_PATH.Retrospects}/${retrospectId}`}
         className=' bottom-6 text-blue-500 text-body02 mt-4 block'
       >
         더보기

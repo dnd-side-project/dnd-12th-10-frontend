@@ -8,7 +8,7 @@ const NoMemoList = () => {
     <div className='flex flex-col items-center text-body02 text-gray-500 mt-16'>
       <p>작성한 회고가 없습니다.</p>
       <p>모임에 가입하거나, 개인적으로 회고를 작성해보세요!</p>
-      <Link href={URL_PATH.MemosCreate}>
+      <Link href={URL_PATH.RetrospectsCreate}>
         <Button
           color='primary'
           variant='subtle'

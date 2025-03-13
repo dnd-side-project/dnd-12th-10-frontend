@@ -11,7 +11,7 @@ const MemoCard = ({
 }: Pick<Retrospect, 'retrospectId' | 'title' | 'content'>) => {
   return (
     <CardWrap
-      path={`${URL_PATH.Memos}/${retrospectId}`}
+      path={`${URL_PATH.Retrospects}/${retrospectId}`}
       size='medium'
       height={182}
     >

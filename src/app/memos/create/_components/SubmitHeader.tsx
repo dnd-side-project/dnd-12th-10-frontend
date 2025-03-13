@@ -31,7 +31,7 @@ const SubmitHeader = ({
         { title, content: htmlResult, ...(groupId ? { groupId } : {}) },
         {
           onSuccess: (data) => {
-            replace(`${URL_PATH.Memos}/${data.retrospectId}`)
+            replace(`${URL_PATH.Retrospects}/${data.retrospectId}`)
           },
         },
       )

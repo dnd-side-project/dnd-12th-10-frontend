@@ -42,7 +42,7 @@ const MemoList = ({ memoList }: { memoList: RetrospectList }) => {
             color='primary'
             variant='subtle'
             size='medium'
-            onClick={() => push(URL_PATH.MemosCreate)}
+            onClick={() => push(URL_PATH.RetrospectsCreate)}
           >
             <Icon name='edit' className='stroke-blue-500 mr-2' size={20} />
             글쓰기
@@ -68,7 +68,10 @@ const MemoListItem = ({
   return (
     <li className='border-b-1 border-gray-100 pb-[64px]'>
       <article>
-        <Link href={`${URL_PATH.Memos}/${retrospectId}`} className='block mb-2'>
+        <Link
+          href={`${URL_PATH.Retrospects}/${retrospectId}`}
+          className='block mb-2'
+        >
           <h3 className='text-title01'>{title}</h3>
         </Link>
         <AuthorInfo
@@ -81,7 +84,7 @@ const MemoListItem = ({
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
         />
         <Link
-          href={`${URL_PATH.Memos}/${retrospectId}`}
+          href={`${URL_PATH.Retrospects}/${retrospectId}`}
           className='text-body02 text-blue-500 mt-4'
         >
           더보기
@@ -105,7 +108,7 @@ const MemoListItem = ({
             text='댓글'
             count={commentCount}
             countColor='blue'
-            onClick={() => push(`${URL_PATH.Memos}/${retrospectId}`)}
+            onClick={() => push(`${URL_PATH.Retrospects}/${retrospectId}`)}
           />
           {/*Todo:공유하기 기능은 후 순위로 판단해 주석 처리*/}
           {/*<button className='ml-auto'>*/}

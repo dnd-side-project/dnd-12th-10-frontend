@@ -21,7 +21,7 @@ const MyMemoStatus = () => {
           title={`${userData.nickname}님의 회고 현황`}
           description={`총 ${myMemoList.length}개의 회고를 작성했습니다!`}
         />
-        <Link href={URL_PATH.MyMemos} className='mt-6 h-fit'>
+        <Link href={URL_PATH.MyRetrospects} className='mt-6 h-fit'>
           더보기
         </Link>
       </div>

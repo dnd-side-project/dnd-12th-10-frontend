@@ -36,7 +36,7 @@ const TemplatePage = () => {
       <div className='flex flex-col gap-6 py-[70px] px-[88px]'>
         <div className='flex justify-between'>
           <h1 className='text-display01'>{data.templateName}</h1>
-          <Link href={URL_PATH.MemosCreate}>
+          <Link href={URL_PATH.RetrospectsCreate}>
             <Button color='primary' variant='filled' size='medium'>
               <Icon name='edit' size={20} className='stroke-white mr-2' />
               글쓰기
