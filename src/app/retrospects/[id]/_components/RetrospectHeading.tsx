@@ -1,7 +1,7 @@
 import Chip from '@/components/Chip'
 import AuthorInfo from '@/components/AuthorInfo'
 
-interface MemoHeadingProps {
+interface RetrospectHeadingProps {
   title: string
   tags: string[]
   author: string
@@ -9,12 +9,12 @@ interface MemoHeadingProps {
 }
 
 /** 회고록 상단 (제목, 태그, 작성 정보) 영역 */
-const MemoHeading = ({
+const RetrospectHeading = ({
   title,
   tags,
   author,
   latestUpdateTime,
-}: MemoHeadingProps) => {
+}: RetrospectHeadingProps) => {
   return (
     <>
       <h1 className='text-display01'>{title}</h1>
@@ -32,4 +32,4 @@ const MemoHeading = ({
   )
 }
 
-export default MemoHeading
+export default RetrospectHeading

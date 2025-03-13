@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn'
 import CommentInput from './_components/CommentInput'
 import CommentList from './_components/CommentList'
 import GroupInfo from './_components/GroupInfo'
-import MemoHeading from './_components/MemoHeading'
+import RetrospectHeading from './_components/RetrospectHeading'
 import { useParams } from 'next/navigation'
 import useGetRetrospect from '@/app/groups/[id]/_queries/useGetRetrospect'
 import useGetCommentList from '@/app/groups/[id]/_queries/useGetCommentList'
@@ -41,7 +41,7 @@ const Retrospect = () => {
           'border-1 border-gray-100',
         )}
       >
-        <MemoHeading
+        <RetrospectHeading
           title={title}
           tags={[]}
           author={userName}
