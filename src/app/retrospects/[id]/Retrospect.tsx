@@ -10,12 +10,13 @@ import useGetRetrospect from '@/app/groups/[id]/_queries/useGetRetrospect'
 import useGetCommentList from '@/app/groups/[id]/_queries/useGetCommentList'
 import DOMPurify from 'dompurify'
 
-const Memo = () => {
-  const memoId = useParams<{ id: string }>()?.id
-  const { data: memo } = useGetRetrospect(memoId)
-  const { data: commentList } = useGetCommentList(memoId)
+const Retrospect = () => {
+  const retrospectId = useParams<{ id: string }>()?.id
+  const { data: retrospect } = useGetRetrospect(retrospectId)
+  const { data: commentList } = useGetCommentList(retrospectId)
 
-  if (!memo) return null
+  if (!retrospect) return null
+
   const {
     title,
     timeString,
@@ -24,11 +25,8 @@ const Memo = () => {
     likeCount,
     commentCount,
     groupName,
-    retrospectId,
     groupId,
-  } = memo
-
-  console.log(memo)
+  } = retrospect
 
   // TODO: 수정
   return (
@@ -54,7 +52,7 @@ const Memo = () => {
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
         />
         <CommentInput
-          retrospectId={retrospectId}
+          retrospectId={Number(retrospectId)}
           commentCount={commentCount}
           likeCount={likeCount}
           userName={userName}
@@ -65,4 +63,4 @@ const Memo = () => {
   )
 }
 
-export default Memo
+export default Retrospect

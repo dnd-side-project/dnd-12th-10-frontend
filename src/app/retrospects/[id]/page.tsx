@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Memo from './Memo'
+import Retrospect from './Retrospect'
 
 // TODO: 추후 회고록 제목 포함으로 변경 필요
 export const metadata: Metadata = {
@@ -7,6 +7,6 @@ export const metadata: Metadata = {
 }
 
 const MemoPage = () => {
-  return <Memo />
+  return <Retrospect />
 }
 export default MemoPage
