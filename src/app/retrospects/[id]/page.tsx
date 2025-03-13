@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Leev | 회고록',
 }
 
-const MemoPage = () => {
+const RetrospectPage = () => {
   return <Retrospect />
 }
-export default MemoPage
+export default RetrospectPage
