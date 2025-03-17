@@ -58,7 +58,7 @@ const GroupHeading = ({
 export default GroupHeading
 
 const WriteButton = () => (
-  <Link href={URL_PATH.MemosCreate}>
+  <Link href={URL_PATH.RetrospectsCreate}>
     <Button color='primary' variant='filled' size='medium'>
       <Icon name='edit' className='stroke-white mr-2' size={20} />
       글쓰기

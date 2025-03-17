@@ -11,7 +11,7 @@ const HIDE_SIDEBAR_PAGE_LIST = [
   URL_PATH.Login,
   URL_PATH.Signup,
   URL_PATH.LoginSuccess,
-  URL_PATH.MemosCreate,
+  URL_PATH.RetrospectsCreate,
 ]
 
 const Sidebar = () => {

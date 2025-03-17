@@ -9,7 +9,7 @@ const NavigateList = () => {
     <nav>
       <SidebarItem path={URL_PATH.Home} contentName='홈' iconName='home' />
       <SidebarItem
-        path={URL_PATH.Memos}
+        path={URL_PATH.Retrospects}
         contentName='회고 스페이스'
         iconName='edit'
       />

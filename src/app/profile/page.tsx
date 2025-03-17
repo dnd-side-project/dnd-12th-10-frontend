@@ -1,7 +1,7 @@
 'use client'
 
 import useUserDataQuery from '@/querys/useUserDataQuery'
-import MyMemoStatus from '@/app/memos/_components/MyMemoStatus'
+import MyRetrospectStatus from '@/app/retrospects/_components/MyRetrospectStatus'
 import ChipButton from '@/components/ChipButton'
 
 const ProfilePage = () => {
@@ -24,7 +24,7 @@ const ProfilePage = () => {
           ))}
         </div>
       </div>
-      <MyMemoStatus />
+      <MyRetrospectStatus />
     </div>
   )
 }
