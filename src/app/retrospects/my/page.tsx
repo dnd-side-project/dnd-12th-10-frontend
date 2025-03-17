@@ -4,12 +4,12 @@ import { Icon } from '@/components/Icon'
 import { useRouter } from 'next/navigation'
 import RetrospectCard from '../_components/RetrospectCard'
 import useUserDataQuery from '@/querys/useUserDataQuery'
-import useMyMemoListQuery from '../_querys/useMyRetrospectListQuery'
+import useMyRetrospectListQuery from '../_querys/useMyRetrospectListQuery'
 
-const MyMemosPage = () => {
+const MyRetrospectsPage = () => {
   const { back } = useRouter()
   const { userData } = useUserDataQuery()
-  const { myMemoList = [] } = useMyMemoListQuery()
+  const { myRetrospectList = [] } = useMyRetrospectListQuery()
   if (!userData) return null
 
   return (
@@ -30,12 +30,12 @@ const MyMemosPage = () => {
       <div className='flex flex-col py-[70px] px-[88px]'>
         <h1 className='text-display01'>{userData.nickname}님의 회고 현황</h1>
         <p className='text-body01 text-gray-700'>
-          총 {myMemoList.length}개의 회고를 작성했습니다!
+          총 {myRetrospectList.length}개의 회고를 작성했습니다!
         </p>
         <div className='mt-4 flex gap-4 flex-wrap'>
-          {myMemoList.map((props) => (
+          {myRetrospectList.map((props) => (
             <RetrospectCard
-              key={`memos-${props.retrospectId}`}
+              key={`retrospects-${props.retrospectId}`}
               retrospectId={props.retrospectId}
               title={props.title}
               content={props.content}
@@ -46,4 +46,4 @@ const MyMemosPage = () => {
     </>
   )
 }
-export default MyMemosPage
+export default MyRetrospectsPage
