@@ -1,13 +1,13 @@
 export interface GroupInfoListProps {
   numOfMembers: number
-  numOfMemos: number
+  numOfRetrospects: number
   createdAtGroup: string
   latestUpdateTime: string
 }
 
 const GroupInfoList = ({
   numOfMembers,
-  numOfMemos,
+  numOfRetrospects,
   createdAtGroup,
   latestUpdateTime,
 }: GroupInfoListProps) => {
@@ -15,7 +15,7 @@ const GroupInfoList = ({
     <div className='flex'>
       <InfoItem title='멤버' content={`${numOfMembers}명`} />
       <VerticalLine />
-      <InfoItem title='총 게시글 수' content={`${numOfMemos}개`} />
+      <InfoItem title='총 게시글 수' content={`${numOfRetrospects}개`} />
       <VerticalLine />
       <InfoItem title='개설일' content={createdAtGroup} />
       <VerticalLine />

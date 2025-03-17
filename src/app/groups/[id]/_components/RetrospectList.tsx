@@ -10,7 +10,11 @@ import { URL_PATH } from '@/consts/urls'
 import { useRouter } from 'next/navigation'
 import DOMPurify from 'dompurify'
 
-const MemoList = ({ memoList }: { memoList: RetrospectList }) => {
+const RetrospectList = ({
+  retrospectList,
+}: {
+  retrospectList: RetrospectList
+}) => {
   const { push } = useRouter()
 
   return (
@@ -28,8 +32,8 @@ const MemoList = ({ memoList }: { memoList: RetrospectList }) => {
           'border-1 border-gray-100',
         )}
       >
-        {memoList.map((memo, index) => (
-          <MemoListItem key={index} {...memo} />
+        {retrospectList.map((retrospect, index) => (
+          <RetrospectListItem key={index} {...retrospect} />
         ))}
         <li className='flex flex-col items-center'>
           <p className='text-title02 text-gray-500'>
@@ -52,9 +56,9 @@ const MemoList = ({ memoList }: { memoList: RetrospectList }) => {
     </>
   )
 }
-export default MemoList
+export default RetrospectList
 
-const MemoListItem = ({
+const RetrospectListItem = ({
   retrospectId,
   title,
   userName,

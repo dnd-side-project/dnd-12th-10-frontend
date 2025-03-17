@@ -18,7 +18,7 @@ interface Props {
   groupId: Group['groupId']
 }
 
-const NoMemoList = ({
+const NoRetrospectList = ({
   groupId,
   isPublic,
   role,
@@ -90,4 +90,4 @@ const NoMemoList = ({
     </>
   )
 }
-export default NoMemoList
+export default NoRetrospectList
