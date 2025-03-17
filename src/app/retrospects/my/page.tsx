@@ -2,9 +2,9 @@
 
 import { Icon } from '@/components/Icon'
 import { useRouter } from 'next/navigation'
-import MemoCard from '../_components/MemoCard'
+import RetrospectCard from '../_components/RetrospectCard'
 import useUserDataQuery from '@/querys/useUserDataQuery'
-import useMyMemoListQuery from '../_querys/useMyMemoListQuery'
+import useMyMemoListQuery from '../_querys/useMyRetrospectListQuery'
 
 const MyMemosPage = () => {
   const { back } = useRouter()
@@ -34,7 +34,7 @@ const MyMemosPage = () => {
         </p>
         <div className='mt-4 flex gap-4 flex-wrap'>
           {myMemoList.map((props) => (
-            <MemoCard
+            <RetrospectCard
               key={`memos-${props.retrospectId}`}
               retrospectId={props.retrospectId}
               title={props.title}

@@ -3,7 +3,7 @@ import { API_PATH } from '@/consts/urls'
 import { Retrospect } from '@/app/_types'
 import { CommentCreateForm, CommentCreateResponse } from '../_types'
 
-export const getMyMemoList = async (): Promise<Retrospect[]> => {
+export const getMyRetrospectList = async (): Promise<Retrospect[]> => {
   const response = await axiosInstance.get(API_PATH.GetRetrospects)
   return response.data
 }

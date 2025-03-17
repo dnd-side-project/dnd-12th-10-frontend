@@ -1,14 +1,14 @@
 import TemplateList from '@/app/_components/TemplateList'
-import MyMemoStatus from './_components/MyMemoStatus'
+import MyRetrospectStatus from './_components/MyRetrospectStatus'
 
-const MemosPage = () => {
+const RetrospectsPage = () => {
   return (
     <div className='flex flex-col gap-[50px] py-[70px] px-[88px]'>
       <h1 className='text-display01'>회고스페이스</h1>
       <TemplateList />
-      <MyMemoStatus />
+      <MyRetrospectStatus />
     </div>
   )
 }
 
-export default MemosPage
+export default RetrospectsPage

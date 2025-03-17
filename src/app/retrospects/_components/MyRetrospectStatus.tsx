@@ -1,16 +1,16 @@
 'use client'
 import SectionHeader from '@/app/_components/SectionHeader'
 import Link from 'next/link'
-import NoMemoList from './NoMemoList'
+import NoRetrospectList from './NoRetrospectList'
 import { URL_PATH } from '@/consts/urls'
-import MemoList from './MemoList'
+import RetrospectList from './RetrospectList'
 import useUserDataQuery from '@/querys/useUserDataQuery'
-import useMyMemoListQuery from '../_querys/useMyMemoListQuery'
+import useMyRetrospectListQuery from '../_querys/useMyRetrospectListQuery'
 
-const MyMemoStatus = () => {
+const MyRetrospectStatus = () => {
   const { userData } = useUserDataQuery()
-  const { myMemoList = [] } = useMyMemoListQuery()
-  const isMyGroupListEmpty = myMemoList.length === 0
+  const { myRetrospectList = [] } = useMyRetrospectListQuery()
+  const isMyGroupListEmpty = myRetrospectList.length === 0
 
   if (!userData) return null
 
@@ -19,18 +19,18 @@ const MyMemoStatus = () => {
       <div className='flex justify-between'>
         <SectionHeader
           title={`${userData.nickname}님의 회고 현황`}
-          description={`총 ${myMemoList.length}개의 회고를 작성했습니다!`}
+          description={`총 ${myRetrospectList.length}개의 회고를 작성했습니다!`}
         />
         <Link href={URL_PATH.MyRetrospects} className='mt-6 h-fit'>
           더보기
         </Link>
       </div>
       {isMyGroupListEmpty ? (
-        <NoMemoList />
+        <NoRetrospectList />
       ) : (
-        <MemoList myMemoList={myMemoList} />
+        <RetrospectList myRetrospectList={myRetrospectList} />
       )}
     </section>
   )
 }
-export default MyMemoStatus
+export default MyRetrospectStatus

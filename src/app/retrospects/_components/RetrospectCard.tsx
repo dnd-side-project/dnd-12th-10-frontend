@@ -4,7 +4,7 @@ import { URL_PATH } from '@/consts/urls'
 import { Retrospect } from '@/app/_types'
 import DOMPurify from 'dompurify'
 
-const MemoCard = ({
+const RetrospectCard = ({
   retrospectId,
   title,
   content,
@@ -39,4 +39,4 @@ const MemoCard = ({
   )
 }
 
-export default MemoCard
+export default RetrospectCard

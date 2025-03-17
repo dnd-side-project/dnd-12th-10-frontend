@@ -3,7 +3,7 @@ import { Icon } from '@/components/Icon'
 import Link from 'next/link'
 import { URL_PATH } from '@/consts/urls'
 
-const NoMemoList = () => {
+const NoRetrospectList = () => {
   return (
     <div className='flex flex-col items-center text-body02 text-gray-500 mt-16'>
       <p>작성한 회고가 없습니다.</p>
@@ -27,4 +27,4 @@ const NoMemoList = () => {
   )
 }
 
-export default NoMemoList
+export default NoRetrospectList
