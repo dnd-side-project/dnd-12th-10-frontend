@@ -3,7 +3,7 @@ import AuthorInfo from '@/components/AuthorInfo'
 import Link from 'next/link'
 import { URL_PATH } from '@/consts/urls'
 
-const PopularMemoCard = ({
+const PopularRetrospectCard = ({
   retrospectId,
   title,
   content,
@@ -34,4 +34,4 @@ const PopularMemoCard = ({
   )
 }
 
-export default PopularMemoCard
+export default PopularRetrospectCard

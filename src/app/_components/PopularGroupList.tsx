@@ -9,11 +9,11 @@ import { Group } from '../_types'
 import SectionHeader from './SectionHeader'
 import usePopularGroupListQuery from '../_querys/usePopularGroupListQuery'
 import { URL_PATH } from '@/consts/urls'
-import PopularMemoCard from '@/app/_components/PopularGroupCard'
+import PopularRetrospectCard from './PopularRetrospectCard'
 
 /** 인기 모임 영역 */
 const PopularGroupList = () => {
-  const [currentActiveMemo, setCurrentActiveMemo] = useState(0)
+  const [currentActiveRetrospect, setCurrentActiveRetrospect] = useState(0)
   const { popularGroupList = [] } = usePopularGroupListQuery()
 
   return (
@@ -23,17 +23,17 @@ const PopularGroupList = () => {
         <div className='flex flex-col gap-y-2'>
           {popularGroupList.slice(0, 3).map((props, index) => (
             <PopularGroupCard
-              isActive={currentActiveMemo === index}
+              isActive={currentActiveRetrospect === index}
               onMouseEnter={() => {
-                setCurrentActiveMemo(index)
+                setCurrentActiveRetrospect(index)
               }}
               key={`popular-group-${props.groupResponseDto.groupId}`}
               {...props.groupResponseDto}
             />
           ))}
         </div>
-        <PopularMemoCard
-          {...popularGroupList[currentActiveMemo]?.retrospectResponseDto}
+        <PopularRetrospectCard
+          {...popularGroupList[currentActiveRetrospect]?.retrospectResponseDto}
         />
       </div>
     </section>
