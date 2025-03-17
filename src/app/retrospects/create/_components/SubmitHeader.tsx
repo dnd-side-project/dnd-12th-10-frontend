@@ -4,19 +4,19 @@ import { cn } from '@/utils/cn'
 import { $generateHtmlFromNodes } from '@lexical/html'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { useRouter } from 'next/navigation'
-import useMemoCreateMutation from '../_queries/useMemoCreateMutation'
-import { MemoCreateForm } from '../_types/memo'
+import useRetrospectCreateMutation from '../_queries/useRetrospectCreateMutation'
+import { RetrospectCreateForm } from '../_types/retrospect'
 import { URL_PATH } from '@/consts/urls'
 
 const SubmitHeader = ({
   title,
   groupId,
 }: {
-  title: MemoCreateForm['title']
-  groupId: MemoCreateForm['groupId']
+  title: RetrospectCreateForm['title']
+  groupId: RetrospectCreateForm['groupId']
 }) => {
   const { back, replace } = useRouter()
-  const { mutate, isPending } = useMemoCreateMutation()
+  const { mutate, isPending } = useRetrospectCreateMutation()
   const [editor] = useLexicalComposerContext()
 
   const handleSubmit = () => {

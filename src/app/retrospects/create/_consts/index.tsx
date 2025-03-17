@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import CharactersImage from '@/assets/images/characters.png'
 import BlueCharacterImage from '@/assets/images/character-blue.png'
-import { MemoInfoForm } from '../_types/memo'
+import { RetrospectInfoForm } from '../_types/retrospect'
 
-export const MEMO_TYPE_OPTIONS = [
+export const RETROSPECT_TYPE_OPTIONS = [
   {
     value: 'GROUP',
     label: '모임 회고',
@@ -35,8 +35,8 @@ export const EDITOR_TEXT_TYPES = [
   },
 ]
 
-export const INITIAL_MEMO_INFO: MemoInfoForm = {
-  memoType: null,
+export const INITIAL_RETROSPECT_INFO: RetrospectInfoForm = {
+  retrospectType: null,
   templateId: null,
   groupId: '',
 }

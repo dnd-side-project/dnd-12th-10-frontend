@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
-import MemoCreate from './MemoCreate'
+import RetrospectCreate from './RetrospectCreate'
 
 export const metadata: Metadata = {
   title: 'Leev | 회고 작성',
 }
 
-const MemoCreatePage = () => {
-  return <MemoCreate />
+const RetrospectCreatePage = () => {
+  return <RetrospectCreate />
 }
-export default MemoCreatePage
+export default RetrospectCreatePage

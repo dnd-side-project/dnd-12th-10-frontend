@@ -1,13 +1,16 @@
 import { useMutation } from '@tanstack/react-query'
-import { MemoCreateForm, MemoCreateResponse } from '../_types/memo'
+import {
+  RetrospectCreateForm,
+  RetrospectCreateResponse,
+} from '../_types/retrospect'
 import { axiosInstance } from '@/lib/axios'
 import { API_PATH } from '@/consts/urls'
 
 /** 회고 생성 */
-const useMemoCreateMutation = () => {
+const useRetrospectCreateMutation = () => {
   return useMutation({
-    mutationFn: async (data: MemoCreateForm) => {
-      const response = await axiosInstance.post<MemoCreateResponse>(
+    mutationFn: async (data: RetrospectCreateForm) => {
+      const response = await axiosInstance.post<RetrospectCreateResponse>(
         API_PATH.RetrospectCreate,
         data,
       )
@@ -18,4 +21,4 @@ const useMemoCreateMutation = () => {
   })
 }
 
-export default useMemoCreateMutation
+export default useRetrospectCreateMutation

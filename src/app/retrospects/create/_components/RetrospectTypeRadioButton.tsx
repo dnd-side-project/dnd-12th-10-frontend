@@ -8,7 +8,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 /** 회고 유형을 선택하는 radio 성격의 버튼 */
-const MemoTypeRadioButton = ({ label, image, ...props }: Props) => {
+const RetrospectTypeRadioButton = ({ label, image, ...props }: Props) => {
   return (
     <label className='w-full cursor-pointer select-none group'>
       <div
@@ -39,4 +39,4 @@ const MemoTypeRadioButton = ({ label, image, ...props }: Props) => {
   )
 }
 
-export default MemoTypeRadioButton
+export default RetrospectTypeRadioButton

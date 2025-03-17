@@ -17,7 +17,7 @@ import ToolbarPlugin from './ToolbarPlugin'
 import '../_styles/index.css'
 import Button from '@/components/Button'
 import SubmitHeader from './SubmitHeader'
-import { MemoInfoForm } from '../_types/memo'
+import { RetrospectInfoForm } from '../_types/retrospect'
 import { Template } from '../_types/template'
 import { editorTheme } from '../_consts'
 import TemplateModal from './TemplateModal'
@@ -37,9 +37,9 @@ function onError(error: unknown) {
   console.error(error)
 }
 
-const Editor = ({ memoInfo }: { memoInfo: MemoInfoForm }) => {
+const Editor = ({ retrospectInfo }: { retrospectInfo: RetrospectInfoForm }) => {
   // TODO: templateId 타입 수정할 것! (nullable 불가능하게)
-  const { data } = useGetTemplate(memoInfo.templateId ?? 0)
+  const { data } = useGetTemplate(retrospectInfo.templateId ?? 0)
   const [title, setTitle] = useState('')
 
   if (!data) return null
@@ -47,7 +47,7 @@ const Editor = ({ memoInfo }: { memoInfo: MemoInfoForm }) => {
   return (
     <>
       <LexicalComposer initialConfig={initialConfig}>
-        <SubmitHeader title={title} groupId={Number(memoInfo.groupId)} />
+        <SubmitHeader title={title} groupId={Number(retrospectInfo.groupId)} />
         <div className='max-w-[1016px] mx-auto mt-[50px] mb-28'>
           <input
             type='text'

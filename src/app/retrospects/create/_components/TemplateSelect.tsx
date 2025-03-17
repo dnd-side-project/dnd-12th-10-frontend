@@ -7,9 +7,9 @@ import { Icon } from '@/components/Icon'
 import { cn } from '@/utils/cn'
 import SelectBox from '@/components/SelectBox'
 import FormField from '@/components/FormField'
-import { MemoInfoForm } from '../_types/memo'
-import { INITIAL_MEMO_INFO, MEMO_TYPE_OPTIONS } from '../_consts'
-import MemoTypeRadioButton from './MemoTypeRadioButton'
+import { RetrospectInfoForm } from '../_types/retrospect'
+import { INITIAL_RETROSPECT_INFO, RETROSPECT_TYPE_OPTIONS } from '../_consts'
+import RetrospectTypeRadioButton from './RetrospectTypeRadioButton'
 import TemplateRadioButton from './TemplateRadioButton'
 import React, { SetStateAction } from 'react'
 import useGetTemplateList from '../_queries/useGetTemplateList'
@@ -17,9 +17,9 @@ import useGetMyGroupList from '../_queries/useGetMyGroupList'
 
 /** 회고 유형 선택하는 화면 */
 const TemplateSelect = ({
-  setMemoInfo,
+  setRetrospectInfo,
 }: {
-  setMemoInfo: React.Dispatch<SetStateAction<MemoInfoForm>>
+  setRetrospectInfo: React.Dispatch<SetStateAction<RetrospectInfoForm>>
 }) => {
   const { back } = useRouter()
   const { data: templateList } = useGetTemplateList()
@@ -31,14 +31,14 @@ const TemplateSelect = ({
     handleSubmit,
     setValue,
     formState: { isValid },
-  } = useForm<MemoInfoForm>({
-    defaultValues: INITIAL_MEMO_INFO,
+  } = useForm<RetrospectInfoForm>({
+    defaultValues: INITIAL_RETROSPECT_INFO,
   })
 
-  const { memoType } = watch()
+  const { retrospectType } = watch()
 
-  const onSubmit = (data: MemoInfoForm) => {
-    setMemoInfo(data)
+  const onSubmit = (data: RetrospectInfoForm) => {
+    setRetrospectInfo(data)
   }
 
   return (
@@ -82,14 +82,14 @@ const TemplateSelect = ({
         {/* 회고 유형 선택 영역 */}
         <h2 className='text-title01 mb-6'>회고 유형을 선택해주세요.</h2>
         <div className='flex gap-x-4 mb-4'>
-          {MEMO_TYPE_OPTIONS.map(({ value, label, image }) => (
+          {RETROSPECT_TYPE_OPTIONS.map(({ value, label, image }) => (
             <Controller
-              key={`memo-type-${value}`}
-              name='memoType'
+              key={`retrospect-type-${value}`}
+              name='retrospectType'
               control={control}
               rules={{ required: true }}
               render={({ field }) => (
-                <MemoTypeRadioButton
+                <RetrospectTypeRadioButton
                   label={label}
                   image={image}
                   {...field}
@@ -107,7 +107,7 @@ const TemplateSelect = ({
         </div>
 
         {/* 회고 작성할 모임 선택 영역 ('모임' 회고일 때만 노출) */}
-        {memoType === 'GROUP' && (
+        {retrospectType === 'GROUP' && (
           <FormField
             fieldTitle='회고 글을 작성할 모임을 선택해주세요.'
             required
@@ -116,7 +116,7 @@ const TemplateSelect = ({
               <Controller
                 control={control}
                 name='groupId'
-                rules={{ required: memoType === 'GROUP' }}
+                rules={{ required: retrospectType === 'GROUP' }}
                 render={({ field: { onChange } }) => (
                   <SelectBox
                     options={
