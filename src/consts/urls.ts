@@ -3,6 +3,7 @@ export const URL_PATH = {
   Retrospects: '/retrospects',
   Group: '/group',
   GroupList: '/groups',
+  GroupUpdate: '/groups/update',
   Profile: '/profile',
   GroupCreate: '/groups/create',
   Login: '/login',
