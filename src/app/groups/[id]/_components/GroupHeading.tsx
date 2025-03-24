@@ -42,7 +42,7 @@ const GroupHeading = ({
           <Chip key={tag} label={tag} color='gray' size='small' />
         ))}
         {/* TODO: 초대하기는 후순위 */}
-        {/* {role === 'LEADER' && <InviteButton />} */}
+        {role === 'LEADER' && <InviteButton />}
       </div>
       <p className='text-body03 text-gray-700 mb-6'>{introduction}</p>
       <GroupJoinModal
@@ -79,11 +79,11 @@ const JoinButton = ({ openModal }: { openModal: () => void }) => (
   </Button>
 )
 
-// const InviteButton = () => {
-//   return (
-//     <div className='flex gap-1 items-center'>
-//       <Icon name='add-square-filled' className='fill-orange-500' size={20} />
-//       <span className='text-title03 text-orange-500'>초대하기</span>
-//     </div>
-//   )
-// }
+const InviteButton = () => {
+  return (
+    <button className='flex gap-1 items-center'>
+      <Icon name='add-square-filled' className='fill-orange-500' size={20} />
+      <span className='text-title03 text-orange-500'>초대하기</span>
+    </button>
+  )
+}
