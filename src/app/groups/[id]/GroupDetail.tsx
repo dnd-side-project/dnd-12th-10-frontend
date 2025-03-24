@@ -55,6 +55,8 @@ const GroupDetail = () => {
           numOfRetrospects={retrospectCount}
           createdAtGroup={createDate}
           latestUpdateTime={recentActString}
+          role={role}
+          groupId={Number(groupId)}
         />
         {description && <GroupDescription description={description} />}
       </div>

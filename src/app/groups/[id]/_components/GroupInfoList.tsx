@@ -1,8 +1,13 @@
+import { Group } from '@/app/groups/[id]/_types'
+import GroupActionsDropdown from './GroupActionsDropdown'
+
 export interface GroupInfoListProps {
   numOfMembers: number
   numOfRetrospects: number
   createdAtGroup: string
   latestUpdateTime: string
+  role: Group['role']
+  groupId: number
 }
 
 const GroupInfoList = ({
@@ -10,6 +15,8 @@ const GroupInfoList = ({
   numOfRetrospects,
   createdAtGroup,
   latestUpdateTime,
+  role,
+  groupId,
 }: GroupInfoListProps) => {
   return (
     <div className='flex'>
@@ -20,6 +27,7 @@ const GroupInfoList = ({
       <InfoItem title='개설일' content={createdAtGroup} />
       <VerticalLine />
       <InfoItem title='마지막 회고' content={latestUpdateTime} />
+      <GroupActionsDropdown role={role} groupId={groupId} />
     </div>
   )
 }
