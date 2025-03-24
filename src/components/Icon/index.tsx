@@ -54,6 +54,7 @@ import OrderedList from '@/assets/icons/editor/ordered-list.svg'
 import UnorderedList from '@/assets/icons/editor/unordered-list.svg'
 import ArrowLeft from '@/assets/icons/arrow-left.svg'
 import ArrowRight from '@/assets/icons/arrow-right.svg'
+import More from '@/assets/icons/more.svg'
 
 export const icons = {
   calendar: Calendar,
@@ -75,6 +76,7 @@ export const icons = {
   add: Add,
   logo: Logo,
   check: Check,
+  more: More,
   'document-text': DocumentText,
   'profile-add': ProfileAdd,
   'profile-user': ProfileUser,
