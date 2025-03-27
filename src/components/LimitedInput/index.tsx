@@ -7,6 +7,8 @@ const DEFAULT_MAX_LENGTH = 10
 
 interface BaseProps
   extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+  /** 초기 글자수 */
+  initialCharCount?: number
   /** 최대 제한 글자수 */
   maxLength?: number
   /** 에러 문구 */
@@ -32,12 +34,13 @@ type Props = BaseProps &
  * input 또는 textfield를 사용할 수 있다.
  */
 const LimitedInput = ({
+  initialCharCount = 0,
   maxLength = DEFAULT_MAX_LENGTH,
   alertMessage,
   onMaxLength,
   ...props
 }: Props) => {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(initialCharCount)
   const { multiline, ...restProps } = props
 
   const handleChange = (
