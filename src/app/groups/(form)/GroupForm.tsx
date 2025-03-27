@@ -19,7 +19,7 @@ const MAX_GROUP_NAME_LENGTH = 10
 const MAX_INTRO_LENGTH = 70
 const MAX_DESCRIPTION_LENGTH = 100
 
-const GroupCreateForm = () => {
+const GroupForm = () => {
   const { mutate } = useGroupCreateMutation()
   const { push } = useRouter()
 
@@ -178,4 +178,4 @@ const GroupCreateForm = () => {
   )
 }
 
-export default GroupCreateForm
+export default GroupForm
