@@ -11,6 +11,7 @@ import Spinner from '@/components/Spinner'
 import useGetGroupInfo from './_queries/useGetGroupInfo'
 import useGetRetrospectList from './_queries/useGetRetrospectList'
 import { ROLE } from './_consts'
+import GroupActionsDropdown from '@/app/groups/[id]/_components/GroupActionsDropdown'
 
 const GroupDetail = () => {
   const groupId = useParams<{ id: string }>()?.id
@@ -50,14 +51,15 @@ const GroupDetail = () => {
           'rounded-lg',
         )}
       >
-        <GroupInfoList
-          numOfMembers={userCount}
-          numOfRetrospects={retrospectCount}
-          createdAtGroup={createDate}
-          latestUpdateTime={recentActString}
-          role={role}
-          groupId={Number(groupId)}
-        />
+        <div className='flex'>
+          <GroupInfoList
+            numOfMembers={userCount}
+            numOfRetrospects={retrospectCount}
+            createdAtGroup={createDate}
+            latestUpdateTime={recentActString}
+          />
+          <GroupActionsDropdown role={role} groupId={Number(groupId)} />
+        </div>
         {description && <GroupDescription description={description} />}
       </div>
 
