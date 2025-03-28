@@ -5,6 +5,7 @@ import { URL_PATH } from '@/consts/urls'
 import { Dropdown as DropdownHero } from '@heroui/dropdown'
 import { DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react'
 
+/** 모임 액션 드롭다운 */
 const GroupActionsDropdown = ({
   role,
   groupId,
