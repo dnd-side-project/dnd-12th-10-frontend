@@ -26,6 +26,9 @@ const useGroupUpdateMutation = (groupId: string) => {
       queryClient.invalidateQueries({
         queryKey: ['getGroupInfo', { groupId }],
       })
+      queryClient.invalidateQueries({
+        queryKey: ['MyGroup'],
+      })
     },
     // 공통 에러 처리 필요
     onError: (error) => console.error(error),
