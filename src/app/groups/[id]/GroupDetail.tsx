@@ -21,17 +21,17 @@ const GroupDetail = () => {
   const groupId = useParams<{ id: string }>()?.id
   const { data: groupInfo } = useGetGroupInfo(groupId)
   const { data: retrospectList } = useGetRetrospectList(groupId)
-  const { isOpen, openConfirm, onConfirm, onCancel, ConfirmResponse } =
+  const { isOpen, openConfirm, onConfirm, onCancel, confirmResponse } =
     useConfirm()
 
   const { mutate: deleteGroupMutate } = useDeleteGroupMutation(String(groupId))
 
   useEffect(() => {
-    if (ConfirmResponse) {
+    if (confirmResponse) {
       // Todo: 삭제하는 동안 로딩 상태 표시 고민
       deleteGroupMutate()
     }
-  }, [ConfirmResponse])
+  }, [confirmResponse])
 
   if (!groupInfo) return <Spinner />
 
@@ -77,7 +77,7 @@ const GroupDetail = () => {
             role={role}
             groupId={Number(groupId)}
             openDeleteGroupConfirm={openConfirm}
-            ConfirmResponse={ConfirmResponse}
+            confirmResponse={confirmResponse}
           />
         </div>
         {description && <GroupDescription description={description} />}

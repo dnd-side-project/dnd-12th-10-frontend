@@ -12,22 +12,22 @@ const GroupActionsDropdown = ({
   role,
   groupId,
   openDeleteGroupConfirm,
-  ConfirmResponse,
+  confirmResponse,
 }: {
   role: Group['role']
   groupId: number
   openDeleteGroupConfirm: VoidFunction
-  ConfirmResponse: boolean | undefined
+  confirmResponse: boolean | undefined
 }) => {
   const isLeader = role === 'LEADER'
   const { mutate: deleteGroupMutate } = useDeleteGroupMutation(String(groupId))
 
   useEffect(() => {
-    if (ConfirmResponse) {
+    if (confirmResponse) {
       // Todo: 삭제하는 동안 로딩 상태 표시 고민
       deleteGroupMutate()
     }
-  }, [ConfirmResponse])
+  }, [confirmResponse])
 
   return (
     <DropdownHero>

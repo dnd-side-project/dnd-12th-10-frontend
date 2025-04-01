@@ -20,7 +20,7 @@ const useConfirm = () => {
   return {
     isOpen,
     openConfirm: handleOpen,
-    ConfirmResponse: response,
+    confirmResponse: response,
     onConfirm,
     onCancel,
   }
