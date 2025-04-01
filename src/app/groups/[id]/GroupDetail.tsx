@@ -12,11 +12,26 @@ import useGetGroupInfo from './_queries/useGetGroupInfo'
 import useGetRetrospectList from './_queries/useGetRetrospectList'
 import { ROLE } from './_consts'
 import GroupActionsDropdown from '@/app/groups/[id]/_components/GroupActionsDropdown'
+import Confirm from '@/components/Confirm'
+import useConfirm from '@/hooks/useConfirm'
+import useDeleteGroupMutation from '@/app/groups/[id]/_queries/useDeleteGroupMutation'
+import { useEffect } from 'react'
 
 const GroupDetail = () => {
   const groupId = useParams<{ id: string }>()?.id
   const { data: groupInfo } = useGetGroupInfo(groupId)
   const { data: retrospectList } = useGetRetrospectList(groupId)
+  const { isOpen, openConfirm, onConfirm, onCancel, ConfirmResponse } =
+    useConfirm()
+
+  const { mutate: deleteGroupMutate } = useDeleteGroupMutation(String(groupId))
+
+  useEffect(() => {
+    if (ConfirmResponse) {
+      // Todo: 삭제하는 동안 로딩 상태 표시 고민
+      deleteGroupMutate()
+    }
+  }, [ConfirmResponse])
 
   if (!groupInfo) return <Spinner />
 
@@ -58,7 +73,12 @@ const GroupDetail = () => {
             createdAtGroup={createDate}
             latestUpdateTime={recentActString}
           />
-          <GroupActionsDropdown role={role} groupId={Number(groupId)} />
+          <GroupActionsDropdown
+            role={role}
+            groupId={Number(groupId)}
+            openDeleteGroupConfirm={openConfirm}
+            ConfirmResponse={ConfirmResponse}
+          />
         </div>
         {description && <GroupDescription description={description} />}
       </div>
@@ -76,6 +96,13 @@ const GroupDetail = () => {
           groupId={Number(groupId)}
         />
       )}
+      <Confirm
+        isOpen={isOpen}
+        title='선택한 모임을 삭제하시겠습니까?'
+        message='삭제된 모임은 복구되지 않습니다.'
+        onCancel={onCancel}
+        onConfirm={onConfirm}
+      />
     </div>
   )
 }

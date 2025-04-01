@@ -4,16 +4,30 @@ import { Icon } from '@/components/Icon'
 import { URL_PATH } from '@/consts/urls'
 import { Dropdown as DropdownHero } from '@heroui/dropdown'
 import { DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react'
+import useDeleteGroupMutation from '@/app/groups/[id]/_queries/useDeleteGroupMutation'
+import { useEffect } from 'react'
 
-/** 모임 액션 드롭다운 */
+/** 모임 액션 메뉴(수정, 삭제) 드롭다운 */
 const GroupActionsDropdown = ({
   role,
   groupId,
+  openDeleteGroupConfirm,
+  ConfirmResponse,
 }: {
   role: Group['role']
   groupId: number
+  openDeleteGroupConfirm: VoidFunction
+  ConfirmResponse: boolean | undefined
 }) => {
   const isLeader = role === 'LEADER'
+  const { mutate: deleteGroupMutate } = useDeleteGroupMutation(String(groupId))
+
+  useEffect(() => {
+    if (ConfirmResponse) {
+      // Todo: 삭제하는 동안 로딩 상태 표시 고민
+      deleteGroupMutate()
+    }
+  }, [ConfirmResponse])
 
   return (
     <DropdownHero>
@@ -22,29 +36,42 @@ const GroupActionsDropdown = ({
           <Icon name='more' className='fill-gray-400' size={20} />
         </button>
       </DropdownTrigger>
-      {isLeader ? <LeaderMenu groupId={groupId} /> : <MemberMenu />}
+      {isLeader ? (
+        <LeaderMenu
+          openDeleteGroupConfirm={openDeleteGroupConfirm}
+          groupId={groupId}
+        />
+      ) : (
+        <MemberMenu />
+      )}
     </DropdownHero>
   )
 }
 
 export default GroupActionsDropdown
 
-const LeaderMenu = ({ groupId }: { groupId: number }) => {
-  // const deleteGroup = () => {}
-
+const LeaderMenu = ({
+  groupId,
+  openDeleteGroupConfirm,
+}: {
+  groupId: number
+  openDeleteGroupConfirm: VoidFunction
+}) => {
   return (
-    <DropdownMenu aria-label='Leader Actions Menu'>
-      <DropdownItem
-        key='update'
-        as={Link}
-        href={URL_PATH.GroupUpdate + `/${groupId}`}
-      >
-        수정하기
-      </DropdownItem>
-      <DropdownItem key='delete' color='danger'>
-        모임 삭제하기
-      </DropdownItem>
-    </DropdownMenu>
+    <>
+      <DropdownMenu aria-label='Leader Actions Menu'>
+        <DropdownItem
+          key='update'
+          as={Link}
+          href={URL_PATH.GroupUpdate + `/${groupId}`}
+        >
+          수정하기
+        </DropdownItem>
+        <DropdownItem key='delete' color='danger'>
+          <button onClick={openDeleteGroupConfirm}>모임 삭제하기</button>
+        </DropdownItem>
+      </DropdownMenu>
+    </>
   )
 }
 
