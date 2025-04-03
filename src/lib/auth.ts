@@ -1,5 +1,6 @@
-import { axiosInstance, setAccessToken } from '@/lib/axios'
+import { axiosInstance } from '@/lib/axios'
 import { API_PATH } from '@/consts/urls'
+import { setAccessToken } from '@/utils/auth'
 
 export const reissueToken = async () => {
   try {

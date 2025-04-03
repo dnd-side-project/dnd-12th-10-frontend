@@ -1,11 +1,12 @@
+import { getAccessToken } from '@/utils/auth'
 import { create } from 'zustand'
 
 interface AuthStore {
-  isLogin: boolean
+  isLoggedIn: boolean
   setIsLogin: (state: boolean) => void
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
-  isLogin: false,
-  setIsLogin: (state: boolean) => set({ isLogin: state }),
+  isLoggedIn: !!getAccessToken(),
+  setIsLogin: (state: boolean) => set({ isLoggedIn: state }),
 }))

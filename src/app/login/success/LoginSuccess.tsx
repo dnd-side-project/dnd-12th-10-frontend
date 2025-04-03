@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { URL_PATH } from '@/consts/urls'
 import { useAuthStore } from '@/store/auth'
-import { setAccessToken } from '@/lib/axios'
+import { setAccessToken } from '@/utils/auth'
 import OpenCustomToast from '@/utils/openCustomToast'
 
 const SuccessPage = () => {
@@ -19,7 +19,6 @@ const SuccessPage = () => {
 
       if (accessToken) {
         setAccessToken(accessToken)
-        setIsLogin(true)
         router.replace(isRegistered ? URL_PATH.Signup : URL_PATH.Home)
       } else {
         OpenCustomToast('로그인에 실패했습니다', true, '❌')
