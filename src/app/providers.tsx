@@ -5,10 +5,13 @@ import { HeroUIProvider } from '@heroui/react'
 // Since QueryClientProvider relies on useContext under the hood, we have to put 'use client' on top
 import {
   isServer,
+  MutationCache,
+  QueryCache,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { handleError } from '@/utils/handleError'
 
 function makeQueryClient() {
   return new QueryClient({
@@ -17,8 +20,15 @@ function makeQueryClient() {
         // With SSR, we usually want to set some default staleTime
         // above 0 to avoid refetching immediately on the client
         staleTime: 60 * 1000,
+        retry: 0,
       },
     },
+    queryCache: new QueryCache({
+      onError: handleError,
+    }),
+    mutationCache: new MutationCache({
+      onError: handleError,
+    }),
   })
 }
 
