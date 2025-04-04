@@ -38,6 +38,7 @@ export const handleError = async (error: unknown) => {
   switch (status) {
     case 401:
       // 로그아웃 처리
+      alert('다시 로그인해주세요.')
       clearLocalStorage()
       window.location.href = '/'
       return
