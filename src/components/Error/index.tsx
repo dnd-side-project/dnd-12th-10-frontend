@@ -17,7 +17,7 @@ const Error = ({
   }
 
   return (
-    <div className='grow overflow-auto flex flex-col justify-center items-center gap-y-8'>
+    <div className='h-screen grow overflow-auto flex flex-col justify-center items-center gap-y-8'>
       <strong className='text-title01'>{errorMessage}</strong>
       <Button
         type='button'
