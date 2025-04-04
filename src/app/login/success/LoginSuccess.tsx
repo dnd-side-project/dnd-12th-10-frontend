@@ -3,12 +3,10 @@
 import { useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { URL_PATH } from '@/consts/urls'
-import { useAuthStore } from '@/store/auth'
 import { setAccessToken } from '@/utils/auth'
 import OpenCustomToast from '@/utils/openCustomToast'
 
 const SuccessPage = () => {
-  const { setIsLogin } = useAuthStore()
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -29,7 +27,7 @@ const SuccessPage = () => {
       OpenCustomToast('로그인에 실패했습니다', true, '❌')
       router.replace(URL_PATH.Login)
     }
-  }, [router, searchParams, setIsLogin])
+  }, [router, searchParams])
 
   return null
 }
