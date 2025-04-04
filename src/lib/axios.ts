@@ -40,10 +40,9 @@ axiosInstance.interceptors.response.use(
 
     if (error.response?.status === 401) {
       try {
-        await reissueToken()
+        const newToken = await reissueToken()
 
         if (originalRequest.headers) {
-          const newToken = getAccessToken()
           originalRequest.headers.Authorization = newToken
             ? `Bearer ${newToken}`
             : ''
