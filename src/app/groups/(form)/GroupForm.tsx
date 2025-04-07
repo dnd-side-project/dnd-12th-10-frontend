@@ -23,11 +23,11 @@ const MAX_DESCRIPTION_LENGTH = 100
 
 const GroupForm = () => {
   const { replace } = useRouter()
-  const { mutate: CreateMutate } = useGroupCreateMutation()
+  const { mutate: createMutate } = useGroupCreateMutation()
 
   const { id: groupId = '' } = useParams<{ id: string }>()
   const { data: prevGroupInfo } = useGetGroupInfo(groupId)
-  const { mutate: UpdateMutate } = useGroupUpdateMutation(groupId)
+  const { mutate: updateMutate } = useGroupUpdateMutation(groupId)
 
   const {
     register,
@@ -68,13 +68,13 @@ const GroupForm = () => {
   }
 
   const onCreate = (data: GroupCreateFormType) => {
-    CreateMutate(data, {
+    createMutate(data, {
       onSuccess: ({ groupId }) => replace(`${URL_PATH.GroupList}/${groupId}`),
     })
   }
 
   const onUpdate = (data: GroupCreateFormType) => {
-    UpdateMutate(
+    updateMutate(
       { groupId, data },
       {
         onSuccess: () => replace(`${URL_PATH.GroupList}/${groupId}`),
