@@ -21,7 +21,7 @@ const MAX_GROUP_NAME_LENGTH = 10
 const MAX_INTRO_LENGTH = 70
 const MAX_DESCRIPTION_LENGTH = 100
 
-const GroupForm = () => {
+const GroupForm = ({ mode }: { mode: 'create' | 'update' }) => {
   const { replace } = useRouter()
   const { mutate: createMutate } = useGroupCreateMutation()
 
@@ -82,9 +82,17 @@ const GroupForm = () => {
     )
   }
 
+  const onSubmit = (data: GroupCreateFormType) => {
+    if (mode === 'create') {
+      onCreate(data)
+    } else {
+      onUpdate(data)
+    }
+  }
+
   return (
     <form
-      onSubmit={handleSubmit(groupId ? onUpdate : onCreate)}
+      onSubmit={handleSubmit(onSubmit)}
       className={cn(
         'bg-white',
         'border border-gray-100',

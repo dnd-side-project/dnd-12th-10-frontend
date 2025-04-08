@@ -12,7 +12,7 @@ const GroupCreatePage = () => {
   return (
     <div className='px-[88px] pt-[72px] pb-[66px]'>
       <h1 className='text-display01 mb-6'>회고 모임 만들기</h1>
-      <GroupForm />
+      <GroupForm mode='create' />
     </div>
   )
 }
