@@ -11,11 +11,17 @@ import Spinner from '@/components/Spinner'
 import useGetGroupInfo from './_queries/useGetGroupInfo'
 import useGetRetrospectList from './_queries/useGetRetrospectList'
 import { ROLE } from './_consts'
+import GroupActionsDropdown from '@/app/groups/[id]/_components/GroupActionsDropdown'
+import Confirm from '@/components/Confirm'
+import useDeleteGroupMutation from '@/app/groups/[id]/_queries/useDeleteGroupMutation'
+import { useState } from 'react'
 
 const GroupDetail = () => {
   const groupId = useParams<{ id: string }>()?.id
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const { data: groupInfo } = useGetGroupInfo(groupId)
   const { data: retrospectList } = useGetRetrospectList(groupId)
+  const { mutate: deleteGroup } = useDeleteGroupMutation(String(groupId))
 
   if (!groupInfo) return <Spinner />
 
@@ -50,12 +56,21 @@ const GroupDetail = () => {
           'rounded-lg',
         )}
       >
-        <GroupInfoList
-          numOfMembers={userCount}
-          numOfRetrospects={retrospectCount}
-          createdAtGroup={createDate}
-          latestUpdateTime={recentActString}
-        />
+        <div className='flex'>
+          <GroupInfoList
+            numOfMembers={userCount}
+            numOfRetrospects={retrospectCount}
+            createdAtGroup={createDate}
+            latestUpdateTime={recentActString}
+          />
+          <GroupActionsDropdown
+            role={role}
+            groupId={Number(groupId)}
+            openDeleteGroupConfirm={() => {
+              setIsModalOpen(true)
+            }}
+          />
+        </div>
         {description && <GroupDescription description={description} />}
       </div>
 
@@ -72,6 +87,17 @@ const GroupDetail = () => {
           groupId={Number(groupId)}
         />
       )}
+      <Confirm
+        isOpen={isModalOpen}
+        title='선택한 모임을 삭제하시겠습니까?'
+        message='삭제된 모임은 복구되지 않습니다.'
+        onCancel={() => {
+          setIsModalOpen(false)
+        }}
+        onConfirm={() => {
+          deleteGroup()
+        }}
+      />
     </div>
   )
 }

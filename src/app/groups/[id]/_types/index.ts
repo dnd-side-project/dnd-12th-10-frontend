@@ -13,6 +13,7 @@ export const groupSchema = z.object({
   createDate: z.string(),
   role: z.nativeEnum(ROLE),
   isPublic: z.boolean(),
+  maxNum: z.number(),
 })
 
 export const retrospectSchema = z.object({

@@ -4,6 +4,7 @@ export const URL_PATH = {
   Group: '/group',
   GroupList: '/groups',
   Profile: '/profile',
+  GroupUpdate: '/groups/update',
   GroupCreate: '/groups/create',
   Login: '/login',
   LoginSuccess: '/login/success',
