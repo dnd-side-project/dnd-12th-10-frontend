@@ -4,30 +4,8 @@ import axios, {
   InternalAxiosRequestConfig,
 } from 'axios'
 import { reissueToken } from './auth'
+import { getAccessToken } from '@/utils/auth'
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || ''
-
-export const { getAccessToken, setAccessToken } = (() => {
-  const accessTokenKey = 'access_token'
-
-  const getAccessToken = () => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem(accessTokenKey) || null
-    }
-    return null
-  }
-
-  const setAccessToken = (token: string | null) => {
-    if (typeof window !== 'undefined') {
-      if (token) {
-        localStorage.setItem(accessTokenKey, token)
-      } else {
-        localStorage.removeItem(accessTokenKey)
-      }
-    }
-  }
-
-  return { getAccessToken, setAccessToken }
-})()
 
 export const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -62,10 +40,9 @@ axiosInstance.interceptors.response.use(
 
     if (error.response?.status === 401) {
       try {
-        await reissueToken()
+        const newToken = await reissueToken()
 
         if (originalRequest.headers) {
-          const newToken = getAccessToken()
           originalRequest.headers.Authorization = newToken
             ? `Bearer ${newToken}`
             : ''
