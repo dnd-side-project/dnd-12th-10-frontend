@@ -7,11 +7,11 @@ const Section1 = () => {
   return (
     <section className='flex justify-around bg-blue-50 pt-[100px] pb-[140px] px-[160px]'>
       <div className='flex flex-col justify-center'>
-        <h2 className='text-3xl font-semibold leading-[130%] text-gray-900 mb-4'>
+        <p className='text-3xl font-semibold leading-[130%] text-gray-900 mb-4'>
           개인과 모임이 성찰을 통해
           <br />
           함께 성장하는 회고 서비스
-        </h2>
+        </p>
         <Icon name='logo' width={158} height={48} className='fill-black' />
         <div className='mt-12'>
           <Button color='primary' variant='filled' size='medium'>
