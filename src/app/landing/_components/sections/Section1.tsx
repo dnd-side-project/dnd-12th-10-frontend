@@ -2,6 +2,8 @@ import Image from 'next/image'
 import { cn } from '@/utils/cn'
 import { Icon } from '@/components/Icon'
 import Button from '@/components/Button'
+import MainFullImg from '@/assets/images/landing/MainFullImg.png'
+import MainNoSideImg from '@/assets/images/landing/MainNoSideImg.png'
 
 const Section1 = () => {
   return (
@@ -23,7 +25,7 @@ const Section1 = () => {
         <Image
           width={627}
           height={446}
-          src='/landing/MainFullImg.png'
+          src={MainFullImg}
           alt='MainFullImg'
           className='rounded-sm'
           quality={100}
@@ -39,7 +41,7 @@ const Section1 = () => {
           <Image
             width={519}
             height={400}
-            src='/landing/MainNoSideImg.png'
+            src={MainNoSideImg}
             alt='MainNoSideImg'
             sizes='700px'
           />
