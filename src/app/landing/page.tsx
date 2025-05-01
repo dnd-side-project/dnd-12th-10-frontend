@@ -1,6 +1,7 @@
 import { Icon } from '@/components/Icon'
 import Button from '@/components/Button'
 import { cn } from '@/utils/cn'
+import Section1 from './_components/sections/Section1'
 
 const LandingPage = () => {
   return (
@@ -20,7 +21,9 @@ const LandingPage = () => {
           시작하기
         </Button>
       </header>
-      <main></main>
+      <main>
+        <Section1 />
+      </main>
     </>
   )
 }
