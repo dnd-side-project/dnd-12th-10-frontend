@@ -54,6 +54,13 @@ import OrderedList from '@/assets/icons/editor/ordered-list.svg'
 import UnorderedList from '@/assets/icons/editor/unordered-list.svg'
 import ArrowLeft from '@/assets/icons/arrow-left.svg'
 import ArrowRight from '@/assets/icons/arrow-right.svg'
+import ThumbsUp from '@/assets/icons/landing/thumbs-up.svg'
+import Plus from '@/assets/icons/landing/plus.svg'
+import Polygon from '@/assets/icons/landing/polygon.svg'
+import Group from '@/assets/icons/landing/group.svg'
+import LandingBlueCharacter from '@/assets/icons/landing/basic-blue-character.svg'
+import LandingRedCharacter from '@/assets/icons/landing/basic-red-character.svg'
+import LandingGroupCharacter from '@/assets/icons/landing/character-group.svg'
 
 export const icons = {
   calendar: Calendar,
@@ -112,6 +119,13 @@ export const icons = {
   italic: Italic,
   bold: Bold,
   underline: Underline,
+  'thumbs-up': ThumbsUp,
+  plus: Plus,
+  polygon: Polygon,
+  group: Group,
+  'landing-blue-character': LandingBlueCharacter,
+  'landing-red-character': LandingRedCharacter,
+  'landing-group-character': LandingGroupCharacter,
 } as const
 
 export type IconName = keyof typeof icons
