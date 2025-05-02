@@ -2,6 +2,7 @@ import { Icon } from '@/components/Icon'
 import Button from '@/components/Button'
 import { cn } from '@/utils/cn'
 import Section1 from './_components/sections/Section1'
+import Section2 from './_components/sections/Section2'
 
 const LandingPage = () => {
   return (
@@ -23,6 +24,7 @@ const LandingPage = () => {
       </header>
       <main>
         <Section1 />
+        <Section2 />
       </main>
     </>
   )
