@@ -3,6 +3,7 @@ import Button from '@/components/Button'
 import { cn } from '@/utils/cn'
 import Section1 from './_components/sections/Section1'
 import Section2 from './_components/sections/Section2'
+import Section3 from './_components/sections/Section3'
 
 const LandingPage = () => {
   return (
@@ -25,6 +26,7 @@ const LandingPage = () => {
       <main>
         <Section1 />
         <Section2 />
+        <Section3 />
       </main>
     </>
   )
