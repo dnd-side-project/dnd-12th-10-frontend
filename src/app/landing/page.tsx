@@ -4,6 +4,7 @@ import { cn } from '@/utils/cn'
 import Section1 from './_components/sections/Section1'
 import Section2 from './_components/sections/Section2'
 import Section3 from './_components/sections/Section3'
+import Section4 from './_components/sections/Section4'
 
 const LandingPage = () => {
   return (
@@ -27,6 +28,7 @@ const LandingPage = () => {
         <Section1 />
         <Section2 />
         <Section3 />
+        <Section4 />
       </main>
     </>
   )
