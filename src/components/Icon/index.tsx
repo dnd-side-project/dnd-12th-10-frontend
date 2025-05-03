@@ -61,6 +61,7 @@ import Group from '@/assets/icons/landing/group.svg'
 import LandingBlueCharacter from '@/assets/icons/landing/basic-blue-character.svg'
 import LandingRedCharacter from '@/assets/icons/landing/basic-red-character.svg'
 import LandingGroupCharacter from '@/assets/icons/landing/character-group.svg'
+import LinkChain from '@/assets/icons/landing/link-chain.svg'
 
 export const icons = {
   calendar: Calendar,
@@ -126,6 +127,7 @@ export const icons = {
   'landing-blue-character': LandingBlueCharacter,
   'landing-red-character': LandingRedCharacter,
   'landing-group-character': LandingGroupCharacter,
+  'link-chain': LinkChain,
 } as const
 
 export type IconName = keyof typeof icons
