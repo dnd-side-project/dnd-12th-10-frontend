@@ -1,17 +1,18 @@
-import Chip from '../Chip'
+import SectionTitleChip from '../SectionTitleChip'
 import { JOB_LIST, TEMPLATE_LIST } from '@/app/landing/_consts'
 import { cn } from '@/utils/cn'
+import Description from '../Description'
 
 const Section3 = () => {
   return (
     <section className='bg-blue-50 pt-[72px] pb-[94px] px-[252px]'>
-      <Chip label='회고 템플릿 제공' />
-      <p className='my-9 text-[32px] font-bold text-gray-900 text-center leading-[140%]'>
-        방식별, 직무별 회고 템플릿 제공으로
-        <br />
-        누구나 쉽게 회고 작성 가능
-      </p>
-      <ul className='grid grid-cols-3 gap-3'>
+      <SectionTitleChip label='회고 템플릿 제공' />
+      <Description
+        description={
+          '방식별, 직무별 회고 템플릿 제공으로 \n 누구나 쉽게 회고 작성 가능'
+        }
+      />
+      <ul className='grid grid-cols-3 gap-3 mt-9'>
         {TEMPLATE_LIST.map((item, i) => (
           <ListItem
             key={item.title + i}

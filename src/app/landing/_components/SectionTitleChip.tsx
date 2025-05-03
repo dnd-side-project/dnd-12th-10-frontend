@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn'
 
-const Chip = ({ label }: { label: string }) => {
+const SectionTitleChip = ({ label }: { label: string }) => {
   return (
     <div
       className={cn(
@@ -24,4 +24,4 @@ const Chip = ({ label }: { label: string }) => {
   )
 }
 
-export default Chip
+export default SectionTitleChip
