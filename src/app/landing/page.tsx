@@ -5,6 +5,7 @@ import Section1 from './_components/sections/Section1'
 import Section2 from './_components/sections/Section2'
 import Section3 from './_components/sections/Section3'
 import Section4 from './_components/sections/Section4'
+import Section5 from '@/app/landing/_components/sections/Section5'
 
 const LandingPage = () => {
   return (
@@ -29,6 +30,7 @@ const LandingPage = () => {
         <Section2 />
         <Section3 />
         <Section4 />
+        <Section5 />
       </main>
     </>
   )
