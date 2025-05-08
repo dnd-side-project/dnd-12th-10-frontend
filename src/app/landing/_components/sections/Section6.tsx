@@ -7,7 +7,7 @@ import { cn } from '@/utils/cn'
 
 const Section6 = () => {
   return (
-    <section className='flex flex-col items-center mt-[72px] mb-20'>
+    <section className='flex flex-col items-center pt-[72px] pb-20'>
       <span className='text-3xl font-semibold leading-[130%] mb-8'>FAQ</span>
       <ul className='flex flex-col gap-4 '>
         <FaqItem
