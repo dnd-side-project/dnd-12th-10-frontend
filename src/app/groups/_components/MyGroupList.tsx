@@ -3,6 +3,8 @@ import Button from '@/components/Button'
 import useMyGroupListQuery from '@/app/_querys/useMyGroupListQuery'
 import { Group } from '@/app/_types'
 import { useState } from 'react'
+import Link from 'next/link'
+import { URL_PATH } from '@/consts/urls'
 
 const MyGroupList = () => {
   const { myGroupList = [] } = useMyGroupListQuery()
@@ -66,9 +68,11 @@ const NoGroupList = () => {
       <p className='text-body02 text-gray-500 font-normal mb-6'>
         새로운 모임을 찾아보거나, 직접 모임을 만들어보세요!
       </p>
-      <Button color='primary' variant='subtle' size='medium'>
-        모임 만들기
-      </Button>
+      <Link href={URL_PATH.GroupCreate}>
+        <Button color='primary' variant='subtle' size='medium'>
+          모임 만들기
+        </Button>
+      </Link>
     </div>
   )
 }

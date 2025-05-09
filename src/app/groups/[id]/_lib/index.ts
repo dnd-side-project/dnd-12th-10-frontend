@@ -53,3 +53,8 @@ export const postGroupJoin = async (data: GroupJoin) => {
   )
   return response.data
 }
+
+export const deleteGroup = async (groupId: string) => {
+  const response = await axiosInstance.delete(`${API_PATH.Group}/${groupId}`)
+  return response.data
+}

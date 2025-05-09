@@ -5,6 +5,7 @@ export interface GroupInfoListProps {
   latestUpdateTime: string
 }
 
+/**모임 정보*/
 const GroupInfoList = ({
   numOfMembers,
   numOfRetrospects,
@@ -12,7 +13,7 @@ const GroupInfoList = ({
   latestUpdateTime,
 }: GroupInfoListProps) => {
   return (
-    <div className='flex'>
+    <>
       <InfoItem title='멤버' content={`${numOfMembers}명`} />
       <VerticalLine />
       <InfoItem title='총 게시글 수' content={`${numOfRetrospects}개`} />
@@ -20,7 +21,7 @@ const GroupInfoList = ({
       <InfoItem title='개설일' content={createdAtGroup} />
       <VerticalLine />
       <InfoItem title='마지막 회고' content={latestUpdateTime} />
-    </div>
+    </>
   )
 }
 

@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import GroupCreateForm from './GroupCreateForm'
+import GroupForm from '../GroupForm'
 
 export const metadata: Metadata = {
   title: 'Leev | 모임 생성',
@@ -12,7 +12,7 @@ const GroupCreatePage = () => {
   return (
     <div className='px-[88px] pt-[72px] pb-[66px]'>
       <h1 className='text-display01 mb-6'>회고 모임 만들기</h1>
-      <GroupCreateForm />
+      <GroupForm mode='create' />
     </div>
   )
 }

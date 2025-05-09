@@ -1,7 +1,7 @@
 'use client'
 
 import { Controller, useForm } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { URL_PATH } from '@/consts/urls'
 import { cn } from '@/utils/cn'
 import Button from '@/components/Button'
@@ -14,14 +14,20 @@ import { PUBLIC_CHECKBOX_OPTIONS } from './_consts'
 import Checkbox from './_components/Checkbox'
 import NumberInput from './_components/NumberInput'
 import useGroupCreateMutation from './_queries/useGroupCreateMutation'
+import useGroupUpdateMutation from './_queries/useGroupUpdateMutation'
+import useGetGroupInfo from '@/app/groups/[id]/_queries/useGetGroupInfo'
 
 const MAX_GROUP_NAME_LENGTH = 10
 const MAX_INTRO_LENGTH = 70
 const MAX_DESCRIPTION_LENGTH = 100
 
-const GroupCreateForm = () => {
-  const { mutate } = useGroupCreateMutation()
-  const { push } = useRouter()
+const GroupForm = ({ mode }: { mode: 'create' | 'update' }) => {
+  const { replace } = useRouter()
+  const { mutate: createMutate } = useGroupCreateMutation()
+
+  const { id: groupId = '' } = useParams<{ id: string }>()
+  const { data: prevGroupInfo } = useGetGroupInfo(groupId)
+  const { mutate: updateMutate } = useGroupUpdateMutation(groupId)
 
   const {
     register,
@@ -30,7 +36,7 @@ const GroupCreateForm = () => {
     formState: { isValid },
     setValue,
   } = useForm<GroupCreateFormType>({
-    defaultValues: {
+    defaultValues: prevGroupInfo || {
       groupName: '',
       introduction: '',
       description: '',
@@ -61,10 +67,27 @@ const GroupCreateForm = () => {
     }
   }
 
-  const onSubmit = (data: GroupCreateFormType) => {
-    mutate(data, {
-      onSuccess: ({ groupId }) => push(`${URL_PATH.GroupList}/${groupId}`),
+  const onCreate = (data: GroupCreateFormType) => {
+    createMutate(data, {
+      onSuccess: ({ groupId }) => replace(`${URL_PATH.GroupList}/${groupId}`),
     })
+  }
+
+  const onUpdate = (data: GroupCreateFormType) => {
+    updateMutate(
+      { groupId, data },
+      {
+        onSuccess: () => replace(`${URL_PATH.GroupList}/${groupId}`),
+      },
+    )
+  }
+
+  const onSubmit = (data: GroupCreateFormType) => {
+    if (mode === 'create') {
+      onCreate(data)
+    } else {
+      onUpdate(data)
+    }
   }
 
   return (
@@ -81,6 +104,7 @@ const GroupCreateForm = () => {
     >
       <FormField fieldTitle='모임 이름' required>
         <LimitedInput
+          initialCharCount={prevGroupInfo?.groupName.length}
           maxLength={MAX_GROUP_NAME_LENGTH}
           multiline={false}
           placeholder='모임 이름을 입력해주세요.'
@@ -90,6 +114,7 @@ const GroupCreateForm = () => {
 
       <FormField fieldTitle='한 줄 소개' required>
         <LimitedInput
+          initialCharCount={prevGroupInfo?.introduction.length}
           maxLength={MAX_INTRO_LENGTH}
           multiline={false}
           placeholder='이 모임을 한 줄로 간단히 소개해주세요!'
@@ -100,6 +125,7 @@ const GroupCreateForm = () => {
       <FormField fieldTitle='모임 소개'>
         {/* TODO: 에디터로 변경 필요 */}
         <LimitedInput
+          initialCharCount={prevGroupInfo?.description.length}
           maxLength={MAX_DESCRIPTION_LENGTH}
           multiline
           placeholder='모임 소개글을 작성해주세요! 이 모임의 주제, 활동 내용, 그리고 기대하는 참여자에 대해 소개해 보세요. 이미지와 함께 소개하면 더 좋은 인상을 줄 수 있어요!'
@@ -171,11 +197,11 @@ const GroupCreateForm = () => {
           variant='filled'
           disabled={!isValid}
         >
-          모임 만들기
+          {groupId ? '모임 수정하기' : '모임 만들기'}
         </Button>
       </div>
     </form>
   )
 }
 
-export default GroupCreateForm
+export default GroupForm
