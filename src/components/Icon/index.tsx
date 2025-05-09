@@ -65,6 +65,8 @@ import LinkChain from '@/assets/icons/landing/link-chain.svg'
 import Rebuild from '@/assets/icons/landing/rebuild.svg'
 import Rethink from '@/assets/icons/landing/rethink.svg'
 import Review from '@/assets/icons/landing/review.svg'
+import Sms from '@/assets/icons/landing/sms.svg'
+import Insta from '@/assets/icons/landing/insta.svg'
 
 export const icons = {
   calendar: Calendar,
@@ -134,6 +136,8 @@ export const icons = {
   rebuild: Rebuild,
   rethink: Rethink,
   review: Review,
+  sms: Sms,
+  insta: Insta,
 } as const
 
 export type IconName = keyof typeof icons
