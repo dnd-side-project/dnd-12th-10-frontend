@@ -7,7 +7,7 @@ import Section3 from './_components/sections/Section3'
 import Section4 from './_components/sections/Section4'
 import Section5 from './_components/sections/Section5'
 import Section6 from './_components/sections/Section6'
-import Section7 from '@/app/landing/_components/sections/Section7'
+import Section7 from './_components/sections/Section7'
 
 const LandingPage = () => {
   return (
