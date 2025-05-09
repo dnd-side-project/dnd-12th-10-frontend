@@ -10,7 +10,7 @@ import IconWithButton from '@/app/retrospects/[id]/_components/IconWithButton'
 import type { RetrospectList } from '../_types'
 import { URL_PATH } from '@/consts/urls'
 import { useRouter } from 'next/navigation'
-import DOMPurify from 'dompurify'
+import DOMPurify from 'isomorphic-dompurify'
 
 const RetrospectList = ({
   retrospectList,

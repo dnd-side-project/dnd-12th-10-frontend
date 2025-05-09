@@ -5,7 +5,7 @@ import Chip from '@/components/Chip'
 import SectionHeader from './SectionHeader'
 
 import { Template } from '../_types'
-import DOMPurify from 'dompurify'
+import DOMPurify from 'isomorphic-dompurify'
 
 import { usePublicTemplateListQuery } from '@/app/_querys/usePublicTemplateListQuery'
 import SliderContainer from '@/app/_components/SliderContainer'
