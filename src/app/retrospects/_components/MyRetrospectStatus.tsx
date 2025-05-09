@@ -4,8 +4,8 @@ import Link from 'next/link'
 import NoRetrospectList from './NoRetrospectList'
 import { URL_PATH } from '@/consts/urls'
 import RetrospectList from './RetrospectList'
-import useUserDataQuery from '@/querys/useUserDataQuery'
-import useMyRetrospectListQuery from '../_querys/useMyRetrospectListQuery'
+import useUserDataQuery from '@/queries/useUserDataQuery'
+import useMyRetrospectListQuery from '../_queries/useMyRetrospectListQuery'
 
 const MyRetrospectStatus = () => {
   const { userData } = useUserDataQuery()

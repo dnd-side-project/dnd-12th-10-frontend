@@ -1,6 +1,6 @@
 import MyGroupListItem from '@/components/MyGroupListItem'
 import Button from '@/components/Button'
-import useMyGroupListQuery from '@/app/_querys/useMyGroupListQuery'
+import useMyGroupListQuery from '@/app/_queries/useMyGroupListQuery'
 import { Group } from '@/app/_types'
 import { useState } from 'react'
 import Link from 'next/link'

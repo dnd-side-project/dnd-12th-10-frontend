@@ -1,6 +1,6 @@
 'use client'
 
-import useUserDataQuery from '@/querys/useUserDataQuery'
+import useUserDataQuery from '@/queries/useUserDataQuery'
 import MyRetrospectStatus from '@/app/retrospects/_components/MyRetrospectStatus'
 import ChipButton from '@/components/ChipButton'
 

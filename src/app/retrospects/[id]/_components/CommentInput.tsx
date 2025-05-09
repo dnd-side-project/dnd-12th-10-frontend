@@ -3,7 +3,7 @@ import { useState } from 'react'
 import IconWithButton from './IconWithButton'
 import Textarea from './Textarea'
 import Button from '@/components/Button'
-import useCommentMutation from '../../_querys/useCommentMutation'
+import useCommentMutation from '../../_queries/useCommentMutation'
 import { Retrospect } from '@/app/groups/[id]/_types'
 import openCustomToast from '@/utils/openCustomToast'
 
