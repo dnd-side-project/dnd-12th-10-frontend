@@ -6,6 +6,10 @@ import AuthorInfo from '@/components/AuthorInfo'
 import { Comment } from '@/app/groups/[id]/_types'
 import { useParams } from 'next/navigation'
 import useGetReplyList from '@/app/groups/[id]/_queries/useGetReplyList'
+import CommentActionsDropdown from './CommentActionsDropdown'
+import CommentUpdate from './CommentUpdate'
+import Confirm from '@/components/Confirm'
+import useDeleteCommentMutation from '../../_querys/useDeleteCommentMutation'
 
 /** 댓글 컴포넌트 */
 const CommentItem = ({
@@ -18,6 +22,12 @@ const CommentItem = ({
   const retrospectId = useParams<{ id: string }>()?.id
   const { data: replyList } = useGetReplyList(String(commentId))
   const [showReplyInput, setShowReplyInput] = useState(false)
+  const [showCommentInput, setShowCommentInput] = useState(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+  const { mutate: deleteComment } = useDeleteCommentMutation(
+    String(commentId),
+    retrospectId,
+  )
 
   const closeReplyInput = () => {
     setShowReplyInput(false)
@@ -34,7 +44,15 @@ const CommentItem = ({
         {isAuthor && <span className='text-blue-500 text-body01'>작성자</span>}
       </div>
       <div className='ml-[42px]'>
-        <p className='mt-4 text-body01 font-normal'>{content}</p>
+        {showCommentInput ? (
+          <CommentUpdate
+            commentId={commentId.toString()}
+            initialValue={content}
+            onCloseInput={() => setShowCommentInput(false)}
+          />
+        ) : (
+          <p className='mt-4 text-body01 font-normal'>{content}</p>
+        )}
         <div className='mt-4 flex'>
           {/*<IconWithButton iconName='like' count={19} />*/}
           <button
@@ -45,6 +63,10 @@ const CommentItem = ({
           >
             답글
           </button>
+          <CommentActionsDropdown
+            onShowInput={() => setShowCommentInput((prevState) => !prevState)}
+            onOpenDeleteModal={() => setIsDeleteModalOpen(true)}
+          />
         </div>
 
         {/*답글 리스트*/}
@@ -78,6 +100,17 @@ const CommentItem = ({
           />
         )}
       </div>
+
+      {/* TODO: 공통 모달 훅으로 분리 */}
+      <Confirm
+        isOpen={isDeleteModalOpen}
+        title='글을 삭제할까요?'
+        message='삭제된 모임은 복구되지 않습니다.'
+        onCancel={() => {
+          setIsDeleteModalOpen(false)
+        }}
+        onConfirm={deleteComment}
+      />
     </li>
   )
 }
