@@ -16,7 +16,7 @@ const CommentItem = ({
   isAuthor,
 }: Comment) => {
   const retrospectId = useParams<{ id: string }>()?.id
-  const { data: replyList } = useGetReplyList(retrospectId, String(commentId))
+  const { data: replyList } = useGetReplyList(String(commentId))
   const [showReplyInput, setShowReplyInput] = useState(false)
 
   const closeReplyInput = () => {
