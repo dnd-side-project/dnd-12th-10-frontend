@@ -58,16 +58,28 @@ const SubmitHeader = ({
         <Icon name='line-arrow-left' size={20} className='stroke-gray-600' />
         나가기
       </button>
-      <Button
-        type='button'
-        color='primary'
-        variant='filled'
-        size='medium'
-        disabled={!title || isPending}
-        onClick={handleSubmit}
-      >
-        발행하기
-      </Button>
+      <div className='flex gap-2'>
+        <Button
+          type='button'
+          color='primary'
+          variant='outlined'
+          size='medium'
+          onClick={handleSubmit}
+        >
+          <Icon name='document-download' size={20} className='stroke-0 mr-1' />
+          임시저장
+        </Button>
+        <Button
+          type='button'
+          color='primary'
+          variant='filled'
+          size='medium'
+          disabled={!title || isPending}
+          onClick={handleSubmit}
+        >
+          발행하기
+        </Button>
+      </div>
     </div>
   )
 }
