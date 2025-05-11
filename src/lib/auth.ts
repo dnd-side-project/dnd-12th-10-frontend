@@ -6,9 +6,8 @@ let tokenRefreshInProgress = false
 let tokenRefreshPromise: Promise<string> | null = null
 
 export const reissueToken = async (): Promise<string> => {
-  // 이미 토큰 재발급이 진행 중이면 진행 중인 Promise를 반환
-  if (tokenRefreshInProgress) {
-    return tokenRefreshPromise!
+  if (tokenRefreshInProgress && tokenRefreshPromise) {
+    return tokenRefreshPromise
   }
 
   try {
