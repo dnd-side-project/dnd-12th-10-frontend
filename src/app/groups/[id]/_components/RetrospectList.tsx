@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import Button from '@/components/Button'
@@ -8,7 +10,7 @@ import IconWithButton from '@/app/retrospects/[id]/_components/IconWithButton'
 import type { RetrospectList } from '../_types'
 import { URL_PATH } from '@/consts/urls'
 import { useRouter } from 'next/navigation'
-import DOMPurify from 'dompurify'
+import DOMPurify from 'isomorphic-dompurify'
 
 const RetrospectList = ({
   retrospectList,
@@ -58,7 +60,7 @@ const RetrospectList = ({
 }
 export default RetrospectList
 
-const RetrospectListItem = ({
+export const RetrospectListItem = ({
   retrospectId,
   title,
   userName,
@@ -66,11 +68,14 @@ const RetrospectListItem = ({
   content,
   // likeCount,
   commentCount,
+  showBorder = true,
 }: RetrospectList[0]) => {
   const { push } = useRouter()
 
   return (
-    <li className='border-b-1 border-gray-100 pb-[64px]'>
+    <li
+      className={cn({ 'border-b-1 border-gray-100': showBorder }, 'pb-[64px]')}
+    >
       <article>
         <Link
           href={`${URL_PATH.Retrospects}/${retrospectId}`}

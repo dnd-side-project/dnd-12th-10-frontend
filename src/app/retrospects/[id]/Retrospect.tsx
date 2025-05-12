@@ -8,7 +8,7 @@ import RetrospectHeading from './_components/RetrospectHeading'
 import { useParams } from 'next/navigation'
 import useGetRetrospect from '@/app/groups/[id]/_queries/useGetRetrospect'
 import useGetCommentList from '@/app/groups/[id]/_queries/useGetCommentList'
-import DOMPurify from 'dompurify'
+import DOMPurify from 'isomorphic-dompurify'
 
 const Retrospect = () => {
   const retrospectId = useParams<{ id: string }>()?.id

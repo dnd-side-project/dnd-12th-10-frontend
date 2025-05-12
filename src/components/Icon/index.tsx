@@ -54,6 +54,19 @@ import OrderedList from '@/assets/icons/editor/ordered-list.svg'
 import UnorderedList from '@/assets/icons/editor/unordered-list.svg'
 import ArrowLeft from '@/assets/icons/arrow-left.svg'
 import ArrowRight from '@/assets/icons/arrow-right.svg'
+import ThumbsUp from '@/assets/icons/landing/thumbs-up.svg'
+import Plus from '@/assets/icons/landing/plus.svg'
+import Polygon from '@/assets/icons/landing/polygon.svg'
+import Group from '@/assets/icons/landing/group.svg'
+import LandingBlueCharacter from '@/assets/icons/landing/basic-blue-character.svg'
+import LandingRedCharacter from '@/assets/icons/landing/basic-red-character.svg'
+import LandingGroupCharacter from '@/assets/icons/landing/character-group.svg'
+import LinkChain from '@/assets/icons/landing/link-chain.svg'
+import Rebuild from '@/assets/icons/landing/rebuild.svg'
+import Rethink from '@/assets/icons/landing/rethink.svg'
+import Review from '@/assets/icons/landing/review.svg'
+import Sms from '@/assets/icons/landing/sms.svg'
+import Insta from '@/assets/icons/landing/insta.svg'
 import More from '@/assets/icons/more.svg'
 
 export const icons = {
@@ -114,6 +127,19 @@ export const icons = {
   italic: Italic,
   bold: Bold,
   underline: Underline,
+  'thumbs-up': ThumbsUp,
+  plus: Plus,
+  polygon: Polygon,
+  group: Group,
+  'landing-blue-character': LandingBlueCharacter,
+  'landing-red-character': LandingRedCharacter,
+  'landing-group-character': LandingGroupCharacter,
+  'link-chain': LinkChain,
+  rebuild: Rebuild,
+  rethink: Rethink,
+  review: Review,
+  sms: Sms,
+  insta: Insta,
 } as const
 
 export type IconName = keyof typeof icons

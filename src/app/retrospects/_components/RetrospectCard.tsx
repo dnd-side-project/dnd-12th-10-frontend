@@ -2,7 +2,7 @@ import CardWrap from '@/components/CardWrap'
 import { URL_PATH } from '@/consts/urls'
 // import Chip from '@/components/Chip'
 import { Retrospect } from '@/app/_types'
-import DOMPurify from 'dompurify'
+import DOMPurify from 'isomorphic-dompurify'
 
 const RetrospectCard = ({
   retrospectId,

@@ -1,4 +1,5 @@
 export const URL_PATH = {
+  Landing: '/landing',
   Home: '/',
   Retrospects: '/retrospects',
   Group: '/group',
