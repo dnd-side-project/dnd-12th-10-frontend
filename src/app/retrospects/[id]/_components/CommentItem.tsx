@@ -63,10 +63,12 @@ const CommentItem = ({
           >
             답글
           </button>
-          <CommentActionsDropdown
-            onShowInput={() => setShowCommentInput((prevState) => !prevState)}
-            onOpenDeleteModal={() => setIsDeleteModalOpen(true)}
-          />
+          {isAuthor && (
+            <CommentActionsDropdown
+              onShowInput={() => setShowCommentInput((prevState) => !prevState)}
+              onOpenDeleteModal={() => setIsDeleteModalOpen(true)}
+            />
+          )}
         </div>
 
         {/*답글 리스트*/}
