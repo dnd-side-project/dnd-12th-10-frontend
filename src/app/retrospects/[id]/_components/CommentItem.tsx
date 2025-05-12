@@ -106,8 +106,8 @@ const CommentItem = ({
       {/* TODO: 공통 모달 훅으로 분리 */}
       <Confirm
         isOpen={isDeleteModalOpen}
-        title='글을 삭제할까요?'
-        message='삭제된 모임은 복구되지 않습니다.'
+        title='댓글을 삭제할까요?'
+        message='삭제된 댓글은 복구되지 않습니다.'
         onCancel={() => {
           setIsDeleteModalOpen(false)
         }}
