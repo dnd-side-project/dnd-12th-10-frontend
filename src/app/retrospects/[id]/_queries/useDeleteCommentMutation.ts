@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import openCustomToast from '@/utils/openCustomToast'
 
-import { deleteComment } from '../_lib'
+import { deleteComment } from '../../_lib'
 
 const useDeleteCommentMutation = (commentId: string, retrospectId: string) => {
   const queryClient = useQueryClient()

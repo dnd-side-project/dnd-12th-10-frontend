@@ -2,7 +2,7 @@ import Button from '@/components/Button'
 import { cn } from '@/utils/cn'
 import { useForm } from 'react-hook-form'
 import { CommentUpdateForm } from '../types'
-import useUpdateCommentMutation from '../../_querys/useUpdateCommentMutation'
+import useUpdateCommentMutation from '../_queries/useUpdateCommentMutation'
 import { useParams } from 'next/navigation'
 
 const CommentUpdate = ({

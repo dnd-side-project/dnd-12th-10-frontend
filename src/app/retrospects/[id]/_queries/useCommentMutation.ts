@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { CommentCreateForm } from '../_types'
-import { postComment } from '../_lib'
+import { CommentCreateForm } from '../../_types'
+import { postComment } from '../../_lib'
 
 /** 댓글 생성 */
 const useCommentMutation = () => {

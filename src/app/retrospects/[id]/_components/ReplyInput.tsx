@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn'
 import Button from '@/components/Button'
 import { useState } from 'react'
 import Textarea from './Textarea'
-import useReplyMutation from '../../_querys/useReplyMutation'
+import useReplyMutation from '../_queries/useReplyMutation'
 import { Comment } from '@/app/groups/[id]/_types'
 import openCustomToast from '@/utils/openCustomToast'
 

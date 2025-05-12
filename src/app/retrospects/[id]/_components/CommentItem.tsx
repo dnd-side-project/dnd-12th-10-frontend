@@ -9,7 +9,7 @@ import useGetReplyList from '@/app/groups/[id]/_queries/useGetReplyList'
 import CommentActionsDropdown from './CommentActionsDropdown'
 import CommentUpdate from './CommentUpdate'
 import Confirm from '@/components/Confirm'
-import useDeleteCommentMutation from '../../_querys/useDeleteCommentMutation'
+import useDeleteCommentMutation from '../_queries/useDeleteCommentMutation'
 
 /** 댓글 컴포넌트 */
 const CommentItem = ({
