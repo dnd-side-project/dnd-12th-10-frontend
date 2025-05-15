@@ -68,6 +68,7 @@ import Review from '@/assets/icons/landing/review.svg'
 import Sms from '@/assets/icons/landing/sms.svg'
 import Insta from '@/assets/icons/landing/insta.svg'
 import More from '@/assets/icons/more.svg'
+import Pencil from '@/assets/icons/pencil.svg'
 
 export const icons = {
   calendar: Calendar,
@@ -90,6 +91,7 @@ export const icons = {
   logo: Logo,
   check: Check,
   more: More,
+  pencil: Pencil,
   'document-text': DocumentText,
   'profile-add': ProfileAdd,
   'profile-user': ProfileUser,
