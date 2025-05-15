@@ -22,6 +22,7 @@ import { Template } from '../_types/template'
 import { editorTheme } from '../_consts'
 import TemplateModal from './TemplateModal'
 import useGetTemplate from '../_queries/useGetTemplate'
+import MemoListModal from './MemoListModal'
 
 const initialConfig = {
   namespace: 'MyEditor',
@@ -41,13 +42,19 @@ const Editor = ({ retrospectInfo }: { retrospectInfo: RetrospectInfoForm }) => {
   // TODO: templateId 타입 수정할 것! (nullable 불가능하게)
   const { data } = useGetTemplate(retrospectInfo.templateId ?? 0)
   const [title, setTitle] = useState('')
+  const { isOpen, openModal, closeModal } = useModal()
 
   if (!data) return null
 
   return (
     <>
+      <MemoListModal isOpen={isOpen} closeModal={closeModal} />
       <LexicalComposer initialConfig={initialConfig}>
-        <SubmitHeader title={title} groupId={Number(retrospectInfo.groupId)} />
+        <SubmitHeader
+          title={title}
+          groupId={Number(retrospectInfo.groupId)}
+          openModal={openModal}
+        />
         <div className='max-w-[1016px] mx-auto mt-[50px] mb-28'>
           <input
             type='text'

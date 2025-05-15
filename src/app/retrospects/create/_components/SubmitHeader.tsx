@@ -11,9 +11,11 @@ import { URL_PATH } from '@/consts/urls'
 const SubmitHeader = ({
   title,
   groupId,
+  openModal,
 }: {
   title: RetrospectCreateForm['title']
   groupId: RetrospectCreateForm['groupId']
+  openModal: VoidFunction
 }) => {
   const { back, replace } = useRouter()
   const { mutate, isPending } = useRetrospectCreateMutation()
@@ -64,7 +66,7 @@ const SubmitHeader = ({
           color='primary'
           variant='outlined'
           size='medium'
-          onClick={handleSubmit}
+          onClick={openModal}
         >
           <Icon name='document-download' size={20} className='stroke-0 mr-1' />
           임시저장
