@@ -3,8 +3,8 @@
 import Modal from '@/components/Modal'
 import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
-import { useState } from 'react'
-import { cn } from '@/utils/cn'
+import { Fragment, useState } from 'react'
+import MemoListItem from './MemoListItem'
 
 const MemoListModal = ({
   isOpen,
@@ -13,18 +13,37 @@ const MemoListModal = ({
   isOpen: boolean
   closeModal: () => void
 }) => {
+  const [selectedMemo, setSelectedMemo] = useState<null | number>(null)
+
+  const handleSelectedMemo = (id: number) => {
+    if (selectedMemo === id) {
+      setSelectedMemo(null)
+    } else {
+      setSelectedMemo(id)
+    }
+  }
+
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
-      <div className='text-lg font-semibold lineHeight-150 mb-4'>
-        임시저장 글
+      <div className='text-title01 flex items-center justify-between'>
+        <span>임시저장 글</span>
+        <button type='button' onClick={closeModal}>
+          <Icon name='close' />
+        </button>
       </div>
       <div className='text-caption01 text-gray-700 mb-2'>총 5개</div>
       <ul className='flex flex-col border border-gray-100 rounded-sm mb-8 overflow-hidden'>
-        {[0, 1, 2, 3, 4].map((_, index) => (
-          <>
-            <MemoListItem key={index} />
+        {/*Todo: memoId로 변경 필요*/}
+        {[0, 1, 2, 3, 4].map((id, index) => (
+          <Fragment key={id}>
+            <MemoListItem
+              isSelected={selectedMemo === index}
+              handleSelectedMemo={() => {
+                handleSelectedMemo(id)
+              }}
+            />
             {index !== 4 && <BottomBorder />}
-          </>
+          </Fragment>
         ))}
       </ul>
       <div className='flex gap-2'>
@@ -35,7 +54,7 @@ const MemoListModal = ({
           onClick={closeModal}
           style={{ width: '180px' }}
         >
-          닫기
+          새로 작성
         </Button>
         <Button
           variant='filled'
@@ -43,6 +62,7 @@ const MemoListModal = ({
           size='medium'
           onClick={closeModal}
           style={{ width: '180px' }}
+          disabled={selectedMemo === null}
         >
           이어서 작성하기
         </Button>
@@ -52,40 +72,6 @@ const MemoListModal = ({
 }
 
 export default MemoListModal
-
-const MemoListItem = () => {
-  const [ShowTrashIcon, setShowTrashIcon] = useState(false)
-  const handleMouseEnter = () => {
-    setShowTrashIcon(true)
-  }
-  const handleMouseLeave = () => {
-    setShowTrashIcon(false)
-  }
-  return (
-    <li
-      className={cn(
-        'flex justify-between items-center',
-        'py-3 px-4',
-        'cursor-pointer',
-        'hover:bg-gray-50',
-      )}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className='flex flex-col'>
-        <div className='text-body03'>타이틀</div>
-        <p className='text-xs text-gray-500 lineHeight-150'>
-          2025.01.29 10:49:20
-        </p>
-      </div>
-      {ShowTrashIcon && (
-        <button>
-          <Icon name='trash' size={20} className='stroke-gray-500' />
-        </button>
-      )}
-    </li>
-  )
-}
 
 const BottomBorder = () => {
   return <hr className='border-gray-100' />
