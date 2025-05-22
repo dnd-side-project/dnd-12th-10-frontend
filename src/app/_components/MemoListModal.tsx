@@ -4,16 +4,12 @@ import Modal from '@/components/Modal'
 import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
 import { Fragment, useState } from 'react'
-import MemoListItem from './MemoListItem'
+import MemoListItem from '@/app/retrospects/create/_components/MemoListItem'
+import { useMemoListModalStore } from '@/store/memoListModal'
 // import { cn } from '@/utils/cn'
 
-const MemoListModal = ({
-  isOpen,
-  closeModal,
-}: {
-  isOpen: boolean
-  closeModal: () => void
-}) => {
+const MemoListModal = () => {
+  const { isOpen, closeModal } = useMemoListModalStore()
   const [selectedMemo, setSelectedMemo] = useState<null | number>(null)
 
   const handleSelectedMemo = (id: number) => {
