@@ -10,4 +10,4 @@ export const getTemplate = async (templateId: number) =>
   await axiosInstance.get<Template>(`${API_PATH.Template}/${templateId}`)
 
 export const getMyGroupList = async () =>
-  await axiosInstance.get<MyGroupList>(API_PATH.GroupList)
+  await axiosInstance.get<MyGroupList>(API_PATH.GetMyGroupList)
