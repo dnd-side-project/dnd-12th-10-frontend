@@ -5,6 +5,7 @@ import { $generateHtmlFromNodes } from '@lexical/html'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { useRouter } from 'next/navigation'
 import useRetrospectCreateMutation from '../_queries/useRetrospectCreateMutation'
+import useMemoCreateMutation from '../_queries/useMemoCreateMutation'
 import { RetrospectCreateForm } from '../_types/retrospect'
 import { URL_PATH } from '@/consts/urls'
 
@@ -16,26 +17,43 @@ const SubmitHeader = ({
   groupId: RetrospectCreateForm['groupId']
 }) => {
   const { back, replace } = useRouter()
-  const { mutate, isPending } = useRetrospectCreateMutation()
+  const { mutate: retrospectMutate, isPending: retrospectIsPending } =
+    useRetrospectCreateMutation()
+  const { mutate: memoRetrospectMutate, isPending: memoIsPending } =
+    useMemoCreateMutation()
+
   const [editor] = useLexicalComposerContext()
 
-  const handleSubmit = () => {
-    // 에디터에 작성한 내용을 html 형식으로 반환
+  const handleSubmit = (
+    mutateFn: ReturnType<typeof useRetrospectCreateMutation>['mutate'],
+    isPending: boolean,
+  ) => {
+    if (!title.trim() || isPending) return
+
     const htmlResult = editor
       .getEditorState()
       .read(() => $generateHtmlFromNodes(editor, null))
 
-    // 모임 id가 존재하는 경우에만 groupId 전달
-    if (title.trim()) {
-      mutate(
-        { title, content: htmlResult, ...(groupId ? { groupId } : {}) },
-        {
-          onSuccess: (data) => {
+    mutateFn(
+      { title, content: htmlResult, ...(groupId ? { groupId } : {}) },
+      {
+        onSuccess: (data) => {
+          if (mutateFn === memoRetrospectMutate) {
+            alert('임시저장 되었습니다.')
+          } else {
             replace(`${URL_PATH.Retrospects}/${data.retrospectId}`)
-          },
+          }
         },
-      )
-    }
+      },
+    )
+  }
+
+  const handleRetrospectSubmit = () => {
+    handleSubmit(retrospectMutate, retrospectIsPending)
+  }
+
+  const handleMemoSubmit = () => {
+    handleSubmit(memoRetrospectMutate, memoIsPending)
   }
 
   return (
@@ -64,9 +82,8 @@ const SubmitHeader = ({
           color='primary'
           variant='outlined'
           size='medium'
-          onClick={() => {
-            // 임시저장 api 호출
-          }}
+          disabled={!title || memoIsPending}
+          onClick={handleMemoSubmit}
         >
           <Icon name='document-download' size={20} className='stroke-0 mr-1' />
           임시저장
@@ -76,8 +93,8 @@ const SubmitHeader = ({
           color='primary'
           variant='filled'
           size='medium'
-          disabled={!title || isPending}
-          onClick={handleSubmit}
+          disabled={!title || retrospectIsPending}
+          onClick={handleRetrospectSubmit}
         >
           발행하기
         </Button>
