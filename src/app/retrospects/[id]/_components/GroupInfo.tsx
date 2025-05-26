@@ -10,7 +10,7 @@ import OpenMemoListModalButton from '@/app/_components/OpenMemoListModalButton'
 // Todo: 모임 가입 이벤트를 위해 group id도 전달 받아야 할 듯
 interface GroupInfoProps {
   groupName: string
-  groupId: Group['groupId']
+  groupId: Group['groupId'] | null
 }
 /** 페이지 상단 (모임명, 가입 or 글쓰기 버튼) 영역 */
 const GroupInfo = ({ groupName, groupId }: GroupInfoProps) => {

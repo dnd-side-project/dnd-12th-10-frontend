@@ -24,8 +24,8 @@ export const retrospectSchema = z.object({
   timeString: z.string(),
   likeCount: z.number(),
   commentCount: z.number(),
-  groupName: z.string(),
-  groupId: z.number(),
+  groupName: z.string().or(z.null()),
+  groupId: z.number().or(z.null()),
   showBorder: z.boolean().optional(),
 })
 export const retrospectListSchema = z.array(retrospectSchema)
