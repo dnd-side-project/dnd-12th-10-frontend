@@ -30,6 +30,7 @@ export const API_PATH = {
   Retrospect: '/retrospect',
   RetrospectCreate: '/retrospect/add',
   GetRetrospects: '/retrospect/all',
+  GetMyRetrospects: '/retrospect/member',
   GroupList: '/group/list',
   User: '/user',
   RetrospectList: '/retrospect/all',
