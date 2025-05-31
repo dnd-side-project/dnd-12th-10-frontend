@@ -3,9 +3,13 @@ import { cn } from '@/utils/cn'
 import { Icon } from '@/components/Icon'
 
 const MemoListItem = ({
+  title,
+  timeString,
   isSelected,
   handleSelectedMemo,
 }: {
+  title: string
+  timeString: string
   isSelected: boolean
   handleSelectedMemo: VoidFunction
 }) => {
@@ -46,9 +50,10 @@ const MemoListItem = ({
       onClick={handleMemoClick}
     >
       <div className='flex flex-col w-full'>
-        <div className='text-body03'>타이틀</div>
+        <div className='text-body03'>{title}</div>
         <p className='text-xs text-gray-500 lineHeight-150'>
-          2025.01.29 10:49:20
+          {timeString}
+          {/*2025.01.29 10:49:20*/}
         </p>
         {showDeleteConfirm && (
           <ConfirmModal closeDeleteConfirm={closeDeleteConfirm} />

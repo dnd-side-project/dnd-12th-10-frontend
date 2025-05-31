@@ -32,3 +32,12 @@ export interface Template {
   public: boolean
   categories: []
 }
+
+export interface Memo {
+  memoId: number
+  userId: string
+  title: string
+  content: string
+  categoryNames: string[]
+  groupId: number
+}
