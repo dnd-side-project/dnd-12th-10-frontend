@@ -20,3 +20,11 @@ export const commentCreateResponseSchema = z.object({
 export type CommentCreateForm = z.infer<typeof commentCreateSchema>
 /** 댓글 및 답글 작성 후 응답 형식 */
 export type CommentCreateResponse = z.infer<typeof commentCreateResponseSchema>
+
+/**
+ * 회고 목록을 조회할 때 사용할 액션 타입입니다.
+ * - 'all': 전체 회고
+ * - 'group': 그룹 회고
+ * - 'personal': 개인 회고
+ */
+export type Action = 'all' | 'group' | 'personal'

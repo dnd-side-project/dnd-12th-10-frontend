@@ -1,11 +1,19 @@
 import { axiosInstance } from '@/lib/axios'
 import { API_PATH } from '@/consts/urls'
 import { Retrospect } from '@/app/_types'
-import { CommentCreateForm, CommentCreateResponse } from '../_types'
+import type {
+  Action,
+  CommentCreateForm,
+  CommentCreateResponse,
+} from '../_types'
 
-export const getMyRetrospectList = async (): Promise<Retrospect[]> => {
-  const response = await axiosInstance.get(API_PATH.GetRetrospects)
-  return response.data
+export const getMyRetrospectList = async (
+  action: Action = 'all',
+): Promise<Retrospect[]> => {
+  const response = await axiosInstance.get(
+    `${API_PATH.GetMyRetrospects}?action=${action}`,
+  )
+  return response.data.retrospectList
 }
 
 export const postComment = async (data: CommentCreateForm) => {
