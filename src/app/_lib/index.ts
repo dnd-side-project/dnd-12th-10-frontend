@@ -32,3 +32,10 @@ export const getMyMemoList = async (): Promise<Memo[]> => {
   const response = await axiosInstance.get<Memo[]>(API_PATH.GetMyMemoList)
   return response.data
 }
+
+export const deleteMemo = async (memoId: number): Promise<void> => {
+  const response = await axiosInstance.delete(
+    `${API_PATH.DeleteMemo}/${memoId}`,
+  )
+  return response.data
+}

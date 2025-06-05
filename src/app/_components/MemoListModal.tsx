@@ -39,6 +39,7 @@ const MemoListModal = () => {
           {myMemoList.map((memo, index) => (
             <Fragment key={memo.memoId}>
               <MemoListItem
+                memoId={memo.memoId}
                 title={memo.title}
                 timeString={'2025.01.29 10:49:20'}
                 isSelected={selectedMemo === index}
