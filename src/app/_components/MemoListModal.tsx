@@ -8,6 +8,8 @@ import MemoListItem from '@/app/retrospects/create/_components/MemoListItem'
 import { useMemoListModalStore } from '@/store/memoListModal'
 import useMyMemoListQuery from '@/app/_queries/useMyMemoListQuery'
 import { cn } from '@/utils/cn'
+import Link from 'next/link'
+import { URL_PATH } from '@/consts/urls'
 
 const MemoListModal = () => {
   const { isOpen, closeModal } = useMemoListModalStore()
@@ -60,7 +62,7 @@ const MemoListModal = () => {
           onClick={closeModal}
           style={{ width: '180px' }}
         >
-          새로 작성
+          <Link href={URL_PATH.RetrospectsCreate}> 새로 작성</Link>
         </Button>
         <Button
           variant='filled'
