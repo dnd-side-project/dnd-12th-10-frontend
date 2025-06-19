@@ -14,7 +14,7 @@ import { URL_PATH } from '@/consts/urls'
 const MemoListModal = () => {
   const { isOpen, closeModal } = useMemoListModalStore()
   const [selectedMemo, setSelectedMemo] = useState<null | number>(null)
-  const { myMemoList = [] } = useMyMemoListQuery()
+  const { myMemoList = [] } = useMyMemoListQuery(isOpen)
   const handleSelectedMemo = (id: number) => {
     if (selectedMemo === id) {
       setSelectedMemo(null)
