@@ -85,7 +85,14 @@ const SubmitHeader = ({
           disabled={!title || memoIsPending}
           onClick={handleMemoSubmit}
         >
-          <Icon name='document-download' size={20} className='stroke-0 mr-1' />
+          <Icon
+            name='document-download'
+            size={20}
+            className={cn(
+              'stroke-0 mr-1 ',
+              !title || memoIsPending ? 'fill-gray-500' : 'fill-blue-500',
+            )}
+          />
           임시저장
         </Button>
         <Button
