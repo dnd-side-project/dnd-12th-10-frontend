@@ -55,22 +55,24 @@ const MemoListModal = () => {
         </ul>
       )}
       <div className='flex gap-2'>
-        <Button
-          variant='subtle'
-          color='primary'
-          size='medium'
-          onClick={closeModal}
-          style={{ width: '180px' }}
-        >
-          <Link href={URL_PATH.RetrospectsCreate}> 새로 작성</Link>
-        </Button>
+        <Link href={URL_PATH.RetrospectsCreate}>
+          <Button
+            variant='subtle'
+            color='primary'
+            size='medium'
+            onClick={closeModal}
+            style={{ width: '180px' }}
+          >
+            새로 작성
+          </Button>
+        </Link>
         <Button
           variant='filled'
           color='primary'
           size='medium'
           onClick={closeModal}
           style={{ width: '180px' }}
-          disabled={selectedMemo === null}
+          disabled={selectedMemo === null || myMemoList.length === 0}
         >
           이어서 작성하기
         </Button>
