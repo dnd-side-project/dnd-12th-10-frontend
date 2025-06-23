@@ -14,7 +14,7 @@ import { ListPlugin } from '@lexical/react/LexicalListPlugin'
 import HTMLToLexicalPlugin from './HTMLToLexicalPlugin'
 import ToolbarPlugin from './ToolbarPlugin'
 
-import '../_styles/index.css'
+import '@/app/retrospects/create/[[...memoId]]/_styles/index.css'
 import Button from '@/components/Button'
 import SubmitHeader from './SubmitHeader'
 import { RetrospectInfoForm } from '../_types/retrospect'
@@ -45,41 +45,35 @@ const Editor = ({ retrospectInfo }: { retrospectInfo: RetrospectInfoForm }) => {
   if (!data) return null
 
   return (
-    <>
-      <LexicalComposer initialConfig={initialConfig}>
-        <SubmitHeader title={title} groupId={Number(retrospectInfo.groupId)} />
-        <div className='max-w-[1016px] mx-auto mt-[50px] mb-28'>
-          <input
-            type='text'
-            className={cn(
-              'text-display01',
-              'w-full',
-              'placeholder:text-gray-400',
-              'bg-[inherit]',
-              'outline-none',
-            )}
-            placeholder='제목을 입력해주세요.'
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <TemplateInfo
-            templateName={data.templateName}
-            content={data.content}
-          />
-
-          <ToolbarPlugin />
-          <RichTextPlugin
-            contentEditable={
-              <ContentEditable className='border border-gray-100 border-t-0 outline-none min-h-[591px] bg-white p-6' />
-            }
-            ErrorBoundary={LexicalErrorBoundary}
-          />
-          <HistoryPlugin />
-          <AutoFocusPlugin />
-          <HTMLToLexicalPlugin preset={data.preset} />
-          <ListPlugin />
-        </div>
-      </LexicalComposer>
-    </>
+    <LexicalComposer initialConfig={initialConfig}>
+      <SubmitHeader title={title} groupId={Number(retrospectInfo.groupId)} />
+      <div className='max-w-[1016px] mx-auto mt-[50px] mb-28'>
+        <input
+          type='text'
+          className={cn(
+            'text-display01',
+            'w-full',
+            'placeholder:text-gray-400',
+            'bg-[inherit]',
+            'outline-none',
+          )}
+          placeholder='제목을 입력해주세요.'
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <TemplateInfo templateName={data.templateName} content={data.content} />
+        <ToolbarPlugin />
+        <RichTextPlugin
+          contentEditable={
+            <ContentEditable className='border border-gray-100 border-t-0 outline-none min-h-[591px] bg-white p-6' />
+          }
+          ErrorBoundary={LexicalErrorBoundary}
+        />
+        <HistoryPlugin />
+        <AutoFocusPlugin />
+        <HTMLToLexicalPlugin preset={data.preset} />
+        <ListPlugin />
+      </div>
+    </LexicalComposer>
   )
 }
 
