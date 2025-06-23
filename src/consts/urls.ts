@@ -37,6 +37,7 @@ export const API_PATH = {
   Comment: '/comment',
   GroupJoin: '/group/join',
   GetMyMemoList: '/memo',
+  GetMemo: `/memo`,
   MemoCreate: '/memo',
   DeleteMemo: '/memo',
 }

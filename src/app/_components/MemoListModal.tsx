@@ -4,7 +4,7 @@ import Modal from '@/components/Modal'
 import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
 import { Fragment, useState } from 'react'
-import MemoListItem from '@/app/retrospects/create/_components/MemoListItem'
+import MemoListItem from '@/app/retrospects/create/[[...memoId]]/_components/MemoListItem'
 import { useMemoListModalStore } from '@/store/memoListModal'
 import useMyMemoListQuery from '@/app/_queries/useMyMemoListQuery'
 import { cn } from '@/utils/cn'
@@ -44,7 +44,7 @@ const MemoListModal = () => {
                 memoId={memo.memoId}
                 title={memo.title}
                 timeString={'2025.01.29 10:49:20'}
-                isSelected={selectedMemo === index}
+                isSelected={selectedMemo === memo.memoId}
                 handleSelectedMemo={() => {
                   handleSelectedMemo(memo.memoId)
                 }}
