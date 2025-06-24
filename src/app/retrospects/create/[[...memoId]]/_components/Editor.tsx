@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { cn } from '@/utils/cn'
 import useModal from '@/hooks/useModal'
 import { LinkNode } from '@lexical/link'
@@ -14,7 +14,7 @@ import { ListPlugin } from '@lexical/react/LexicalListPlugin'
 import HTMLToLexicalPlugin from './HTMLToLexicalPlugin'
 import ToolbarPlugin from './ToolbarPlugin'
 
-import '@/app/retrospects/create/[[...memoId]]/_styles/index.css'
+import '../_styles/index.css'
 import Button from '@/components/Button'
 import SubmitHeader from './SubmitHeader'
 import { RetrospectInfoForm } from '../_types/retrospect'
@@ -63,7 +63,12 @@ const Editor = ({
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <SubmitHeader title={title} groupId={Number(retrospectInfo.groupId)} />
+      <SubmitHeader
+        title={title}
+        groupId={Number(retrospectInfo.groupId)}
+        templateId={retrospectInfo.templateId ?? 0}
+        initMemoId={memoId}
+      />
       <div className='max-w-[1016px] mx-auto mt-[50px] mb-28'>
         <input
           type='text'

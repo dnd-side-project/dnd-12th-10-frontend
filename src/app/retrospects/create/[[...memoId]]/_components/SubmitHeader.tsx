@@ -1,3 +1,4 @@
+import { RefObject, useRef } from 'react'
 import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
 import { cn } from '@/utils/cn'
@@ -6,26 +7,72 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import { useRouter } from 'next/navigation'
 import useRetrospectCreateMutation from '../_queries/useRetrospectCreateMutation'
 import useMemoCreateMutation from '../_queries/useMemoCreateMutation'
-import { RetrospectCreateForm } from '../_types/retrospect'
+import type {
+  MemoCreateForm,
+  MutationResponseUnion,
+  RetrospectCreateForm,
+} from '../_types/retrospect'
 import { URL_PATH } from '@/consts/urls'
+import useDeleteMemoMutation from '@/app/_queries/useDeleteMemoMutation'
+import useMemoUpdateMutation from '@/app/retrospects/create/[[...memoId]]/_queries/useMemoUpdateMutation'
+import { useQueryClient } from '@tanstack/react-query'
+import openCustomToast from '@/utils/openCustomToast'
+import anyTrue from '@/utils/anyTrue'
 
 const SubmitHeader = ({
   title,
   groupId,
+  templateId,
+  initMemoId,
 }: {
   title: RetrospectCreateForm['title']
   groupId: RetrospectCreateForm['groupId']
+  templateId: MemoCreateForm['templateId']
+  initMemoId: number | null
 }) => {
+  const [editor] = useLexicalComposerContext()
+  const memoId = useRef(initMemoId)
   const { back, replace } = useRouter()
+  const queryClient = useQueryClient()
   const { mutate: retrospectMutate, isPending: retrospectIsPending } =
     useRetrospectCreateMutation()
-  const { mutate: memoRetrospectMutate, isPending: memoIsPending } =
+  const { mutate: memoMutate, isPending: memoCreateIsPending } =
     useMemoCreateMutation()
+  const { mutate: memoUpdate, isPending: memoUpdateIsPending } =
+    useMemoUpdateMutation()
+  const { mutate: deleteMemo } = useDeleteMemoMutation()
 
-  const [editor] = useLexicalComposerContext()
+  const retrospectMutationOnSuccess = (data: MutationResponseUnion) => {
+    if (memoId.current) deleteMemo(memoId.current)
+    if ('retrospectId' in data)
+      replace(`${URL_PATH.Retrospects}/${data.retrospectId}`)
+  }
+
+  //Todo: 공통 훅으로 분리하여 재사용
+  const invalidateQueries = (queryKeys: (string | number)[]) => {
+    return queryClient.invalidateQueries({
+      queryKey: queryKeys,
+    })
+  }
+
+  const memoMutationOnSuccess = (
+    memoId: RefObject<number | null>,
+    data: MutationResponseUnion,
+  ) => {
+    if ('memoId' in data) {
+      memoId.current = data.memoId
+      invalidateQueries(['MyMemoList'])
+      invalidateQueries(['memo', data.memoId])
+    }
+    openCustomToast('임시저장 되었습니다.', true)
+  }
 
   const handleSubmit = (
-    mutateFn: ReturnType<typeof useRetrospectCreateMutation>['mutate'],
+    mutateFn: ReturnType<
+      | typeof useRetrospectCreateMutation
+      | typeof useMemoCreateMutation
+      | typeof useMemoUpdateMutation
+    >['mutate'],
     isPending: boolean,
   ) => {
     if (!title.trim() || isPending) return
@@ -35,14 +82,17 @@ const SubmitHeader = ({
       .read(() => $generateHtmlFromNodes(editor, null))
 
     mutateFn(
-      { title, content: htmlResult, ...(groupId ? { groupId } : {}) },
       {
-        onSuccess: (data) => {
-          if (mutateFn === memoRetrospectMutate) {
-            alert('임시저장 되었습니다.')
-          } else {
-            replace(`${URL_PATH.Retrospects}/${data.retrospectId}`)
-          }
+        title,
+        content: htmlResult,
+        templateId, // 임시저장 시에만 사용
+        memoId: memoId.current || 0, // 임시저장 수정 시에만 사용
+        ...(groupId ? { groupId } : {}),
+      },
+      {
+        onSuccess: (data: MutationResponseUnion) => {
+          if (mutateFn === retrospectMutate) retrospectMutationOnSuccess(data)
+          else memoMutationOnSuccess(memoId, data)
         },
       },
     )
@@ -53,7 +103,9 @@ const SubmitHeader = ({
   }
 
   const handleMemoSubmit = () => {
-    handleSubmit(memoRetrospectMutate, memoIsPending)
+    if (memoId.current) {
+      handleSubmit(memoUpdate, memoCreateIsPending)
+    } else handleSubmit(memoMutate, memoCreateIsPending)
   }
 
   return (
@@ -82,7 +134,7 @@ const SubmitHeader = ({
           color='primary'
           variant='outlined'
           size='medium'
-          disabled={!title || memoIsPending}
+          disabled={anyTrue(!title, memoCreateIsPending, memoUpdateIsPending)}
           onClick={handleMemoSubmit}
         >
           <Icon
@@ -90,7 +142,9 @@ const SubmitHeader = ({
             size={20}
             className={cn(
               'stroke-0 mr-1 ',
-              !title || memoIsPending ? 'fill-gray-500' : 'fill-blue-500',
+              anyTrue(!title, memoCreateIsPending, memoUpdateIsPending)
+                ? 'fill-gray-500'
+                : 'fill-blue-500',
             )}
           />
           임시저장

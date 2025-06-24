@@ -40,4 +40,5 @@ export interface Memo {
   content: string
   categoryNames: string[]
   groupId: number
+  templateId: number
 }
