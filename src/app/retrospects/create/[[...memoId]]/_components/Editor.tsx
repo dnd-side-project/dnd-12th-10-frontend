@@ -37,10 +37,27 @@ function onError(error: unknown) {
   console.error(error)
 }
 
-const Editor = ({ retrospectInfo }: { retrospectInfo: RetrospectInfoForm }) => {
+const Editor = ({
+  memoId,
+  retrospectInfo,
+  initialTitle,
+  initialContent,
+}: {
+  memoId: number | null
+  retrospectInfo: RetrospectInfoForm
+  initialTitle: string
+  initialContent: string
+}) => {
   // TODO: templateId 타입 수정할 것! (nullable 불가능하게)
   const { data } = useGetTemplate(retrospectInfo.templateId ?? 0)
   const [title, setTitle] = useState('')
+
+  useEffect(() => {
+    setTitle(initialTitle)
+  }, [initialTitle])
+
+  // ESLint로 인한 console.log
+  console.log(memoId)
 
   if (!data) return null
 
@@ -57,6 +74,7 @@ const Editor = ({ retrospectInfo }: { retrospectInfo: RetrospectInfoForm }) => {
             'bg-[inherit]',
             'outline-none',
           )}
+          value={title}
           placeholder='제목을 입력해주세요.'
           onChange={(e) => setTitle(e.target.value)}
         />
@@ -70,7 +88,7 @@ const Editor = ({ retrospectInfo }: { retrospectInfo: RetrospectInfoForm }) => {
         />
         <HistoryPlugin />
         <AutoFocusPlugin />
-        <HTMLToLexicalPlugin preset={data.preset} />
+        <HTMLToLexicalPlugin preset={initialContent || data.preset} />
         <ListPlugin />
       </div>
     </LexicalComposer>
