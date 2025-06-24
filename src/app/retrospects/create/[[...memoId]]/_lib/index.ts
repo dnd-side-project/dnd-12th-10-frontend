@@ -18,7 +18,7 @@ export const getTemplate = async (templateId: number) =>
 export const getMyGroupList = async () =>
   await axiosInstance.get<MyGroupList>(API_PATH.GetMyGroupList)
 
-export const getMemo = async (memoId: string) =>
+export const getMemo = async (memoId: number) =>
   await axiosInstance.get<Memo>(`${API_PATH.GetMemo}/${memoId}`)
 
 export const createMemo = async (memo: MemoCreateForm) =>
