@@ -3,6 +3,11 @@ import { axiosInstance } from '@/lib/axios'
 import { Template, TemplateList } from '../_types/template'
 import { MyGroupList } from '../_types/group'
 import { Memo } from '@/app/_types'
+import {
+  MemoCreateForm,
+  MemoUpdateForm,
+  MemoMutationResponse,
+} from '../_types/retrospect'
 
 export const getTemplateList = async () =>
   await axiosInstance.get<TemplateList>(API_PATH.TemplateList)
@@ -16,5 +21,8 @@ export const getMyGroupList = async () =>
 export const getMemo = async (memoId: string) =>
   await axiosInstance.get<Memo>(`${API_PATH.GetMemo}/${memoId}`)
 
-// export const updateMemo = async (memoId: string, memo: Memo) =>
-//   await axiosInstance.put()
+export const createMemo = async (memo: MemoCreateForm) =>
+  await axiosInstance.post<MemoMutationResponse>(API_PATH.MemoCreate, memo)
+
+export const updateMemo = async (memo: MemoUpdateForm) =>
+  await axiosInstance.put<MemoMutationResponse>(API_PATH.UpdateMemo, memo)

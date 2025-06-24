@@ -40,4 +40,5 @@ export const API_PATH = {
   GetMemo: `/memo`,
   MemoCreate: '/memo',
   DeleteMemo: '/memo',
+  UpdateMemo: '/memo',
 }

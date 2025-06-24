@@ -16,6 +16,24 @@ export const retrospectCreateResponse = z.object({
   retrospectId: z.number(),
 })
 
+export const memoCreateForm = retrospectCreateForm.extend({
+  templateId: z.number(),
+})
+
+export const memoUpdateForm = memoCreateForm.extend({
+  memoId: z.number(),
+})
+
+export const memoMutationResponse = z.object({
+  memoId: z.number(),
+})
+
 export type RetrospectInfoForm = z.infer<typeof retrospectInfoForm>
 export type RetrospectCreateForm = z.infer<typeof retrospectCreateForm>
 export type RetrospectCreateResponse = z.infer<typeof retrospectCreateResponse>
+export type MemoCreateForm = z.infer<typeof memoCreateForm>
+export type MemoUpdateForm = z.infer<typeof memoUpdateForm>
+export type MemoMutationResponse = z.infer<typeof memoMutationResponse>
+export type MutationResponseUnion =
+  | MemoMutationResponse
+  | RetrospectCreateResponse
