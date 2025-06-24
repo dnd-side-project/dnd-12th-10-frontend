@@ -23,11 +23,16 @@ const MemoListModal = () => {
     }
   }
 
+  const closeModalWithRefresh = () => {
+    setSelectedMemo(null)
+    closeModal()
+  }
+
   return (
-    <Modal isOpen={isOpen} onClose={closeModal}>
+    <Modal isOpen={isOpen} onClose={closeModalWithRefresh}>
       <div className='text-lg font-semibold lineHeight-150 flex items-center justify-between'>
         <p>이전에 작성 중인 회고가 있어요!</p>
-        <button type='button' onClick={closeModal}>
+        <button type='button' onClick={closeModalWithRefresh}>
           <Icon name='close' />
         </button>
       </div>
@@ -55,7 +60,7 @@ const MemoListModal = () => {
         </ul>
       )}
       <div className='flex gap-2'>
-        <Link href={URL_PATH.RetrospectsCreate}>
+        <Link href={URL_PATH.RetrospectsCreate} onClick={closeModalWithRefresh}>
           <Button
             variant='subtle'
             color='primary'
@@ -66,16 +71,21 @@ const MemoListModal = () => {
             새로 작성
           </Button>
         </Link>
-        <Button
-          variant='filled'
-          color='primary'
-          size='medium'
-          onClick={closeModal}
-          style={{ width: '180px' }}
-          disabled={selectedMemo === null || myMemoList.length === 0}
+        <Link
+          href={URL_PATH.RetrospectsCreate + '/' + selectedMemo}
+          onClick={closeModalWithRefresh}
         >
-          이어서 작성하기
-        </Button>
+          <Button
+            variant='filled'
+            color='primary'
+            size='medium'
+            onClick={closeModal}
+            style={{ width: '180px' }}
+            disabled={selectedMemo === null || myMemoList.length === 0}
+          >
+            이어서 작성하기
+          </Button>
+        </Link>
       </div>
     </Modal>
   )
