@@ -101,7 +101,7 @@ const ConfirmModal = ({
   memoId: number
   closeDeleteConfirm: VoidFunction
 }) => {
-  const { mutate: deleteMemo } = useDeleteMemoMutation(memoId)
+  const { mutate: deleteMemo } = useDeleteMemoMutation()
 
   return (
     <div className='flex w-full justify-between bg-gray-900 rounded-[4px] mt-2 px-3 py-[9px] text-caption01'>
@@ -113,7 +113,7 @@ const ConfirmModal = ({
         <button
           className='text-orange-500'
           onClick={() => {
-            deleteMemo()
+            deleteMemo(memoId)
           }}
         >
           삭제
