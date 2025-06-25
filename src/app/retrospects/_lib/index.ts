@@ -6,6 +6,7 @@ import type {
   CommentCreateForm,
   CommentCreateResponse,
 } from '../_types'
+import { CommentUpdateForm } from '../[id]/types'
 
 export const getMyRetrospectList = async (
   action: Action = 'all',
@@ -22,6 +23,24 @@ export const postComment = async (data: CommentCreateForm) => {
     data,
   )
   return reponse.data
+}
+
+export const updateComment = async (
+  commentId: string,
+  data: CommentUpdateForm,
+) => {
+  const reponse = await axiosInstance.patch<CommentCreateResponse>(
+    `${API_PATH.Comment}/${commentId}`,
+    data,
+  )
+  return reponse.data
+}
+
+export const deleteComment = async (commentId: string) => {
+  const response = await axiosInstance.delete(
+    `${API_PATH.Comment}/${commentId}`,
+  )
+  return response.data
 }
 
 export const postReply = async (data: CommentCreateForm, commentId: number) => {

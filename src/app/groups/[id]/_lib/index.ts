@@ -39,9 +39,9 @@ export const getRetrospect = async (retrospectId: string) => {
   return response.data
 }
 
-export const getReplyList = async (retrospectId: string, commentId: string) => {
+export const getReplyList = async (commentId: string) => {
   const response = await axiosInstance.get<ReplyList>(
-    `${API_PATH.Comment}/${retrospectId}/${commentId}`,
+    `${API_PATH.Comment}${API_PATH.Reply}/${commentId}`,
   )
   return response.data
 }
