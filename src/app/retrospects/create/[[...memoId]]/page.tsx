@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 const RetrospectCreatePage = async ({
   params,
 }: {
-  params: { memoId?: string[] }
+  params: Promise<{ memoId?: string[] }>
 }) => {
   const { memoId } = await params
 
