@@ -48,7 +48,7 @@ const MemoListModal = () => {
               <MemoListItem
                 memoId={memo.memoId}
                 title={memo.title}
-                timeString={'2025.01.29 10:49:20'}
+                timeString={memo.updateTime}
                 isSelected={selectedMemo === memo.memoId}
                 handleSelectedMemo={() => {
                   handleSelectedMemo(memo.memoId)
