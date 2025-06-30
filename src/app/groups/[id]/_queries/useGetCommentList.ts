@@ -4,7 +4,7 @@ import { getCommentList } from '../_lib'
 /** 회고글에 해당하는 댓글 목록 조회 */
 const useGetCommentList = (retrospectId: string) => {
   return useQuery({
-    queryKey: ['getCommentList', { retrospectId }],
+    queryKey: ['getCommentList', retrospectId],
     queryFn: async () => await getCommentList(retrospectId),
   })
 }

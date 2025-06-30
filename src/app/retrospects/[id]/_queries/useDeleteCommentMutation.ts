@@ -1,19 +1,16 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import openCustomToast from '@/utils/openCustomToast'
-
 import { deleteComment } from '../../_lib'
+import useInvalidateQueries from '@/hooks/useInvalidateQueries'
 
 const useDeleteCommentMutation = (commentId: string, retrospectId: string) => {
-  const queryClient = useQueryClient()
+  const invalidateQueries = useInvalidateQueries()
 
   return useMutation({
     mutationFn: async () => await deleteComment(commentId),
     onSuccess: () => {
       openCustomToast('댓글이 삭제되었습니다', true, '✅')
-
-      queryClient.invalidateQueries({
-        queryKey: ['getCommentList', { retrospectId }],
-      })
+      invalidateQueries(['getCommentList', retrospectId])
     },
   })
 }

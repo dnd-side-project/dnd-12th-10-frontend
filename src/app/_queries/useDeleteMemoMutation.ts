@@ -1,13 +1,14 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { deleteMemo } from '@/app/_lib'
+import useInvalidateQueries from '@/hooks/useInvalidateQueries'
 
 const useDeleteMemoMutation = () => {
-  const queryClient = useQueryClient()
+  const invalidateQueries = useInvalidateQueries()
 
   return useMutation({
     mutationFn: async (memoId: number) => await deleteMemo(memoId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['MyMemoList'] })
+      invalidateQueries(['MyMemoList'])
     },
     // 공통 에러 처리 필요
     onError: (error) => console.error(error),

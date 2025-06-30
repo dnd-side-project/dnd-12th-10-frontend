@@ -15,9 +15,9 @@ import type {
 import { URL_PATH } from '@/consts/urls'
 import useDeleteMemoMutation from '@/app/_queries/useDeleteMemoMutation'
 import useMemoUpdateMutation from '@/app/retrospects/create/[[...memoId]]/_queries/useMemoUpdateMutation'
-import { useQueryClient } from '@tanstack/react-query'
 import openCustomToast from '@/utils/openCustomToast'
 import anyTrue from '@/utils/anyTrue'
+import useInvalidateQueries from '@/hooks/useInvalidateQueries'
 
 const SubmitHeader = ({
   title,
@@ -33,7 +33,7 @@ const SubmitHeader = ({
   const [editor] = useLexicalComposerContext()
   const memoId = useRef(initMemoId)
   const { back, replace } = useRouter()
-  const queryClient = useQueryClient()
+  const invalidateQueries = useInvalidateQueries()
   const { mutate: retrospectMutate, isPending: retrospectIsPending } =
     useRetrospectCreateMutation()
   const { mutate: memoMutate, isPending: memoCreateIsPending } =
@@ -46,13 +46,6 @@ const SubmitHeader = ({
     if (memoId.current) deleteMemo(memoId.current)
     if ('retrospectId' in data)
       replace(`${URL_PATH.Retrospects}/${data.retrospectId}`)
-  }
-
-  //Todo: 공통 훅으로 분리하여 재사용
-  const invalidateQueries = (queryKeys: (string | number)[]) => {
-    return queryClient.invalidateQueries({
-      queryKey: queryKeys,
-    })
   }
 
   const memoMutationOnSuccess = (

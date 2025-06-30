@@ -1,10 +1,11 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { postReply } from '../../_lib'
 import { CommentCreateForm } from '../../_types'
+import useInvalidateQueries from '@/hooks/useInvalidateQueries'
 
 /** 답글 생성 */
 const useReplyMutation = () => {
-  const queryClient = useQueryClient()
+  const invalidateQueries = useInvalidateQueries()
 
   return useMutation({
     mutationFn: async ({
@@ -15,14 +16,8 @@ const useReplyMutation = () => {
       commentId: number
     }) => await postReply(data, commentId),
     onSuccess: () => {
-      // 답글 업데이트
-      queryClient.invalidateQueries({
-        queryKey: ['getReplyList'],
-      })
-      // 회고 내의 댓글 개수 업데이트
-      queryClient.invalidateQueries({
-        queryKey: ['getRetrospect'],
-      })
+      invalidateQueries(['getReplyList']) // 답글 업데이트
+      invalidateQueries(['getRetrospect']) // 회고 내의 댓글 개수 업데이트
     },
     // 공통 에러 처리 필요
     onError: (error) => console.error(error),
