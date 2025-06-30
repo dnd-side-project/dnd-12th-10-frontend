@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { cn } from '@/utils/cn'
-import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
 import Dropdown from '@/components/Dropdown'
 import AuthorInfo from '@/components/AuthorInfo'
@@ -11,53 +10,44 @@ import type { RetrospectList } from '../_types'
 import { URL_PATH } from '@/consts/urls'
 import { useRouter } from 'next/navigation'
 import DOMPurify from 'isomorphic-dompurify'
+import OpenMemoListModalButton from '@/app/_components/OpenMemoListModalButton'
 
 const RetrospectList = ({
   retrospectList,
 }: {
   retrospectList: RetrospectList
-}) => {
-  const { push } = useRouter()
+}) => (
+  <>
+    <div className='flex flex-row-reverse mt-16'>
+      <Dropdown options={['최신순', '좋아요순']} />
+    </div>
+    <ul
+      className={cn(
+        'flex flex-col gap-[64px]',
+        'mt-4',
+        'px-[56px] py-[52px]',
+        'bg-white ',
+        'rounded-lg',
+        'border-1 border-gray-100',
+      )}
+    >
+      {retrospectList.map((retrospect, index) => (
+        <RetrospectListItem key={index} {...retrospect} />
+      ))}
+      <li className='flex flex-col items-center'>
+        <p className='text-title02 text-gray-500'>모든 회고를 확인했습니다!</p>
+        <p className='text-body02 text-gray-500 font-normal mb-6'>
+          이제 당신의 이야기를 들려주세요. ✍️
+        </p>
+        <OpenMemoListModalButton color='primary' variant='subtle' size='medium'>
+          <Icon name='edit' className='stroke-blue-500 mr-2' size={20} />
+          글쓰기
+        </OpenMemoListModalButton>
+      </li>
+    </ul>
+  </>
+)
 
-  return (
-    <>
-      <div className='flex flex-row-reverse mt-16'>
-        <Dropdown options={['최신순', '좋아요순']} />
-      </div>
-      <ul
-        className={cn(
-          'flex flex-col gap-[64px]',
-          'mt-4',
-          'px-[56px] py-[52px]',
-          'bg-white ',
-          'rounded-lg',
-          'border-1 border-gray-100',
-        )}
-      >
-        {retrospectList.map((retrospect, index) => (
-          <RetrospectListItem key={index} {...retrospect} />
-        ))}
-        <li className='flex flex-col items-center'>
-          <p className='text-title02 text-gray-500'>
-            모든 회고를 확인했습니다!
-          </p>
-          <p className='text-body02 text-gray-500 font-normal mb-6'>
-            이제 당신의 이야기를 들려주세요. ✍️
-          </p>
-          <Button
-            color='primary'
-            variant='subtle'
-            size='medium'
-            onClick={() => push(URL_PATH.RetrospectsCreate)}
-          >
-            <Icon name='edit' className='stroke-blue-500 mr-2' size={20} />
-            글쓰기
-          </Button>
-        </li>
-      </ul>
-    </>
-  )
-}
 export default RetrospectList
 
 export const RetrospectListItem = ({

@@ -3,8 +3,8 @@
 import { Icon } from '@/components/Icon'
 import { useRouter } from 'next/navigation'
 import RetrospectCard from '../_components/RetrospectCard'
-import useUserDataQuery from '@/querys/useUserDataQuery'
-import useMyRetrospectListQuery from '../_querys/useMyRetrospectListQuery'
+import useUserDataQuery from '@/queries/useUserDataQuery'
+import useMyRetrospectListQuery from '../_queries/useMyRetrospectListQuery'
 
 const MyRetrospectsPage = () => {
   const { back } = useRouter()

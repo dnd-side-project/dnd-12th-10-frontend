@@ -68,6 +68,7 @@ import Review from '@/assets/icons/landing/review.svg'
 import Sms from '@/assets/icons/landing/sms.svg'
 import Insta from '@/assets/icons/landing/insta.svg'
 import More from '@/assets/icons/more.svg'
+import DocumentDownload from '@/assets/icons/document-download.svg'
 import Pencil from '@/assets/icons/pencil.svg'
 
 export const icons = {
@@ -129,6 +130,7 @@ export const icons = {
   italic: Italic,
   bold: Bold,
   underline: Underline,
+  'document-download': DocumentDownload,
   'thumbs-up': ThumbsUp,
   plus: Plus,
   polygon: Polygon,

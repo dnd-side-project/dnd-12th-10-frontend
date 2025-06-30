@@ -1,16 +1,12 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
 import MainImage from '@/assets/images/main-image.png'
-import { URL_PATH } from '@/consts/urls'
+import OpenMemoListModalButton from '@/app/_components/OpenMemoListModalButton'
 
 /** 모임 생성 상단 배너 */
 const Banner = () => {
-  const { push } = useRouter()
-
   return (
     <div className='bg-blue-50 py-8 pl-8 pr-14 rounded-lg flex justify-between items-center'>
       <div>
@@ -21,15 +17,10 @@ const Banner = () => {
         <p className='mt-2 text-blue-900 text-body01 mb-[26px]'>
           인기 회고 모임을 찾거나, 나만의 모임을 만들어볼 수 있어요!
         </p>
-        <Button
-          color='primary'
-          size='medium'
-          variant='filled'
-          onClick={() => push(URL_PATH.RetrospectsCreate)}
-        >
+        <OpenMemoListModalButton color='primary' size='medium' variant='filled'>
           <Icon name='edit' className='stroke-white mr-2.5' size={20} />
           회고록 쓰기
-        </Button>
+        </OpenMemoListModalButton>
       </div>
       <Image src={MainImage} alt='' width={320} height={176} />
     </div>

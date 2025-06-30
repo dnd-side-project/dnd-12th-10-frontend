@@ -31,7 +31,9 @@ const Retrospect = () => {
   // TODO: 수정
   return (
     <div className='py-[72px] px-[88px]'>
-      <GroupInfo groupName={groupName} groupId={groupId} />
+      {groupName && groupId && (
+        <GroupInfo groupName={groupName} groupId={groupId} />
+      )}
       <article
         className={cn(
           'mt-6',

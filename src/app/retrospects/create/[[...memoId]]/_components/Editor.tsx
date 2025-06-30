@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { cn } from '@/utils/cn'
 import useModal from '@/hooks/useModal'
 import { LinkNode } from '@lexical/link'
@@ -37,49 +37,66 @@ function onError(error: unknown) {
   console.error(error)
 }
 
-const Editor = ({ retrospectInfo }: { retrospectInfo: RetrospectInfoForm }) => {
+const Editor = ({
+  memoId,
+  retrospectInfo,
+  initialTitle,
+  initialContent,
+}: {
+  memoId: number | null
+  retrospectInfo: RetrospectInfoForm
+  initialTitle: string
+  initialContent: string
+}) => {
   // TODO: templateId 타입 수정할 것! (nullable 불가능하게)
   const { data } = useGetTemplate(retrospectInfo.templateId ?? 0)
   const [title, setTitle] = useState('')
 
+  useEffect(() => {
+    setTitle(initialTitle)
+  }, [initialTitle])
+
+  // ESLint로 인한 console.log
+  console.log(memoId)
+
   if (!data) return null
 
   return (
-    <>
-      <LexicalComposer initialConfig={initialConfig}>
-        <SubmitHeader title={title} groupId={Number(retrospectInfo.groupId)} />
-        <div className='max-w-[1016px] mx-auto mt-[50px] mb-28'>
-          <input
-            type='text'
-            className={cn(
-              'text-display01',
-              'w-full',
-              'placeholder:text-gray-400',
-              'bg-[inherit]',
-              'outline-none',
-            )}
-            placeholder='제목을 입력해주세요.'
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <TemplateInfo
-            templateName={data.templateName}
-            content={data.content}
-          />
-
-          <ToolbarPlugin />
-          <RichTextPlugin
-            contentEditable={
-              <ContentEditable className='border border-gray-100 border-t-0 outline-none min-h-[591px] bg-white p-6' />
-            }
-            ErrorBoundary={LexicalErrorBoundary}
-          />
-          <HistoryPlugin />
-          <AutoFocusPlugin />
-          <HTMLToLexicalPlugin preset={data.preset} />
-          <ListPlugin />
-        </div>
-      </LexicalComposer>
-    </>
+    <LexicalComposer initialConfig={initialConfig}>
+      <SubmitHeader
+        title={title}
+        groupId={Number(retrospectInfo.groupId)}
+        templateId={retrospectInfo.templateId ?? 0}
+        initMemoId={memoId}
+      />
+      <div className='max-w-[1016px] mx-auto mt-[50px] mb-28'>
+        <input
+          type='text'
+          className={cn(
+            'text-display01',
+            'w-full',
+            'placeholder:text-gray-400',
+            'bg-[inherit]',
+            'outline-none',
+          )}
+          value={title}
+          placeholder='제목을 입력해주세요.'
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <TemplateInfo templateName={data.templateName} content={data.content} />
+        <ToolbarPlugin />
+        <RichTextPlugin
+          contentEditable={
+            <ContentEditable className='border border-gray-100 border-t-0 outline-none min-h-[591px] bg-white p-6' />
+          }
+          ErrorBoundary={LexicalErrorBoundary}
+        />
+        <HistoryPlugin />
+        <AutoFocusPlugin />
+        <HTMLToLexicalPlugin preset={initialContent || data.preset} />
+        <ListPlugin />
+      </div>
+    </LexicalComposer>
   )
 }
 

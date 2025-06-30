@@ -1,17 +1,16 @@
-import Link from 'next/link'
 import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
 import { Group } from '@/app/groups/[id]/_types'
 import { ROLE } from '@/app/groups/[id]/_consts'
-import { URL_PATH } from '@/consts/urls'
 import GroupJoinModal from '@/app/groups/[id]/_components/GroupJoinModal'
 import useModal from '@/hooks/useModal'
 import useGetGroupInfo from '@/app/groups/[id]/_queries/useGetGroupInfo'
+import OpenMemoListModalButton from '@/app/_components/OpenMemoListModalButton'
 
 // Todo: 모임 가입 이벤트를 위해 group id도 전달 받아야 할 듯
 interface GroupInfoProps {
   groupName: string
-  groupId: Group['groupId']
+  groupId: Group['groupId'] | null
 }
 /** 페이지 상단 (모임명, 가입 or 글쓰기 버튼) 영역 */
 const GroupInfo = ({ groupName, groupId }: GroupInfoProps) => {
@@ -43,12 +42,10 @@ const GroupInfo = ({ groupName, groupId }: GroupInfoProps) => {
 export default GroupInfo
 
 const WriteButton = () => (
-  <Link href={URL_PATH.RetrospectsCreate}>
-    <Button color='primary' variant='subtle' size='medium'>
-      <Icon name='edit' size={20} className='stroke-blue-500 mr-2' />
-      글쓰기
-    </Button>
-  </Link>
+  <OpenMemoListModalButton color='primary' variant='subtle' size='medium'>
+    <Icon name='edit' size={20} className='stroke-blue-500 mr-2' />
+    글쓰기
+  </OpenMemoListModalButton>
 )
 
 const JoinButton = ({ openModal }: { openModal: () => void }) => (

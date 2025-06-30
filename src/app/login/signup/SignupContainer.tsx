@@ -12,7 +12,7 @@ import ChipButton from '@/components/ChipButton'
 import LimitedInput from '@/components/LimitedInput'
 import { JOB_LIST } from './_consts/jobList'
 import { KEYWORD_LIST } from '@/consts/keywordList'
-import useUserDataQuery from '@/querys/useUserDataQuery'
+import useUserDataQuery from '@/queries/useUserDataQuery'
 
 const MAX_LENGTH = 10
 

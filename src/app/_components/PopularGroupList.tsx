@@ -7,7 +7,7 @@ import Chip from '@/components/Chip'
 import { Icon } from '@/components/Icon'
 import { Group } from '../_types'
 import SectionHeader from './SectionHeader'
-import usePopularGroupListQuery from '../_querys/usePopularGroupListQuery'
+import usePopularGroupListQuery from '../_queries/usePopularGroupListQuery'
 import { URL_PATH } from '@/consts/urls'
 import PopularRetrospectCard from './PopularRetrospectCard'
 

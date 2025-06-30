@@ -7,6 +7,7 @@ interface RetrospectListProps {
 
 const RetrospectList = ({ myRetrospectList }: RetrospectListProps) => {
   return (
+    // Todo: 전체, 모임, 개인 회고 구분 탭 구현하기
     <div className='flex gap-4 flex-wrap h-[186px] overflow-hidden'>
       {myRetrospectList.map((props) => (
         <RetrospectCard

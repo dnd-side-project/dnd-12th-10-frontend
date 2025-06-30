@@ -1,7 +1,7 @@
 'use client'
 
 import SearchInput from '@/components/SearchInput'
-import useAllGroupListQuery from '@/app/groups/_querys/useAllGroupListQuery'
+import useAllGroupListQuery from '@/app/groups/_queries/useAllGroupListQuery'
 import { RecommendedGroupCard } from '@/app/_components/RecommendedGroupList'
 import { useEffect, useState } from 'react'
 import { Group } from '@/app/_types'

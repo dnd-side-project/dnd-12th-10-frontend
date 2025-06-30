@@ -1,12 +1,11 @@
-import Link from 'next/link'
 import Chip from '@/components/Chip'
 import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
-import { URL_PATH } from '@/consts/urls'
 import { Group } from '../_types'
 import { ROLE } from '../_consts'
 import GroupJoinModal from './GroupJoinModal'
 import useModal from '@/hooks/useModal'
+import OpenMemoListModalButton from '@/app/_components/OpenMemoListModalButton'
 
 interface Props {
   groupName: Group['groupName']
@@ -58,12 +57,10 @@ const GroupHeading = ({
 export default GroupHeading
 
 const WriteButton = () => (
-  <Link href={URL_PATH.RetrospectsCreate}>
-    <Button color='primary' variant='filled' size='medium'>
-      <Icon name='edit' className='stroke-white mr-2' size={20} />
-      글쓰기
-    </Button>
-  </Link>
+  <OpenMemoListModalButton color='primary' variant='filled' size='medium'>
+    <Icon name='edit' className='stroke-white mr-2' size={20} />
+    글쓰기
+  </OpenMemoListModalButton>
 )
 
 const JoinButton = ({ openModal }: { openModal: () => void }) => (
