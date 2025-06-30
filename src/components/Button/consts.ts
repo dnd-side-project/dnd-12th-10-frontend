@@ -50,9 +50,25 @@ export const BUTTON_STYLE: {
     text: '',
   },
   mono: {
-    subtle: ['bg-gray-100', 'text-white', 'hover:bg-gray-900'].join(' '),
-    filled: '',
-    outlined: '', // mono 색상은 현재 해당 variant 존재하지 않음
+    filled: [
+      'bg-gray-100',
+      'text-gray-900',
+      'hover:bg-gray-900',
+      'hover:text-white',
+    ].join(' '),
+    subtle: [
+      'bg-gray-50',
+      'text-gray-900',
+      'disabled:text-gray-400',
+      'hover:bg-gray-300',
+    ].join(' '),
+    outlined: [
+      'bg-white',
+      'border border-[2px] border-gray-600',
+      'text-gray-600',
+      'hover:bg-gray-50',
+      'disabled:bg-gray-50 disabled:text-gray-400 disabled:border-gray-300',
+    ].join(' '),
     text: '',
   },
 }
