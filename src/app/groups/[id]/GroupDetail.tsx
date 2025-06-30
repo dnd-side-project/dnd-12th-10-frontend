@@ -88,6 +88,7 @@ const GroupDetail = () => {
         />
       )}
       <Confirm
+        isDanger={true}
         isOpen={isModalOpen}
         title='선택한 모임을 삭제하시겠습니까?'
         message='삭제된 모임은 복구되지 않습니다.'
