@@ -1,10 +1,11 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { CommentUpdateForm } from '../types'
 import { updateComment } from '../../_lib'
+import useInvalidateQueries from '@/hooks/useInvalidateQueries'
 
 /** 회고 댓글 수정 */
 const useUpdateCommentMutation = (retrospectId: string) => {
-  const queryClient = useQueryClient()
+  const invalidateQueries = useInvalidateQueries()
 
   return useMutation({
     mutationFn: async ({
@@ -18,9 +19,7 @@ const useUpdateCommentMutation = (retrospectId: string) => {
     },
     onSuccess: () => {
       // 댓글 데이터 업데이트
-      queryClient.invalidateQueries({
-        queryKey: ['getCommentList', { retrospectId }],
-      })
+      invalidateQueries(['getCommentList', retrospectId])
     },
   })
 }

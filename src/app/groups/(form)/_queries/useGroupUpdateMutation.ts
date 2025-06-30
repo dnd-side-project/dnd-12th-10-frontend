@@ -1,11 +1,12 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { GroupCreateForm, GroupCreateResponse } from '../_types'
 import { axiosInstance } from '@/lib/axios'
 import { API_PATH } from '@/consts/urls'
+import useInvalidateQueries from '@/hooks/useInvalidateQueries'
 
 /** 모임 수정 */
 const useGroupUpdateMutation = (groupId: string) => {
-  const queryClient = useQueryClient()
+  const invalidateQueries = useInvalidateQueries()
 
   return useMutation({
     mutationFn: async ({
@@ -23,12 +24,8 @@ const useGroupUpdateMutation = (groupId: string) => {
     },
     onSuccess: () => {
       // 모임 정보 업데이트
-      queryClient.invalidateQueries({
-        queryKey: ['getGroupInfo', { groupId }],
-      })
-      queryClient.invalidateQueries({
-        queryKey: ['MyGroup'],
-      })
+      invalidateQueries(['getGroupInfo', groupId])
+      invalidateQueries(['MyGroup'])
     },
     // 공통 에러 처리 필요
     onError: (error) => console.error(error),

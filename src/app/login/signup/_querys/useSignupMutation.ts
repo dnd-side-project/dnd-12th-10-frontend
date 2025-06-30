@@ -1,9 +1,10 @@
 import { useRouter } from 'next/navigation'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { URL_PATH } from '@/consts/urls'
 import openCustomToast from '@/utils/openCustomToast'
 import { signup } from '../_lib'
 import { AxiosError } from 'axios'
+import useInvalidateQueries from '@/hooks/useInvalidateQueries'
 
 interface ErrorResponse {
   code: string
@@ -11,13 +12,13 @@ interface ErrorResponse {
 
 const useSignupMutation = () => {
   const { replace } = useRouter()
-  const queryClient = useQueryClient()
+  const invalidateQueries = useInvalidateQueries()
 
   const { mutate: signupMutation, isPending } = useMutation({
     mutationFn: signup,
     onSuccess: () => {
       openCustomToast('회원가입 성공', true, '✅')
-      queryClient.invalidateQueries({ queryKey: ['UserData'] })
+      invalidateQueries(['UserData'])
       replace(URL_PATH.Home)
     },
     onError: (error: AxiosError<ErrorResponse>) => {
