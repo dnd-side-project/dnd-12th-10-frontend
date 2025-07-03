@@ -8,6 +8,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from '@heroui/dropdown'
+import copyToCurrentUrl from '../_utils/copyToCurrentUrl'
 
 /** 모임 액션 메뉴(수정, 삭제) 드롭다운 */
 const GroupActionsDropdown = ({
@@ -63,6 +64,7 @@ const getMenuItems = ({ isLeader, groupId, openModal }: MenuItemProps) => {
       {ActionItem({
         key: 'copy',
         label: '링크 복사하기',
+        onPress: copyToCurrentUrl,
       })}
       {ActionItem({
         key: 'leave',
