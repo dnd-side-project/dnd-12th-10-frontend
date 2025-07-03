@@ -36,6 +36,7 @@ export const API_PATH = {
   RetrospectList: '/retrospect/all',
   Comment: '/comment',
   GroupJoin: '/group/join',
+  GroupLeave: '/group/leave',
   GetMyMemoList: '/memo',
   GetMemo: `/memo`,
   MemoCreate: '/memo',
