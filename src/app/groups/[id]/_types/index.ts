@@ -1,5 +1,7 @@
 import { z } from 'zod'
 import { ROLE } from '../_consts'
+import { UseMutateFunction } from '@tanstack/react-query'
+import Link from 'next/link'
 
 export const groupSchema = z.object({
   groupId: z.number(),
@@ -70,3 +72,25 @@ export type CommentList = z.infer<typeof commentListSchema>
 export type ReplyList = z.infer<typeof replyListSchema>
 export type GroupJoin = z.infer<typeof groupJoinSchema>
 export type GroupJoinResponse = z.infer<typeof gropJoinReponseSchema>
+
+export interface ConfirmModal {
+  title: string
+  message: string
+  onConfirmText: string
+  onConfirm: UseMutateFunction
+}
+
+export interface MenuItemProps {
+  isLeader: boolean
+  groupId: number
+  openModal: VoidFunction
+}
+
+export interface ActionItemProps {
+  key: string
+  label: string
+  onPress?: VoidFunction
+  color?: 'danger'
+  as?: 'button' | typeof Link
+  href?: string
+}

@@ -9,6 +9,7 @@ interface ConfirmProps {
   message: string
   onConfirm: VoidFunction
   onCancel: VoidFunction
+  onConfirmText?: string
 }
 
 const Confirm = ({
@@ -18,10 +19,11 @@ const Confirm = ({
   message,
   onConfirm,
   onCancel,
+  onConfirmText = '확인',
 }: ConfirmProps) => {
   return (
     <Portal isOpen={isOpen}>
-      <div className='fixed flex inset-0 pt-4 justify-center '>
+      <div className='fixed flex inset-0 pt-4 justify-center'>
         <div
           className={cn(
             'h-fit',
@@ -54,7 +56,7 @@ const Confirm = ({
               size='small'
               onClick={onConfirm}
             >
-              확인
+              {onConfirmText}
             </Button>
           </div>
         </div>

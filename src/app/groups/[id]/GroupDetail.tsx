@@ -1,5 +1,5 @@
 'use client'
-
+import { useState } from 'react'
 import { cn } from '@/utils/cn'
 import GroupHeading from './_components/GroupHeading'
 import GroupDescription from './_components/GroupDescription'
@@ -11,10 +11,11 @@ import Spinner from '@/components/Spinner'
 import useGetGroupInfo from './_queries/useGetGroupInfo'
 import useGetRetrospectList from './_queries/useGetRetrospectList'
 import { ROLE } from './_consts'
-import GroupActionsDropdown from '@/app/groups/[id]/_components/GroupActionsDropdown'
+import GroupActionsDropdown from './_components/GroupActionsDropdown'
 import Confirm from '@/components/Confirm'
-import useDeleteGroupMutation from '@/app/groups/[id]/_queries/useDeleteGroupMutation'
-import { useState } from 'react'
+import useDeleteGroupMutation from './_queries/useDeleteGroupMutation'
+import useLeaveGroupMutation from './_queries/useLeaveGroupMutation'
+import { ConfirmModal } from './_types'
 
 const GroupDetail = () => {
   const groupId = useParams<{ id: string }>()?.id
@@ -22,8 +23,26 @@ const GroupDetail = () => {
   const { data: groupInfo } = useGetGroupInfo(groupId)
   const { data: retrospectList } = useGetRetrospectList(groupId)
   const { mutate: deleteGroup } = useDeleteGroupMutation(String(groupId))
+  const { mutate: leaveGroup } = useLeaveGroupMutation(String(groupId))
 
   if (!groupInfo) return <Spinner />
+
+  const confirmModalContent: ConfirmModal =
+    groupInfo.role === 'LEADER'
+      ? {
+          title: '선택한 모임을 삭제하시겠습니까?',
+          message: '삭제된 모임은 복구되지 않습니다.',
+          onConfirmText: '삭제하기',
+          onConfirm: deleteGroup,
+        }
+      : {
+          title: '선택한 모임을 탈퇴하시겠습니까?',
+          message: '탈퇴한 모임은 다시 참여할 수 없습니다.',
+          onConfirmText: '탈퇴하기',
+          onConfirm: leaveGroup,
+        }
+
+  const { title, message, onConfirm, onConfirmText } = confirmModalContent
 
   const {
     groupName,
@@ -63,13 +82,15 @@ const GroupDetail = () => {
             createdAtGroup={createDate}
             latestUpdateTime={recentActString}
           />
-          <GroupActionsDropdown
-            role={role}
-            groupId={Number(groupId)}
-            openDeleteGroupConfirm={() => {
-              setIsModalOpen(true)
-            }}
-          />
+          {role !== 'NON_MEMBER' && (
+            <GroupActionsDropdown
+              role={role}
+              groupId={Number(groupId)}
+              openModal={() => {
+                setIsModalOpen(true)
+              }}
+            />
+          )}
         </div>
         {description && <GroupDescription description={description} />}
       </div>
@@ -90,14 +111,13 @@ const GroupDetail = () => {
       <Confirm
         isDanger={true}
         isOpen={isModalOpen}
-        title='선택한 모임을 삭제하시겠습니까?'
-        message='삭제된 모임은 복구되지 않습니다.'
+        title={title}
+        message={message}
         onCancel={() => {
           setIsModalOpen(false)
         }}
-        onConfirm={() => {
-          deleteGroup()
-        }}
+        onConfirm={onConfirm}
+        onConfirmText={onConfirmText}
       />
     </div>
   )

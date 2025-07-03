@@ -1,19 +1,23 @@
 import Link from 'next/link'
-import { Group } from '../_types'
+import { ActionItemProps, Group, MenuItemProps } from '../_types'
 import { Icon } from '@/components/Icon'
 import { URL_PATH } from '@/consts/urls'
-import { Dropdown as DropdownHero } from '@heroui/dropdown'
-import { DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react'
+import {
+  Dropdown as DropdownHero,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from '@heroui/dropdown'
 
 /** 모임 액션 메뉴(수정, 삭제) 드롭다운 */
 const GroupActionsDropdown = ({
   role,
   groupId,
-  openDeleteGroupConfirm,
+  openModal,
 }: {
   role: Group['role']
   groupId: number
-  openDeleteGroupConfirm: VoidFunction
+  openModal: VoidFunction
 }) => {
   const isLeader = role === 'LEADER'
 
@@ -24,52 +28,69 @@ const GroupActionsDropdown = ({
           <Icon name='more' className='fill-gray-400' size={20} />
         </button>
       </DropdownTrigger>
-      {isLeader ? (
-        <LeaderMenu
-          openDeleteGroupConfirm={openDeleteGroupConfirm}
-          groupId={groupId}
-        />
-      ) : (
-        <MemberMenu />
-      )}
+      <DropdownMenu aria-label='Group Actions Menu'>
+        {getMenuItems({ isLeader, groupId, openModal })}
+      </DropdownMenu>
     </DropdownHero>
   )
 }
 
 export default GroupActionsDropdown
 
-const LeaderMenu = ({
-  groupId,
-  openDeleteGroupConfirm,
-}: {
-  groupId: number
-  openDeleteGroupConfirm: VoidFunction
-}) => {
+/** 액션 메뉴 항목 생성 함수 */
+const getMenuItems = ({ isLeader, groupId, openModal }: MenuItemProps) => {
+  if (isLeader) {
+    return (
+      <>
+        {ActionItem({
+          key: 'update',
+          label: '수정하기',
+          as: Link,
+          href: `${URL_PATH.GroupUpdate}/${groupId}`,
+        })}
+        {ActionItem({
+          key: 'delete',
+          label: '모임 삭제하기',
+          onPress: openModal,
+          color: 'danger',
+        })}
+      </>
+    )
+  }
+
   return (
     <>
-      <DropdownMenu aria-label='Leader Actions Menu'>
-        <DropdownItem
-          key='update'
-          as={Link}
-          href={URL_PATH.GroupUpdate + `/${groupId}`}
-        >
-          수정하기
-        </DropdownItem>
-        <DropdownItem key='delete' color='danger'>
-          <button onClick={openDeleteGroupConfirm}>모임 삭제하기</button>
-        </DropdownItem>
-      </DropdownMenu>
+      {ActionItem({
+        key: 'copy',
+        label: '링크 복사하기',
+      })}
+      {ActionItem({
+        key: 'leave',
+        label: '탈퇴하기',
+        onPress: openModal,
+        color: 'danger',
+      })}
     </>
   )
 }
 
-const MemberMenu = () => {
-  return (
-    <DropdownMenu aria-label='Member Actions Menu'>
-      <DropdownItem key='copy'>링크 복사하기</DropdownItem>
-      <DropdownItem key='leave' color='danger'>
-        탈퇴하기
-      </DropdownItem>
-    </DropdownMenu>
-  )
-}
+/** 개별 액션 항목 컴포넌트 */
+const ActionItem = ({
+  key,
+  label,
+  onPress,
+  color,
+  as = 'button',
+  href,
+}: ActionItemProps) => (
+  <DropdownItem
+    key={key}
+    color={color}
+    as={as}
+    href={href}
+    onPress={onPress}
+    className='text-center'
+  >
+    {label}
+  </DropdownItem>
+)
