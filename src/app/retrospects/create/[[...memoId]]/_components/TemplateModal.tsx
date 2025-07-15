@@ -1,6 +1,6 @@
 import { Icon } from '@/components/Icon'
 import Modal from '@/components/Modal'
-import { Template } from '../_types/template'
+import { Template } from '@/app/_types/template'
 import DOMPurify from 'isomorphic-dompurify'
 
 interface Props {

@@ -18,10 +18,10 @@ import '../_styles/index.css'
 import Button from '@/components/Button'
 import SubmitHeader from './SubmitHeader'
 import { RetrospectInfoForm } from '../_types/retrospect'
-import { Template } from '../_types/template'
+import { Template } from '@/app/_types/template'
 import { editorTheme } from '../_consts'
 import TemplateModal from './TemplateModal'
-import useGetTemplate from '../_queries/useGetTemplate'
+import useGetTemplate from '@/app/_queries/useGetTemplate'
 
 const initialConfig = {
   namespace: 'MyEditor',
@@ -49,8 +49,10 @@ const Editor = ({
   initialContent: string
 }) => {
   // TODO: templateId 타입 수정할 것! (nullable 불가능하게)
-  const { data = { templateName: '', content: '', preset: '' } } =
-    useGetTemplate(retrospectInfo.templateId)
+  const {
+    template = { templateName: '', content: '', preset: '' },
+    isTemplateFetching,
+  } = useGetTemplate(retrospectInfo.templateId)
   const [title, setTitle] = useState('')
 
   useEffect(() => {
@@ -60,7 +62,7 @@ const Editor = ({
   // ESLint로 인한 console.log
   console.log(memoId)
 
-  if (!data) return null
+  if (isTemplateFetching) return null
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
@@ -72,10 +74,10 @@ const Editor = ({
           initMemoId={memoId}
         />
         <div className='bg-white py-6 px-10 rounded-md'>
-          {data.templateName && (
+          {template.templateName && (
             <TemplateInfo
-              templateName={data.templateName}
-              content={data?.content}
+              templateName={template.templateName}
+              content={template?.content}
             />
           )}
           <input
@@ -104,7 +106,7 @@ const Editor = ({
           />
           <HistoryPlugin />
           <AutoFocusPlugin />
-          <HTMLToLexicalPlugin preset={initialContent || data.preset} />
+          <HTMLToLexicalPlugin preset={initialContent || template.preset} />
           <ListPlugin />
         </div>
       </div>

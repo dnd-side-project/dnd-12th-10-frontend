@@ -14,3 +14,4 @@ export const templateListSchema = z.array(templateSchema)
 
 export type Template = z.infer<typeof templateSchema>
 export type TemplateList = z.infer<typeof templateListSchema>
+export type TemplateType = 'retrospective_type' | 'job_type'

@@ -4,7 +4,7 @@ import type { RetrospectInfoForm } from '../../_types/retrospect'
 import Switch from '@/components/Switch'
 import { RadioGridWrap } from '.'
 import RadioButton from '../RadioButton'
-import useGetTemplateList from '../../_queries/useGetTemplateList'
+import useGetTemplateList from '@/app/_queries/useGetTemplateList'
 
 interface Props {
   control: Control<RetrospectInfoForm>
@@ -20,7 +20,7 @@ const TemplateUsageSelector = ({
   templateCategory,
   setTemplateCategory,
 }: Props) => {
-  const { data: templateList } = useGetTemplateList()
+  const { templateList } = useGetTemplateList('retrospective_type')
 
   return (
     <>

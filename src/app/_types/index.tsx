@@ -24,15 +24,6 @@ export interface PopularGroup {
   retrospectResponseDto: Retrospect
 }
 
-export interface Template {
-  templateId: number
-  templateName: string
-  content: string
-  userId: string
-  public: boolean
-  categories: []
-}
-
 export interface Memo {
   memoId: number
   userId: string

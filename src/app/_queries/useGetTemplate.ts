@@ -1,17 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
-import { getTemplate } from '../_lib'
+import { getTemplate } from '@/app/_lib'
 
 /** 템플릿 개별 조회 */
 const useGetTemplate = (templateId: number | null) => {
-  return useQuery({
+  const { data, isFetching } = useQuery({
     queryKey: ['getTemplate', templateId],
-    queryFn: async () => {
-      if (!templateId) return
-      const response = await getTemplate(templateId)
-      return response.data
-    },
+    queryFn: () => getTemplate(templateId),
     enabled: !!templateId,
   })
+
+  return { template: data, isTemplateFetching: isFetching }
 }
 
 export default useGetTemplate
