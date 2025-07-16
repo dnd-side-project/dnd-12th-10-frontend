@@ -1,20 +1,11 @@
-import Image from 'next/image'
-import CharactersImage from '@/assets/images/characters.png'
-import BlueCharacterImage from '@/assets/images/character-blue.png'
 import { RetrospectInfoForm } from '../_types/retrospect'
+import { ButtonProps } from '@/components/Button'
 
-export const RETROSPECT_TYPE_OPTIONS = [
-  {
-    value: 'GROUP',
-    label: '모임 회고',
-    image: <Image src={CharactersImage} alt='' width={153} height={77} />,
-  },
-  {
-    value: 'PERSONAL',
-    label: '개인 회고',
-    image: <Image src={BlueCharacterImage} alt='' width={100} height={77} />,
-  },
-]
+export const RADIO_BUTTON_SIZE: { [k in ButtonProps['size']]: string } = {
+  small: 'h-[92px] min-h-[92px]',
+  medium: 'h-[106px] min-h-[106px]',
+  large: 'h-[117px] min-h-[117px]',
+}
 
 export const EDITOR_TEXT_TYPES = [
   {
@@ -36,7 +27,7 @@ export const EDITOR_TEXT_TYPES = [
 ]
 
 export const INITIAL_RETROSPECT_INFO: RetrospectInfoForm = {
-  retrospectType: null,
+  retrospectType: 'GROUP',
   templateId: null,
   groupId: '',
 }

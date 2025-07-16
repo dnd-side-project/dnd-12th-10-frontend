@@ -4,16 +4,16 @@ import CardWrap from '@/components/CardWrap'
 import Chip from '@/components/Chip'
 import SectionHeader from './SectionHeader'
 
-import { Template } from '../_types'
+import { Template } from '../_types/template'
 import DOMPurify from 'isomorphic-dompurify'
 
-import { usePublicTemplateListQuery } from '@/app/_queries/usePublicTemplateListQuery'
+import useGetTemplateList from '@/app/_queries/useGetTemplateList'
 import SliderContainer from '@/app/_components/SliderContainer'
 import { URL_PATH } from '@/consts/urls'
 
 /** 템플릿 영역 */
 const TemplateList = () => {
-  const { publicTemplateList = [] } = usePublicTemplateListQuery()
+  const { templateList = [] } = useGetTemplateList('METHOD')
 
   return (
     <section>
@@ -22,7 +22,7 @@ const TemplateList = () => {
         description='자유 템플릿을 포함한 12개의 템플릿의 예시를 보고 바로 회고를 시작할 수 있어요!'
       />
       <SliderContainer mediumDeviceSlidesToShow={4} largeDeviceSlidesToShow={5}>
-        {publicTemplateList.map((template) => (
+        {templateList.map((template) => (
           <TemplateCard key={`template-${template.templateId}`} {...template} />
         ))}
       </SliderContainer>

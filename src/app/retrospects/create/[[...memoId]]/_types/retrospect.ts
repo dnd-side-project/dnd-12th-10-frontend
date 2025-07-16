@@ -1,7 +1,14 @@
 import { z } from 'zod'
+import React, { SetStateAction } from 'react'
+
+export type StepType = 'TEMPLATE' | 'EDITOR'
+export type SetStep = React.Dispatch<React.SetStateAction<StepType>>
+export type setRetrospectInfo = React.Dispatch<
+  SetStateAction<RetrospectInfoForm>
+>
 
 export const retrospectInfoForm = z.object({
-  retrospectType: z.enum(['GROUP', 'PERSONAL']).nullable(),
+  retrospectType: z.enum(['GROUP', 'PERSONAL']),
   templateId: z.number().nullable(),
   groupId: z.string().nullish(),
 })

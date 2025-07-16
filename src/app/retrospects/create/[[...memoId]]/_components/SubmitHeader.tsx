@@ -102,24 +102,14 @@ const SubmitHeader = ({
   }
 
   return (
-    <div
-      className={cn(
-        'bg-[#FEFCF9]',
-        'shadow-gray',
-        'h-20',
-        'px-[88px]',
-        'flex',
-        'items-center',
-        'justify-between',
-      )}
-    >
+    <div className={cn('flex', 'items-center', 'justify-between', 'mb-8')}>
       <button
         type='button'
-        className='flex items-center gap-x-1'
         onClick={back}
+        className='text-title01 flex items-center gap-x-1'
       >
         <Icon name='line-arrow-left' size={20} className='stroke-gray-600' />
-        나가기
+        회고 작성
       </button>
       <div className='flex gap-2'>
         <Button
