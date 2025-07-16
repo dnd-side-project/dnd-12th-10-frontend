@@ -66,7 +66,7 @@ const Editor = ({
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <div className=' max-w-[1016px] mx-auto mb-8 mt-[56px]'>
+      <div className='max-w-[1016px] mx-auto mb-8 mt-[56px]'>
         <SubmitHeader
           title={title}
           groupId={Number(retrospectInfo.groupId)}
