@@ -28,6 +28,7 @@ export const getTemplateList = async (type: TemplateType) => {
   )
   return response.data
 }
+
 export const getTemplate = async (templateId: number | null) => {
   if (!templateId) return
   const response = await axiosInstance.get<Template>(

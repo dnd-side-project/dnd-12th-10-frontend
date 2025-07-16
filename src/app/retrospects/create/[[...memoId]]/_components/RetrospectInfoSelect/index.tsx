@@ -24,9 +24,6 @@ const RetrospectInfoSelect = ({
 }) => {
   const { back } = useRouter()
   const [useTemplate, setUseTemplate] = useState(false)
-  const [templateCategory, setTemplateCategory] = useState<'METHOD' | 'ROLE'>(
-    'METHOD',
-  )
 
   const {
     control,
@@ -62,13 +59,7 @@ const RetrospectInfoSelect = ({
       <div className=' p-10 bg-white rounded-md'>
         <RetrospectTypeSelector watch={watch} control={control} />
         <TemplateUsageSelector setUseTemplate={setUseTemplate} />
-        {useTemplate && (
-          <TemplateSelector
-            control={control}
-            templateCategory={templateCategory}
-            setTemplateCategory={setTemplateCategory}
-          />
-        )}
+        {useTemplate && <TemplateSelector control={control} />}
       </div>
       <div className='flex justify-center my-10'>
         <Button

@@ -1,41 +1,40 @@
-import React from 'react'
+import { useState } from 'react'
 import { Control, Controller } from 'react-hook-form'
 import type { RetrospectInfoForm } from '../../_types/retrospect'
 import Switch from '@/components/Switch'
 import { RadioGridWrap } from '.'
 import RadioButton from '../RadioButton'
 import useGetTemplateList from '@/app/_queries/useGetTemplateList'
+import { TemplateTypeKey } from '@/app/_types/template'
 
 interface Props {
   control: Control<RetrospectInfoForm>
-  templateCategory: 'METHOD' | 'ROLE'
-  setTemplateCategory: React.Dispatch<React.SetStateAction<'METHOD' | 'ROLE'>>
 }
 
 /**
  * 회고 템플릿 선택 영역
  */
-const TemplateUsageSelector = ({
-  control,
-  templateCategory,
-  setTemplateCategory,
-}: Props) => {
-  const { templateList } = useGetTemplateList('retrospective_type')
+const TemplateUsageSelector = ({ control }: Props) => {
+  const [currentTemplateType, setCurrentTemplateType] =
+    useState<TemplateTypeKey>('METHOD')
+  const { templateList = [] } = useGetTemplateList(currentTemplateType)
+
+  const handleSelectTemplateType = (value: string) => {
+    if (value === 'METHOD' || value === 'ROLE') {
+      setCurrentTemplateType(value)
+    }
+  }
 
   return (
     <>
       <h2 className='mt-[50px] text-title01 mb-0.5'>템플릿을 선택해주세요.</h2>
       <Switch
         options={{ METHOD: '회고 방식별', ROLE: '직무별' }}
-        onChange={(value) => {
-          if (value === 'METHOD' || value === 'ROLE') {
-            setTemplateCategory(value)
-          }
-        }}
-        value={templateCategory}
+        onChange={handleSelectTemplateType}
+        value={currentTemplateType}
       />
       <RadioGridWrap>
-        {templateList?.map(({ templateId, templateName, preset }) => (
+        {templateList.map(({ templateId, templateName, description }) => (
           <Controller
             key={`template-${templateId}`}
             control={control}
@@ -44,7 +43,7 @@ const TemplateUsageSelector = ({
             render={({ field }) => (
               <RadioButton
                 title={templateName}
-                description={preset}
+                description={description}
                 size={'large'}
                 {...field}
                 value={templateId}
