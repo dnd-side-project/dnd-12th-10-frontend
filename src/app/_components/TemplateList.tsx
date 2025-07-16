@@ -13,7 +13,7 @@ import { URL_PATH } from '@/consts/urls'
 
 /** 템플릿 영역 */
 const TemplateList = () => {
-  const { templateList = [] } = useGetTemplateList('retrospective_type')
+  const { templateList = [] } = useGetTemplateList('METHOD')
 
   return (
     <section>
