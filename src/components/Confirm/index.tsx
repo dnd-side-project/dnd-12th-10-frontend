@@ -3,23 +3,27 @@ import Button from '@/components/Button'
 import { cn } from '@/utils/cn'
 
 interface ConfirmProps {
+  isDanger?: boolean
   isOpen: boolean
   title: string
   message: string
   onConfirm: VoidFunction
   onCancel: VoidFunction
+  onConfirmText?: string
 }
 
 const Confirm = ({
+  isDanger = false,
   isOpen,
   title,
   message,
   onConfirm,
   onCancel,
+  onConfirmText = '확인',
 }: ConfirmProps) => {
   return (
     <Portal isOpen={isOpen}>
-      <div className='fixed flex inset-0 pt-4 justify-center '>
+      <div className='fixed flex inset-0 pt-4 justify-center'>
         <div
           className={cn(
             'h-fit',
@@ -36,7 +40,7 @@ const Confirm = ({
               style={{
                 minWidth: '72px',
               }}
-              color='primary'
+              color={isDanger ? 'mono' : 'primary'}
               variant='subtle'
               size='small'
               onClick={onCancel}
@@ -47,12 +51,12 @@ const Confirm = ({
               style={{
                 minWidth: '72px',
               }}
-              color='primary'
+              color={isDanger ? 'secondary' : 'primary'}
               variant='filled'
               size='small'
               onClick={onConfirm}
             >
-              확인
+              {onConfirmText}
             </Button>
           </div>
         </div>

@@ -27,7 +27,7 @@ const Modal = ({ isOpen, onClose, children, left = 0 }: ModalProps) => {
         animate='animate'
         exit='exit'
         onClick={handleBackdropClick}
-        className='fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50'
+        className='fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-20'
         style={{ left }}
       >
         <div className='bg-white p-10 rounded-md shadow-modal'>{children}</div>
