@@ -2,22 +2,25 @@ import { Retrospect } from '@/app/_types'
 import AuthorInfo from '@/components/AuthorInfo'
 import Link from 'next/link'
 import { URL_PATH } from '@/consts/urls'
+import { Icon } from '@/components/Icon'
 
 const PopularRetrospectCard = ({
-  retrospectId,
+  groupId,
   title,
   content,
   userName,
   timeString,
-}: Retrospect) => {
+}: { groupId: number } & Retrospect) => {
   return (
-    <div className='bg-white rounded-md p-6 relative w-full'>
-      <h4 className='text-title01 mb-2'>{title}</h4>
-      <AuthorInfo
-        size='medium'
-        author={userName}
-        latestUpdateTime={timeString}
-      />
+    <div className='bg-white rounded-md p-6 w-full flex flex-col'>
+      <div className='flex items-center justify-between'>
+        <h4 className='text-title01 mb-2'>{title}</h4>
+        <AuthorInfo
+          size='medium'
+          author={userName}
+          latestUpdateTime={timeString}
+        />
+      </div>
       <div
         className='text-gray-700 text-body02 font-normal mt-6 whitespace-pre-wrap line-clamp-5'
         dangerouslySetInnerHTML={{
@@ -25,10 +28,11 @@ const PopularRetrospectCard = ({
         }}
       />
       <Link
-        href={`${URL_PATH.Retrospects}/${retrospectId}`}
-        className=' bottom-6 text-blue-500 text-body02 mt-4 block'
+        href={`${URL_PATH.GroupList}/${groupId}`}
+        className='flex text-blue-500 text-body02 mt-auto ml-auto'
       >
-        더보기
+        모임구경하기
+        <Icon name='arrow-right' size={23} />
       </Link>
     </div>
   )
