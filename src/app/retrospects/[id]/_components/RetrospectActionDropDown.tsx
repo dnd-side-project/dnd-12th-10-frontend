@@ -47,7 +47,7 @@ const RetrospectActionDropDown = ({
         ],
         VIEWER: [
           {
-            key: 'update',
+            key: 'share',
             label: '공유하기',
             icon: (
               <Icon name='link-chain' size={18} className='stroke-gray-900' />
