@@ -70,7 +70,7 @@ const Section4 = () => {
               'w-fit',
             )}
           >
-            <Icon name='link-chain' size={18} />
+            <Icon name='link-chain' size={18} className='stroke-white' />
             초대 링크 복사하기
           </div>
         </div>
