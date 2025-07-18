@@ -1,7 +1,7 @@
 import { getMemo } from '@/app/retrospects/create/[[...memoId]]/_lib'
 import { useQuery } from '@tanstack/react-query'
 
-const useGetMemo = (memoId: number | null) => {
+const useGetMemo = (memoId: number | null, isRetrospect = false) => {
   return useQuery({
     queryKey: ['memo', memoId],
     queryFn: async () => {
@@ -9,7 +9,7 @@ const useGetMemo = (memoId: number | null) => {
       const { data } = await getMemo(memoId)
       return data
     },
-    enabled: !!memoId,
+    enabled: !!memoId && isRetrospect,
   })
 }
 

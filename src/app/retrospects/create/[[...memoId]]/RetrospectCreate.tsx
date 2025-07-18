@@ -1,15 +1,30 @@
 'use client'
 
 import { useState, useEffect, ReactNode } from 'react'
+import { useSearchParams } from 'next/navigation'
 import useGetMemo from './_queries/useGetMemo'
 import { INITIAL_RETROSPECT_INFO } from './_consts'
 import type { RetrospectInfoForm, StepType } from './_types/retrospect'
 import Editor from './_components/Editor'
 import RetrospectInfoSelect from './_components/RetrospectInfoSelect'
+import useGetRetrospect from '@/app/groups/[id]/_queries/useGetRetrospect'
 
 const RetrospectCreate = ({ memoId }: { memoId: number | null }) => {
+  const searchParams = useSearchParams()
+  const isRetrospectUpdate = searchParams.get('isRetrospectUpdate') === 'true'
+
+  const { data: memo, isSuccess: memoIsSuccess } = useGetMemo(
+    memoId,
+    !isRetrospectUpdate,
+  )
+  const { data: retrospect, isSuccess: retrospectIsSuccess } = useGetRetrospect(
+    String(memoId),
+    isRetrospectUpdate,
+  )
+  const data = isRetrospectUpdate ? retrospect : memo
+  const isSuccess = isRetrospectUpdate ? retrospectIsSuccess : memoIsSuccess
+
   const [step, setStep] = useState<StepType>('TEMPLATE')
-  const { data, isSuccess } = useGetMemo(memoId)
   const [retrospectInfo, setRetrospectInfo] = useState<RetrospectInfoForm>(
     INITIAL_RETROSPECT_INFO,
   )
@@ -41,6 +56,7 @@ const RetrospectCreate = ({ memoId }: { memoId: number | null }) => {
           memoId={memoId || null}
           initialTitle={data?.title || ''}
           initialContent={data?.content || ''}
+          isRetrospectUpdate={isRetrospectUpdate}
         />
       </Step>
     </>
