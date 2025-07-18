@@ -9,9 +9,11 @@ type RetrospectAccessType = 'AUTHOR' | 'VIEWER'
 const RetrospectActionDropDown = ({
   isAuthor,
   retrospectId,
+  openModal,
 }: {
   isAuthor: boolean
   retrospectId: number
+  openModal: VoidFunction
 }) => {
   const role: RetrospectAccessType = isAuthor ? 'AUTHOR' : 'VIEWER'
 
@@ -37,9 +39,9 @@ const RetrospectActionDropDown = ({
           },
           {
             key: 'delete',
-            label: '모임 삭제하기',
-            // Todo: 삭제 모달 오픈 함수
-            onPress: () => {},
+            label: '삭제하기',
+            icon: <Icon name='trash' size={18} className='stroke-gray-900' />,
+            onPress: openModal,
             color: 'danger',
           },
         ],

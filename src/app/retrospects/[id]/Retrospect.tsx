@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { cn } from '@/utils/cn'
 import CommentInput from './_components/CommentInput'
 import CommentList from './_components/CommentList'
@@ -11,11 +12,23 @@ import useGetCommentList from '@/app/groups/[id]/_queries/useGetCommentList'
 import DOMPurify from 'isomorphic-dompurify'
 import IconWithButton from './_components/IconWithButton'
 import RetrospectActionDropDown from './_components/RetrospectActionDropDown'
+import Confirm from '@/components/Confirm'
+import useDeleteRetrospectMutation from './_queries/useDeleteRetrospectMutation'
 
 const Retrospect = () => {
   const retrospectId = useParams<{ id: string }>()?.id
   const { data: retrospect } = useGetRetrospect(retrospectId)
   const { data: commentList } = useGetCommentList(retrospectId)
+  const { mutate: deleteRetrospect } = useDeleteRetrospectMutation(retrospectId)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const confirmModalContent = {
+    modalTitle: '선택한 글을 삭제하시겠습니까?',
+    message: '삭제된 글은 복구되지 않습니다.',
+    onConfirmText: '삭제하기',
+    onConfirm: deleteRetrospect,
+  }
+  const { modalTitle, message, onConfirm, onConfirmText } = confirmModalContent
 
   if (!retrospect) return null
 
@@ -66,11 +79,25 @@ const Retrospect = () => {
           <RetrospectActionDropDown
             isAuthor={isAuthor}
             retrospectId={Number(retrospectId)}
+            openModal={() => {
+              setIsModalOpen(true)
+            }}
           />
         </div>
         <CommentInput retrospectId={Number(retrospectId)} userName={userName} />
         {commentList && <CommentList commentList={commentList} />}
       </article>
+      <Confirm
+        isDanger={true}
+        isOpen={isModalOpen}
+        title={modalTitle}
+        message={message}
+        onCancel={() => {
+          setIsModalOpen(false)
+        }}
+        onConfirm={onConfirm}
+        onConfirmText={onConfirmText}
+      />
     </div>
   )
 }

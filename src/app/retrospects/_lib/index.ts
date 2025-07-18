@@ -17,6 +17,13 @@ export const getMyRetrospectList = async (
   return response.data.retrospectList
 }
 
+export const deleteRetrospect = async (retrospectId: string) => {
+  const response = await axiosInstance.delete(API_PATH.GetMyRetrospects, {
+    data: { retrospectId },
+  })
+  return response.data
+}
+
 export const postComment = async (data: CommentCreateForm) => {
   const reponse = await axiosInstance.post<CommentCreateResponse>(
     API_PATH.Comment,
