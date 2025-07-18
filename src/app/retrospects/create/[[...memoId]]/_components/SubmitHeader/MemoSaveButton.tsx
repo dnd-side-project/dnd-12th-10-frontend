@@ -9,10 +9,11 @@ import useInvalidateQueries from '@/hooks/useInvalidateQueries'
 import { BasePayload } from './types'
 import useMemoCreateMutation from '@/app/retrospects/create/[[...memoId]]/_queries/useMemoCreateMutation'
 import useMemoUpdateMutation from '@/app/retrospects/create/[[...memoId]]/_queries/useMemoUpdateMutation'
+import { RefObject } from 'react'
 
 interface MemoSaveButtonProps {
   hasTitle: boolean
-  memoId: number | null
+  memoId: RefObject<number | null>
   basePayload: BasePayload
   templateId: number
 }
@@ -33,20 +34,20 @@ const MemoSaveButton = ({
   const handleMemoSubmit = () => {
     const memoMutationOnSuccess = async (data: MutationResponseUnion) => {
       if ('memoId' in data) {
-        memoId = data.memoId
+        memoId.current = data.memoId
         await invalidateQueries(['MyMemoList'])
         await invalidateQueries(['memo', data.memoId])
       }
       openCustomToast('임시저장 되었습니다.', true)
     }
 
-    if (memoId) {
+    if (memoId.current) {
       handleSubmit({
         disabled: isDisabled,
         basePayload,
         mutateFn: memoUpdate,
         mutationType: 'memoUpdate',
-        memoId: memoId || 0,
+        memoId: memoId.current || 0,
         onSuccess: memoMutationOnSuccess,
         templateId,
       })

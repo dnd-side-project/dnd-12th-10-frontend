@@ -50,7 +50,7 @@ const SubmitHeader = ({
       </button>
       <div className='flex gap-2'>
         <MemoSaveButton
-          memoId={memoId.current}
+          memoId={memoId}
           templateId={templateId}
           basePayload={basePayload}
           hasTitle={hasTitle}
