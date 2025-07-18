@@ -42,11 +42,13 @@ const Editor = ({
   retrospectInfo,
   initialTitle,
   initialContent,
+  isRetrospectUpdate,
 }: {
   memoId: number | null
   retrospectInfo: RetrospectInfoForm
   initialTitle: string
   initialContent: string
+  isRetrospectUpdate: boolean
 }) => {
   // TODO: templateId 타입 수정할 것! (nullable 불가능하게)
   const {
@@ -59,9 +61,6 @@ const Editor = ({
     setTitle(initialTitle)
   }, [initialTitle])
 
-  // ESLint로 인한 console.log
-  console.log(memoId)
-
   if (isTemplateFetching) return null
 
   return (
@@ -72,6 +71,7 @@ const Editor = ({
           groupId={Number(retrospectInfo.groupId)}
           templateId={retrospectInfo.templateId ?? 0}
           initMemoId={memoId}
+          isRetrospectUpdate={isRetrospectUpdate}
         />
         <div className='bg-white py-6 px-10 rounded-md'>
           {template.templateName && (

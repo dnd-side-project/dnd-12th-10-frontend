@@ -41,6 +41,8 @@ const Section5 = () => {
           groupId={0}
           groupName={'회고 모임'}
           showBorder={false}
+          isAuthor={false}
+          templateId={1}
         />
       </ul>
       <ul className='mt-[-20px] mx-auto w-[620px] flex flex-col gap-5'>

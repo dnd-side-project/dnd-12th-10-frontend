@@ -1,7 +1,6 @@
 import { z } from 'zod'
 import { ROLE } from '../_consts'
 import { UseMutateFunction } from '@tanstack/react-query'
-import Link from 'next/link'
 
 export const groupSchema = z.object({
   groupId: z.number(),
@@ -20,6 +19,7 @@ export const groupSchema = z.object({
 
 export const retrospectSchema = z.object({
   retrospectId: z.number(),
+  templateId: z.number(),
   title: z.string(),
   content: z.string(),
   userName: z.string(),
@@ -28,6 +28,7 @@ export const retrospectSchema = z.object({
   commentCount: z.number(),
   groupName: z.string().or(z.null()),
   groupId: z.number().or(z.null()),
+  isAuthor: z.boolean(),
   showBorder: z.boolean().optional(),
 })
 export const retrospectListSchema = z.array(retrospectSchema)
@@ -78,19 +79,4 @@ export interface ConfirmModal {
   message: string
   onConfirmText: string
   onConfirm: UseMutateFunction
-}
-
-export interface MenuItemProps {
-  isLeader: boolean
-  groupId: number
-  openModal: VoidFunction
-}
-
-export interface ActionItemProps {
-  key: string
-  label: string
-  onPress?: VoidFunction
-  color?: 'danger'
-  as?: 'button' | typeof Link
-  href?: string
 }
