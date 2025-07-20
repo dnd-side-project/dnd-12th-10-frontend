@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import HomeContainer from './HomeContainer'
+import AuthGuard from '@/app/AuthGuard'
 
 // TODO: 추후 변경 필요
 export const metadata: Metadata = {
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  return <HomeContainer />
+  return (
+    <AuthGuard>
+      <HomeContainer />
+    </AuthGuard>
+  )
 }

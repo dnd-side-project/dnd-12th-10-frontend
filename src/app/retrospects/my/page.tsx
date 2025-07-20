@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import RetrospectCard from '../_components/RetrospectCard'
 import useUserDataQuery from '@/queries/useUserDataQuery'
 import useMyRetrospectListQuery from '../_queries/useMyRetrospectListQuery'
+import AuthGuard from '@/app/AuthGuard'
 
 const MyRetrospectsPage = () => {
   const { back } = useRouter()
@@ -13,7 +14,7 @@ const MyRetrospectsPage = () => {
   if (!userData) return null
 
   return (
-    <>
+    <AuthGuard>
       <button
         className='flex items-center my-3 mx-4 text-body03 text-gray-900'
         onClick={() => {
@@ -43,7 +44,7 @@ const MyRetrospectsPage = () => {
           ))}
         </div>
       </div>
-    </>
+    </AuthGuard>
   )
 }
 export default MyRetrospectsPage
