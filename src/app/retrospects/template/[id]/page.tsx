@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import useGetTemplate from '@/app/_queries/useGetTemplate'
 import { usePathname } from 'next/navigation'
 import DOMPurify from 'isomorphic-dompurify'
+import AuthGuard from '@/app/AuthGuard'
 
 const TemplatePage = () => {
   const { back } = useRouter()
@@ -18,7 +19,7 @@ const TemplatePage = () => {
   if (!template) return null
 
   return (
-    <>
+    <AuthGuard>
       <button
         className='flex items-center my-3 mx-4 text-body03 text-gray-900'
         onClick={() => {
@@ -50,7 +51,7 @@ const TemplatePage = () => {
           }}
         />
       </div>
-    </>
+    </AuthGuard>
   )
 }
 

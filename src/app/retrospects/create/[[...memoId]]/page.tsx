@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import RetrospectCreate from './RetrospectCreate'
+import AuthGuard from '@/app/AuthGuard'
 
 export const metadata: Metadata = {
   title: 'Leev | 회고 작성',
@@ -12,6 +13,10 @@ const RetrospectCreatePage = async ({
 }) => {
   const { memoId } = await params
 
-  return <RetrospectCreate memoId={Number(memoId?.[0]) || null} />
+  return (
+    <AuthGuard>
+      <RetrospectCreate memoId={Number(memoId?.[0]) || null} />
+    </AuthGuard>
+  )
 }
 export default RetrospectCreatePage
