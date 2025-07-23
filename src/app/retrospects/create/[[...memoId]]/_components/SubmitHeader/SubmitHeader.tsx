@@ -30,12 +30,14 @@ const SubmitHeader = ({
   const memoId = useRef(initMemoId)
   const { back } = useRouter()
   const hasTitle = !(title.trim().length > 0)
-  const basePayload = {
-    title,
-    content: editor
-      .getEditorState()
-      .read(() => $generateHtmlFromNodes(editor, null)),
-    ...(groupId ? { groupId } : {}),
+  const basePayload = () => {
+    return {
+      title,
+      content: editor
+        .getEditorState()
+        .read(() => $generateHtmlFromNodes(editor, null)),
+      ...(groupId ? { groupId } : {}),
+    }
   }
 
   return (
