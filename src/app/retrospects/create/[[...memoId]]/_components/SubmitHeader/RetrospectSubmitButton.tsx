@@ -13,7 +13,7 @@ interface RetrospectSubmitButtonProps {
   isUpdating: boolean
   hasTitle: boolean
   retrospectId: number | null
-  basePayload: BasePayload
+  basePayload: () => BasePayload
   templateId: number
 }
 
@@ -43,7 +43,7 @@ const RetrospectSubmitButton = ({
 
     handleSubmit({
       disabled: hasTitle || retrospectCreateIsPending,
-      basePayload,
+      basePayload: basePayload(),
       mutateFn: retrospectMutate,
       mutationType: 'retrospectCreate',
       onSuccess: retrospectMutationOnSuccess,
@@ -60,7 +60,7 @@ const RetrospectSubmitButton = ({
 
     handleSubmit({
       disabled: hasTitle || retrospectUpdateIsPending,
-      basePayload,
+      basePayload: basePayload(),
       mutateFn: retrospectUpdate,
       mutationType: 'retrospectUpdate',
       memoId: retrospectId || 0,

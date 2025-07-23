@@ -14,7 +14,7 @@ import { RefObject } from 'react'
 interface MemoSaveButtonProps {
   hasTitle: boolean
   memoId: RefObject<number | null>
-  basePayload: BasePayload
+  basePayload: () => BasePayload
   templateId: number
 }
 
@@ -44,7 +44,7 @@ const MemoSaveButton = ({
     if (memoId.current) {
       handleSubmit({
         disabled: isDisabled,
-        basePayload,
+        basePayload: basePayload(),
         mutateFn: memoUpdate,
         mutationType: 'memoUpdate',
         memoId: memoId.current || 0,
@@ -54,7 +54,7 @@ const MemoSaveButton = ({
     } else
       handleSubmit({
         disabled: isDisabled,
-        basePayload,
+        basePayload: basePayload(),
         mutateFn: memoMutate,
         mutationType: 'memoCreate',
         onSuccess: memoMutationOnSuccess,
