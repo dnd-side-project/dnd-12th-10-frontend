@@ -14,6 +14,7 @@ import IconWithButton from './_components/IconWithButton'
 import RetrospectActionDropDown from './_components/RetrospectActionDropDown'
 import Confirm from '@/components/Confirm'
 import useDeleteRetrospectMutation from './_queries/useDeleteRetrospectMutation'
+import './_styles/index.css'
 
 const Retrospect = () => {
   const retrospectId = useParams<{ id: string }>()?.id
@@ -65,6 +66,7 @@ const Retrospect = () => {
           latestUpdateTime={timeString}
         />
         <main
+          id='article-content'
           className='mt-16 whitespace-pre-wrap'
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
         />
