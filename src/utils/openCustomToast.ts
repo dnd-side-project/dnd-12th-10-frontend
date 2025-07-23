@@ -16,7 +16,7 @@ const openCustomToast = (
   toast(
     (t: Toast) => CustomToast({ message, isShowCloseButton, toastId: t.id }),
     {
-      position: position,
+      position,
       icon: icon,
       style: {
         borderRadius: '4px',
