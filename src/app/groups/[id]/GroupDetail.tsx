@@ -16,10 +16,13 @@ import Confirm from '@/components/Confirm'
 import useDeleteGroupMutation from './_queries/useDeleteGroupMutation'
 import useLeaveGroupMutation from './_queries/useLeaveGroupMutation'
 import { ConfirmModal } from './_types'
+import InviteModal from '@/app/groups/[id]/_components/InviteModal'
 
 const GroupDetail = () => {
   const groupId = useParams<{ id: string }>()?.id
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
+  const [isInviteModalOpen, setIsInviteModalOpen] = useState(false)
+
   const { data: groupInfo } = useGetGroupInfo(groupId)
   const { data: retrospectList } = useGetRetrospectList(groupId)
   const { mutate: deleteGroup } = useDeleteGroupMutation(String(groupId))
@@ -66,6 +69,9 @@ const GroupDetail = () => {
         userCount={userCount}
         role={role}
         groupId={Number(groupId)}
+        openInviteModal={() => {
+          setIsInviteModalOpen(true)
+        }}
       />
       <div
         className={cn(
@@ -87,7 +93,7 @@ const GroupDetail = () => {
               role={role}
               groupId={Number(groupId)}
               openModal={() => {
-                setIsModalOpen(true)
+                setIsConfirmModalOpen(true)
               }}
             />
           )}
@@ -108,13 +114,19 @@ const GroupDetail = () => {
           groupId={Number(groupId)}
         />
       )}
+      <InviteModal
+        isOpen={isInviteModalOpen}
+        closeModal={() => {
+          setIsInviteModalOpen(false)
+        }}
+      />
       <Confirm
         isDanger={true}
-        isOpen={isModalOpen}
+        isOpen={isConfirmModalOpen}
         title={title}
         message={message}
         onCancel={() => {
-          setIsModalOpen(false)
+          setIsConfirmModalOpen(false)
         }}
         onConfirm={onConfirm}
         onConfirmText={onConfirmText}
