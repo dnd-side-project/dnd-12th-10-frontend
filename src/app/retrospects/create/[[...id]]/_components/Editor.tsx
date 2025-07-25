@@ -70,7 +70,7 @@ const Editor = ({
           title={title}
           groupId={Number(retrospectInfo.groupId)}
           templateId={retrospectInfo.templateId ?? 0}
-          initMemoId={id}
+          initMemoId={isRetrospectUpdate ? null : id}
           isRetrospectUpdate={isRetrospectUpdate}
         />
         <div className='bg-white py-6 px-10 rounded-md'>
