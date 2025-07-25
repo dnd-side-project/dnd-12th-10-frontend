@@ -46,7 +46,7 @@ const TemplatePage = () => {
         </div>
         <SanitizedHtmlRenderer
           content={template.content}
-          className='bg-gray-50 rounded-sm p-10 whitespace-pre-wrap'
+          className='bg-gray-50 rounded-sm p-10'
         />
       </div>
     </AuthGuard>

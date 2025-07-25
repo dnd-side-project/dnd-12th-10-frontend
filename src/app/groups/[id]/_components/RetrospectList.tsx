@@ -80,7 +80,7 @@ export const RetrospectListItem = ({
         />
         <SanitizedHtmlRenderer
           content={content}
-          className='mt-10 text-body02 text-gray-700 whitespace-pre-wrap'
+          className='mt-10 text-body02 text-gray-700'
         />
         <Link
           href={`${URL_PATH.Retrospects}/${retrospectId}`}

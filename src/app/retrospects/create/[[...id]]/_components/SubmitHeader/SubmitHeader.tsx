@@ -15,7 +15,7 @@ interface Props {
   title: RetrospectCreateForm['title']
   groupId: RetrospectCreateForm['groupId']
   templateId: MemoCreateForm['templateId']
-  initMemoId: number | null
+  id: number | null
   isRetrospectUpdate: boolean
 }
 
@@ -23,10 +23,11 @@ const SubmitHeader = ({
   title,
   groupId,
   templateId,
-  initMemoId,
+  id,
   isRetrospectUpdate,
 }: Props) => {
   const [editor] = useLexicalComposerContext()
+  const initMemoId = isRetrospectUpdate ? null : id
   const memoId = useRef(initMemoId)
   const { back } = useRouter()
   const hasTitle = !(title.trim().length > 0)
@@ -58,7 +59,7 @@ const SubmitHeader = ({
           hasTitle={hasTitle}
         />
         <RetrospectSubmitButton
-          retrospectId={memoId.current}
+          retrospectId={id}
           templateId={templateId}
           basePayload={basePayload}
           hasTitle={hasTitle}

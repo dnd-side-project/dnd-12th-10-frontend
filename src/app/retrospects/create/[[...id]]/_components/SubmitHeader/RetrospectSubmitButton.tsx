@@ -54,6 +54,7 @@ const RetrospectSubmitButton = ({
     const retrospectUpdateOnSuccess = async (data: MutationResponseUnion) => {
       if ('retrospectId' in data) {
         await invalidateQueries(['getRetrospect', String(data.retrospectId)])
+        await invalidateQueries(['MyRetrospect'])
         replace(`${URL_PATH.Retrospects}/${data.retrospectId}`)
       }
     }

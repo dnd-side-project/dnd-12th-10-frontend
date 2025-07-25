@@ -4,14 +4,16 @@ import './index.css'
 const SanitizedHtmlRenderer = ({
   content,
   className = '',
+  useStyle = true,
 }: {
   content: string
   className?: string
+  useStyle?: boolean
 }) => {
   return (
     <div
-      className={className}
-      id='article-content'
+      className={className + ' whitespace-pre-wrap break-words'}
+      id={useStyle ? 'article-content' : ''}
       dangerouslySetInnerHTML={{
         __html: DOMPurify.sanitize(content),
       }}

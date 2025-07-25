@@ -36,4 +36,13 @@ export const setLocalStorage = <T>(key: string, newValue: T) => {
   }
 }
 
+export const removeLocalStorage = (key: string) => {
+  if (typeof window === 'undefined') return
+  try {
+    return localStorage.removeItem(key)
+  } catch (error) {
+    console.error('Error remove local storage data', error)
+  }
+}
+
 export const clearLocalStorage = () => localStorage.clear()

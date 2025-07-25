@@ -29,7 +29,7 @@ const TemplateModal = ({
         </div>
         <SanitizedHtmlRenderer
           content={content}
-          className='bg-gray-50 rounded-sm p-5 whitespace-pre-wrap'
+          className='bg-gray-50 rounded-sm p-5'
         />
       </div>
     </Modal>
