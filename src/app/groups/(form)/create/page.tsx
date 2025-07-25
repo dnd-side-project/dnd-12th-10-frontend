@@ -3,7 +3,7 @@ import GroupForm from '../GroupForm'
 import AuthGuard from '@/app/AuthGuard'
 
 export const metadata: Metadata = {
-  title: 'Leev | 모임 생성',
+  title: 'Reev | 모임 생성',
 }
 
 /**

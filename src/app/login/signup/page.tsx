@@ -2,7 +2,7 @@ import SignupContainer from '@/app/login/signup/SignupContainer'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Leev | 회원가입',
+  title: 'Reev | 회원가입',
 }
 
 const SignupPage = () => {

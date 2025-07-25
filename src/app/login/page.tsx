@@ -5,7 +5,7 @@ import KakaoLogoIcon from '@/assets/icons/kakao-logo.svg'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Leev | 로그인',
+  title: 'Reev | 로그인',
 }
 
 const LoginPage = () => {

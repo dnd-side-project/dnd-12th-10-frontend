@@ -13,7 +13,7 @@ const pretendard = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Leev',
+  title: 'Reev',
 }
 
 export default function RootLayout({
