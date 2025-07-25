@@ -9,13 +9,13 @@ export const metadata: Metadata = {
 const RetrospectCreatePage = async ({
   params,
 }: {
-  params: Promise<{ memoId?: string[] }>
+  params: Promise<{ id?: string[] }>
 }) => {
-  const { memoId } = await params
+  const { id } = await params
 
   return (
     <AuthGuard>
-      <RetrospectCreate memoId={Number(memoId?.[0]) || null} />
+      <RetrospectCreate id={Number(id?.[0]) || null} />
     </AuthGuard>
   )
 }

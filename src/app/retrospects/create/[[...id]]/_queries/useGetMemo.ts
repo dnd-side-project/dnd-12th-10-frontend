@@ -1,4 +1,4 @@
-import { getMemo } from '@/app/retrospects/create/[[...memoId]]/_lib'
+import { getMemo } from '../_lib'
 import { useQuery } from '@tanstack/react-query'
 
 const useGetMemo = (memoId: number | null, isRetrospect = false) => {

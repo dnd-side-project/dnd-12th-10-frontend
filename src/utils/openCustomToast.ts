@@ -11,7 +11,7 @@ const openCustomToast = (
     | 'top-right'
     | 'bottom-left'
     | 'bottom-center'
-    | 'bottom-right' = 'bottom-center',
+    | 'bottom-right' = 'top-center',
 ) => {
   toast(
     (t: Toast) => CustomToast({ message, isShowCloseButton, toastId: t.id }),
