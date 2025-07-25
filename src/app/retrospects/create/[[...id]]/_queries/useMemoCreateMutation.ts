@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
-import { createMemo } from '@/app/retrospects/create/[[...memoId]]/_lib'
-import { MemoCreateForm } from '@/app/retrospects/create/[[...memoId]]/_types/retrospect'
+import { createMemo } from '../_lib'
+import { MemoCreateForm } from '../_types/retrospect'
 
 /** 임시저장 생성 */
 const useMemoCreateMutation = () => {

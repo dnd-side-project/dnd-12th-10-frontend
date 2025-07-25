@@ -9,16 +9,16 @@ import Editor from './_components/Editor'
 import RetrospectInfoSelect from './_components/RetrospectInfoSelect'
 import useGetRetrospect from '@/app/groups/[id]/_queries/useGetRetrospect'
 
-const RetrospectCreate = ({ memoId }: { memoId: number | null }) => {
+const RetrospectCreate = ({ id }: { id: number | null }) => {
   const searchParams = useSearchParams()
   const isRetrospectUpdate = searchParams.get('isRetrospectUpdate') === 'true'
 
   const { data: memo, isSuccess: memoIsSuccess } = useGetMemo(
-    memoId,
+    id,
     !isRetrospectUpdate,
   )
   const { data: retrospect, isSuccess: retrospectIsSuccess } = useGetRetrospect(
-    String(memoId),
+    String(id),
     isRetrospectUpdate,
   )
   const data = isRetrospectUpdate ? retrospect : memo
@@ -53,7 +53,7 @@ const RetrospectCreate = ({ memoId }: { memoId: number | null }) => {
       <Step step={step} name={'EDITOR'}>
         <Editor
           retrospectInfo={retrospectInfo}
-          memoId={memoId || null}
+          id={id || null}
           initialTitle={data?.title || ''}
           initialContent={data?.content || ''}
           isRetrospectUpdate={isRetrospectUpdate}

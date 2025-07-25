@@ -38,13 +38,13 @@ function onError(error: unknown) {
 }
 
 const Editor = ({
-  memoId,
+  id,
   retrospectInfo,
   initialTitle,
   initialContent,
   isRetrospectUpdate,
 }: {
-  memoId: number | null
+  id: number | null
   retrospectInfo: RetrospectInfoForm
   initialTitle: string
   initialContent: string
@@ -70,7 +70,7 @@ const Editor = ({
           title={title}
           groupId={Number(retrospectInfo.groupId)}
           templateId={retrospectInfo.templateId ?? 0}
-          initMemoId={memoId}
+          initMemoId={id}
           isRetrospectUpdate={isRetrospectUpdate}
         />
         <div className='bg-white py-6 px-10 rounded-md'>

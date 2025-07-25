@@ -1,5 +1,5 @@
 import { cn } from '@/utils/cn'
-import { RADIO_BUTTON_SIZE } from '@/app/retrospects/create/[[...memoId]]/_consts'
+import { RADIO_BUTTON_SIZE } from '../_consts'
 
 interface Props
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
