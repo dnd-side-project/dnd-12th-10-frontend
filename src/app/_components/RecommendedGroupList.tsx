@@ -47,7 +47,7 @@ export const RecommendedGroupCard = ({
       size='large'
       height={229}
     >
-      <div>
+      <div className='flex flex-col'>
         <div className='flex gap-x-1 mb-2 text-body03'>
           {categoryNames.map((tag, index) => (
             <Chip
@@ -59,8 +59,10 @@ export const RecommendedGroupCard = ({
           ))}
         </div>
         <h4 className='text-title01 mb-2'>{groupName}</h4>
-        <p className='text-body03 font-normal text-gray-600'>{description}</p>
-        <div className='mt-4 flex items-center gap-x-1 text-gray-400 text-body02 font-normal'>
+        <p className='text-body03 font-normal text-gray-600 line-clamp-3'>
+          {description}
+        </p>
+        <div className='mt-auto flex items-center gap-x-1 text-gray-400 text-body02 font-normal'>
           <Icon name='profile-filled' size={18} className='fill-gray-400' />
           멤버 {userCount}명
         </div>

@@ -16,7 +16,7 @@ const ProfilePage = () => {
         <div className='p-10 mb-20 bg-gray-50 rounded-md'>
           <p className='text-title01'>{userData.nickname}님 안녕하세요!</p>
           <p className='mt-4 text-body03 text-gray-500'>관심있는 키워드</p>
-          <div className='mt-2 flex text-body03 gap-2'>
+          <div className='mt-2 flex text-body03 gap-2 flex-wrap'>
             {userData.featureKeywordList.map((keyword, index) => (
               <ChipButton
                 key={`${keyword}-${index}`}
