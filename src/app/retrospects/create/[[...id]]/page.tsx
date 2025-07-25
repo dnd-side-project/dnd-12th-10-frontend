@@ -3,7 +3,7 @@ import RetrospectCreate from './RetrospectCreate'
 import AuthGuard from '@/app/AuthGuard'
 
 export const metadata: Metadata = {
-  title: 'Leev | 회고 작성',
+  title: 'Reev | 회고 작성',
 }
 
 const RetrospectCreatePage = async ({

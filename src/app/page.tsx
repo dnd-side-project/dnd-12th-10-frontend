@@ -4,7 +4,7 @@ import AuthGuard from '@/app/AuthGuard'
 
 // TODO: 추후 변경 필요
 export const metadata: Metadata = {
-  title: 'Leev',
+  title: 'Reev',
 }
 
 export default function Home() {
