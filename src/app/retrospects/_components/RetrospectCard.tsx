@@ -27,7 +27,7 @@ const RetrospectCard = ({
         {/*    />*/}
         {/*  ))}*/}
         {/*</div>*/}
-        <h4 className='text-body01 font-semibold mb-2'>{title}</h4>
+        <h4 className='text-body01 font-semibold mb-2 line-clamp-1'>{title}</h4>
         <SanitizedHtmlRenderer
           content={content}
           className='text-body03 font-normal text-gray-600 line-clamp-4'
