@@ -15,7 +15,7 @@ const PopularRetrospectCard = ({
   return (
     <div className='bg-white rounded-md p-6 w-full h-[344px] flex flex-col'>
       <div className='flex items-center justify-between'>
-        <h4 className='text-title01 mb-2'>{title}</h4>
+        <h4 className='text-title01 mb-2 line-clamp-1'>{title}</h4>
         <AuthorInfo
           size='medium'
           author={userName}
