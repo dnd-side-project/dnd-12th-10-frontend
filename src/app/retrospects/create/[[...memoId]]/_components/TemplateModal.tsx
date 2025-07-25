@@ -1,7 +1,7 @@
 import { Icon } from '@/components/Icon'
 import Modal from '@/components/Modal'
 import { Template } from '@/app/_types/template'
-import DOMPurify from 'isomorphic-dompurify'
+import SanitizedHtmlRenderer from '@/components/SanitizedHtmlRenderer'
 
 interface Props {
   isOpen: boolean
@@ -27,11 +27,9 @@ const TemplateModal = ({
             <Icon name='close' size={24} />
           </button>
         </div>
-        <div
+        <SanitizedHtmlRenderer
+          content={content}
           className='bg-gray-50 rounded-sm p-5 whitespace-pre-wrap'
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(content),
-          }}
         />
       </div>
     </Modal>

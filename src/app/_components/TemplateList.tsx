@@ -5,11 +5,11 @@ import Chip from '@/components/Chip'
 import SectionHeader from './SectionHeader'
 
 import { Template } from '../_types/template'
-import DOMPurify from 'isomorphic-dompurify'
 
 import useGetTemplateList from '@/app/_queries/useGetTemplateList'
 import SliderContainer from '@/app/_components/SliderContainer'
 import { URL_PATH } from '@/consts/urls'
+import SanitizedHtmlRenderer from '@/components/SanitizedHtmlRenderer'
 
 /** 템플릿 영역 */
 const TemplateList = () => {
@@ -47,11 +47,9 @@ const TemplateCard = ({
       <div className='flex flex-col justify-between overflow-hidden'>
         <div>
           <h4 className='text-body01 font-semibold mb-2'>{templateName}</h4>
-          <div
+          <SanitizedHtmlRenderer
+            content={content}
             className='text-gray-700 text-body03 font-normal line-clamp-3 whitespace-pre-wrap'
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(content),
-            }}
           />
         </div>
         <div className='flex gap-1 text-body03 overflow-auto pb-1'>
