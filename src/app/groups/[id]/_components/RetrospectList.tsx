@@ -9,8 +9,8 @@ import IconWithButton from '@/app/retrospects/[id]/_components/IconWithButton'
 import type { RetrospectList } from '../_types'
 import { URL_PATH } from '@/consts/urls'
 import { useRouter } from 'next/navigation'
-import DOMPurify from 'isomorphic-dompurify'
 import OpenMemoListModalButton from '@/app/_components/OpenMemoListModalButton'
+import SanitizedHtmlRenderer from '@/components/SanitizedHtmlRenderer'
 
 const RetrospectList = ({
   retrospectList,
@@ -78,9 +78,9 @@ export const RetrospectListItem = ({
           author={userName}
           latestUpdateTime={timeString}
         />
-        <div
+        <SanitizedHtmlRenderer
+          content={content}
           className='mt-10 text-body02 text-gray-700 whitespace-pre-wrap'
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
         />
         <Link
           href={`${URL_PATH.Retrospects}/${retrospectId}`}

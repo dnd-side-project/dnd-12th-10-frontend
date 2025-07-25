@@ -7,8 +7,8 @@ import { URL_PATH } from '@/consts/urls'
 import { useRouter } from 'next/navigation'
 import useGetTemplate from '@/app/_queries/useGetTemplate'
 import { usePathname } from 'next/navigation'
-import DOMPurify from 'isomorphic-dompurify'
 import AuthGuard from '@/app/AuthGuard'
+import SanitizedHtmlRenderer from '@/components/SanitizedHtmlRenderer'
 
 const TemplatePage = () => {
   const { back } = useRouter()
@@ -44,11 +44,9 @@ const TemplatePage = () => {
             </Button>
           </Link>
         </div>
-        <div
+        <SanitizedHtmlRenderer
+          content={template.content}
           className='bg-gray-50 rounded-sm p-10 whitespace-pre-wrap'
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(template.content),
-          }}
         />
       </div>
     </AuthGuard>

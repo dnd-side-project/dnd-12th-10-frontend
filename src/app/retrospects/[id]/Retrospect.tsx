@@ -9,12 +9,11 @@ import RetrospectHeading from './_components/RetrospectHeading'
 import { useParams } from 'next/navigation'
 import useGetRetrospect from '@/app/groups/[id]/_queries/useGetRetrospect'
 import useGetCommentList from '@/app/groups/[id]/_queries/useGetCommentList'
-import DOMPurify from 'isomorphic-dompurify'
 import IconWithButton from './_components/IconWithButton'
 import RetrospectActionDropDown from './_components/RetrospectActionDropDown'
 import Confirm from '@/components/Confirm'
 import useDeleteRetrospectMutation from './_queries/useDeleteRetrospectMutation'
-import './_styles/index.css'
+import SanitizedHtmlRenderer from '@/components/SanitizedHtmlRenderer'
 
 const Retrospect = () => {
   const retrospectId = useParams<{ id: string }>()?.id
@@ -65,11 +64,9 @@ const Retrospect = () => {
           author={userName}
           latestUpdateTime={timeString}
         />
-        <main
-          id='article-content'
-          className='mt-16 whitespace-pre-wrap'
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
-        />
+        <main className='mt-16 whitespace-pre-wrap'>
+          <SanitizedHtmlRenderer content={content} />
+        </main>
         <div className='mt-[72px] flex gap-6'>
           {/*<IconWithButton iconName='like' count={likeCount} />*/}
           <IconWithButton

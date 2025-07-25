@@ -3,6 +3,7 @@ import AuthorInfo from '@/components/AuthorInfo'
 import Link from 'next/link'
 import { URL_PATH } from '@/consts/urls'
 import { Icon } from '@/components/Icon'
+import SanitizedHtmlRenderer from '@/components/SanitizedHtmlRenderer'
 
 const PopularRetrospectCard = ({
   groupId,
@@ -21,11 +22,9 @@ const PopularRetrospectCard = ({
           latestUpdateTime={timeString}
         />
       </div>
-      <div
+      <SanitizedHtmlRenderer
+        content={content}
         className='text-gray-700 text-body02 font-normal mt-6 whitespace-pre-wrap line-clamp-5'
-        dangerouslySetInnerHTML={{
-          __html: content,
-        }}
       />
       <Link
         href={`${URL_PATH.GroupList}/${groupId}`}
