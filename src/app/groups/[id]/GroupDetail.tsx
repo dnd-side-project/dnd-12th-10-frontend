@@ -7,7 +7,6 @@ import GroupInfoList from './_components/GroupInfoList'
 import NoRetrospectList from './_components/NoRetrospectList'
 import RetrospectList from './_components/RetrospectList'
 import { useParams } from 'next/navigation'
-import Spinner from '@/components/Spinner'
 import useGetGroupInfo from './_queries/useGetGroupInfo'
 import useGetRetrospectList from './_queries/useGetRetrospectList'
 import { ROLE } from './_consts'
@@ -28,7 +27,7 @@ const GroupDetail = () => {
   const { mutate: deleteGroup } = useDeleteGroupMutation(String(groupId))
   const { mutate: leaveGroup } = useLeaveGroupMutation(String(groupId))
 
-  if (!groupInfo) return <Spinner />
+  if (!groupInfo) return null
 
   const confirmModalContent: ConfirmModal =
     groupInfo.role === 'LEADER'
