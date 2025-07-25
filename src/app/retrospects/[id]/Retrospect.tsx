@@ -64,7 +64,7 @@ const Retrospect = () => {
           author={userName}
           latestUpdateTime={timeString}
         />
-        <main className='mt-16 whitespace-pre-wrap'>
+        <main className='mt-16'>
           <SanitizedHtmlRenderer content={content} />
         </main>
         <div className='mt-[72px] flex gap-6'>

@@ -44,16 +44,14 @@ const TemplateCard = ({
       height={182}
       size='medium'
     >
-      <div className='flex flex-col justify-between overflow-hidden'>
-        <div>
-          <h4 className='text-body01 font-semibold mb-2'>{templateName}</h4>
-          <SanitizedHtmlRenderer
-            content={content}
-            className='text-gray-700 text-body03 font-normal line-clamp-3 whitespace-pre-wrap'
-          />
-        </div>
-        <div className='flex gap-1 text-body03 overflow-auto pb-1'>
-          {categories.map((tag, index) => (
+      <div className='flex flex-col justify-between overflow-hidden gap-2'>
+        <h4 className='text-body01 font-semibold'>{templateName}</h4>
+        <SanitizedHtmlRenderer
+          content={content}
+          className='text-gray-700 text-body03 font-normal line-clamp-3'
+        />
+        <div className='flex gap-x-1 text-body03'>
+          {categories.slice(0, 4).map((tag, index) => (
             <Chip key={`tag-${index}`} size='small' color='gray' label={tag} />
           ))}
         </div>

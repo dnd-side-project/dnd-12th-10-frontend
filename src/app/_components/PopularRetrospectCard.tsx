@@ -13,7 +13,7 @@ const PopularRetrospectCard = ({
   timeString,
 }: { groupId: number } & Retrospect) => {
   return (
-    <div className='bg-white rounded-md p-6 w-full flex flex-col'>
+    <div className='bg-white rounded-md p-6 w-full h-[344px] flex flex-col'>
       <div className='flex items-center justify-between'>
         <h4 className='text-title01 mb-2'>{title}</h4>
         <AuthorInfo
@@ -24,7 +24,7 @@ const PopularRetrospectCard = ({
       </div>
       <SanitizedHtmlRenderer
         content={content}
-        className='text-gray-700 text-body02 font-normal mt-6 whitespace-pre-wrap line-clamp-5'
+        className='text-gray-700 text-body02 font-normal mt-6 line-clamp-5'
       />
       <Link
         href={`${URL_PATH.GroupList}/${groupId}`}
