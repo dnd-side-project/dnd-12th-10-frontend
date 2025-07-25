@@ -1,6 +1,6 @@
 import { getLocalStorage, setLocalStorage } from './storage'
 
-const ACCESS_TOKEN_STORAGE_KEY = 'access_token'
+export const ACCESS_TOKEN_STORAGE_KEY = 'access_token'
 const INITIAL_VALUE = ''
 
 export const getAccessToken = () =>
