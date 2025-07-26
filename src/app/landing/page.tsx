@@ -1,6 +1,6 @@
+import { cn } from '@/utils/cn'
 import { Icon } from '@/components/Icon'
 import Button from '@/components/Button'
-import { cn } from '@/utils/cn'
 import Section1 from './_components/sections/Section1'
 import Section2 from './_components/sections/Section2'
 import Section3 from './_components/sections/Section3'
@@ -8,6 +8,7 @@ import Section4 from './_components/sections/Section4'
 import Section5 from './_components/sections/Section5'
 import Section6 from './_components/sections/Section6'
 import Section7 from './_components/sections/Section7'
+import MarkLandingAsVisited from '@/app/landing/_components/MarkLandingAsVisited '
 
 const LandingPage = () => {
   return (
@@ -36,6 +37,7 @@ const LandingPage = () => {
         <Section6 />
         <Section7 />
       </main>
+      <MarkLandingAsVisited />
     </>
   )
 }

@@ -5,6 +5,7 @@ import localFont from 'next/font/local'
 import Sidebar from '../components/RootLayout/Sidebar'
 import Providers from './providers'
 import MemoListModal from '@/app/_components/MemoListModal'
+import LandingVisitGuard from '@/app/landing/_components/LandingVisitGuard'
 
 const pretendard = localFont({
   src: '../assets/fonts/PretendardVariable.woff2',
@@ -29,6 +30,7 @@ export default function RootLayout({
             <Toaster position='top-center' />
             <MemoListModal />
             <Sidebar />
+            <LandingVisitGuard />
             <div className='grow overflow-auto'>{children}</div>
           </div>
         </Providers>
