@@ -8,7 +8,7 @@ import Section4 from './_components/sections/Section4'
 import Section5 from './_components/sections/Section5'
 import Section6 from './_components/sections/Section6'
 import Section7 from './_components/sections/Section7'
-import MarkLandingAsVisited from '@/app/landing/_components/MarkLandingAsVisited '
+import MarkLandingAsVisited from '@/app/landing/_components/MarkLandingAsVisited'
 
 const LandingPage = () => {
   return (
