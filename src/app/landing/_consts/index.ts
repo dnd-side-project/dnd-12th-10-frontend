@@ -1,3 +1,5 @@
+export const HAS_VISITED_LANDING_KEY = 'hasVisitedLanding'
+
 export const TEMPLATE_LIST = [
   {
     title: 'KPT',
