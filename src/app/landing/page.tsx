@@ -1,3 +1,7 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { URL_PATH } from '@/consts/urls'
 import { cn } from '@/utils/cn'
 import { Icon } from '@/components/Icon'
 import Button from '@/components/Button'
@@ -11,6 +15,12 @@ import Section7 from './_components/sections/Section7'
 import MarkLandingAsVisited from '@/app/landing/_components/MarkLandingAsVisited'
 
 const LandingPage = () => {
+  const { push } = useRouter()
+
+  const handleClickHome = () => {
+    push(URL_PATH.Home)
+  }
+
   return (
     <>
       <header
@@ -24,7 +34,12 @@ const LandingPage = () => {
         )}
       >
         <Icon name='logo' width={100} height={30} className='fill-white' />
-        <Button color='primary' variant='filled' size='medium'>
+        <Button
+          color='primary'
+          variant='filled'
+          size='medium'
+          onClick={handleClickHome}
+        >
           시작하기
         </Button>
       </header>

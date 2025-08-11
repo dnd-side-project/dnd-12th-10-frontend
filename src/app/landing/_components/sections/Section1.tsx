@@ -1,3 +1,5 @@
+import { useRouter } from 'next/navigation'
+import { URL_PATH } from '@/consts/urls'
 import Image from 'next/image'
 import { cn } from '@/utils/cn'
 import { Icon } from '@/components/Icon'
@@ -6,6 +8,12 @@ import MainFullImg from '@/assets/images/landing/MainFullImg.png'
 import MainNoSideImg from '@/assets/images/landing/MainNoSideImg.png'
 
 const Section1 = () => {
+  const { push } = useRouter()
+
+  const handleClickHome = () => {
+    push(URL_PATH.Home)
+  }
+
   return (
     <section className='flex justify-around bg-blue-50 pt-[100px] pb-[140px] px-[160px]'>
       <div className='flex flex-col justify-center'>
@@ -16,7 +24,12 @@ const Section1 = () => {
         </p>
         <Icon name='logo' width={158} height={48} className='fill-black' />
         <div className='mt-12'>
-          <Button color='primary' variant='filled' size='medium'>
+          <Button
+            color='primary'
+            variant='filled'
+            size='medium'
+            onClick={handleClickHome}
+          >
             시작하기
           </Button>
         </div>
