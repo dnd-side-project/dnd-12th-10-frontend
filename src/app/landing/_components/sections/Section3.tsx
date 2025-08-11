@@ -1,5 +1,5 @@
 import SectionTitleChip from '../SectionTitleChip'
-import { JOB_LIST, TEMPLATE_LIST } from '@/app/landing/_consts'
+import { JOB_TEMPLATE_LIST, TEMPLATE_LIST } from '@/app/landing/_consts'
 import { cn } from '@/utils/cn'
 import Description from '../Description'
 
@@ -20,8 +20,8 @@ const Section3 = () => {
             description={item.description}
           />
         ))}
-        {JOB_LIST.map((item, i) => (
-          <ListItem key={item + i} title={item} />
+        {JOB_TEMPLATE_LIST.map(({ title, description }, i) => (
+          <ListItem key={title + i} title={title} description={description} />
         ))}
       </ul>
     </section>

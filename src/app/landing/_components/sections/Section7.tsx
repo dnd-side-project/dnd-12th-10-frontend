@@ -1,16 +1,29 @@
+import { useRouter } from 'next/navigation'
+import { URL_PATH } from '@/consts/urls'
 import { cn } from '@/utils/cn'
 import Button from '@/components/Button'
 import { Icon } from '@/components/Icon'
 import ChipButton from '@/components/ChipButton'
 
 const Section7 = () => {
+  const { push } = useRouter()
+
+  const handleClickHome = () => {
+    push(URL_PATH.Home)
+  }
+
   return (
     <section className='pt-[72px] bg-blue-50'>
       <p className='mx-auto w-fit text-[32px] font-semibold leading-[130%]'>
         리브와 함께 쉽고 꾸준히 회고를 작성해보세요!
       </p>
       <div className='mt-6 flex flex-col items-center justify-center'>
-        <Button color='primary' variant='filled' size='medium'>
+        <Button
+          color='primary'
+          variant='filled'
+          size='medium'
+          onClick={handleClickHome}
+        >
           시작하기
         </Button>
       </div>
